@@ -6,26 +6,17 @@
     <description>Recent content on hrakaroo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 27 Dec 2019 12:06:17 -0800</lastBuildDate>
+    <lastBuildDate>Thu, 26 Dec 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://www.hrakaroo.com/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>One Seat Open</title>
-      <link>http://www.hrakaroo.com/projects/one-seat-open/</link>
-      <pubDate>Fri, 27 Dec 2019 12:06:17 -0800</pubDate>
+      <title>Glob Library for Java</title>
+      <link>http://www.hrakaroo.com/projects/raythetracer/</link>
+      <pubDate>Thu, 26 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://www.hrakaroo.com/projects/one-seat-open/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Glob Library Java</title>
-      <link>http://www.hrakaroo.com/projects/glob-library-java/</link>
-      <pubDate>Fri, 27 Dec 2019 11:46:50 -0800</pubDate>
-      
-      <guid>http://www.hrakaroo.com/projects/glob-library-java/</guid>
+      <guid>http://www.hrakaroo.com/projects/raythetracer/</guid>
       <description></description>
     </item>
     
@@ -36,6 +27,16 @@
       
       <guid>http://www.hrakaroo.com/projects/raythetracer/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>One Seat Open</title>
+      <link>http://www.hrakaroo.com/projects/one-seat-open/</link>
+      <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.hrakaroo.com/projects/one-seat-open/</guid>
+      <description>One Seat Open is an invitation system for limited seating events.
+History This project mostly came out a personal frustration in hosting my own game nights. Most of the invitation systems at the time were open ended (no wait list support) or where so chock full of ads that I could barely navigate them. At the same time I was also looking for a project with which to learn front end development as I have been mostly focused backed development.</description>
     </item>
     
     <item>
@@ -63,6 +64,18 @@
       
       <guid>http://www.hrakaroo.com/projects/rebound/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>Joshua Gerth</title>
+      <link>http://www.hrakaroo.com/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.hrakaroo.com/about/</guid>
+      <description>Software profession with over twenty years experience in software development and three years as an engineering manager. Under graduate degree in Computer Science, Mathematics and a graduate degree in Data Intensive Systems.
+My current professional interests are in Kotlin, Go and Blockchain.
+See my projects page for a list of my current and previous projects.
+ This site was created in Hugo with the Coder theme. I selected Hugo mostly because it uses Go to generate the static content which means zero installed dependencies other than the Hugo binary (which is statically linked).</description>
     </item>
     
   </channel>
