@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on hrakaroo</title>
-    <link>http://www.hrakroo.com/tags/</link>
+    <link>http://www.hrakaroo.com/tags/</link>
     <description>Recent content in Tags on hrakaroo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Thu, 21 Nov 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.hrakroo.com/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.hrakaroo.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>development</title>
-      <link>http://www.hrakroo.com/tags/development/</link>
+      <link>http://www.hrakaroo.com/tags/development/</link>
       <pubDate>Thu, 21 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://www.hrakroo.com/tags/development/</guid>
+      <guid>http://www.hrakaroo.com/tags/development/</guid>
       <description></description>
     </item>
     

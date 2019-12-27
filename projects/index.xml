@@ -2,48 +2,48 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projects on hrakaroo</title>
-    <link>http://www.hrakroo.com/projects/</link>
+    <link>http://www.hrakaroo.com/projects/</link>
     <description>Recent content in Projects on hrakaroo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Fri, 27 Dec 2019 12:06:17 -0800</lastBuildDate>
     
-	<atom:link href="http://www.hrakroo.com/projects/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.hrakaroo.com/projects/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>One Seat Open</title>
-      <link>http://www.hrakroo.com/projects/one-seat-open/</link>
+      <link>http://www.hrakaroo.com/projects/one-seat-open/</link>
       <pubDate>Fri, 27 Dec 2019 12:06:17 -0800</pubDate>
       
-      <guid>http://www.hrakroo.com/projects/one-seat-open/</guid>
+      <guid>http://www.hrakaroo.com/projects/one-seat-open/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Glob Library Java</title>
-      <link>http://www.hrakroo.com/projects/glob-library-java/</link>
+      <link>http://www.hrakaroo.com/projects/glob-library-java/</link>
       <pubDate>Fri, 27 Dec 2019 11:46:50 -0800</pubDate>
       
-      <guid>http://www.hrakroo.com/projects/glob-library-java/</guid>
+      <guid>http://www.hrakaroo.com/projects/glob-library-java/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ray the Tracer</title>
-      <link>http://www.hrakroo.com/projects/raythetracer/</link>
+      <link>http://www.hrakaroo.com/projects/raythetracer/</link>
       <pubDate>Thu, 21 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://www.hrakroo.com/projects/raythetracer/</guid>
+      <guid>http://www.hrakaroo.com/projects/raythetracer/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Rebound</title>
-      <link>http://www.hrakroo.com/projects/rebound/</link>
+      <link>http://www.hrakaroo.com/projects/rebound/</link>
       <pubDate>Sat, 10 Feb 2007 00:00:00 +0000</pubDate>
       
-      <guid>http://www.hrakroo.com/projects/rebound/</guid>
+      <guid>http://www.hrakaroo.com/projects/rebound/</guid>
       <description></description>
     </item>
     

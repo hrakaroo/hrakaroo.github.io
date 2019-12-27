@@ -1,23 +1,32 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Hrakaroo</title>
-    <link>https://example.com/posts/</link>
-    <description>Recent content in Posts on Hrakaroo</description>
+    <title>Posts on hrakaroo</title>
+    <link>http://www.hrakaroo.com/posts/</link>
+    <description>Recent content in Posts on hrakaroo</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 26 Dec 2019 11:09:57 -0800</lastBuildDate>
+    <language>en</language>
+    <lastBuildDate>Thu, 06 Jun 2019 00:00:00 -0700</lastBuildDate>
     
-	<atom:link href="https://example.com/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.hrakaroo.com/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>My First Post</title>
-      <link>https://example.com/posts/my-first-post/</link>
-      <pubDate>Thu, 26 Dec 2019 11:09:57 -0800</pubDate>
+      <title>Three Questions to Ask When Writing a New API</title>
+      <link>http://www.hrakaroo.com/posts/apis/</link>
+      <pubDate>Thu, 06 Jun 2019 00:00:00 -0700</pubDate>
       
-      <guid>https://example.com/posts/my-first-post/</guid>
-      <description>bla bla bla</description>
+      <guid>http://www.hrakaroo.com/posts/apis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Creating Simple and Effective Guidelines for Code Reviews</title>
+      <link>http://www.hrakaroo.com/posts/code-reviews/</link>
+      <pubDate>Tue, 09 Oct 2018 00:00:00 -0700</pubDate>
+      
+      <guid>http://www.hrakaroo.com/posts/code-reviews/</guid>
+      <description></description>
     </item>
     
   </channel>
