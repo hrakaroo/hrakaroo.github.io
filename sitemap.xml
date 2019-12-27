@@ -3,21 +3,57 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://www.hrakaroo.com/categories/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <loc>http://www.hrakroo.com/</loc>
+    <lastmod>2019-12-27T12:06:17-08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.hrakaroo.com/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <loc>http://www.hrakroo.com/projects/one-seat-open/</loc>
+    <lastmod>2019-12-27T12:06:17-08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.hrakaroo.com/tags/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <loc>http://www.hrakroo.com/projects/</loc>
+    <lastmod>2019-12-27T12:06:17-08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.hrakroo.com/projects/glob-library-java/</loc>
+    <lastmod>2019-12-27T11:46:50-08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.hrakroo.com/categories/</loc>
+    <lastmod>2019-11-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.hrakroo.com/categories/development/</loc>
+    <lastmod>2019-11-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.hrakroo.com/tags/development/</loc>
+    <lastmod>2019-11-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.hrakroo.com/projects/raythetracer/</loc>
+    <lastmod>2019-11-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.hrakroo.com/tags/</loc>
+    <lastmod>2019-11-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.hrakroo.com/projects/rebound/</loc>
+    <lastmod>2007-02-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.hrakroo.com/series/</loc>
   </url>
   
 </urlset>
