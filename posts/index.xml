@@ -6,10 +6,19 @@
     <description>Recent content in Posts on hrakaroo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 06 Jun 2019 00:00:00 -0700</lastBuildDate>
+    <lastBuildDate>Sat, 28 Dec 2019 00:00:00 -0800</lastBuildDate>
     
 	<atom:link href="http://www.hrakaroo.com/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>SQL is a terrible API</title>
+      <link>http://www.hrakaroo.com/posts/an-impedance-mismatch/</link>
+      <pubDate>Sat, 28 Dec 2019 00:00:00 -0800</pubDate>
+      
+      <guid>http://www.hrakaroo.com/posts/an-impedance-mismatch/</guid>
+      <description>SQL is a terrible API A long time ago&amp;hellip; In 1974 the first relational database was created and along with it a new user interface language was developed to make it easy to query the data. This language (or rather sublanguage) was called Structured English Query Language or SEQUEL. SEQUEL would later evolved into SQL and become the preeminent language for querying relational databases. In the 45+ years since it’s introduction SQL has evolved slightly but it is still largely similar to the version introduced in the 70s.</description>
+    </item>
     
     <item>
       <title>Three Questions to Ask When Writing a New API</title>
