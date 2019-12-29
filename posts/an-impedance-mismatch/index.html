@@ -11,10 +11,10 @@
 
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="SQL is a terrible API"/>
-<meta name="twitter:description" content="SQL is a terrible API A long time ago&hellip; In 1974 the first relational database was created and along with it a new user interface language was developed to make it easy to query the data. This language (or rather sublanguage) was called Structured English Query Language or SEQUEL. SEQUEL would later evolved into SQL and become the preeminent language for querying relational databases. In the 45&#43; years since it’s introduction SQL has evolved slightly but it is still largely similar to the version introduced in the 70s."/>
+<meta name="twitter:description" content="A long time ago&hellip; In 1974 the first relational database was created and along with it a new user interface language was developed to make it easy to query the data. This language (or rather sub-language) was called Structured English Query Language or SEQUEL. SEQUEL would later evolved into SQL and become the preeminent language for querying relational databases. In the 45&#43; years since it&#39;s introduction SQL has evolved slightly but it is still largely similar to the version introduced in the 70s."/>
 
     <meta property="og:title" content="SQL is a terrible API" />
-<meta property="og:description" content="SQL is a terrible API A long time ago&hellip; In 1974 the first relational database was created and along with it a new user interface language was developed to make it easy to query the data. This language (or rather sublanguage) was called Structured English Query Language or SEQUEL. SEQUEL would later evolved into SQL and become the preeminent language for querying relational databases. In the 45&#43; years since it’s introduction SQL has evolved slightly but it is still largely similar to the version introduced in the 70s." />
+<meta property="og:description" content="A long time ago&hellip; In 1974 the first relational database was created and along with it a new user interface language was developed to make it easy to query the data. This language (or rather sub-language) was called Structured English Query Language or SEQUEL. SEQUEL would later evolved into SQL and become the preeminent language for querying relational databases. In the 45&#43; years since it&#39;s introduction SQL has evolved slightly but it is still largely similar to the version introduced in the 70s." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://www.hrakaroo.com/posts/an-impedance-mismatch/" />
 <meta property="article:published_time" content="2019-12-28T00:00:00-08:00" />
@@ -124,25 +124,23 @@
       </header>
 
       <div>
-        <h2 id="sql-is-a-terrible-api">SQL is a terrible API</h2>
-<h3 id="a-long-time-ago">A long time ago&hellip;</h3>
+        <h3 id="a-long-time-ago">A long time ago&hellip;</h3>
 <p>In 1974 the first relational database was created and along with it a
 new user interface language was developed to make it easy to query the
-data. This language (or rather sublanguage) was called Structured
+data. This language (or rather sub-language) was called Structured
 English Query Language or SEQUEL. SEQUEL would later evolved into SQL
 and become the preeminent language for querying relational
-databases. In the 45+ years since it’s introduction SQL has evolved
+databases. In the 45+ years since it's introduction SQL has evolved
 slightly but it is still largely similar to the version introduced in
 the 70s. What has changed during that time is how we interact with the
 database. Today, SQL is used significantly more by applications
 querying the database than by end users. This usage pattern has
 created its own ecosystem of utilities and libraries which help
 applications build SQL queries.  One of the more popular libraries for
-building SQL queries in Java is Hibernate’s Criteria Builder
-(<a href="https://docs.jboss.org/hibernate/entitymanager/3.5/reference/en/html/querycriteria.html">https://docs.jboss.org/hibernate/entitymanager/3.5/reference/en/html/querycriteria.html</a>)
+building SQL queries in Java is <a href="https://docs.jboss.org/hibernate/entitymanager/3.5/reference/en/html/querycriteria.html">Hibernate's Criteria Builder</a>
 which uses an annotation pre-processor and a builder pattern to
-facilitate building SQL queries.  (Java’s Persistence API was based
-heavily on Hibernate’s Criteria Builder). But, at the end of the day
+facilitate building SQL queries.  (Java's Persistence API was based
+heavily on Hibernate's Criteria Builder). But, at the end of the day
 the builder still generates a basic SQL string which is sent to the
 target database, parsed and then executed. Hibernate is just one
 example, but there are hundreds of other libraries that exist across
@@ -153,7 +151,7 @@ building of an SQL query.</p>
 that we need libraries and utilities to help us? In general, no, most
 SQL queries are relatively straightforward. The real problem is that
 SQL was designed for humans and not computers. The inclusion of the
-word ‘English’ in the original name was not by chance, SQL was
+word &lsquo;English&rsquo; in the original name was not by chance, SQL was
 intended to be similar enough to English that it would be self
 descriptive and would only require minimal transformation from the
 spoken question to the actual query.  SQL was not written to make
@@ -161,7 +159,7 @@ querying easy from other applications.  In order to query a database
 from an application, the application needs to build the SQL query
 string at run time programmatically, which means that all errors in
 the SQL query string are also going to be discovered at run time.</p>
-<h3 id="an-impedence-mismatch">An Impedence Mismatch</h3>
+<h3 id="an-impedance-mismatch">An Impedance Mismatch</h3>
 <p>Compiled languages offer a huge edge over interpreted ones in that you
 can be confident that if the application compiles it does not contain
 any syntax errors. This assurance removes an entire class of errors
@@ -171,7 +169,7 @@ syntax error. Furthermore, the errors which do get introduced are
 almost always related to the construction of the SQL query rather than
 actual column names or keywords in the query. Meaning the column names
 and keywords are not as likely to be the source of syntax errors as
-they don’t normally change based on the user request. For example, an
+they don't normally change based on the user request. For example, an
 application which allows the searching of available flights is less
 likely to return different types of data depending on the destination
 city. You may get back more or less result, but it will usually be the
@@ -182,7 +180,7 @@ the construction of the query itself. &ldquo;Did you remember a space after
 the SELECT and FROM keywords?&rdquo; &ldquo;Did you join your select fields with a
 comma, but remember to not include a comma after the last one?&rdquo; &ldquo;If
 this is the first filter then we need to add the &lsquo;WHERE&rsquo; keyword, but
-if this is the second one we need to add the &lsquo;AND&rsquo; keyword, and don’t
+if this is the second one we need to add the &lsquo;AND&rsquo; keyword, and don't
 forget about the parentheses.&rdquo; These types of syntax errors are often
 introduced based on the users search criteria and can be significantly
 more difficult to find with basic testing due to the sheer number of
@@ -194,10 +192,10 @@ achieved through massive test coverage and a responsive development
 team which quickly patches any errors that are found. It would be safe
 to say that in the 45+ years since the introduction of SQL, millions
 of lines of code have been written in various languages, all
-attempting to work around this same basic problem. It’s a huge waste
+attempting to work around this same basic problem. It's a huge waste
 of intellectual effort for what is essentially a self inflicted
 problem.</p>
-<h3 id="where-to-go-from-here">Where to go from here.</h3>
+<h3 id="where-to-go-from-here">Where to go from here</h3>
 <p>SQL and similar English based DSLs (domain specific languages) are
 great, but their usage should be limited to what it was initially
 created for, end users.  As an end user, nothing is more frustrating
@@ -208,7 +206,7 @@ becomes nearly impossible to support grouping of conditions. This is
 where an English based DSL really shines.  It allows a seasoned user
 to rapidly create complex queries as they are doing it interactively
 and have to do minimum mapping from what they are trying to search for
-to the actual query they are running (just as SQL was initialy
+to the actual query they are running (just as SQL was initially
 designed for).  But that is where the DSL should remain.  Do not
 support it directly through your API as, at best, you will be
 recreating the same impedance mismatch and likely forcing your users

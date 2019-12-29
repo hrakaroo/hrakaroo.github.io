@@ -17,7 +17,7 @@
       <pubDate>Sat, 28 Dec 2019 00:00:00 -0800</pubDate>
       
       <guid>http://www.hrakaroo.com/posts/an-impedance-mismatch/</guid>
-      <description>SQL is a terrible API A long time ago&amp;hellip; In 1974 the first relational database was created and along with it a new user interface language was developed to make it easy to query the data. This language (or rather sublanguage) was called Structured English Query Language or SEQUEL. SEQUEL would later evolved into SQL and become the preeminent language for querying relational databases. In the 45+ years since it’s introduction SQL has evolved slightly but it is still largely similar to the version introduced in the 70s.</description>
+      <description>A long time ago&amp;hellip; In 1974 the first relational database was created and along with it a new user interface language was developed to make it easy to query the data. This language (or rather sub-language) was called Structured English Query Language or SEQUEL. SEQUEL would later evolved into SQL and become the preeminent language for querying relational databases. In the 45+ years since it&#39;s introduction SQL has evolved slightly but it is still largely similar to the version introduced in the 70s.</description>
     </item>
     
     <item>
