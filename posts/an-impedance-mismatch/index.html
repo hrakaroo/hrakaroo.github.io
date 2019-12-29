@@ -197,20 +197,20 @@ of intellectual effort for what is essentially a self inflicted
 problem.</p>
 <h3 id="where-to-go-from-here">Where to go from here</h3>
 <p>SQL and similar English based DSLs (domain specific languages) are
-great, but their usage should be limited to what it was initially
+great, but their usage should be limited to what they were initially
 created for, end users.  As an end user, nothing is more frustrating
 than trying to build a complex search criteria through a UI.  &ldquo;Enter
 your subject, select your predicate, then enter your object.&rdquo;  &ldquo;Click
 the plus sign to add more conditions.&rdquo; In addition to being tedious it
-becomes nearly impossible to support grouping of conditions. This is
-where an English based DSL really shines.  It allows a seasoned user
-to rapidly create complex queries as they are doing it interactively
-and have to do minimum mapping from what they are trying to search for
-to the actual query they are running (just as SQL was initially
-designed for).  But that is where the DSL should remain.  Do not
-support it directly through your API as, at best, you will be
-recreating the same impedance mismatch and likely forcing your users
-to create the same set of &ldquo;builder&rdquo; libraries.</p>
+becomes nearly impossible to support even slightly complex grouping of
+conditions. This is where an English based DSL really shines.  It
+allows a seasoned user to rapidly create complex queries as they are
+doing it interactively and have to do minimum mapping from what they
+are trying to search for to the actual query they are running (just as
+SQL was initially designed for).  But that is where the DSL should
+remain.  Do not support it directly through your API as, at best, you
+will be recreating the same impedance mismatch and likely forcing your
+users to create the same set of &ldquo;builder&rdquo; libraries.</p>
 <p>For your API you should define a flexible structure which can be used
 to describe a query. JSON would be a good option, but XML or one of
 the compressed protocols like Thrift or Flatbuffers would also
