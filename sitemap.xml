@@ -3,81 +3,81 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://www.hrakaroo.com/</loc>
-    <lastmod>2019-12-28T00:00:00-08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.hrakaroo.com/posts/</loc>
-    <lastmod>2019-12-28T00:00:00-08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.hrakaroo.com/posts/an-impedance-mismatch/</loc>
-    <lastmod>2019-12-28T00:00:00-08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.hrakaroo.com/categories/</loc>
+    <loc>https://www.hrakaroo.com/categories/</loc>
     <lastmod>2019-12-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.hrakaroo.com/categories/development/</loc>
+    <loc>https://www.hrakaroo.com/categories/development/</loc>
     <lastmod>2019-12-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.hrakaroo.com/tags/development/</loc>
+    <loc>https://www.hrakaroo.com/tags/development/</loc>
     <lastmod>2019-12-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.hrakaroo.com/projects/raythetracer/</loc>
+    <loc>https://www.hrakaroo.com/projects/raythetracer/</loc>
     <lastmod>2019-12-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.hrakaroo.com/projects/</loc>
+    <loc>https://www.hrakaroo.com/</loc>
     <lastmod>2019-12-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.hrakaroo.com/tags/</loc>
+    <loc>https://www.hrakaroo.com/projects/</loc>
     <lastmod>2019-12-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.hrakaroo.com/projects/raythetracer/</loc>
+    <loc>https://www.hrakaroo.com/tags/</loc>
+    <lastmod>2019-12-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.hrakaroo.com/projects/raythetracer/</loc>
     <lastmod>2019-11-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.hrakaroo.com/projects/one-seat-open/</loc>
+    <loc>https://www.hrakaroo.com/projects/one-seat-open/</loc>
     <lastmod>2019-11-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.hrakaroo.com/posts/apis/</loc>
+    <loc>https://www.hrakaroo.com/posts/</loc>
     <lastmod>2019-06-06T00:00:00-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.hrakaroo.com/posts/code-reviews/</loc>
+    <loc>https://www.hrakaroo.com/posts/apis/</loc>
+    <lastmod>2019-06-06T00:00:00-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.hrakaroo.com/posts/an-impedance-mismatch/</loc>
+    <lastmod>2019-06-05T00:00:00-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.hrakaroo.com/posts/code-reviews/</loc>
     <lastmod>2018-10-09T00:00:00-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.hrakaroo.com/projects/rebound/</loc>
+    <loc>https://www.hrakaroo.com/projects/rebound/</loc>
     <lastmod>2007-02-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.hrakaroo.com/about/</loc>
+    <loc>https://www.hrakaroo.com/about/</loc>
   </url>
   
   <url>
-    <loc>http://www.hrakaroo.com/series/</loc>
+    <loc>https://www.hrakaroo.com/series/</loc>
   </url>
   
 </urlset>
