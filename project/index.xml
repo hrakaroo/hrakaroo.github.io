@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projects | Hrakaroo</title>
+    <link>/project/</link>
+      <atom:link href="/project/index.xml" rel="self" type="application/rss+xml" />
+    <description>Projects</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 26 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Projects</title>
+      <link>/project/</link>
+    </image>
+    
+    <item>
+      <title>Glob Library for Java</title>
+      <link>/project/glob-library-java/</link>
+      <pubDate>Thu, 26 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>/project/glob-library-java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ray the Tracer</title>
+      <link>/project/ray-the-tracer/</link>
+      <pubDate>Thu, 21 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>/project/ray-the-tracer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>One Seat Open</title>
+      <link>/project/one-seat-open/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      <guid>/project/one-seat-open/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.oneseatopen.com&#34;&gt;One Seat Open&lt;/a&gt;, an invitation system for
+limited seating events.&lt;/p&gt;
+&lt;h2 id=&#34;history&#34;&gt;History&lt;/h2&gt;
+&lt;p&gt;This project primarily came from a personal frustration in hosting my
+own game nights.  Most invitation systems I researched were open ended
+(no wait list support) or were so chock full of ads that I could
+barely navigate them.  At the same time I was also looking for a
+project with which to learn front end development as I have been
+mostly focused backed development. So this seemed like a perfect
+opportunity to build my own service.&lt;/p&gt;
+&lt;h2 id=&#34;development&#34;&gt;Development&lt;/h2&gt;
+&lt;p&gt;After researching several frontend frameworks I eventually settled on
+Vue.js with the Vuetify plugin for several reasons.  Vue.js was
+established enough to have good tutorials, training videos and a
+robust presence on Stack Overflow for questions.  It also had an easy
+ramp up and it didn&#39;t originate from Facebook.  (Petty, I know, but I
+have a personal distain of Facebook).&lt;/p&gt;
+&lt;h2 id=&#34;status&#34;&gt;Status&lt;/h2&gt;
+&lt;p&gt;In November of 2019 I launched the site and moved hosting my game
+night to the system so I can start &amp;ldquo;eating my own dog food.&amp;rdquo;  I still
+have several large features I want to add before I really start
+start trying to push it more globally.&lt;/p&gt;
+&lt;p&gt;For now I&#39;m keeping it closed source, but free to use.  If the service
+proves popular I will likely be forced to add either a for-pay section
+or ads to cover my hosting fees, but otherwise I have no immediate
+commercialization plans for the service.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Rebound</title>
+      <link>/project/rebound/</link>
+      <pubDate>Sat, 10 Feb 2007 00:00:00 +0000</pubDate>
+      <guid>/project/rebound/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Soda Water Ray Tracer</title>
+      <link>/project/soda-water-ray-tracer/</link>
+      <pubDate>Sun, 21 Nov 2004 00:00:00 +0000</pubDate>
+      <guid>/project/soda-water-ray-tracer/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.7.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Joshua Gerth">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Writing a functional API is relatively easy, but writing a good one that’s functional and empowers your users takes planning and patience. Designing a good API is about creating a sense of clarity and simplicity—it’s the bridge between your intention and your users.
+Like most software development, building an API is a creative process; it’s impossible to completely define a hard-and-fast set of rules that will work in all cases. Nevertheless, three key questions—derived from what I consider the key characteristics of a good API—can serve you well as functional guideposts as you design and write your API:">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/three-questions/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="/post/three-questions/">
+
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="Hrakaroo">
+  <meta property="og:url" content="/post/three-questions/">
+  <meta property="og:title" content="Three Questions to Ask When Writing a New API | Hrakaroo">
+  <meta property="og:description" content="Writing a functional API is relatively easy, but writing a good one that’s functional and empowers your users takes planning and patience. Designing a good API is about creating a sense of clarity and simplicity—it’s the bridge between your intention and your users.
+Like most software development, building an API is a creative process; it’s impossible to completely define a hard-and-fast set of rules that will work in all cases. Nevertheless, three key questions—derived from what I consider the key characteristics of a good API—can serve you well as functional guideposts as you design and write your API:"><meta property="og:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2019-06-06T00:00:00-07:00">
+    
+    <meta property="article:modified_time" content="2019-06-06T00:00:00-07:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/post/three-questions/"
+  },
+  "headline": "Three Questions to Ask When Writing a New API",
+  
+  "datePublished": "2019-06-06T00:00:00-07:00",
+  "dateModified": "2019-06-06T00:00:00-07:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Joshua Gerth"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Hrakaroo",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "img//"
+    }
+  },
+  "description": "Writing a functional API is relatively easy, but writing a good one that’s functional and empowers your users takes planning and patience. Designing a good API is about creating a sense of clarity and simplicity—it’s the bridge between your intention and your users.\nLike most software development, building an API is a creative process; it’s impossible to completely define a hard-and-fast set of rules that will work in all cases. Nevertheless, three key questions—derived from what I consider the key characteristics of a good API—can serve you well as functional guideposts as you design and write your API:"
+}
+</script>
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Three Questions to Ask When Writing a New API | Hrakaroo</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Hrakaroo</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Hrakaroo</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#projects"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item">
+        <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Three Questions to Ask When Writing a New API</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jun 6, 2019
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    10 min read
+  </span>
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <p>Writing a functional API is relatively easy, but writing a good one that’s functional and empowers your users takes planning and patience. Designing a good API is about creating a sense of clarity and simplicity—it’s the bridge between your intention and your users.</p>
+<p>Like most software development, building an API is a creative process; it’s impossible to completely define a hard-and-fast set of rules that will work in all cases. Nevertheless, three key questions—derived from what I consider the key characteristics of a good API—can serve you well as functional guideposts as you design and write your API:</p>
+<p>Is your API’s usage discoverable?
+Is your API composable?
+Is your API safe to use?
+Let’s take a closer look at each question.</p>
+<ol>
+<li>Is your API’s usage discoverable?
+In his famous book, The Design of Everyday Things, Don Norman coined the term discoverability. “When we interact with a product,” Norman wrote, “we need to figure out how to work it. This means discovering what it does, how it works, and what operations are possible.”</li>
+</ol>
+<p>Take doors, for example: We interact with these standard physical objects every day. Often, based on the presence of affordances like knobs, handles, and push bars, it’s pretty clear how to open or close a door. But on occasion, a door’s design will suggest the opposite of how it actually works, and, as a result, we require instructions before we can properly use it. Just think of how many times you pulled a handle that actually needed to be pushed.</p>
+<p>When we use a door the wrong way, we feel silly and stupid, but it’s not our fault. Actually it’s the design that’s bad.</p>
+<p>Something similar can happen with a poorly designed API.</p>
+<p>Consider the last API you used. How did you learn to use it? Did you read all the documentation first, or did you just jump right in? Maybe you weren’t sure about all of the parameters, so you sent in null for a few values and guessed at others. Did the API throw an error message when you did something wrong, or did it fail silently without any feedback?  Did the error message clearly define which parameters were optional and which were not? Did you just keep plugging away until you got it right?</p>
+<p>Fact: This is how most users will learn your API.</p>
+<p>Your users are going to learn just enough to bootstrap themselves, and then they’ll figure the rest out as they go. With this fact in mind, you can help them along the away by increasing your API’s discoverability. You can do this through documentation; adhering to conceptual models; and using concise, symmetrical language.</p>
+<p>Assume your users won’t read the documentation—until they need to
+Just because your users won’t read your documentation doesn’t mean that you don’t need to provide it. You definitely do. But don’t design your API with the assumption that everyone will read the docs before they use it.</p>
+<p>Some users would rather experiment than look up an answer in the docs. Every time I use Java’s substring() method, for example, I can never remember if the second value is an offset or a length, so I just write a little program to try it out both ways. This is usually quicker for me, and more fun, than  looking up the answer.</p>
+<p>In many cases, users who’ve learned to distrust documentation won’t read the docs anyway, at least not until they get desperate. Documentation is notorious for being out of date or just wrong. Now, this obviously isn’t true of all documentation, but think of how many times you’ve consulted documentation—or a help system or knowledge base—and found that either it provided answers that were totally useless, or it didn’t provide any related answers at all. Plenty of documentation does a poor job of anticipating the questions users might ask or how they might ask them. Additionally, even if users have a sense of what task they want to achieve, they may lack the exact vocabulary or use different terms for that task than the docs, which can make searching difficult.</p>
+<p>You should also provide plenty of examples in your documentation—because users want them. Typically, examples are the first things users look for when learning a new API. Only after they gain a little context will they go look at the rest of the documentation. Examples are how users come to understand your API as a whole.</p>
+<p>Create a conceptual model of how your API works
+Don Norman explains that a conceptual model is “an explanation, usually highly simplified, of how something works.” Conceptual models are not schematics, and they should relate to other known conceptual models.</p>
+<p>A good example of a conceptual model is the file system structure used on personal computers. File systems, like those on Mac and Windows operating systems, were intentionally based on the concept of files and folders that we were already familiar with in the physical world. This made it easy for non-technical users to understand and discover how to copy, store, and retrieve files on their PCs.</p>
+<p>Even today, Unix uses this conceptual model of files and folders anytime a user attaches a device (e.g. a phone or external hard drive) to an operating system, which has completely eliminated the need for users to “discover” a new API every time they attach a device.</p>
+<p>“Objects” in object-oriented programming are another example of a conceptual model. They’re specifically called objects so that we think of them as self-defining entities. Just as a ball object on the computer might support a bounce method, as well as other methods like throw, a ball in real life, through its design, also supports bounce and throw operations. In data-oriented programming, however, you don’t get this conceptual model, so you’re more likely to have a bounce function that will throw an error if you send it anything other than a ball.</p>
+<p>Another example of working within conceptual models is the use of “object” in object-oriented programming. In this programming model, objects represent physical objects from the real world, such as servers, databases, and load balancers, and developers create relationships between those objects via APIs.</p>
+<p>Use clear, consistent, and symmetrical language
+In addition to documenting your API, you should also develop and publish a terminology dictionary for your API—and then use it consistently. For example, I commonly see APIs use terms like host and hostName, and account and accountId, almost interchangeably. Forcing your users to guess what the right call might be, or constantly changing the language, does not promote discoverability.</p>
+<p>Like conceptual models, symmetrical language helps users work with your API with certain expectations in place. If your language is symmetrical, an open operation will be balanced with a close, and an add operation will be balanced with a delete.</p>
+<p>In Python, for example, you use pop to remove an element, so the expectation would be that you’d use push to add an element, as that’s how it works in most other languages. Instead, Python uses append… and there’s plenty of Google search results from people confused by this poor discoverability.</p>
+<ol start="2">
+<li>Is your API composable?
+When you build a composable API, you are letting your users select components of the API and use them in whatever pattern they want.</li>
+</ol>
+<p>Small and composable methods are easier to describe and document than larger methods that contain a long chain of steps and caveats. They’re also easier to run regression and end-to-end tests against.</p>
+<p>Most importantly, though, employing composable components gives your users the tools they need to build their own workflows with your API. You can’t predict all your users’ needs, so don’t force them into one execution pattern. Instead, create composable components and then use your examples to show how to combine them into larger execution patterns.</p>
+<p>For example, consider the following methods:</p>
+<p>setName(firstName, lastName)</p>
+<p>vs.</p>
+<p>setFirstName(firstName)
+setLastName(lastName)</p>
+<p>The second option is more composable than the first, as the second method allows you to easily update the value for lastName. With the first method you would first have to fetch the value of firstName so you could send it back in with the new value for lastName.</p>
+<p>The second option is also more extensible, as you can easily add a method to set the middle name: setMiddleName(middleName).</p>
+<p>Finally, the second option is also 100% backwards compatible with existing code. If you were to update the first method to setName(firstName, middleName, lastName), you’d break the existing code.</p>
+<p>Both you and your users will undoubtedly enjoy the free backwards compatibility, as building from smaller, composable components makes it much easier to extend your API as it grows; and to continue supporting support old operations alongside new ones.</p>
+<p>Question 3. Is your API safe to use?
+Ensuring that your API is safe to use—that it won’t behave differently than users expect or break their workflows— is related to the discoverability of an API. But safety is so important that I want to call out the topic separately. When you publish your API, you create a relationship with your users that should be based on trust and transparency. Here’s how to make that happen:</p>
+<p>Practice the principle of least astonishment
+The principle of least astonishment tells us that a component of a system should behave in a way that most users will expect it to behave. The behavior should not astonish or surprise users.</p>
+<p>The setDate method in GNU’s Coreutils, for example, surprises me every time I use it because I expect a set method to set a value and not alter it. If you set the year to any value less than 68, it automatically adds 2000 to the value; and if you set any value between 68 and 100, it automatically adds 1900. Every time I use this method, I’m astonished and have to re-read the documentation to make sure I’m using it correctly.</p>
+<p>Follow the contract
+Don’t try to interpret what you think your user is trying to do. For example, if your API expects a number, and the user provides a string, don’t try to parse a number out of the string. You aren’t doing anyone any favors: What happens when users enter an empty string: Is that 0 or null?</p>
+<p>Design your API so that it’s deterministic and strict.</p>
+<p>Trust nothing and fail fast
+Similarly, your API should verify everything that users send, and immediately fail on errors. More specifically, garbage-in should not equal garbage-out. Garbage-in should fail. If your users are calling your methods with incorrect values, they may be in discovery mode, intentionally testing the boundaries and trying to figure out what is possible.</p>
+<p>Help them understand what’s possible and what isn’t.</p>
+<p>Plan to version from the start and aggressively deprecate old versions
+If you change the signature or external behavior of your API, version it.</p>
+<p>And when you do roll an API’s version forward, dedicate time and resources to aggressively migrate users. If that’s not possible, try to rewrite older versions so they proxy to the new implementation. These steps will help avoid creating technical debt—which, like financial debt, definitely accrues interest over time. The longer an outdated version of your API sits around, the more ingrained it becomes in your user base, and the harder it will be to move users off of it. Set a migration date, and make it happen.</p>
+<p>If you release a version that is likely to change quickly, make that fact explicit by tagging it as “incubating,” “unstable,” or “beta.” This helps provide breathing room if you need to turn off old versions of your API as you release new ones.</p>
+<p>Separate your API from your implementation
+Finally, publish your API version separately from its implementation. The implementation is likely to change faster than the API, so don’t tie the two together.</p>
+<p>When versioning a library, for example, the API and its implementation are in the same package, so you can’t help but release them at the same time. But you can at least use semantic versioning to make it clear which parts are backwards compatible.</p>
+<p>For a service, though, you can publish an API separately from its implementation. In fact, there are plenty of tools, including Apache Thrift, FlatBuffers, and Swagger, that allow you to write your API separately. With these tools, you write your spec and then build your implementation so that it implements the spec.</p>
+<p>Nail that first impression
+Your API is often a user’s first impression of your system. Spend time on discoverability, composability, and safety to make sure that first impression is a good one. Proper planning and design is critical to the effectiveness and success of your API. Taking the time to think things through will help to make your API a first-class feature—not a mere afterthought or means to an end.</p>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/post/three-questions/&amp;text=Three%20Questions%20to%20Ask%20When%20Writing%20a%20New%20API" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/post/three-questions/&amp;t=Three%20Questions%20to%20Ask%20When%20Writing%20a%20New%20API" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Three%20Questions%20to%20Ask%20When%20Writing%20a%20New%20API&amp;body=/post/three-questions/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/post/three-questions/&amp;title=Three%20Questions%20to%20Ask%20When%20Writing%20a%20New%20API" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=Three%20Questions%20to%20Ask%20When%20Writing%20a%20New%20API%20/post/three-questions/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/post/three-questions/&amp;title=Three%20Questions%20to%20Ask%20When%20Writing%20a%20New%20API" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <img class="portrait mr-3" src="/authors/admin/avatar_hu14e2de381f6cbd6cb64bcebc8afbdf09_8346_250x250_fill_q90_lanczos_center.jpg" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/">Joshua Gerth</a></h5>
+      <h6 class="card-subtitle">Engineering Manager<br/>Systems Architect</h6>
+      <p class="card-text">My research interests include big data, language parsing, ray tracing and blockchain.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/hrakaroo" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/in/hrakaroo" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.a0d331bcd05dbe8b31e244f796710f08.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

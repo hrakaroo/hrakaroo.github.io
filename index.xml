@@ -1,90 +1,280 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>hrakaroo</title>
-    <link>https://www.hrakaroo.com/</link>
-    <description>Recent content on hrakaroo</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Thu, 26 Dec 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://www.hrakaroo.com/index.xml" rel="self" type="application/rss+xml" />
-    
+    <title>Hrakaroo</title>
+    <link>/</link>
+      <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <description>Hrakaroo</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 26 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Hrakaroo</title>
+      <link>/</link>
+    </image>
     
     <item>
       <title>Glob Library for Java</title>
-      <link>https://www.hrakaroo.com/projects/raythetracer/</link>
+      <link>/project/glob-library-java/</link>
       <pubDate>Thu, 26 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.hrakaroo.com/projects/raythetracer/</guid>
+      <guid>/project/glob-library-java/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ray the Tracer</title>
-      <link>https://www.hrakaroo.com/projects/raythetracer/</link>
+      <link>/project/ray-the-tracer/</link>
       <pubDate>Thu, 21 Nov 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.hrakaroo.com/projects/raythetracer/</guid>
+      <guid>/project/ray-the-tracer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Three Questions to Ask When Writing a New API</title>
+      <link>/post/three-questions/</link>
+      <pubDate>Thu, 06 Jun 2019 00:00:00 -0700</pubDate>
+      <guid>/post/three-questions/</guid>
+      <description>&lt;p&gt;Writing a functional API is relatively easy, but writing a good one that’s functional and empowers your users takes planning and patience. Designing a good API is about creating a sense of clarity and simplicity—it’s the bridge between your intention and your users.&lt;/p&gt;
+&lt;p&gt;Like most software development, building an API is a creative process; it’s impossible to completely define a hard-and-fast set of rules that will work in all cases. Nevertheless, three key questions—derived from what I consider the key characteristics of a good API—can serve you well as functional guideposts as you design and write your API:&lt;/p&gt;
+&lt;p&gt;Is your API’s usage discoverable?
+Is your API composable?
+Is your API safe to use?
+Let’s take a closer look at each question.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Is your API’s usage discoverable?
+In his famous book, The Design of Everyday Things, Don Norman coined the term discoverability. “When we interact with a product,” Norman wrote, “we need to figure out how to work it. This means discovering what it does, how it works, and what operations are possible.”&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Take doors, for example: We interact with these standard physical objects every day. Often, based on the presence of affordances like knobs, handles, and push bars, it’s pretty clear how to open or close a door. But on occasion, a door’s design will suggest the opposite of how it actually works, and, as a result, we require instructions before we can properly use it. Just think of how many times you pulled a handle that actually needed to be pushed.&lt;/p&gt;
+&lt;p&gt;When we use a door the wrong way, we feel silly and stupid, but it’s not our fault. Actually it’s the design that’s bad.&lt;/p&gt;
+&lt;p&gt;Something similar can happen with a poorly designed API.&lt;/p&gt;
+&lt;p&gt;Consider the last API you used. How did you learn to use it? Did you read all the documentation first, or did you just jump right in? Maybe you weren’t sure about all of the parameters, so you sent in null for a few values and guessed at others. Did the API throw an error message when you did something wrong, or did it fail silently without any feedback?  Did the error message clearly define which parameters were optional and which were not? Did you just keep plugging away until you got it right?&lt;/p&gt;
+&lt;p&gt;Fact: This is how most users will learn your API.&lt;/p&gt;
+&lt;p&gt;Your users are going to learn just enough to bootstrap themselves, and then they’ll figure the rest out as they go. With this fact in mind, you can help them along the away by increasing your API’s discoverability. You can do this through documentation; adhering to conceptual models; and using concise, symmetrical language.&lt;/p&gt;
+&lt;p&gt;Assume your users won’t read the documentation—until they need to
+Just because your users won’t read your documentation doesn’t mean that you don’t need to provide it. You definitely do. But don’t design your API with the assumption that everyone will read the docs before they use it.&lt;/p&gt;
+&lt;p&gt;Some users would rather experiment than look up an answer in the docs. Every time I use Java’s substring() method, for example, I can never remember if the second value is an offset or a length, so I just write a little program to try it out both ways. This is usually quicker for me, and more fun, than  looking up the answer.&lt;/p&gt;
+&lt;p&gt;In many cases, users who’ve learned to distrust documentation won’t read the docs anyway, at least not until they get desperate. Documentation is notorious for being out of date or just wrong. Now, this obviously isn’t true of all documentation, but think of how many times you’ve consulted documentation—or a help system or knowledge base—and found that either it provided answers that were totally useless, or it didn’t provide any related answers at all. Plenty of documentation does a poor job of anticipating the questions users might ask or how they might ask them. Additionally, even if users have a sense of what task they want to achieve, they may lack the exact vocabulary or use different terms for that task than the docs, which can make searching difficult.&lt;/p&gt;
+&lt;p&gt;You should also provide plenty of examples in your documentation—because users want them. Typically, examples are the first things users look for when learning a new API. Only after they gain a little context will they go look at the rest of the documentation. Examples are how users come to understand your API as a whole.&lt;/p&gt;
+&lt;p&gt;Create a conceptual model of how your API works
+Don Norman explains that a conceptual model is “an explanation, usually highly simplified, of how something works.” Conceptual models are not schematics, and they should relate to other known conceptual models.&lt;/p&gt;
+&lt;p&gt;A good example of a conceptual model is the file system structure used on personal computers. File systems, like those on Mac and Windows operating systems, were intentionally based on the concept of files and folders that we were already familiar with in the physical world. This made it easy for non-technical users to understand and discover how to copy, store, and retrieve files on their PCs.&lt;/p&gt;
+&lt;p&gt;Even today, Unix uses this conceptual model of files and folders anytime a user attaches a device (e.g. a phone or external hard drive) to an operating system, which has completely eliminated the need for users to “discover” a new API every time they attach a device.&lt;/p&gt;
+&lt;p&gt;“Objects” in object-oriented programming are another example of a conceptual model. They’re specifically called objects so that we think of them as self-defining entities. Just as a ball object on the computer might support a bounce method, as well as other methods like throw, a ball in real life, through its design, also supports bounce and throw operations. In data-oriented programming, however, you don’t get this conceptual model, so you’re more likely to have a bounce function that will throw an error if you send it anything other than a ball.&lt;/p&gt;
+&lt;p&gt;Another example of working within conceptual models is the use of “object” in object-oriented programming. In this programming model, objects represent physical objects from the real world, such as servers, databases, and load balancers, and developers create relationships between those objects via APIs.&lt;/p&gt;
+&lt;p&gt;Use clear, consistent, and symmetrical language
+In addition to documenting your API, you should also develop and publish a terminology dictionary for your API—and then use it consistently. For example, I commonly see APIs use terms like host and hostName, and account and accountId, almost interchangeably. Forcing your users to guess what the right call might be, or constantly changing the language, does not promote discoverability.&lt;/p&gt;
+&lt;p&gt;Like conceptual models, symmetrical language helps users work with your API with certain expectations in place. If your language is symmetrical, an open operation will be balanced with a close, and an add operation will be balanced with a delete.&lt;/p&gt;
+&lt;p&gt;In Python, for example, you use pop to remove an element, so the expectation would be that you’d use push to add an element, as that’s how it works in most other languages. Instead, Python uses append… and there’s plenty of Google search results from people confused by this poor discoverability.&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Is your API composable?
+When you build a composable API, you are letting your users select components of the API and use them in whatever pattern they want.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Small and composable methods are easier to describe and document than larger methods that contain a long chain of steps and caveats. They’re also easier to run regression and end-to-end tests against.&lt;/p&gt;
+&lt;p&gt;Most importantly, though, employing composable components gives your users the tools they need to build their own workflows with your API. You can’t predict all your users’ needs, so don’t force them into one execution pattern. Instead, create composable components and then use your examples to show how to combine them into larger execution patterns.&lt;/p&gt;
+&lt;p&gt;For example, consider the following methods:&lt;/p&gt;
+&lt;p&gt;setName(firstName, lastName)&lt;/p&gt;
+&lt;p&gt;vs.&lt;/p&gt;
+&lt;p&gt;setFirstName(firstName)
+setLastName(lastName)&lt;/p&gt;
+&lt;p&gt;The second option is more composable than the first, as the second method allows you to easily update the value for lastName. With the first method you would first have to fetch the value of firstName so you could send it back in with the new value for lastName.&lt;/p&gt;
+&lt;p&gt;The second option is also more extensible, as you can easily add a method to set the middle name: setMiddleName(middleName).&lt;/p&gt;
+&lt;p&gt;Finally, the second option is also 100% backwards compatible with existing code. If you were to update the first method to setName(firstName, middleName, lastName), you’d break the existing code.&lt;/p&gt;
+&lt;p&gt;Both you and your users will undoubtedly enjoy the free backwards compatibility, as building from smaller, composable components makes it much easier to extend your API as it grows; and to continue supporting support old operations alongside new ones.&lt;/p&gt;
+&lt;p&gt;Question 3. Is your API safe to use?
+Ensuring that your API is safe to use—that it won’t behave differently than users expect or break their workflows— is related to the discoverability of an API. But safety is so important that I want to call out the topic separately. When you publish your API, you create a relationship with your users that should be based on trust and transparency. Here’s how to make that happen:&lt;/p&gt;
+&lt;p&gt;Practice the principle of least astonishment
+The principle of least astonishment tells us that a component of a system should behave in a way that most users will expect it to behave. The behavior should not astonish or surprise users.&lt;/p&gt;
+&lt;p&gt;The setDate method in GNU’s Coreutils, for example, surprises me every time I use it because I expect a set method to set a value and not alter it. If you set the year to any value less than 68, it automatically adds 2000 to the value; and if you set any value between 68 and 100, it automatically adds 1900. Every time I use this method, I’m astonished and have to re-read the documentation to make sure I’m using it correctly.&lt;/p&gt;
+&lt;p&gt;Follow the contract
+Don’t try to interpret what you think your user is trying to do. For example, if your API expects a number, and the user provides a string, don’t try to parse a number out of the string. You aren’t doing anyone any favors: What happens when users enter an empty string: Is that 0 or null?&lt;/p&gt;
+&lt;p&gt;Design your API so that it’s deterministic and strict.&lt;/p&gt;
+&lt;p&gt;Trust nothing and fail fast
+Similarly, your API should verify everything that users send, and immediately fail on errors. More specifically, garbage-in should not equal garbage-out. Garbage-in should fail. If your users are calling your methods with incorrect values, they may be in discovery mode, intentionally testing the boundaries and trying to figure out what is possible.&lt;/p&gt;
+&lt;p&gt;Help them understand what’s possible and what isn’t.&lt;/p&gt;
+&lt;p&gt;Plan to version from the start and aggressively deprecate old versions
+If you change the signature or external behavior of your API, version it.&lt;/p&gt;
+&lt;p&gt;And when you do roll an API’s version forward, dedicate time and resources to aggressively migrate users. If that’s not possible, try to rewrite older versions so they proxy to the new implementation. These steps will help avoid creating technical debt—which, like financial debt, definitely accrues interest over time. The longer an outdated version of your API sits around, the more ingrained it becomes in your user base, and the harder it will be to move users off of it. Set a migration date, and make it happen.&lt;/p&gt;
+&lt;p&gt;If you release a version that is likely to change quickly, make that fact explicit by tagging it as “incubating,” “unstable,” or “beta.” This helps provide breathing room if you need to turn off old versions of your API as you release new ones.&lt;/p&gt;
+&lt;p&gt;Separate your API from your implementation
+Finally, publish your API version separately from its implementation. The implementation is likely to change faster than the API, so don’t tie the two together.&lt;/p&gt;
+&lt;p&gt;When versioning a library, for example, the API and its implementation are in the same package, so you can’t help but release them at the same time. But you can at least use semantic versioning to make it clear which parts are backwards compatible.&lt;/p&gt;
+&lt;p&gt;For a service, though, you can publish an API separately from its implementation. In fact, there are plenty of tools, including Apache Thrift, FlatBuffers, and Swagger, that allow you to write your API separately. With these tools, you write your spec and then build your implementation so that it implements the spec.&lt;/p&gt;
+&lt;p&gt;Nail that first impression
+Your API is often a user’s first impression of your system. Spend time on discoverability, composability, and safety to make sure that first impression is a good one. Proper planning and design is critical to the effectiveness and success of your API. Taking the time to think things through will help to make your API a first-class feature—not a mere afterthought or means to an end.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>SQL is a terrible API</title>
+      <link>/post/sql-terrible-api/</link>
+      <pubDate>Wed, 05 Jun 2019 00:00:00 +0000</pubDate>
+      <guid>/post/sql-terrible-api/</guid>
+      <description>&lt;h3 id=&#34;a-long-time-ago&#34;&gt;A long time ago&amp;hellip;&lt;/h3&gt;
+&lt;p&gt;In 1974 the first relational database was created and along with it a
+new user interface language was developed to make it easy to query the
+data. This language (or rather sub-language) was called Structured
+English Query Language or SEQUEL. SEQUEL would later evolved into SQL
+and become the preeminent language for querying relational
+databases. In the 45+ years since it&#39;s introduction SQL has evolved
+slightly but it is still largely similar to the version introduced in
+the 70s. What has changed during that time is how we interact with the
+database. Today, SQL is used significantly more by applications
+querying the database than by end users. This usage pattern has
+created its own ecosystem of utilities and libraries which help
+applications build SQL queries.  One of the more popular libraries for
+building SQL queries in Java is &lt;a href=&#34;https://docs.jboss.org/hibernate/entitymanager/3.5/reference/en/html/querycriteria.html&#34;&gt;Hibernate&#39;s Criteria Builder&lt;/a&gt;
+which uses an annotation pre-processor and a builder pattern to
+facilitate building SQL queries.  (Java&#39;s Persistence API was based
+heavily on Hibernate&#39;s Criteria Builder). But, at the end of the day
+the builder still generates a basic SQL string which is sent to the
+target database, parsed and then executed. Hibernate is just one
+example, but there are hundreds of other libraries that exist across
+various languages which all seek to provide the same basic
+functionality. To provide an API which abstracts away the actual
+building of an SQL query.&lt;/p&gt;
+&lt;p&gt;So why do these all exist? Is an SQL query so complicated to construct
+that we need libraries and utilities to help us? In general, no, most
+SQL queries are relatively straightforward. The real problem is that
+SQL was designed for humans and not computers. The inclusion of the
+word &amp;lsquo;English&amp;rsquo; in the original name was not by chance, SQL was
+intended to be similar enough to English that it would be self
+descriptive and would only require minimal transformation from the
+spoken question to the actual query.  SQL was not written to make
+querying easy from other applications.  In order to query a database
+from an application, the application needs to build the SQL query
+string at run time programmatically, which means that all errors in
+the SQL query string are also going to be discovered at run time.&lt;/p&gt;
+&lt;h3 id=&#34;an-impedance-mismatch&#34;&gt;An Impedance Mismatch&lt;/h3&gt;
+&lt;p&gt;Compiled languages offer a huge edge over interpreted ones in that you
+can be confident that if the application compiles it does not contain
+any syntax errors. This assurance removes an entire class of errors
+that exist in pure scripting languages. Yet, by having an application
+generate SQL you are re-introducing the possibility of a run time
+syntax error. Furthermore, the errors which do get introduced are
+almost always related to the construction of the SQL query rather than
+actual column names or keywords in the query. Meaning the column names
+and keywords are not as likely to be the source of syntax errors as
+they don&#39;t normally change based on the user request. For example, an
+application which allows the searching of available flights is less
+likely to return different types of data depending on the destination
+city. You may get back more or less result, but it will usually be the
+same basic set of information. Syntax errors around the column names
+and keywords are often found through basic testing and fixed.&lt;/p&gt;
+&lt;p&gt;The more common (and harder to find) syntax errors are introduced in
+the construction of the query itself. &amp;ldquo;Did you remember a space after
+the SELECT and FROM keywords?&amp;rdquo; &amp;ldquo;Did you join your select fields with a
+comma, but remember to not include a comma after the last one?&amp;rdquo; &amp;ldquo;If
+this is the first filter then we need to add the &amp;lsquo;WHERE&amp;rsquo; keyword, but
+if this is the second one we need to add the &amp;lsquo;AND&amp;rsquo; keyword, and don&#39;t
+forget about the parentheses.&amp;rdquo; These types of syntax errors are often
+introduced based on the users search criteria and can be significantly
+more difficult to find with basic testing due to the sheer number of
+permutations.  This type of syntax error is what helper libraries like
+Hibernate Criteria Builder are attempting to solve. They provide an
+assurance that if you use their libraries, the generated SQL will be
+free of construction syntax errors. This assurance is most often
+achieved through massive test coverage and a responsive development
+team which quickly patches any errors that are found. It would be safe
+to say that in the 45+ years since the introduction of SQL, millions
+of lines of code have been written in various languages, all
+attempting to work around this same basic problem. It&#39;s a huge waste
+of intellectual effort for what is essentially a self inflicted
+problem.&lt;/p&gt;
+&lt;h3 id=&#34;where-to-go-from-here&#34;&gt;Where to go from here&lt;/h3&gt;
+&lt;p&gt;SQL and similar English based DSLs (domain specific languages) are
+great, but their usage should be limited to what they were initially
+created for, end users.  As an end user, nothing is more frustrating
+than trying to build a complex search criteria through a UI.  &amp;ldquo;Enter
+your subject, select your predicate, then enter your object.&amp;rdquo;  &amp;ldquo;Click
+the plus sign to add more conditions.&amp;rdquo; In addition to being tedious it
+becomes nearly impossible to support even slightly complex grouping of
+conditions. This is where an English based DSL really shines.  It
+allows a seasoned user to rapidly create complex queries as they are
+doing it interactively and have to do minimum mapping from what they
+are trying to search for to the actual query they are running (just as
+SQL was initially designed for).  But that is where the DSL should
+remain.  Do not support it directly through your API as, at best, you
+will be recreating the same impedance mismatch and likely forcing your
+users to create the same set of &amp;ldquo;builder&amp;rdquo; libraries.&lt;/p&gt;
+&lt;p&gt;For your API you should define a flexible structure which can be used
+to describe a query. JSON would be a good option, but XML or one of
+the compressed protocols like Thrift or Flatbuffers would also
+work. Users can then create their query programmatically and
+completely remove the risk of introducing an error because they forgot
+a space or included a comma at the wrong location.  Your API can
+either accept this structure directly for querying, or you can split
+it up and have different endpoints accept different categories of
+queries based on the structure of the return type.  Either way,
+creating a well defined structure programmatically is straight forward
+and can easily be supported from a multitude of languages.&lt;/p&gt;
+&lt;p&gt;As for your UI, you are going to have to create a parser for your DSL
+anyhow which is going to build an intermediary representation of your
+query.  So just have the intermediary representation be your defined
+query structure.  Now, when your user does create a query in your UI
+that they want to execute through your API, give them an option to see
+the parsed structure so they know exactly what they need to code to.&lt;/p&gt;
+&lt;p&gt;In this scenario your query language can continue to evolve separate
+from your query structure.  You can even support other English based
+DSLs as long as they can all generate the same query structure.  But
+what ever you do, keep the two domains separate.  SQL is a terrible API.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Creating Simple and Effective Guidelines for Code Reviews</title>
+      <link>/post/code-reviews/</link>
+      <pubDate>Tue, 09 Oct 2018 00:00:00 +0000</pubDate>
+      <guid>/post/code-reviews/</guid>
       <description></description>
     </item>
     
     <item>
       <title>One Seat Open</title>
-      <link>https://www.hrakaroo.com/projects/one-seat-open/</link>
-      <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.hrakaroo.com/projects/one-seat-open/</guid>
-      <description>One Seat Open is an invitation system for limited seating events.
-History This project primarily came from a personal frustration in hosting my own game nights. Most invitation systems at the time were open ended (no wait list support) or were so chock full of ads that I could barely navigate them. At the same time I was also looking for a project with which to learn front end development as I have been mostly focused backed development.</description>
-    </item>
-    
-    <item>
-      <title>Three Questions to Ask When Writing a New API</title>
-      <link>https://www.hrakaroo.com/posts/apis/</link>
-      <pubDate>Thu, 06 Jun 2019 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.hrakaroo.com/posts/apis/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>SQL is a terrible API</title>
-      <link>https://www.hrakaroo.com/posts/an-impedance-mismatch/</link>
-      <pubDate>Wed, 05 Jun 2019 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.hrakaroo.com/posts/an-impedance-mismatch/</guid>
-      <description>A long time ago&amp;hellip; In 1974 the first relational database was created and along with it a new user interface language was developed to make it easy to query the data. This language (or rather sub-language) was called Structured English Query Language or SEQUEL. SEQUEL would later evolved into SQL and become the preeminent language for querying relational databases. In the 45+ years since it&#39;s introduction SQL has evolved slightly but it is still largely similar to the version introduced in the 70s.</description>
-    </item>
-    
-    <item>
-      <title>Creating Simple and Effective Guidelines for Code Reviews</title>
-      <link>https://www.hrakaroo.com/posts/code-reviews/</link>
-      <pubDate>Tue, 09 Oct 2018 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.hrakaroo.com/posts/code-reviews/</guid>
-      <description></description>
+      <link>/project/one-seat-open/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      <guid>/project/one-seat-open/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.oneseatopen.com&#34;&gt;One Seat Open&lt;/a&gt;, an invitation system for
+limited seating events.&lt;/p&gt;
+&lt;h2 id=&#34;history&#34;&gt;History&lt;/h2&gt;
+&lt;p&gt;This project primarily came from a personal frustration in hosting my
+own game nights.  Most invitation systems I researched were open ended
+(no wait list support) or were so chock full of ads that I could
+barely navigate them.  At the same time I was also looking for a
+project with which to learn front end development as I have been
+mostly focused backed development. So this seemed like a perfect
+opportunity to build my own service.&lt;/p&gt;
+&lt;h2 id=&#34;development&#34;&gt;Development&lt;/h2&gt;
+&lt;p&gt;After researching several frontend frameworks I eventually settled on
+Vue.js with the Vuetify plugin for several reasons.  Vue.js was
+established enough to have good tutorials, training videos and a
+robust presence on Stack Overflow for questions.  It also had an easy
+ramp up and it didn&#39;t originate from Facebook.  (Petty, I know, but I
+have a personal distain of Facebook).&lt;/p&gt;
+&lt;h2 id=&#34;status&#34;&gt;Status&lt;/h2&gt;
+&lt;p&gt;In November of 2019 I launched the site and moved hosting my game
+night to the system so I can start &amp;ldquo;eating my own dog food.&amp;rdquo;  I still
+have several large features I want to add before I really start
+start trying to push it more globally.&lt;/p&gt;
+&lt;p&gt;For now I&#39;m keeping it closed source, but free to use.  If the service
+proves popular I will likely be forced to add either a for-pay section
+or ads to cover my hosting fees, but otherwise I have no immediate
+commercialization plans for the service.&lt;/p&gt;
+</description>
     </item>
     
     <item>
       <title>Rebound</title>
-      <link>https://www.hrakaroo.com/projects/rebound/</link>
+      <link>/project/rebound/</link>
       <pubDate>Sat, 10 Feb 2007 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.hrakaroo.com/projects/rebound/</guid>
+      <guid>/project/rebound/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Joshua Gerth</title>
-      <link>https://www.hrakaroo.com/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.hrakaroo.com/about/</guid>
-      <description>Software profession with over twenty years experience in software development and three years as an engineering manager. Under graduate degree in Computer Science, Mathematics and a graduate degree in Data Intensive Systems.
-My current professional interests are in Kotlin, Go, parsers, ray tracers and Blockchain.
-See my projects page for a list of my current and previous projects.
- This site was created in Hugo with the Coder theme. I selected Hugo mostly because it uses Go to generate the static content which means zero installed dependencies other than the Hugo binary (which is statically linked).</description>
+      <title>Soda Water Ray Tracer</title>
+      <link>/project/soda-water-ray-tracer/</link>
+      <pubDate>Sun, 21 Nov 2004 00:00:00 +0000</pubDate>
+      <guid>/project/soda-water-ray-tracer/</guid>
+      <description></description>
     </item>
     
   </channel>

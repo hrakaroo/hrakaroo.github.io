@@ -3,81 +3,109 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://www.hrakaroo.com/categories/</loc>
+    <loc>/project/glob-library-java/</loc>
     <lastmod>2019-12-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.hrakaroo.com/categories/development/</loc>
+    <loc>/</loc>
     <lastmod>2019-12-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.hrakaroo.com/tags/development/</loc>
+    <loc>/tags/java/</loc>
     <lastmod>2019-12-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.hrakaroo.com/projects/raythetracer/</loc>
+    <loc>/project/</loc>
     <lastmod>2019-12-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.hrakaroo.com/</loc>
+    <loc>/tags/</loc>
     <lastmod>2019-12-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.hrakaroo.com/projects/</loc>
-    <lastmod>2019-12-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.hrakaroo.com/tags/</loc>
-    <lastmod>2019-12-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.hrakaroo.com/projects/raythetracer/</loc>
+    <loc>/tags/go/</loc>
     <lastmod>2019-11-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.hrakaroo.com/projects/one-seat-open/</loc>
-    <lastmod>2019-11-01T00:00:00+00:00</lastmod>
+    <loc>/project/ray-the-tracer/</loc>
+    <lastmod>2019-11-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.hrakaroo.com/posts/</loc>
+    <loc>/tags/raytracer/</loc>
+    <lastmod>2019-11-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
     <lastmod>2019-06-06T00:00:00-07:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.hrakaroo.com/posts/apis/</loc>
+    <loc>/post/three-questions/</loc>
     <lastmod>2019-06-06T00:00:00-07:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.hrakaroo.com/posts/an-impedance-mismatch/</loc>
-    <lastmod>2019-06-05T00:00:00-07:00</lastmod>
+    <loc>/post/sql-terrible-api/</loc>
+    <lastmod>2019-06-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.hrakaroo.com/posts/code-reviews/</loc>
-    <lastmod>2018-10-09T00:00:00-07:00</lastmod>
+    <loc>/post/code-reviews/</loc>
+    <lastmod>2018-10-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.hrakaroo.com/projects/rebound/</loc>
+    <loc>/tags/kotlin/</loc>
+    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/project/one-seat-open/</loc>
+    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/vuejs/</loc>
+    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/cpp/</loc>
     <lastmod>2007-02-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.hrakaroo.com/about/</loc>
+    <loc>/project/rebound/</loc>
+    <lastmod>2007-02-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.hrakaroo.com/series/</loc>
+    <loc>/project/soda-water-ray-tracer/</loc>
+    <lastmod>2004-11-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/authors/admin/</loc>
+  </url>
+  
+  <url>
+    <loc>/authors/</loc>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>/publication_types/</loc>
   </url>
   
 </urlset>
