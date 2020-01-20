@@ -212,8 +212,8 @@
   
 
   <link rel="manifest" href="/index.webmanifest">
-  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
-  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
+  <link rel="icon" type="image/png" href="/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_192x192_fill_lanczos_center_2.png">
 
   <link rel="canonical" href="/post/sql-terrible-api/">
 
@@ -231,8 +231,8 @@
   <meta property="og:site_name" content="Hrakaroo">
   <meta property="og:url" content="/post/sql-terrible-api/">
   <meta property="og:title" content="SQL is a terrible API | Hrakaroo">
-  <meta property="og:description" content="SQL was designed for humans, not computers"><meta property="og:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
-  <meta property="twitter:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  <meta property="og:description" content="SQL was designed for humans, not computers"><meta property="og:image" content="/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
   
     
       <meta property="article:published_time" content="2019-06-05T00:00:00&#43;00:00">
@@ -495,6 +495,19 @@
 
   
   
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/admin/">Joshua Gerth</a></span>
+
+  </div>
+  
+  
 
   
   <span class="article-date">
@@ -520,6 +533,10 @@
   
 
   
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/software-development/">Software Development</a>, <a href="/categories/api/">API</a></span>
   
 
 </div>
@@ -570,87 +587,92 @@ example, but there are hundreds of other libraries that exist across
 various languages which all seek to provide the same basic
 functionality. To provide an API which abstracts away the actual
 building of an SQL query.</p>
-<p>So why do these all exist? Is an SQL query so complicated to construct
-that we need libraries and utilities to help us? In general, no, most
-SQL queries are relatively straightforward. The real problem is that
-SQL was designed for humans and not computers. The inclusion of the
-word &lsquo;English&rsquo; in the original name was not by chance, SQL was
-intended to be similar enough to English that it would be self
-descriptive and would only require minimal transformation from the
-spoken question to the actual query.  SQL was not written to make
-querying easy from other applications.  In order to query a database
+<p>So why do these all tools exist? Is an SQL query so complicated to
+construct that we need libraries and utilities to help us? In general,
+no, most SQL queries are relatively straightforward to construct. The
+problem is that SQL was designed for humans and not computers. The
+inclusion of the word &lsquo;English&rsquo; in the original name was not by
+chance, SQL was intended to be similar enough to English that it would
+be self descriptive and would only require minimal transformation from
+the spoken question to the actual query. SQL was not written to make
+querying easy from other applications. In order to query a database
 from an application, the application needs to build the SQL query
-string at run time programmatically, which means that all errors in
-the SQL query string are also going to be discovered at run time.</p>
+programmatically at run time, which means that all errors in the SQL
+query string are also going to be discovered at run time.</p>
 <h3 id="an-impedance-mismatch">An Impedance Mismatch</h3>
-<p>Compiled languages offer a huge edge over interpreted ones in that you
-can be confident that if the application compiles it does not contain
-any syntax errors. This assurance removes an entire class of errors
-that exist in pure scripting languages. Yet, by having an application
-generate SQL you are re-introducing the possibility of a run time
-syntax error. Furthermore, the errors which do get introduced are
-almost always related to the construction of the SQL query rather than
-actual column names or keywords in the query. Meaning the column names
-and keywords are not as likely to be the source of syntax errors as
-they don't normally change based on the user request. For example, an
+<p>Compiled languages offer an enormous advantage over interpreted
+languages in that you can be confident that, if the application
+compiles, then it does not contain any syntax errors. This assurance
+removes an entire class of errors that exist in pure scripting
+languages. Yet, by having an application generate SQL you are
+re-introducing the possibility of a run time syntax
+error. Furthermore, the errors which do get introduced are almost
+always related to the construction of the SQL query rather than actual
+column names or keywords in the query. Meaning the column names and
+keywords are not as likely to be the source of syntax errors as they
+don't normally change based on the user request. For example, an
 application which allows the searching of available flights is less
-likely to return different types of data depending on the destination
+likely to return different a type of data depending on the destination
 city. You may get back more or less result, but it will usually be the
 same basic set of information. Syntax errors around the column names
 and keywords are often found through basic testing and fixed.</p>
 <p>The more common (and harder to find) syntax errors are introduced in
-the construction of the query itself. &ldquo;Did you remember a space after
-the SELECT and FROM keywords?&rdquo; &ldquo;Did you join your select fields with a
-comma, but remember to not include a comma after the last one?&rdquo; &ldquo;If
-this is the first filter then we need to add the &lsquo;WHERE&rsquo; keyword, but
-if this is the second one we need to add the &lsquo;AND&rsquo; keyword, and don't
-forget about the parentheses.&rdquo; These types of syntax errors are often
-introduced based on the users search criteria and can be significantly
-more difficult to find with basic testing due to the sheer number of
-permutations.  This type of syntax error is what helper libraries like
-Hibernate Criteria Builder are attempting to solve. They provide an
-assurance that if you use their libraries, the generated SQL will be
-free of construction syntax errors. This assurance is most often
-achieved through massive test coverage and a responsive development
-team which quickly patches any errors that are found. It would be safe
-to say that in the 45+ years since the introduction of SQL, millions
-of lines of code have been written in various languages, all
-attempting to work around this same basic problem. It's a huge waste
-of intellectual effort for what is essentially a self inflicted
-problem.</p>
+the construction of the query itself.</p>
+<ul>
+<li>Did you remember a space after the &lsquo;SELECT&rsquo; and &lsquo;FROM&rsquo; keywords?</li>
+<li>Did you join your select fields with a comma, but remember to not
+include a comma after the last one?</li>
+<li>If this is the first filter then we need to add the &lsquo;WHERE&rsquo; keyword,
+but if this is the second one we need to add the &lsquo;AND&rsquo; keyword, and
+don't forget about the parentheses.</li>
+</ul>
+<p>These types of syntax errors are often introduced based on the users
+search criteria and can be significantly more difficult to find with
+basic testing due to the sheer number of permutations.  This is the
+real advantage of using a helper library like Hibernate Criteria
+Builder. They provide an assurance that if you use their libraries,
+the generated SQL will be free of <em>construction syntax errors</em>. This
+assurance is most often achieved through massive test coverage and a
+responsive development team which quickly patches any errors that are
+found. It would be safe to say that in the 45+ years since the
+introduction of SQL, millions of lines of code have been written in
+various languages, all attempting to work around this same basic
+problem. It's a huge waste of intellectual effort for what is
+essentially a self inflicted problem.</p>
 <h3 id="where-to-go-from-here">Where to go from here</h3>
 <p>SQL and similar English based DSLs (domain specific languages) are
-great, but their usage should be limited to what they were initially
-created for, end users.  As an end user, nothing is more frustrating
-than trying to build a complex search criteria through a UI.  &ldquo;Enter
-your subject, select your predicate, then enter your object.&rdquo;  &ldquo;Click
-the plus sign to add more conditions.&rdquo; In addition to being tedious it
-becomes nearly impossible to support even slightly complex grouping of
-conditions. This is where an English based DSL really shines.  It
-allows a seasoned user to rapidly create complex queries as they are
-doing it interactively and have to do minimum mapping from what they
-are trying to search for to the actual query they are running (just as
-SQL was initially designed for).  But that is where the DSL should
-remain.  Do not support it directly through your API as, at best, you
-will be recreating the same impedance mismatch and likely forcing your
-users to create the same set of &ldquo;builder&rdquo; libraries.</p>
-<p>For your API you should define a flexible structure which can be used
-to describe a query. JSON would be a good option, but XML or one of
-the compressed protocols like Thrift or Flatbuffers would also
-work. Users can then create their query programmatically and
-completely remove the risk of introducing an error because they forgot
-a space or included a comma at the wrong location.  Your API can
-either accept this structure directly for querying, or you can split
-it up and have different endpoints accept different categories of
-queries based on the structure of the return type.  Either way,
-creating a well defined structure programmatically is straight forward
-and can easily be supported from a multitude of languages.</p>
+immensely powerful for building complex queries quickly.  As an end
+user, nothing is more frustrating than trying to build a complex
+search criteria through a form based UI.  First enter the subject,
+then select the predicate, then enter the object, then click the
+plus sign to add another filter, rinse and repeat.  This becomes
+incredibly tedious very quickly and makes building complex groupings
+all but impossible.</p>
+<p>This is where an English based DSL really shines.  It allows a
+seasoned user to rapidly create complex queries as they are doing it
+interactively and have to do minimum mapping from what they are trying
+to search for to the actual query they are running (just as SQL was
+initially designed for).  But that is where the DSL should remain, as
+a tool for the <em>end user</em>. Do not just create an API which takes the
+DSL directly as, at best, you will be recreating the same impedance
+mismatch and likely forcing your users to create the same set of
+&ldquo;builder&rdquo; libraries.</p>
+<p>Instead, define a flexible structure which can be used to describe a
+query. JSON, XML or even one of the compressed protocols like Thrift
+or Flatbuffers could work. Users can then create their query
+programmatically and completely remove the risk of introducing a
+construction based error because they forgot a space or included a
+comma at the wrong location.  Your API can either accept this
+structure directly for querying, or you can split it up and have
+different endpoints accept different categories of queries based on
+the structure of the return type.  Either way, creating a well defined
+structure programmatically is straight forward and can easily be
+supported from a multitude of languages.</p>
 <p>As for your UI, you are going to have to create a parser for your DSL
 anyhow which is going to build an intermediary representation of your
-query.  So just have the intermediary representation be your defined
-query structure.  Now, when your user does create a query in your UI
-that they want to execute through your API, give them an option to see
-the parsed structure so they know exactly what they need to code to.</p>
+query.  If you merge your intermediary representation with your defined
+query structure it should be trivial to show the user what they would
+need to send to the API in order to reproduce their query in the API.</p>
 <p>In this scenario your query language can continue to evolve separate
 from your query structure.  You can even support other English based
 DSLs as long as they can all generate the same query structure.  But
@@ -761,6 +783,10 @@ what ever you do, keep the two domains separate.  SQL is a terrible API.</p>
 
 
 
+  
+  
+    
+  
   
 
 

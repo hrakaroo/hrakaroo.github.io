@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Teams | Hrakaroo</title>
+    <link>/categories/teams/</link>
+      <atom:link href="/categories/teams/index.xml" rel="self" type="application/rss+xml" />
+    <description>Teams</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 09 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_2.png</url>
+      <title>Teams</title>
+      <link>/categories/teams/</link>
+    </image>
+    
+    <item>
+      <title>Creating Simple and Effective Guidelines for Code Reviews</title>
+      <link>/post/code-reviews/</link>
+      <pubDate>Tue, 09 Oct 2018 00:00:00 +0000</pubDate>
+      <guid>/post/code-reviews/</guid>
+      <description>&lt;p&gt;The following is a &lt;a href=&#34;https://blog.newrelic.com/engineering/code-review-guidelines/&#34;&gt;blog post&lt;/a&gt;
+that was written from a speech I gave about how to set the ground
+rules for code reviews.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Following New Relic’s Project Upscale—an innovative reorganization
+intended to make our development teams more autonomous—the engineering
+organization formed several new teams, one of which was the New Relic
+Database (NRDB) team. As the name implies, the NRDB team is
+responsible for the development of our events database, which powers
+the New Relic Insights tool as well as several other products.&lt;/p&gt;
+&lt;p&gt;When we formed the NRDB team, it included several senior-level
+software engineers. This was a highly skilled and very passionate
+group of developers reviewing one another’s pull requests.&lt;/p&gt;
+&lt;h2 id=&#34;when-passion-turns-toxic&#34;&gt;When passion turns toxic&lt;/h2&gt;
+&lt;p&gt;Being passionate about your work is one of New Relic’s core values. In
+this case, however, we may have experienced too much of a good thing:
+our code reviews soon became collision points, and we increasingly
+turned to passive-aggressive communications to settle our differences.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;code_review_comments.jpg&#34; alt=&#34;Comments made during a code review&#34;&gt;&lt;/p&gt;
+&lt;p&gt;In the example on the left, the reviewer left the PR in an in-between
+state. They didn’t explicitly reject it, but they didn’t approve it
+either. In the example on the right, the reviewer made a highly
+subjective request, and the author just made the change, but from
+their tone you can kind of guess that they didn’t appreciate the
+feedback.&lt;/p&gt;
+&lt;p&gt;As a result, the NRDB team’s developers grew increasingly frustrated,
+team trust eroded, and several members (myself included) contemplated
+switching to other teams. We were in trouble.&lt;/p&gt;
+&lt;h2 id=&#34;refining-our-processand-saving-the-team&#34;&gt;Refining our process—and saving the team&lt;/h2&gt;
+&lt;p&gt;We decided as a team to take a step back; we resolved to figure out
+what was going on, why it was happening, and what we could do to fix
+it. Since most of our frustration was tied to our code reviews, we
+started by asking a simple question: how could we give one another
+more effective and constructive feedback?&lt;/p&gt;
+&lt;p&gt;We answered the question by developing four basic guidelines for code
+reviews. We think you’ll find them useful, too, but before we spell
+them out, we want to share the full story behind what happened to
+divide our team and what was really as stake for us.&lt;/p&gt;
+&lt;h2 id=&#34;a-flawed-approach-to-the-code-review-process&#34;&gt;A flawed approach to the code review process&lt;/h2&gt;
+&lt;p&gt;Many of our challenges were related to the differences between
+objective and subjective feedback in our code reviews. Being able to
+differentiate clearly between these two types of feedback can be
+critical to the success of a code review, and to the effectiveness of
+a development team. In too many cases, we weren’t handling subjective
+feedback in a constructive manner—in fact, just the opposite was true.&lt;/p&gt;
+&lt;p&gt;We probably aren’t the only ones who struggle with this issue. Many
+developers are trained from the start to downplay differences between
+the two types of feedback. In fact, students in academic software
+engineering programs rarely learn how to give or receive critical
+feedback of any sort.&lt;/p&gt;
+&lt;p&gt;When I went to school, this certainly was the case. The computer
+science curriculum focused on algorithm analysis, data modeling, and
+problem solving. Our instructors treated code review as a functional
+quality-assurance task; they rarely presented it as a creative
+process. Code review feedback tended to be straightforward: The code
+either worked, or it didn’t. Because of this kind of training—or
+rather, lack of training— many software engineers still treat all
+aspects of code reviews as completely objective activities.&lt;/p&gt;
+&lt;p&gt;It’s useful to contrast this approach with the one employed in an
+academic creative writing program. There, instructors conduct
+workshops that include training on how to give critical
+feedback. Creative writing instructors understand that giving and
+receiving critical feedback is an essential part of the creative
+process. They also understand, however, that critical feedback can be
+harmful and create resentment unless it is handled properly. The goal
+is to provide feedback in a positive and constructive way that helps
+to hone a writer’s ideas, enhance their creativity, and leave both
+parties enriched by the process.&lt;/p&gt;
+&lt;h2 id=&#34;the-struggle-over-subjectivity&#34;&gt;The struggle over subjectivity&lt;/h2&gt;
+&lt;p&gt;Many facets of a code review, however, are not straightforward. In
+particular, there are issues that demand subjective assessments for
+which there are no “correct” answers. This is where the rigid emphasis
+on code review as a totally objective activity, and the failure to
+consider the creative nature of software development, can become a
+problem.&lt;/p&gt;
+&lt;p&gt;Many elements of a modern code review process are now fully
+automated. Editors and IDEs will find syntax errors, evaluate Boolean
+logic, and warn about infinite loops. As a result, the bugs that
+survive are much harder to find, especially when you’re at the end of
+the process and are just looking at a code snippet with limited
+context.&lt;/p&gt;
+&lt;p&gt;Editors and IDEs, however, can’t detect—or prevent developers from
+focusing on—subjective issues such as confusing method names,
+questionable style preferences, and bad variable formatting. And when
+we dislike and disagree with what we find in such cases, we often
+forget that these &amp;ldquo;flaws&amp;rdquo; are subjective matters of opinion—not
+objective matters of fact.&lt;/p&gt;
+&lt;p&gt;This approach also makes it easy to forget that a debate over
+subjective issues during a code review can get emotional and heated
+very quickly.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;code_review_opinions.jpg&#34; alt=&#34;Opinions made during code reviews&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Some teams try to regulate this problem out of existence by creating
+style guides that make objective rules out of subjective
+preferences. This approach rarely succeeds: software development is
+full of subjective choices, and there is no way to cover every
+subjective choice that developers may face in the course of project.&lt;/p&gt;
+&lt;p&gt;When a team lacks a clear communication channel for subjective
+feedback, the problem gets even worse. Reviewers may mix their
+subjective and objective comments without acknowledging the
+differences; here too, the process can end in resentment, frustration,
+and a breakdown in team communication.&lt;/p&gt;
+&lt;h2 id=&#34;our-four-guidelines-for-code-reviews&#34;&gt;Our four guidelines for code reviews&lt;/h2&gt;
+&lt;p&gt;This brings us back to the guidelines we developed to govern the
+subjective elements of the NRDB team’s code review process.&lt;/p&gt;
+&lt;p&gt;First, as a preliminary to our four guidelines, we agreed to define
+&lt;em&gt;who is ultimately responsible for the correct execution of any code
+changes.&lt;/em&gt; This was important to us because in a subjective debate, the
+opinions of the person who has the ultimate responsibility—in other
+words, verifying code execution— should carry the most weight. As a
+result, we decided that &amp;ldquo;The author of the code change is responsible
+for the correct execution of the change.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;This may seem obvious, but not all teams work that way. Some teams,
+for example, treat the review process as a QA process where the
+reviewer is ultimately responsible for verifying correct execution.&lt;/p&gt;
+&lt;p&gt;We found that subjective comments were most often presented as
+objective feedback at the pull request stage of the process. As a
+result, this is where we focused our code review guidelines.&lt;/p&gt;
+&lt;p&gt;In creating these rules, we laid a foundation for team members to
+clearly identify what a code reviewer should look for, and how to give
+both subjective and objective feedback. Here are the guidelines:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;The reviewer should identify errors that will cause an issue in production.&lt;/strong&gt;
+It’s a code review, after all, so the reviewer should identify missing
+semicolons, unending loops, or missing error handling. Reviewers
+aren’t responsible for finding all such errors (that’s still the
+responsibility of the author), but they should be on the lookout for
+obvious issues that will break the system if they’re are deployed into
+production. Such issues are a valid reason to block the pull request.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;The reviewer should verify that the stated goal of the code change aligns with the changes being made.&lt;/strong&gt;
+If the author submits a pull request that says they’re making changes
+to the networking code of a service, reviewers should expect that all
+of the changes are in and around the service’s networking code. This
+seems obvious, but it’s no secret that developers have a tendency to
+try to pack in multiple changes in such cases. This isn’t even
+necessarily a wrong practice, as long as the changes are mostly
+co-located. When you align a code change to its stated goal, however,
+you make it easier to determine if the pull request potentially
+submits any new bugs. Here, too, we agreed that failing to align the
+code change with its stated goal would justify blocking the pull
+request.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;The reviewer should verify that any changes align with the team’s coding standards.&lt;/strong&gt;
+I’ll cover this more in a bit, but as an example, if the team has
+decided that all variables must use camel case, and the reviewer finds
+a variable that does not use camel case, they should block the pull
+request.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;The reviewer should look for anything they personally disagree with.&lt;/strong&gt;
+This guideline addresses any comment which the first three rules do
+not cover. We want reviewers to give feedback, even if it’s not
+covered by the first three rules. We didn’t want our guidelines to
+suppress feedback, which is essential for how we learn from one
+another. Because these comments are clearly subjective, however, we
+agreed that they do not justify blocking the pull request.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;To remove all confusion, we ask that reviewers specifically call out their comments as either blocking or non-blocking; and to add those comments as tags in their reviews. For example:&lt;/p&gt;
+&lt;p&gt;Objective comments&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&amp;ldquo;Blocking: You are missing a semicolon.&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;Blocking: This loop never ends.&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;Blocking: You are missing some error handling here&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Subjective comments&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&amp;ldquo;Non-blocking: Your method name is not clear enough.&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;Non-blocking: You should put the open curly brace on the line above.&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;Non-blocking: You should use camel case for your variable here and not snake case.&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;working-within-our-code-review-guidelines&#34;&gt;Working within our code review guidelines&lt;/h2&gt;
+&lt;p&gt;As we adopted these guidelines, the team had the most difficulty with
+the fourth one. Adopting this meant we had to accept two conditions:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;The code our team produced did not need to be uniform.&lt;/strong&gt;
+This meant overcoming a trend in our industry that says you should
+strive to remove all fingerprints from your code that identifies who
+wrote what part. We found the ROI on following this trend was pretty
+low, and trying to do so just led us back into the same subjective
+debate: If a developer writes code in a manner slightly different than
+their peer would, does that mean the code is incorrect? Clearly, we
+decided, that wasn’t the objective case.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;If a reviewer adds non-blocking feedback, the author should take the time to consider it.&lt;/strong&gt;
+Early on, some team members were concerned that authors would simply
+ignore all non-blocking comments, as their code was no longer blocked
+by subjective feedback. Our solution, then, was to reiterate that &amp;ldquo;we
+trust our teammates.&amp;rdquo; If, as reviewers, we took the time to enter a
+comment, we trusted that the author would take the time to read and
+consider it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;These both were contentious points, and the team spent a long time
+debating them. But ultimately, we found that the only way to work
+through these issues successfully is to live with the guidelines and
+give them a chance.&lt;/p&gt;
+&lt;h2 id=&#34;sponsoring-a-coding-standard&#34;&gt;Sponsoring a coding standard&lt;/h2&gt;
+&lt;p&gt;So, what are a reviewer’s options if they see something which they
+passionately feel shouldn’t be in the code, especially if their
+concern isn’t an &amp;ldquo;objective&amp;rdquo; rule violation they can block on? For
+such concerns, we agreed that a reviewer could choose to sponsor an
+addition to the team’s coding standards.&lt;/p&gt;
+&lt;p&gt;Every two weeks, we hold a retrospective meeting where team members
+are welcome to suggest changes or additions to our coding
+standards. There are two restrictions to this activity:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;We cannot describe coding standards in subjective language.&lt;/strong&gt;
+For example, a sponsor can’t say, &amp;ldquo;variables must not be ambiguous,&amp;rdquo;
+as ambiguity is subjective. But, the sponsor could add a standard that
+states, &amp;ldquo;variables must use Hungarian notation,&amp;rdquo; as this is objective
+and easily enforceable.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;If you sponsor a coding standard, you must support it.&lt;/strong&gt;
+The sponsor must provide documentation and training as needed. If
+there was a plugin or other tool the team needs to installed, the
+sponsor is responsible for supporting it. This restriction ensures the
+sponsor is passionate about anything they want to add to the team’s
+coding standards.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;finding-respect-and-compromise-in-code-reviews&#34;&gt;Finding respect and compromise in code reviews&lt;/h2&gt;
+&lt;p&gt;After agreeing to these guidelines, we cleared all our existing coding
+standards and started over. For the first few weeks it was hard to
+break old habits, and we had to remind several team members to add the
+blocking and non-blocking tags during their pull request reviews. But
+once we got rolling with the new guidelines, we saw a number of
+successes.&lt;/p&gt;
+&lt;p&gt;First, by forcing reviewers to clearly identify those comments that
+were subjective, we noticed a change in how reviewers phrased their
+comments.Reviewers can no longer demand changes that meet their
+preferences; instead, they must request changes politely, and explain
+why they’re requesting the change. When we provide more explanation
+and context in this manner we create an environment that makes it
+easier for teammates to learn from one another. Plus, asking for
+changes, rather than demanding them, shows respect and acknowledges
+that the code’s author has valid feelings about their work, as well.&lt;/p&gt;
+&lt;p&gt;We also noticed that when a reviewer did write a non-blocking comment
+asking for a change, the author typically made the requested change or
+came up with a compromise—even though the author had the option of
+ignoring the comment. This demonstrates why asking for changes, rather
+than demanding them, builds stronger teams: the author feels less
+resentful, and the reviewer feels that the author genuinely
+appreciated their feedback.&lt;/p&gt;
+&lt;p&gt;We’ve identified a few other terrific benefits from this process. By
+limiting the scope of what qualifies as a blocking comment, for
+example, we reduced the time it took us to approve and merge changes,
+which resulted in greater overall project velocity. We have also
+reduced the time required to onboard new new team members and to get
+them up to speed with our code review process.&lt;/p&gt;
+&lt;p&gt;We have also updated our training materials to reflect our new code
+review process: We distribute one page that documents our guidelines,
+and another page that documents our coding standards. New team members
+now know exactly what they should be looking for and how best to
+communicate their suggestions.&lt;/p&gt;
+&lt;p&gt;We also expected the number of coding standards to increase greatly as
+reviewers sponsored new standards for items they could no longer block
+on. At the beginning, we did adopt several new coding standards, but
+after an initial burst, the number of new agreements fell off
+significantly. We concluded that since reviewers felt that authors
+were taking into consideration their subjective feedback, they did not
+feel as motivated to &amp;ldquo;convert&amp;rdquo; them to objective constraints based on
+their point of view.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;code_review_proposals.jpg&#34; alt=&#34;The number of proposals made: expected vs. actual&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;these-guidelines-aid-in-team-autonomy&#34;&gt;These guidelines aid in team autonomy&lt;/h2&gt;
+&lt;p&gt;The most important thing about these guidelines is that they support
+team autonomy; in no way do these guidelines dictate which coding
+standards teams should adopt. Teams are free to choose their own style
+guides, and they decide how strict they want to to be. These
+guidelines simply explain how to define coding standards and how
+reviewers should look for and give feedback.&lt;/p&gt;
+&lt;p&gt;We have come to appreciate the role that a strong and effective
+feedback process can have on building team morale, increasing team
+trust and communication, and improving development velocity. We
+implemented guidelines to strengthen the feedback process and to
+address issues that put the process at risk—and so far, I think we’re
+getting exactly what we hoped to get from these improvements.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Walking the board</title>
+      <link>/post/walking-the-board/</link>
+      <pubDate>Sun, 09 Jul 2017 00:00:00 +0000</pubDate>
+      <guid>/post/walking-the-board/</guid>
+      <description>&lt;p&gt;In the traditional standup format everyone stands in a circle and each
+person, in order, gives an update.  The updates follow the Agile
+format:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;What they did yesterday&lt;/li&gt;
+&lt;li&gt;What their plans are for today&lt;/li&gt;
+&lt;li&gt;Are there any blockers&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I have a number of problems with this format.&lt;/p&gt;
+&lt;h3 id=&#34;context-switching&#34;&gt;Context Switching&lt;/h3&gt;
+&lt;p&gt;People don’t usually stand in any particular order so the updates from
+person to person often jump between the project(s) the team is working
+on and hero tasks.  Additionally, if we’ve sized our tasks correctly
+often what one person is working from day to day changes. This makes
+sense to the person giving the update, but for everyone else, trying
+to track actual progress becomes increasingly difficult.&lt;/p&gt;
+&lt;h3 id=&#34;project-status&#34;&gt;Project Status&lt;/h3&gt;
+&lt;p&gt;Related to context switching, it’s nearly impossible tell the overall
+project status from this type of update.  Even if you could figure out
+how many tickets were closed, without looking at the kanban board it’s
+impossible to get even a sense of how far along the project is.  Plus,
+this format does nothing to encourage people to actually update the
+kanban board, compounding the issue.&lt;/p&gt;
+&lt;h3 id=&#34;public-speaking&#34;&gt;Public Speaking&lt;/h3&gt;
+&lt;p&gt;Public speaking does not come naturally to everyone, even when
+presenting just to the team.  I’m much more relaxed with it now, but
+there was a time when this type of setting would cause me enough
+stress and I would ignore whatever was being said and just rehearse
+what I was going to say.  Then, after I gave my update, I would spend
+rest of the standup obsessing over the things I had messed up or
+forgotten to say.&lt;/p&gt;
+&lt;h3 id=&#34;competition-for-busiest&#34;&gt;Competition for Busiest&lt;/h3&gt;
+&lt;p&gt;Without focus, the standup can become a passive competition for who is
+the busiest person.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I&#39;ve got a meeting with a customer today to talk over a feature they
+want added.&lt;/li&gt;
+&lt;li&gt;Well I&#39;ve got &lt;em&gt;two&lt;/em&gt; meetings today to talk over features.&lt;/li&gt;
+&lt;li&gt;I&#39;ve pretty much got meetings all day long so I&#39;m not likely going
+to get much else done.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It sounds silly, but it&#39;s something I&#39;ve seen happen a lot at multiple
+companies, especially if people are feeling insecure (imposter
+syndrome). It can take the form of lamenting (but really bragging)
+about the number of meetings, or making the tasks you completed sound
+like herculean efforts. It&#39;s pointless and unhealthy for the team.&lt;/p&gt;
+&lt;h3 id=&#34;forced-update&#34;&gt;Forced Update&lt;/h3&gt;
+&lt;p&gt;Finally, it forces everyone to talk when they may not want to.  There
+have been times in my career where my personal life has taken over and
+I’ve needed to take some time off.  Be it medical or family
+related. At the update I don’t want to go into details about what I’m
+dealing with. In fact, I may be at work specifically to take a break
+from the other stresses going on.  Perhaps I took off work yesterday
+and I may have to leave early today to take care of a personal issue,
+but now I&#39;m in an unconformable position of either saying &amp;ldquo;I have no
+update&amp;rdquo; or, worse, explain that &amp;ldquo;I&#39;ve got some things going on which I
+don&#39;t want to talk about.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;As an individual contributor I find this standup format stressful and
+as a project lead and manager I find it unhelpful.  Instead I prefer
+using the standup time to walk the kanban board.&lt;/p&gt;
+&lt;h2 id=&#34;walking-the-board&#34;&gt;Walking the board&lt;/h2&gt;
+&lt;p&gt;With a Jira you can use swim planes to split up your kanban board into
+project tasks and hero tasks.  Then starting at the &lt;strong&gt;Done&lt;/strong&gt; column, just
+go down each column and each owner gives an update for their task.  In
+this format there is no initial awkward moment trying to figure out
+who should go first. The context switching is much less and the team
+can focus on what is being said instead of trying to memorize what
+they are going to say.&lt;/p&gt;
+&lt;p&gt;Since &lt;strong&gt;Done&lt;/strong&gt; is often an end state and you don&#39;t necessarily want to
+re-walk this entire list every time you can either cut a Jira release
+after each standup, or create a &lt;strong&gt;Closed&lt;/strong&gt; column and use the standup as
+an opportunity to move tasks from &lt;strong&gt;Closed&lt;/strong&gt; to &lt;strong&gt;Done&lt;/strong&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;closing-comments&#34;&gt;Closing comments&lt;/h3&gt;
+&lt;p&gt;One critique of this format is that it is possible for a team member not
+working on a task to feel left out. If they really are attending
+meetings all day there is a chance to they haven&#39;t picked up any tasks
+and therefore won&#39;t speak.  So, at the end of the standup ask a quick
+question for any closing or final comments.  This is the opportunity
+to team members to say &amp;ldquo;I need to leave early today,&amp;rdquo; but I would keep
+the focus on today and away from team members trying to justify their
+time from yesterday. If there really is a concern about yesterday that
+should be brought up directly in their 1:1 with their manager and not
+the team.&lt;/p&gt;
+&lt;p&gt;As a project lead and manager I find walking the board to be
+significantly more useful as I can tell exactly the progress of the
+project (as I’m looking at the tickets) and I can also be sure that
+Jira tickets for the project are up to date. As an individual
+contributor I don&#39;t feel like I have to prepare as much for this
+standup and I can just attend and focus on what everyone else is
+saying.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

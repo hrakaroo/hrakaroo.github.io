@@ -43,13 +43,48 @@
   </url>
   
   <url>
+    <loc>/authors/admin/</loc>
+    <lastmod>2019-06-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/api/</loc>
+    <lastmod>2019-06-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/authors/</loc>
+    <lastmod>2019-06-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
+    <lastmod>2019-06-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/</loc>
-    <lastmod>2019-06-06T00:00:00-07:00</lastmod>
+    <lastmod>2019-06-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/software-development/</loc>
+    <lastmod>2019-06-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/post/three-questions/</loc>
-    <lastmod>2019-06-06T00:00:00-07:00</lastmod>
+    <lastmod>2019-06-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/go-for-java-part1/</loc>
+    <lastmod>2019-06-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/go-for-java-part2/</loc>
+    <lastmod>2019-06-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -60,6 +95,41 @@
   <url>
     <loc>/post/code-reviews/</loc>
     <lastmod>2018-10-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/development-process/</loc>
+    <lastmod>2018-10-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/teams/</loc>
+    <lastmod>2018-10-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/java/</loc>
+    <lastmod>2018-06-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/sane-java-dependency-management/</loc>
+    <lastmod>2018-06-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/the-dance-recital/</loc>
+    <lastmod>2017-10-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/toastmasters/</loc>
+    <lastmod>2017-10-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/walking-the-board/</loc>
+    <lastmod>2017-07-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -90,18 +160,6 @@
   <url>
     <loc>/project/soda-water-ray-tracer/</loc>
     <lastmod>2004-11-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/authors/admin/</loc>
-  </url>
-  
-  <url>
-    <loc>/authors/</loc>
-  </url>
-  
-  <url>
-    <loc>/categories/</loc>
   </url>
   
   <url>
