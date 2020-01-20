@@ -235,9 +235,9 @@
   <meta property="twitter:image" content="/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
   
     
-      <meta property="article:published_time" content="2019-06-05T00:00:00&#43;00:00">
+      <meta property="article:published_time" content="2019-10-01T00:00:00&#43;00:00">
     
-    <meta property="article:modified_time" content="2019-06-05T00:00:00&#43;00:00">
+    <meta property="article:modified_time" content="2019-10-01T00:00:00&#43;00:00">
   
 
   
@@ -267,8 +267,8 @@
   },
   "headline": "Go for Java Developers - Part 2",
   
-  "datePublished": "2019-06-05T00:00:00Z",
-  "dateModified": "2019-06-05T00:00:00Z",
+  "datePublished": "2019-10-01T00:00:00Z",
+  "dateModified": "2019-10-01T00:00:00Z",
   
   "author": {
     "@type": "Person",
@@ -515,7 +515,7 @@
     
       
     
-    Jun 5, 2019
+    Oct 1, 2019
   </span>
   
 
@@ -570,8 +570,6 @@ language.  For additional background you might want to read
 <h2 id="dependency-management">Dependency Management</h2>
 <p>This time I'm going to focus on dependency management and how
 go approaches the <a href="../sane-java-dependency-management">diamond dependency issue</a>.</p>
-<p>Go approaches the diamond dependency problem in a slightly different
-way from Java.</p>
 <p>First of all, Go does not support pre-compiled libraries the way Java
 does.  (Personally, I think compiled Jar files are from a by-gone time
 and these days cause more harm than good, but that's not why Go
@@ -579,14 +577,15 @@ doesn't have them.)  Go doesn't have them because Go code compiles
 down into native assembly so it would be impossible to distribute
 anything precompiled by Go and expect it to work on more than one
 platform.</p>
-<p>So instead, Go publishes libraries as Git tags and avoids artifactory
-all together.  When you want to use a library you create a dependency
-on a git repo with a specific tag version.</p>
+<p>So instead, Go publishes libraries as source code with Git tags and
+avoids artifactory all together.  When you want to use a library you
+create a dependency on a git repo with a specific tag version.</p>
 <p>This doesn't exactly remove the diamond dependency issue as it is
 entirely possible to have a transitive dependency on two different
 versions of a library. In this case, as with Java, you still have to
 select the version you want to use. However, there are two substantial
 changes.</p>
+<h3 id="cant-ignore-the-problem">Can't ignore the problem</h3>
 <p>First, you don't have the option of ignoring the issue.  This means
 that if your service builds in Go, you can be confident your code does
 not contain any &ldquo;hidden&rdquo; mismatch errors.  This effectively removes an
@@ -595,15 +594,16 @@ up too often, but the more common a library is the greater the chance
 for this to happen.  I've seen it with Guava libraries.) However,
 being able to completely remove them as a class of problems would be
 nice.</p>
+<h3 id="conflicts-identified-at-the-source-code-level">Conflicts identified at the source code level</h3>
 <p>Second, conflicts are identified at the source code level and not at
 the version level. This means that PATCH version mismatches won't
 break your build so long as they don't change function signature (and
 PATCHES really shouldn't).</p>
-<p>I'm not saying that the way Go deals with this is perfect and in some
-ways they are dealing with it by not dealing with it. Java could take
-this same approach if you copied all of your dependencies into your
-code base as source code. But I did find it as an interesting
-consequence on how Go works vs Java.</p>
+<p>I'm not saying that the way Go deals with this is perfect but it does
+move the problem into a first class issue and forcing a
+resolution. Java could take this same approach if you copied all of
+your dependencies into your code base as source code. But I did find
+it as an interesting consequence on how Go works vs Java.</p>
 
     </div>
 

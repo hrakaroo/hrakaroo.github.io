@@ -5,12 +5,250 @@
     <link>/authors/admin/</link>
       <atom:link href="/authors/admin/index.xml" rel="self" type="application/rss+xml" />
     <description>Hrakaroo</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 06 Jun 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 01 Oct 2019 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_2.png</url>
       <title>Hrakaroo</title>
       <link>/authors/admin/</link>
     </image>
+    
+    <item>
+      <title>Go for Java Developers - Part 2</title>
+      <link>/post/go-for-java-part2/</link>
+      <pubDate>Tue, 01 Oct 2019 00:00:00 +0000</pubDate>
+      <guid>/post/go-for-java-part2/</guid>
+      <description>&lt;p&gt;This is my second post on things I&#39;m finding interesting about the Go
+language.  For additional background you might want to read
+&lt;a href=&#34;../go-for-java-part1&#34;&gt;Part 1&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;dependency-management&#34;&gt;Dependency Management&lt;/h2&gt;
+&lt;p&gt;This time I&#39;m going to focus on dependency management and how
+go approaches the &lt;a href=&#34;../sane-java-dependency-management&#34;&gt;diamond dependency issue&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;First of all, Go does not support pre-compiled libraries the way Java
+does.  (Personally, I think compiled Jar files are from a by-gone time
+and these days cause more harm than good, but that&#39;s not why Go
+doesn&#39;t have them.)  Go doesn&#39;t have them because Go code compiles
+down into native assembly so it would be impossible to distribute
+anything precompiled by Go and expect it to work on more than one
+platform.&lt;/p&gt;
+&lt;p&gt;So instead, Go publishes libraries as source code with Git tags and
+avoids artifactory all together.  When you want to use a library you
+create a dependency on a git repo with a specific tag version.&lt;/p&gt;
+&lt;p&gt;This doesn&#39;t exactly remove the diamond dependency issue as it is
+entirely possible to have a transitive dependency on two different
+versions of a library. In this case, as with Java, you still have to
+select the version you want to use. However, there are two substantial
+changes.&lt;/p&gt;
+&lt;h3 id=&#34;cant-ignore-the-problem&#34;&gt;Can&#39;t ignore the problem&lt;/h3&gt;
+&lt;p&gt;First, you don&#39;t have the option of ignoring the issue.  This means
+that if your service builds in Go, you can be confident your code does
+not contain any &amp;ldquo;hidden&amp;rdquo; mismatch errors.  This effectively removes an
+entire class of errors that you have with Java.  (TBH, these don&#39;t pop
+up too often, but the more common a library is the greater the chance
+for this to happen.  I&#39;ve seen it with Guava libraries.) However,
+being able to completely remove them as a class of problems would be
+nice.&lt;/p&gt;
+&lt;h3 id=&#34;conflicts-identified-at-the-source-code-level&#34;&gt;Conflicts identified at the source code level&lt;/h3&gt;
+&lt;p&gt;Second, conflicts are identified at the source code level and not at
+the version level. This means that PATCH version mismatches won&#39;t
+break your build so long as they don&#39;t change function signature (and
+PATCHES really shouldn&#39;t).&lt;/p&gt;
+&lt;p&gt;I&#39;m not saying that the way Go deals with this is perfect but it does
+move the problem into a first class issue and forcing a
+resolution. Java could take this same approach if you copied all of
+your dependencies into your code base as source code. But I did find
+it as an interesting consequence on how Go works vs Java.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Go for Java Developers - Part 1</title>
+      <link>/post/go-for-java-part1/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      <guid>/post/go-for-java-part1/</guid>
+      <description>&lt;p&gt;For the last 20+ years I&#39;ve been mostly focused on Java development.
+But recently I had an opportunity to join a team which was focused on
+Go and having spent the early part of my career writing C++ I was
+intrigued by some of the decisions Go made. So this is the first (of
+possibly several) posts on things I found interesting about the
+language and since my I have been doing mostly Java development I&#39;m
+going to be comparing and contrasting from that perspective.&lt;/p&gt;
+&lt;h2 id=&#34;go-interfaces&#34;&gt;Go interfaces&lt;/h2&gt;
+&lt;p&gt;For this first post I&#39;m going to discuss one specific implication of
+how Go handles interfaces.&lt;/p&gt;
+&lt;p&gt;If you are unfamiliar with Go, it uses structural typing for
+interfaces (which is more generally called &amp;ldquo;duck typing&amp;rdquo; meaning &amp;ldquo;if
+it walks like a duck and talks like a duck … it&#39;s a duck.&amp;quot;)  This
+means that if a struct in Go has functions on it which match the
+methods of an interface, instances of that struct are types of that
+interface. This sounds more complicated than it actually is so lets
+look at a quick example:&lt;/p&gt;
+&lt;p&gt;Suppose you wanted to create a Person class and a Named interface in
+Java, that might look like:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;interface Named {
+	String getName();
+}
+
+class Person implements Named {
+	String name;
+
+	String getName() {
+    	return name;
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Pretty straight forward.  Now, if we wanted to do a similar thing in
+Go it would probably look something like:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type Named interface {
+     getName() string
+}
+
+type Person struct {
+     name string
+}
+
+func (p Person) getName() string {
+     return p.name
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Ignoring the syntax differences, what is interesting is that in Go we
+don&#39;t declare Person as implementing Named.  This is implied by the
+function on Person matching the method in the Named interface. The
+compiler figures this out for us and instances of a Person are
+automatically of type Named.&lt;/p&gt;
+&lt;p&gt;So while this isn&#39;t necessarily a new thing (Python mostly lets you
+do the same thing), this was something new for a statically typed
+language.&lt;/p&gt;
+&lt;p&gt;When I first saw this I thought &amp;ldquo;meh, so you can leave off the
+&amp;lsquo;implements&amp;rsquo; keyword, whatever.&amp;rdquo;  But I think this feature has a really
+interesting implication.&lt;/p&gt;
+&lt;h3 id=&#34;the-setup&#34;&gt;The setup&lt;/h3&gt;
+&lt;p&gt;Back in Java land, let&#39;s suppose you have a function that takes an SQL
+PreparedStatement as one of its arguments.  Something like:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Db {
+   void setValue(PreparedStatement stmt, String value) {
+ 	stmt.setString(1, value);
+   }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You might use this like:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;PreparedStatement stmt = conn.prepareStatement(&amp;quot;SELECT …&amp;quot;);
+Db db = new Db();
+db.setValue(stmt, &amp;quot;someValue&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Writing a unit test for this would probably look something like:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class DbTest {
+
+	@Test
+	public void setValueTest() {
+    	Db db = new Db();
+    	PreparedStatement stmt = ??
+    	db.setValue(stmt, &amp;quot;dog&amp;quot;);
+
+    	// todo - verify the statement received the value of &amp;quot;dog&amp;quot;
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The challenge is creating the test &lt;code&gt;PreparedStatement&lt;/code&gt;.  You could use
+one of the mocking frameworks in Java (Mockito, PowerMock, …) to mock
+the PreparedStatement and test that setValue is called with the value
+&amp;ldquo;dog&amp;rdquo;.  While this does work, most/all of the mocking frameworks are
+basically a nice user interface over a rats nest of reflection
+calls. (Used incorrectly reflection is a tool to move compile time
+errors back to the runtime.)  However, it is also possible to test
+this without using a mocking framework by building our own class which
+implements PreparedStatement:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class TestPreparedStatement implements PreparedStatement {
+
+	String value;
+
+	void setString(int parameterIndex, String x) {
+    	this.value = x;
+	}
+
+	...
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;An instance of our &lt;code&gt;TestPreparedStatement&lt;/code&gt; can now be passed into our
+setValue method and we can later verify that the internal &amp;lsquo;value&amp;rsquo; is
+set to &amp;ldquo;dog&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Ahhh … but there is a devil hidden in these details.
+PreparedStatement is a massive interface with well over 50 methods.
+In order to stub out the one method you want (setString) you are going
+to need to also stub out all of the other ones as well.  We don&#39;t ever
+use them so they can all throw a RuntimeException (and thankfully most
+modern IDEs can automatically generate this code for you) … but you
+are still dealing with a lot of boilerplate code.&lt;/p&gt;
+&lt;h3 id=&#34;the-switch&#34;&gt;The switch&lt;/h3&gt;
+&lt;p&gt;Now let&#39;s take a look at this same problem in Go land.  (For the sake
+of argument let&#39;s assume that PreparedStatement both exists in Go and
+works much in the same way as its Java counterpart).&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type Db struct {
+}
+
+func (db Db) setValue(stmt PreparedStatement, value string) {
+    stmt.setString(1, value)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And again it is used like:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;stmt := conn.prepareStatement(&amp;quot;SELECT …&amp;quot;)
+db := Db{}
+db.setValue(stmt, &amp;quot;someValue&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now let&#39;s write the unit test:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func SetValueTest(t* testing.T) {
+    db := Db{}
+    stmt := ??
+    db.setValue(stmt, &amp;quot;dog&amp;quot;)
+
+    // todo - verify the statement received the value of &#39;dog
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We&#39;ve once again hit the same issue.  As with Java, we can use the
+Go&#39;s mock framework (which also uses reflection) or, as before, we can
+try to roll our own.&lt;/p&gt;
+&lt;p&gt;Approaching it directly we could build out a TestPreparedStatement as:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type TestPreparedStatement struct {
+    value string
+}
+
+func (tps TestPreparedStatement) setString(parameterIndex int, x string) {
+     tps.value = x
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;But then we are going to have the same issue as we had with Java where
+we also need to stub out all of the other 50+ methods in the
+PreparedStatement interface which is just as wasteful as it was in
+Java.  But we do have one other option.&lt;/p&gt;
+&lt;h3 id=&#34;duck-typing&#34;&gt;Duck Typing&lt;/h3&gt;
+&lt;p&gt;What if we didn&#39;t stub out all of the other methods and instead
+created a new interface which only contained the one method we are
+using?  So something like:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type StringSetter interface {
+    setString(parameterIndex int, x string)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now, since our &lt;code&gt;TestPreparedStatement&lt;/code&gt; implements this one method it
+is automatically a type of StringSetter.  But guess what, the object
+returned by conn.prepareStatement is also now a type of StringSetter
+since it too implements setString (by virtue of it being a
+PreparedStatement which also requires the same method.)&lt;/p&gt;
+&lt;p&gt;Now, we only need to change the signature of our setValue method to:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func (db Db) setValue(stmt StringSetter, value string) {
+    stmt.setString(1, value)
+} 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is where the power of the duck typing comes into play as doing
+this in Java would require modifying the definition of
+PreparedStatement so it explicitly extend StringSetter, which is
+virtually impossible.  Yet in Go this is trivial as we can assign
+interfaces to objects by simply copying over the methods we want into
+the interface.&lt;/p&gt;
+&lt;p&gt;I found this to be a surprising feature about Go and is not something
+I had considered before.  It feels really powerful and, to be honest,
+I&#39;m not yet sure if this is a good feature about the language or not,
+but it is an interesting one.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Three Questions to Ask When Writing a New API</title>
@@ -246,247 +484,9 @@ mere afterthought or means to an end.&lt;/p&gt;
     </item>
     
     <item>
-      <title>Go for Java Developers - Part 1</title>
-      <link>/post/go-for-java-part1/</link>
-      <pubDate>Wed, 05 Jun 2019 00:00:00 +0000</pubDate>
-      <guid>/post/go-for-java-part1/</guid>
-      <description>&lt;p&gt;For the last 20+ years I&#39;ve been mostly focused on Java development.
-But recently I had an opportunity to join a team which was focused on
-Go and having spent the early part of my career writing C++ I was
-intrigued by some of the decisions Go made. So this is the first (of
-possibly several) posts on things I found interesting about the
-language and since my I have been doing mostly Java development I&#39;m
-going to be comparing and contrasting from that perspective.&lt;/p&gt;
-&lt;h2 id=&#34;go-interfaces&#34;&gt;Go interfaces&lt;/h2&gt;
-&lt;p&gt;For this first post I&#39;m going to discuss one specific implication of
-how Go handles interfaces.&lt;/p&gt;
-&lt;p&gt;If you are unfamiliar with Go, it uses structural typing for
-interfaces (which is more generally called &amp;ldquo;duck typing&amp;rdquo; meaning &amp;ldquo;if
-it walks like a duck and talks like a duck … it&#39;s a duck.&amp;quot;)  This
-means that if a struct in Go has functions on it which match the
-methods of an interface, instances of that struct are types of that
-interface. This sounds more complicated than it actually is so lets
-look at a quick example:&lt;/p&gt;
-&lt;p&gt;Suppose you wanted to create a Person class and a Named interface in
-Java, that might look like:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;interface Named {
-	String getName();
-}
-
-class Person implements Named {
-	String name;
-
-	String getName() {
-    	return name;
-	}
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Pretty straight forward.  Now, if we wanted to do a similar thing in
-Go it would probably look something like:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type Named interface {
-     getName() string
-}
-
-type Person struct {
-     name string
-}
-
-func (p Person) getName() string {
-     return p.name
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Ignoring the syntax differences, what is interesting is that in Go we
-don&#39;t declare Person as implementing Named.  This is implied by the
-function on Person matching the method in the Named interface. The
-compiler figures this out for us and instances of a Person are
-automatically of type Named.&lt;/p&gt;
-&lt;p&gt;So while this isn&#39;t necessarily a new thing (Python mostly lets you
-do the same thing), this was something new for a statically typed
-language.&lt;/p&gt;
-&lt;p&gt;When I first saw this I thought &amp;ldquo;meh, so you can leave off the
-&amp;lsquo;implements&amp;rsquo; keyword, whatever.&amp;rdquo;  But I think this feature has a really
-interesting implication.&lt;/p&gt;
-&lt;h3 id=&#34;the-setup&#34;&gt;The setup&lt;/h3&gt;
-&lt;p&gt;Back in Java land, let&#39;s suppose you have a function that takes an SQL
-PreparedStatement as one of its arguments.  Something like:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Db {
-   void setValue(PreparedStatement stmt, String value) {
- 	stmt.setString(1, value);
-   }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;You might use this like:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;PreparedStatement stmt = conn.prepareStatement(&amp;quot;SELECT …&amp;quot;);
-Db db = new Db();
-db.setValue(stmt, &amp;quot;someValue&amp;quot;);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Writing a unit test for this would probably look something like:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class DbTest {
-
-	@Test
-	public void setValueTest() {
-    	Db db = new Db();
-    	PreparedStatement stmt = ??
-    	db.setValue(stmt, &amp;quot;dog&amp;quot;);
-
-    	// todo - verify the statement received the value of &amp;quot;dog&amp;quot;
-	}
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The challenge is creating the test &lt;code&gt;PreparedStatement&lt;/code&gt;.  You could use
-one of the mocking frameworks in Java (Mockito, PowerMock, …) to mock
-the PreparedStatement and test that setValue is called with the value
-&amp;ldquo;dog&amp;rdquo;.  While this does work, most/all of the mocking frameworks are
-basically a nice user interface over a rats nest of reflection
-calls. (Used incorrectly reflection is a tool to move compile time
-errors back to the runtime.)  However, it is also possible to test
-this without using a mocking framework by building our own class which
-implements PreparedStatement:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class TestPreparedStatement implements PreparedStatement {
-
-	String value;
-
-	void setString(int parameterIndex, String x) {
-    	this.value = x;
-	}
-
-	...
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;An instance of our &lt;code&gt;TestPreparedStatement&lt;/code&gt; can now be passed into our
-setValue method and we can later verify that the internal &amp;lsquo;value&amp;rsquo; is
-set to &amp;ldquo;dog&amp;rdquo;.&lt;/p&gt;
-&lt;p&gt;Ahhh … but there is a devil hidden in these details.
-PreparedStatement is a massive interface with well over 50 methods.
-In order to stub out the one method you want (setString) you are going
-to need to also stub out all of the other ones as well.  We don&#39;t ever
-use them so they can all throw a RuntimeException (and thankfully most
-modern IDEs can automatically generate this code for you) … but you
-are still dealing with a lot of boilerplate code.&lt;/p&gt;
-&lt;h3 id=&#34;the-switch&#34;&gt;The switch&lt;/h3&gt;
-&lt;p&gt;Now let&#39;s take a look at this same problem in Go land.  (For the sake
-of argument let&#39;s assume that PreparedStatement both exists in Go and
-works much in the same way as its Java counterpart).&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type Db struct {
-}
-
-func (db Db) setValue(stmt PreparedStatement, value string) {
-    stmt.setString(1, value)
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;And again it is used like:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;stmt := conn.prepareStatement(&amp;quot;SELECT …&amp;quot;)
-db := Db{}
-db.setValue(stmt, &amp;quot;someValue&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Now let&#39;s write the unit test:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func SetValueTest(t* testing.T) {
-    db := Db{}
-    stmt := ??
-    db.setValue(stmt, &amp;quot;dog&amp;quot;)
-
-    // todo - verify the statement received the value of &#39;dog
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;We&#39;ve once again hit the same issue.  As with Java, we can use the
-Go&#39;s mock framework (which also uses reflection) or, as before, we can
-try to roll our own.&lt;/p&gt;
-&lt;p&gt;Approaching it directly we could build out a TestPreparedStatement as:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type TestPreparedStatement struct {
-    value string
-}
-
-func (tps TestPreparedStatement) setString(parameterIndex int, x string) {
-     tps.value = x
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;But then we are going to have the same issue as we had with Java where
-we also need to stub out all of the other 50+ methods in the
-PreparedStatement interface which is just as wasteful as it was in
-Java.  But we do have one other option.&lt;/p&gt;
-&lt;h3 id=&#34;duck-typing&#34;&gt;Duck Typing&lt;/h3&gt;
-&lt;p&gt;What if we didn&#39;t stub out all of the other methods and instead
-created a new interface which only contained the one method we are
-using?  So something like:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type StringSetter interface {
-    setString(parameterIndex int, x string)
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Now, since our &lt;code&gt;TestPreparedStatement&lt;/code&gt; implements this one method it
-is automatically a type of StringSetter.  But guess what, the object
-returned by conn.prepareStatement is also now a type of StringSetter
-since it too implements setString (by virtue of it being a
-PreparedStatement which also requires the same method.)&lt;/p&gt;
-&lt;p&gt;Now, we only need to change the signature of our setValue method to:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func (db Db) setValue(stmt StringSetter, value string) {
-    stmt.setString(1, value)
-} 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;This is where the power of the duck typing comes into play as doing
-this in Java would require modifying the definition of
-PreparedStatement so it explicitly extend StringSetter, which is
-virtually impossible.  Yet in Go this is trivial as we can assign
-interfaces to objects by simply copying over the methods we want into
-the interface.&lt;/p&gt;
-&lt;p&gt;I found this to be a surprising feature about Go and is not something
-I had considered before.  It feels really powerful and, to be honest,
-I&#39;m not yet sure if this is a good feature about the language or not,
-but it is an interesting one.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Go for Java Developers - Part 2</title>
-      <link>/post/go-for-java-part2/</link>
-      <pubDate>Wed, 05 Jun 2019 00:00:00 +0000</pubDate>
-      <guid>/post/go-for-java-part2/</guid>
-      <description>&lt;p&gt;This is my second post on things I&#39;m finding interesting about the Go
-language.  For additional background you might want to read
-&lt;a href=&#34;../go-for-java-part1&#34;&gt;Part 1&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;dependency-management&#34;&gt;Dependency Management&lt;/h2&gt;
-&lt;p&gt;This time I&#39;m going to focus on dependency management and how
-go approaches the &lt;a href=&#34;../sane-java-dependency-management&#34;&gt;diamond dependency issue&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Go approaches the diamond dependency problem in a slightly different
-way from Java.&lt;/p&gt;
-&lt;p&gt;First of all, Go does not support pre-compiled libraries the way Java
-does.  (Personally, I think compiled Jar files are from a by-gone time
-and these days cause more harm than good, but that&#39;s not why Go
-doesn&#39;t have them.)  Go doesn&#39;t have them because Go code compiles
-down into native assembly so it would be impossible to distribute
-anything precompiled by Go and expect it to work on more than one
-platform.&lt;/p&gt;
-&lt;p&gt;So instead, Go publishes libraries as Git tags and avoids artifactory
-all together.  When you want to use a library you create a dependency
-on a git repo with a specific tag version.&lt;/p&gt;
-&lt;p&gt;This doesn&#39;t exactly remove the diamond dependency issue as it is
-entirely possible to have a transitive dependency on two different
-versions of a library. In this case, as with Java, you still have to
-select the version you want to use. However, there are two substantial
-changes.&lt;/p&gt;
-&lt;p&gt;First, you don&#39;t have the option of ignoring the issue.  This means
-that if your service builds in Go, you can be confident your code does
-not contain any &amp;ldquo;hidden&amp;rdquo; mismatch errors.  This effectively removes an
-entire class of errors that you have with Java.  (TBH, these don&#39;t pop
-up too often, but the more common a library is the greater the chance
-for this to happen.  I&#39;ve seen it with Guava libraries.) However,
-being able to completely remove them as a class of problems would be
-nice.&lt;/p&gt;
-&lt;p&gt;Second, conflicts are identified at the source code level and not at
-the version level. This means that PATCH version mismatches won&#39;t
-break your build so long as they don&#39;t change function signature (and
-PATCHES really shouldn&#39;t).&lt;/p&gt;
-&lt;p&gt;I&#39;m not saying that the way Go deals with this is perfect and in some
-ways they are dealing with it by not dealing with it. Java could take
-this same approach if you copied all of your dependencies into your
-code base as source code. But I did find it as an interesting
-consequence on how Go works vs Java.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>SQL is a terrible API</title>
       <link>/post/sql-terrible-api/</link>
-      <pubDate>Wed, 05 Jun 2019 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
       <guid>/post/sql-terrible-api/</guid>
       <description>&lt;h3 id=&#34;a-long-time-ago&#34;&gt;A long time ago&amp;hellip;&lt;/h3&gt;
 &lt;p&gt;In 1974 the first relational database was created and along with it a
