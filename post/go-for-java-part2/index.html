@@ -594,12 +594,12 @@
 
     <div class="article-style">
       <p>This is my second post on things I'm finding interesting about the Go
-language.  For additional background you might want to read
+language.  For additional background on this series you might want to read
 <a href="../go-for-java-part1">Part 1</a>.</p>
 <h2 id="dependency-management">Dependency Management</h2>
 <p>This time I'm going to focus on dependency management and how
 go approaches the <a href="../sane-java-dependency-management">diamond dependency issue</a>.</p>
-<p>First of all, Go does not support pre-compiled libraries the way Java
+<p>First off, Go does not support pre-compiled libraries the way Java
 does.  (Personally, I think compiled Jar files are from a by-gone time
 and these days cause more harm than good, but that's not why Go
 doesn't have them.)  Go doesn't have them because Go code compiles
@@ -615,24 +615,25 @@ versions of a library. In this case, as with Java, you still have to
 select the version you want to use. However, there are two substantial
 changes.</p>
 <h3 id="cant-ignore-the-problem">Can't ignore the problem</h3>
-<p>First, you don't have the option of ignoring the issue.  This means
-that if your service builds in Go, you can be confident your code does
-not contain any &ldquo;hidden&rdquo; mismatch errors.  This effectively removes an
-entire class of errors that you have with Java.  (TBH, these don't pop
-up too often, but the more common a library is the greater the chance
-for this to happen.  I've seen it with Guava libraries.) However,
-being able to completely remove them as a class of problems would be
-nice.</p>
+<p>First, you don't have the option of ignoring or miss the issue.  This
+means that if your service builds in Go, you can be confident your
+code does not contain any &ldquo;hidden&rdquo; mismatch errors.  This effectively
+removes an entire class of errors that you have with Java.  (TBH,
+these don't pop up too often, but the more common a library is the
+greater the chance for this to happen.  I've seen this error triggered
+with the Guava libraries.) Being able to completely remove
+them as a class of problems would be nice.</p>
 <h3 id="conflicts-identified-at-the-source-code-level">Conflicts identified at the source code level</h3>
 <p>Second, conflicts are identified at the source code level and not at
 the version level. This means that PATCH version mismatches won't
 break your build so long as they don't change function signature (and
 PATCHES really shouldn't).</p>
 <p>I'm not saying that the way Go deals with this is perfect but it does
-move the problem into a first class issue and forcing a
+move the problem into a first class issue and forces a
 resolution. Java could take this same approach if you copied all of
 your dependencies into your code base as source code. But I did find
-it as an interesting consequence on how Go works vs Java.</p>
+it as an interesting consequence on how Go handles dependency
+management.</p>
 
     </div>
 
