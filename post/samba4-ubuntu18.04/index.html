@@ -593,57 +593,55 @@
   <div class="article-container">
 
     <div class="article-style">
-      <p>This is mostly a collection of notes for myself on how to build a
-Samba4 based Active Directory Domain Controller, but I'm posting
-them here in case others run into similar issues. (Also, fair warning that
-I haven't gone through to scrub it for grammar and spelling mistakes.)</p>
-<h2 id="quick-background">Quick Background</h2>
+      <h2 id="quick-background">Quick Background</h2>
 <p>I volunteer as a Systems Administrator for a small medical
 clinic. They have a very slim IT budget so while their desktop systems
 are primarily Windows 10, I've configured most of their server
 infrastructure with Linux. A <a href="https://www.proxmox.com/">Proxmox</a>
 server is used to manage their virtualized environment and I'm using
-Samba4 for their Active Directory Domain Controller.</p>
+<a href="https://www.samba.org/">Samba4</a> for their Active Directory
+Domain Controller.</p>
 <p>When I first set up Samba4 as their Active Directory I was able to use
-CentOS 6 with Samba4 binary packages from SerNet. Although this has
-been working well enough, it has always been a little quirky and I had
-only ever set up a single Domain Controller. So recently I decided to
-upgrade their Domain Controllers to the newest version and add a
-second Domain Controller.</p>
+<a href="https://www.centos.org/">CentOS</a> 6 with the Samba4 binary packages
+from SerNet. Although this has been working well enough, it has always
+been a little quirky and I had only ever set up a single Domain
+Controller. So recently I decided to upgrade their Domain Controllers
+to the newest version and add a second Domain Controller.</p>
 <p>Initially I tried to find the SerNet packages but it appears they have
-rebranded themselves as Samba+ and now charge a subscription fee for
-the binary packages.  I don't blame them and I would love to support
-them, but paying the subscription fee is not an option for this
+rebranded themselves as <a href="https://samba.plus/">Samba+</a> and now charge a
+subscription fee for the binary packages.  While I would love to
+support them, paying a subscription fee is not an option for this
 clinic.</p>
 <p>I'd really like to stick with CentOS as my server distribution as I
-have a lot of experience with it and have always found it to be solid
-minimial distribution. However, for reasons RedHat has decided that
-the Samba4 build that comes with Fedora should not include the ability
-to act as an Active Directory Domain Controller.</p>
+have a lot of experience with it and have always found it to be a
+solid, minimial distribution. However, for reasons RedHat has decided
+that the Samba4 build that comes with Fedora should not include the
+ability to act as an Active Directory Domain Controller.</p>
 <p>I could build the sources from scratch and still use CentOS, but that
-would require installing all the build tools on these servers and I'm
+would require installing all the build tools on each server and I'm
 trying to keep them as light as possible.  Plus, building from scratch
 often introduces its own host of challenges and I really just want to
 set this up and move on to my next project.  So instead I'm going to
-give a go at using Ubuntu, which I really like as a desktop system but
-have never been terribly thrilled with as a server.</p>
-<p>For setting this up I'm mostly following the instructions at</p>
-<p><a href="https://www.tecmint.com/install-samba4-active-directory-ubuntu/">https://www.tecmint.com/install-samba4-active-directory-ubuntu/</a></p>
-<p>and specifically</p>
-<p><a href="https://www.tecmint.com/join-additional-ubuntu-dc-to-samba4-ad-dc-failover-replication/">https://www.tecmint.com/join-additional-ubuntu-dc-to-samba4-ad-dc-failover-replication/</a></p>
-<p>However, these instructions were written for Ubuntu 16.04 so I'm making
-this post to document my steps.</p>
+give a go at using <a href="https://ubuntu.com/">Ubuntu</a>, which I really like
+as a desktop system but have never been terribly thrilled with as a
+server system.</p>
+<p>For setting this up I am mostly following the instructions from
+<a href="https://www.tecmint.com/install-samba4-active-directory-ubuntu/">tecmint</a>
+and specifically <a href="https://www.tecmint.com/join-additional-ubuntu-dc-to-samba4-ad-dc-failover-replication/">this
+one</a>. However,
+these instructions were written for Ubuntu 16.04 so I'm making this
+post to document the steps I took in setting up Samba4 on an Ubuntu
+system.</p>
 <h2 id="networking-overview">Networking overview</h2>
-<p>For reference, the main gateway is a pfSense box set up at 10.0.1.1.
-This runs as the primary DNS and DHCP server for the network.  The
-domain name is <code>hrakaroo.lan</code>.</p>
+<p>For reference, the main gateway is a
+<a href="https://www.pfsense.org/">pfSense</a> box set up at 10.0.1.1.  This runs
+as the primary DNS and DHCP server for the network.  The domain name
+I'll use in the instructions is <code>hrakaroo.lan</code>.</p>
 <p>My Active Directory domain is <code>ad.hrakaroo.lan</code>.  I've specifically
 set this up so that Active Directory is on it's own sub domain as I
 don't want the rest of the server infrastructure to be dependent on
 Active Directory.  I'd rather isolate Active Directory to its own
 area.</p>
-<p>(the domain isn't actually <code>hrakaroo.lan</code>, but I'm using that here
-to maintain the privacy of the clinic.)</p>
 <h2 id="creating-a-new-system-in-proxmox">Creating a new system in Proxmox</h2>
 <p>In Proxmox I've created the following new host</p>
 <pre><code>Hostname: adc1
@@ -652,17 +650,17 @@ Disk: 32 G
 Processors: 1
 Cores: 2
 </code></pre>
-<p>In retrospect it looks like I could have cut the memory, disk and
-cores in half and it would have been fine, but I'm okay with these
-settings.</p>
-<p>Once created, start the server.</p>
+<p>In retrospect (by looking at the usage charts in Proxmox) it looks
+like I could have cut the memory, disk and cores in half and it would
+have been fine, but I'm going to leave it as is for now.</p>
+<p>Once the vm is created, start the server.</p>
 <p>Most of the installation is pretty straightforward so I'm only
 going to highlight when I didn't select the default.</p>
-<h3 id="installer-update-available">Installer update available</h3>
+<p><em>Installer update available</em></p>
 <p>During the install it suggests that an update to the installer
 is available and asks if you want to update.  I'm not sure if it
 matters much, but I said yes.</p>
-<h3 id="networking">Networking</h3>
+<p><em>Networking</em></p>
 <p>Edit the IPv4 configuration and select Manual</p>
 <pre><code>Subnet: 10.0.1.0/24
 Address: 10.0.1.25
@@ -672,46 +670,36 @@ Search domains: ad.hrakaroo.lan
 </code></pre>
 <p>10.0.1.26 is the name servers for the existing Active Directory
 Domain Controller. Once the system is fully configured I'll change
-this, but for the initial set up this makes things a lot easier.</p>
-<h3 id="profile-setup">Profile Setup</h3>
+this, but it makes the initial setup much easier if this points
+at your existing Domain Controller.</p>
+<p><em>Profile Setup</em></p>
 <p>This is the first thing I don't like about Ubuntu.  I'd rather just
 have a password set for the root account.  I get the reason why they
 are doing this, but for my super small setup this is more of an
 annoyance than a help.  Sadly you also can't use general accounts like
 &lsquo;admin&rsquo; or &lsquo;staff&rsquo; either.  So I ended up creating a personal account
-for Joshua Gerth.</p>
-<p>(This turned out to be a mistake as it conflicted with the <code>jgerth</code>
-account in my Active Directory and made testing file services
-confusing.  I could have created a unique login like <code>jogerth</code>, but I'm
-likely going to forget that in the long run and there is a chance
-that someday someone else may take over as the sysadmin and having
-them log in as my account would be weird, creating an account for them
-on every system would be tedious, and creating a dependency on AD for
-user account login could be spicy. I could also create a generic
-sysadmin account, but really, if you are going to do that, then why
-not use the built in sysadmin account &lsquo;root&rsquo;.</p>
-<p>So for the initial set up I had to create a <code>jgerth</code> account, once the
-system was fully configured I set an explicit password for the root account,
-enabled SSH login for root, and deleted the jgerth account.)</p>
-<h3 id="ssh-setup">SSH Setup</h3>
-<p>Enable install the OpenSSH server.</p>
+for Joshua Gerth.  (This turned out to be a bit of a mistake, more
+on this can be found in the <a href="#profile-mistake">additional things</a>
+at the bottom.)</p>
+<p><em>SSH Setup</em></p>
+<p>[X] Enable install the OpenSSH server.</p>
 <h2 id="basic-server-configuration">Basic Server Configuration</h2>
 <p>For almost all of these commands I find it easier to work by ssh'ing
 into the box rather than using the Proxmox console as copy/paste and
 editing all work better.</p>
 <h3 id="update-and-install-emacs">Update and install emacs</h3>
 <p>Okay, once the server is up and running I always run the update commands
-to make sure everything is up to date</p>
+to make sure everything is up to date:</p>
 <pre><code class="language-shell">$ sudo apt update 
 $ sudo apt upgrade
 $ sudo apt dist-upgrade
 </code></pre>
-<p>and also, because vi is terrible I always install emacs.</p>
+<p>and also, because vi is terrible I always install emacs:</p>
 <pre><code class="language-shell">$ sudo apt install -y emacs
 </code></pre>
 <h3 id="turn-off-ipv6">Turn off IPv6</h3>
 <p>This may not be <em>necessary</em>, but I find that debugging things when
-only IPv4 is enabled to be a lot easier.  This environment I'm
+only IPv4 is enabled to be a lot easier.  The environment I'm
 installing this in is small enough that we are not at risk of running
 out of IP numbers any time soon and since everything gets NAT'ed
 anyhow I don't really see a need to enable IPv6.</p>
@@ -732,8 +720,8 @@ end.)</p>
 <h3 id="turn-off-dnsmasq">Turn off dnsmasq</h3>
 <p>This is the third thing that I don't like about Ubuntu, it runs a stub
 dnsmasq as a DNS caching server.  Again, I get <em>why</em> they did this,
-but I've never found this to be useful and nine out of ten times it
-just causes problems.</p>
+but I've never found this to be useful on a server and nine out of ten
+times it just causes problems.</p>
 <p>To disable it I'm mostly following
 <a href="https://askubuntu.com/questions/1081832/how-do-i-disable-systemd-resolved-and-replace-with-something-sane-on-ubuntu-18">these instructions</a>.</p>
 <p>Edit <code>/etc/systemd/resolved.conf</code> and add</p>
@@ -748,13 +736,13 @@ to make damn sure the new settings have taken.</p>
 <p><code>/etc/resolv.conf</code> should now show the values that you entered on
 initial setup.</p>
 <h3 id="ntp">NTP</h3>
-<p>Domain Controllers are sensitive to clock drift so need to be
-configured to use an NTPd. Normally I would configure <code>ntpd</code> on the
-host, but Ubuntu has decided to ship with <code>timedatectl</code> instead which
-claims to be a lightweight ntp client.  (Humorously, 90% of the google
-searches for <code>timedatectl</code> suggest turning it off and replacing it
-with a real ntpd, however, I'm going to try sticking with timedatectl
-for now.)</p>
+<p>Domain Controllers are sensitive to clock drift and need to be
+configured to use a network time server.  Normally I would configure
+<code>ntpd</code> on the host, but Ubuntu has decided to ship with <code>timedatectl</code>
+instead which claims to be a lightweight ntp client.  (Humorously, 90%
+of the google searches for <code>timedatectl</code> suggest turning it off and
+replacing it with a real ntpd, however, I'm going to try sticking with
+timedatectl for now.)</p>
 <p>First I like to set the timezone so I don't need to convert
 everything</p>
 <pre><code class="language-shell">$ timedatectl set-timezone America/Los_Angeles
@@ -773,24 +761,27 @@ NTP=10.0.1.22
    XXX adc1 systemd-timesyncd[1416]: Synchronized to time server 10.0.1.22:123 (10.0.1.22).
 </code></pre>
 <h2 id="install-samba">Install Samba</h2>
-<p>Since we are actually about to install Samba next I like to do one
-more reboot.</p>
+<p>Since we are actually about to install Samba I like to do one more
+reboot here.</p>
 <h3 id="update-the-hosts-file">Update the hosts file</h3>
 <p>The <code>/etc/hosts</code> file should have an entry for every domain
 controller, including itself.  (I also removed the old IPv6 stuff)</p>
 <pre><code>127.0.0.1 localhost
-10.0.1.26 oldadc.ad.hrakaroo.lan oldadc
 10.0.1.25 adc1.ad.hrakaroo.lan adc1
+10.0.1.26 oldadc.ad.hrakaroo.lan oldadc
 </code></pre>
+<p>Again, 10.0.1.25 is this box, the new Active Directory server and 10.0.1.26
+is the old Active Directory server.</p>
 <h3 id="install-samba4">Install Samba4</h3>
 <p>Actually install samba</p>
 <pre><code class="language-shell">$ apt install -y samba krb5-user krb5-config winbind libpam-winbind libnss-winbind
 </code></pre>
 <p>If you already have things correctly setup then this should
-automatically find the kerberos SRV records for your domain, if not it
-may prompt you for them.  If it does prompt you enter the domain in
-all upper case for the Default realm and in regular case for the
-Kerberos servers and Administrative server.</p>
+automatically find the kerberos SRV records for your domain which are
+being hosted on your existing Active Directory server, if not it may
+prompt you for them.  If it does prompt you enter the domain in all
+upper case for the Default realm and in regular case for the Kerberos
+servers and Administrative server.</p>
 <pre><code>   Default Kerberos realm:  AD.HRAKAROO.LAN
    Kerberos servers realm:  ad.hrakaroo.lan
    Administrative server:   ad.hrakaroo.lan
@@ -811,7 +802,7 @@ $ klist
 <pre><code class="language-shell">$ systemctl stop samba-ad-dc smbd nmbd winbind
 $ mv /etc/samba/smb.conf /etc/samba/smb.conf.initial
 </code></pre>
-<p>Now, join the domain</p>
+<p>Use samba-tool to join the domain</p>
 <pre><code class="language-shell">$ samba-tool domain join ad.hrakaroo.lan DC -U &quot;AD\jgerth&quot;
 </code></pre>
 <p>Now configure the server to start samba-ad-dc automatically</p>
@@ -823,9 +814,9 @@ $ systemctl unmask samba-ad-dc
    Removed /etc/systemd/system/samba-ad-dc.service.
 $ systemctl enable samba-ad-dc
 </code></pre>
-<p>Use the host command to see the addresses.  This apparently hits every
-nameserver listed so you may get some errors when it tries to hit the
-non-active directory DNS servers.</p>
+<p>Use the host command to verify your configuration.  This apparently
+hits every nameserver listed so you may get some errors when it tries
+to hit the non-active directory DNS servers.</p>
 <pre><code class="language-shell">$ host ad.hrakaroo.lan
    ad.hrakaroo.lan has address 10.0.1.26
    ad.hrakaroo.lan has address 10.0.1.25
@@ -842,11 +833,11 @@ $ host -t SRV _ldap._tcp.ad.hrakaroo.lan
 </code></pre>
 <h2 id="change-dns">Change DNS</h2>
 <p>At this point you could be done as the server is now up and running.
-However it is technically using the other domain controller for DNS
+However, it is technically using the other domain controller for DNS
 lookups.  Even if I wasn't planning on decommissioning the older
-server this still creates an out of band dependency between them and
-since Active Directory is, itself, a DNS server I updated the new
-server I set up to use itself for DNS lookups.  (Similar to what
+server this would still be creating an out of band dependency between
+them and as Active Directory is, itself, a DNS server I prefer to update
+the server to use itself for DNS lookups.  (Similar to what
 Ubuntu was initially trying to do with the dnsmasq stuff).</p>
 <p>To do this, modify <code>/etc/netplan</code> and set <code>127.0.0.1</code> as first in
 your nameserver list and then the upstream DNS server second.</p>
@@ -867,6 +858,7 @@ do a couple of tests with <code>nslookup</code>.</p>
 is a power outage Proxmox will be sure to start your domain controllers.</p>
 <p><code>Options -&gt; Start at boot -&gt; True</code></p>
 <h2 id="additional-things">Additional things</h2>
+<h3 id="decommissioning-the-old-active-directory-controller">Decommissioning the old Active Directory Controller</h3>
 <p>With the new Domain Controller up you can now decommission the old
 Domain Controller by moving the roles (7) from the old DC to your
 new one.  However, the version of Samba which shipps with Ubuntu 18.04
@@ -882,6 +874,31 @@ use to move the roles.  To fix this I had to edit
 <p>around line 20. After doing this the command to move the roles worked
 just fine and I was able to fully decommission the older active domain
 controller.</p>
+<h3 id="profile-mistake">Removing the profile</h3>
+<p>It turns out that creating the profile as I did during the initial set
+up of Ubuntu was a bit of a mistake.  It didn't cause an issue for
+this server but it did on a file server I set up later which was also
+on Ubuntu. The issue was that the Ubuntu account <code>jgerth</code> conflicted
+with the Active Directory accouunt <code>jgerth</code> and made testing Windows File
+Sharing under my account difficult.</p>
+<p>I could have addressed this by using a unique login on the Ubuntu
+server (like <code>jogerth</code>) but that feels like a pretty hacky solution.
+Plus, it raises the bigger issue that ultimately someday someone else
+is probably going to take over for me as the sysadmin and I don't
+really want them to have to use my account.  The <em>right</em> way to solve
+this is to create an LDAP server for the Linux boxes and host the
+logins centrally, but this feels a bit like overkill to me as we
+currently only have around 5 Linux systems and, at least for the time
+being, I would be the only person in the LDAP server.</p>
+<p>I suppose I could bind the Linux boxes in to the Active Directory LDAP
+server, but that creates a bit of a chicken and egg dependency on
+Active Directory that I'm just not comfortable with.</p>
+<p>What I really want is just a generic sysadmin account, but if you are
+going to do that then why not use the one that already comes with
+every Unix/Linux system, <code>root</code>.  So in the end I configured an
+explicit password for <code>root</code>, enabled SSH login for root and deleted
+the account I created on setup.  I would never recommend this for a
+larger environment, but for my small setup this worked out best.</p>
 <h2 id="closing-thoughts">Closing thoughts</h2>
 <p>In the end I'm glad I set this up from scratch rather than use the
 build and instructions from SerNet. I have a better understanding
@@ -890,9 +907,9 @@ experiencing with the old server has gone away (although, to be fair,
 that could have been due to the older version I was running.)
 I also feel more comfortable with the samba tool and adding and
 removing domain controllers.</p>
-<p>I still don't love Ubuntu as a server. I don't care for the dnsmasq
-stub, the replacement for ntpd or how it forces you to create a
-non-root account, but since it is a popular system I was able to
+<p>I'm still not a huge fan of Ubuntu as a server. I don't care for the
+dnsmasq stub, the replacement for ntpd or how it forces you to create
+a non-root account, but since it is a popular system I was able to
 search for most of the errors I did encounter.</p>
 
     </div>
