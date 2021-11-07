@@ -600,10 +600,9 @@
 <p>There are only two hard things in Computer Science: cache
 invalidation and naming things.  &ndash; Phil Karlton</p>
 </blockquote>
-<p>and while this is funny (perhaps only to Computer Science
-people) underlying the quote is a real issue, naming thing,
-is really hard.</p>
-<p>The challenge is not just in giving things an appropriate name for
+<p>and while this is funny (perhaps only to those in Computer Science)
+underlying the quote is a real issue, naming things is really hard.</p>
+<p>The challenge is not just in giving something an appropriate name for
 right now, but trying to predict how they may evolve and be used in
 the future.</p>
 <p>Maybe you start with a database of bicycles, but as powered bicycles
@@ -615,63 +614,61 @@ amazing forethought at the very beginning to predict exactly how the
 industry was going to evolve chances are whatever you name it is
 going to be incorrect at some future point in time.</p>
 <h2 id="renaming-isnt-always-easy">Renaming isn&rsquo;t always easy</h2>
-<p>So, if a thing evolves and the original name is no longer correct we
+<p>So, if something evolves and the original name is no longer correct we
 should just rename it, right? Sometimes this is easy. Thankfully the
 tools for Computer Science have come a long way and doing a code
 refactoring is&rsquo;t as hard as it once was. So if we have a variable
 name, function name, or even a class/object name that is no longer
 accurate we usually have the ability to safely rename it across all
 dependencies to a new and more appropriate name.</p>
-<p>But the coding level is often where this capability ends. Computer
-Science has not yet developed the capability to reliability refactor
-service names across a distributed system and doing so is often fraught
-with errors.</p>
+<p>But the coding level is often where this capability ends. The industry
+has not yet developed the capability to reliability refactor service
+names across a distributed system and trying to do it manually is
+often fraught with errors that can greatly impact uptime.</p>
 <h2 id="in-defense-of-the-obscure">In defense of the obscure</h2>
 <p>So if changing the name of something is difficult and if naming things
 correctly <em>now</em> is hard, (and predicting how they may evolve is nearly
 impossible,) then maybe the best thing to do is to purposely give
 them obscure names.</p>
 <p>When I was in college the internet was still in its early stages and
-email had not yet become commonplace. It was mostly used by those in
-the computer science department and we had the unique experience of
-being able to pick our own email address. Like most of my classmates I
-opted for the straightforward and used my last name for my address
+email had not yet become commonplace we had the unique experience of
+being able to pick our own email address. Like most people knew I
+opted for the straightforward and used my last name for my address:
 <code>gerth@lclark.edu</code>.</p>
-<p>One of my classmates, however, who opted for something entirely
-different, she selected the email address of <code>squidlips@lclark.edu</code>,
-which I found baffling. At first I thought she was just trying to
-rebel, but her reasoning was actually pretty interesting. Her name was
-something rather basic, think Jane Doe and her argument was that while
-<code>doe@lclark.edu</code> runs the risk of being mistaken for someone else,
-<code>squidlips@lclark.edu</code> is almost guaranteed not to.</p>
-<p>This was more than just a theoretical observation as it just so
-happened that at that exact moment I was not the only Gerth at Lewis &amp;
-Clark College. There was one other one, my father, who was a tenured
-professor (which played a big $$ part in why I choose to attend Lewis
-&amp; Clark College) and I had been receiving the occasional email
-intended for him. People had seen <code>gerth@lclark.edu</code> and had
-incorrectly assumed I was my father and were sending me information
-clearly not intended for the students. (Nothing salacious I&rsquo;m sad to
-say).</p>
+<p>However, one of my classmates opted for something entirely different,
+she selected the email address of <code>squidlips@lclark.edu</code>. At first I
+thought she was just trying to rebel, but her reasoning was actually
+pretty interesting. Her name was something rather basic, (think Jane
+Doe) and her argument was that while <code>doe@lclark.edu</code> runs the risk of
+being mistaken for someone else, <code>squidlips@lclark.edu</code> is almost
+guaranteed not to.</p>
+<p>This proved to be more than just an academic observation as it
+happened that I was not the only Gerth at Lewis &amp; Clark College. There
+was one other one, my father, who was a tenured professor (which
+played a big $$ part in why I choose to attend Lewis &amp; Clark College)
+and I started to receive the occasional email intended for him. People
+had seen <code>gerth@lclark.edu</code> and had incorrectly assumed I was my
+father and were sending me information clearly not intended for the
+students. (Nothing salacious I&rsquo;m sad to say).</p>
 <p>In this case the name (my email address) was even 100% correct and it
 was still getting used incorrectly.  And while while no one may have
-known who Squid Lips was, there was at least virtually no chance that
-they were going to get mistakenly confused for someone else.</p>
+known who Squid Lips was, there was highly unlikely that she was
+going to be mistaken for someone else.</p>
 <h2 id="obscure-is-better-than-wrong">Obscure is better than wrong</h2>
 <p>We make snap decisions all the time and if I was looking to get a list
-of vehicles for an endpoint and came across a service named &lsquo;bicycles&rsquo;
+of vehicles for an endpoint and came across a service named <code>bicycles</code>
 I would immediately cross it off my list. But, if instead the service
-was named &lsquo;x34a5a&rsquo; or even &lsquo;horsetail&rsquo; I would at least have to
+was named <code>x34a5a</code> or even <code>horsetail</code> I would at least have to
 consider it. I may first go looking for something more accurate, but
 at least I wouldn&rsquo;t cross it off my list.</p>
-<p>For me, personally, calling something &lsquo;horsetail&rsquo; is better than some
-obscure id designation as it&rsquo;s much easier to remember &lsquo;horsetail&rsquo; and
-distinguish it from &lsquo;pigfoot&rsquo; than trying to remember &lsquo;a20b23&rsquo; from
-&lsquo;c23s40&rsquo;.</p>
-<p>If something is going to exist for a while, likely evolve in scope and
+<p>I also prefer calling something <code>horsetail</code> rather than some obscure
+id designation as it&rsquo;s much easier to remember <code>horsetail</code> and
+distinguish it from <code>pigfoot</code> than trying to remember <code>a20b23</code> and
+distinguish it from <code>c23s40</code>.</p>
+<p>If a thing is going to exist for a while, likely evolve in scope and
 changing it&rsquo;s name is not trivial then giving it an obscure name may
 be better and ultimately easier than trying to come up with the
-perfect name.</p>
+perfect name. So maybe naming things actually isn&rsquo;t all that hard.</p>
 
     </div>
 

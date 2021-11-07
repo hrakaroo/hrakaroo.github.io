@@ -24,10 +24,9 @@
 &lt;p&gt;There are only two hard things in Computer Science: cache
 invalidation and naming things.  &amp;ndash; Phil Karlton&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;and while this is funny (perhaps only to Computer Science
-people) underlying the quote is a real issue, naming thing,
-is really hard.&lt;/p&gt;
-&lt;p&gt;The challenge is not just in giving things an appropriate name for
+&lt;p&gt;and while this is funny (perhaps only to those in Computer Science)
+underlying the quote is a real issue, naming things is really hard.&lt;/p&gt;
+&lt;p&gt;The challenge is not just in giving something an appropriate name for
 right now, but trying to predict how they may evolve and be used in
 the future.&lt;/p&gt;
 &lt;p&gt;Maybe you start with a database of bicycles, but as powered bicycles
@@ -39,63 +38,61 @@ amazing forethought at the very beginning to predict exactly how the
 industry was going to evolve chances are whatever you name it is
 going to be incorrect at some future point in time.&lt;/p&gt;
 &lt;h2 id=&#34;renaming-isnt-always-easy&#34;&gt;Renaming isn&amp;rsquo;t always easy&lt;/h2&gt;
-&lt;p&gt;So, if a thing evolves and the original name is no longer correct we
+&lt;p&gt;So, if something evolves and the original name is no longer correct we
 should just rename it, right? Sometimes this is easy. Thankfully the
 tools for Computer Science have come a long way and doing a code
 refactoring is&amp;rsquo;t as hard as it once was. So if we have a variable
 name, function name, or even a class/object name that is no longer
 accurate we usually have the ability to safely rename it across all
 dependencies to a new and more appropriate name.&lt;/p&gt;
-&lt;p&gt;But the coding level is often where this capability ends. Computer
-Science has not yet developed the capability to reliability refactor
-service names across a distributed system and doing so is often fraught
-with errors.&lt;/p&gt;
+&lt;p&gt;But the coding level is often where this capability ends. The industry
+has not yet developed the capability to reliability refactor service
+names across a distributed system and trying to do it manually is
+often fraught with errors that can greatly impact uptime.&lt;/p&gt;
 &lt;h2 id=&#34;in-defense-of-the-obscure&#34;&gt;In defense of the obscure&lt;/h2&gt;
 &lt;p&gt;So if changing the name of something is difficult and if naming things
 correctly &lt;em&gt;now&lt;/em&gt; is hard, (and predicting how they may evolve is nearly
 impossible,) then maybe the best thing to do is to purposely give
 them obscure names.&lt;/p&gt;
 &lt;p&gt;When I was in college the internet was still in its early stages and
-email had not yet become commonplace. It was mostly used by those in
-the computer science department and we had the unique experience of
-being able to pick our own email address. Like most of my classmates I
-opted for the straightforward and used my last name for my address
+email had not yet become commonplace we had the unique experience of
+being able to pick our own email address. Like most people knew I
+opted for the straightforward and used my last name for my address:
 &lt;code&gt;gerth@lclark.edu&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;One of my classmates, however, who opted for something entirely
-different, she selected the email address of &lt;code&gt;squidlips@lclark.edu&lt;/code&gt;,
-which I found baffling. At first I thought she was just trying to
-rebel, but her reasoning was actually pretty interesting. Her name was
-something rather basic, think Jane Doe and her argument was that while
-&lt;code&gt;doe@lclark.edu&lt;/code&gt; runs the risk of being mistaken for someone else,
-&lt;code&gt;squidlips@lclark.edu&lt;/code&gt; is almost guaranteed not to.&lt;/p&gt;
-&lt;p&gt;This was more than just a theoretical observation as it just so
-happened that at that exact moment I was not the only Gerth at Lewis &amp;amp;
-Clark College. There was one other one, my father, who was a tenured
-professor (which played a big $$ part in why I choose to attend Lewis
-&amp;amp; Clark College) and I had been receiving the occasional email
-intended for him. People had seen &lt;code&gt;gerth@lclark.edu&lt;/code&gt; and had
-incorrectly assumed I was my father and were sending me information
-clearly not intended for the students. (Nothing salacious I&amp;rsquo;m sad to
-say).&lt;/p&gt;
+&lt;p&gt;However, one of my classmates opted for something entirely different,
+she selected the email address of &lt;code&gt;squidlips@lclark.edu&lt;/code&gt;. At first I
+thought she was just trying to rebel, but her reasoning was actually
+pretty interesting. Her name was something rather basic, (think Jane
+Doe) and her argument was that while &lt;code&gt;doe@lclark.edu&lt;/code&gt; runs the risk of
+being mistaken for someone else, &lt;code&gt;squidlips@lclark.edu&lt;/code&gt; is almost
+guaranteed not to.&lt;/p&gt;
+&lt;p&gt;This proved to be more than just an academic observation as it
+happened that I was not the only Gerth at Lewis &amp;amp; Clark College. There
+was one other one, my father, who was a tenured professor (which
+played a big $$ part in why I choose to attend Lewis &amp;amp; Clark College)
+and I started to receive the occasional email intended for him. People
+had seen &lt;code&gt;gerth@lclark.edu&lt;/code&gt; and had incorrectly assumed I was my
+father and were sending me information clearly not intended for the
+students. (Nothing salacious I&amp;rsquo;m sad to say).&lt;/p&gt;
 &lt;p&gt;In this case the name (my email address) was even 100% correct and it
 was still getting used incorrectly.  And while while no one may have
-known who Squid Lips was, there was at least virtually no chance that
-they were going to get mistakenly confused for someone else.&lt;/p&gt;
+known who Squid Lips was, there was highly unlikely that she was
+going to be mistaken for someone else.&lt;/p&gt;
 &lt;h2 id=&#34;obscure-is-better-than-wrong&#34;&gt;Obscure is better than wrong&lt;/h2&gt;
 &lt;p&gt;We make snap decisions all the time and if I was looking to get a list
-of vehicles for an endpoint and came across a service named &amp;lsquo;bicycles&amp;rsquo;
+of vehicles for an endpoint and came across a service named &lt;code&gt;bicycles&lt;/code&gt;
 I would immediately cross it off my list. But, if instead the service
-was named &amp;lsquo;x34a5a&amp;rsquo; or even &amp;lsquo;horsetail&amp;rsquo; I would at least have to
+was named &lt;code&gt;x34a5a&lt;/code&gt; or even &lt;code&gt;horsetail&lt;/code&gt; I would at least have to
 consider it. I may first go looking for something more accurate, but
 at least I wouldn&amp;rsquo;t cross it off my list.&lt;/p&gt;
-&lt;p&gt;For me, personally, calling something &amp;lsquo;horsetail&amp;rsquo; is better than some
-obscure id designation as it&amp;rsquo;s much easier to remember &amp;lsquo;horsetail&amp;rsquo; and
-distinguish it from &amp;lsquo;pigfoot&amp;rsquo; than trying to remember &amp;lsquo;a20b23&amp;rsquo; from
-&amp;lsquo;c23s40&amp;rsquo;.&lt;/p&gt;
-&lt;p&gt;If something is going to exist for a while, likely evolve in scope and
+&lt;p&gt;I also prefer calling something &lt;code&gt;horsetail&lt;/code&gt; rather than some obscure
+id designation as it&amp;rsquo;s much easier to remember &lt;code&gt;horsetail&lt;/code&gt; and
+distinguish it from &lt;code&gt;pigfoot&lt;/code&gt; than trying to remember &lt;code&gt;a20b23&lt;/code&gt; and
+distinguish it from &lt;code&gt;c23s40&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;If a thing is going to exist for a while, likely evolve in scope and
 changing it&amp;rsquo;s name is not trivial then giving it an obscure name may
 be better and ultimately easier than trying to come up with the
-perfect name.&lt;/p&gt;
+perfect name. So maybe naming things actually isn&amp;rsquo;t all that hard.&lt;/p&gt;
 </description>
     </item>
     
