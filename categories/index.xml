@@ -5,76 +5,12 @@
     <link>/categories/</link>
       <atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     <description>Categories</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 01 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 06 Nov 2021 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_2.png</url>
+      <url>/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_3.png</url>
       <title>Categories</title>
       <link>/categories/</link>
     </image>
-    
-    <item>
-      <title>Hiking</title>
-      <link>/categories/hiking/</link>
-      <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
-      <guid>/categories/hiking/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Systems Administration</title>
-      <link>/categories/systems-administration/</link>
-      <pubDate>Fri, 27 Mar 2020 00:00:00 +0000</pubDate>
-      <guid>/categories/systems-administration/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Software Development</title>
-      <link>/categories/software-development/</link>
-      <pubDate>Tue, 01 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/categories/software-development/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>API</title>
-      <link>/categories/api/</link>
-      <pubDate>Thu, 06 Jun 2019 00:00:00 +0000</pubDate>
-      <guid>/categories/api/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Development Process</title>
-      <link>/categories/development-process/</link>
-      <pubDate>Tue, 09 Oct 2018 00:00:00 +0000</pubDate>
-      <guid>/categories/development-process/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Teams</title>
-      <link>/categories/teams/</link>
-      <pubDate>Tue, 09 Oct 2018 00:00:00 +0000</pubDate>
-      <guid>/categories/teams/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Java</title>
-      <link>/categories/java/</link>
-      <pubDate>Fri, 01 Jun 2018 00:00:00 +0000</pubDate>
-      <guid>/categories/java/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Toastmasters</title>
-      <link>/categories/toastmasters/</link>
-      <pubDate>Sun, 01 Oct 2017 00:00:00 +0000</pubDate>
-      <guid>/categories/toastmasters/</guid>
-      <description></description>
-    </item>
     
   </channel>
 </rss>

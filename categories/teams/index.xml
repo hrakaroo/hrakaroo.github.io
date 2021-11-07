@@ -7,7 +7,7 @@
     <description>Teams</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 09 Oct 2018 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_2.png</url>
+      <url>/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_3.png</url>
       <title>Teams</title>
       <link>/categories/teams/</link>
     </image>
@@ -344,17 +344,17 @@ forgotten to say.&lt;/p&gt;
 &lt;p&gt;Without focus, the standup can become a passive competition for who is
 the busiest person.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;I&#39;ve got a meeting with a customer today to talk over a feature they
+&lt;li&gt;I&amp;rsquo;ve got a meeting with a customer today to talk over a feature they
 want added.&lt;/li&gt;
-&lt;li&gt;Well I&#39;ve got &lt;em&gt;two&lt;/em&gt; meetings today to talk over features.&lt;/li&gt;
-&lt;li&gt;I&#39;ve pretty much got meetings all day long so I&#39;m not likely going
+&lt;li&gt;Well I&amp;rsquo;ve got &lt;em&gt;two&lt;/em&gt; meetings today to talk over features.&lt;/li&gt;
+&lt;li&gt;I&amp;rsquo;ve pretty much got meetings all day long so I&amp;rsquo;m not likely going
 to get much else done.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;It sounds silly, but it&#39;s something I&#39;ve seen happen a lot at multiple
+&lt;p&gt;It sounds silly, but it&amp;rsquo;s something I&amp;rsquo;ve seen happen a lot at multiple
 companies, especially if people are feeling insecure (imposter
 syndrome). It can take the form of lamenting (but really bragging)
 about the number of meetings, or making the tasks you completed sound
-like herculean efforts. It&#39;s pointless and unhealthy for the team.&lt;/p&gt;
+like herculean efforts. It&amp;rsquo;s pointless and unhealthy for the team.&lt;/p&gt;
 &lt;h3 id=&#34;forced-update&#34;&gt;Forced Update&lt;/h3&gt;
 &lt;p&gt;Finally, it forces everyone to talk when they may not want to.  There
 have been times in my career where my personal life has taken over and
@@ -363,9 +363,9 @@ related. At the update I don’t want to go into details about what I’m
 dealing with. In fact, I may be at work specifically to take a break
 from the other stresses going on.  Perhaps I took off work yesterday
 and I may have to leave early today to take care of a personal issue,
-but now I&#39;m in an unconformable position of either saying &amp;ldquo;I have no
-update&amp;rdquo; or, worse, explain that &amp;ldquo;I&#39;ve got some things going on which I
-don&#39;t want to talk about.&amp;rdquo;&lt;/p&gt;
+but now I&amp;rsquo;m in an unconformable position of either saying &amp;ldquo;I have no
+update&amp;rdquo; or, worse, explain that &amp;ldquo;I&amp;rsquo;ve got some things going on which I
+don&amp;rsquo;t want to talk about.&amp;rdquo;&lt;/p&gt;
 &lt;p&gt;As an individual contributor I find this standup format stressful and
 as a project lead and manager I find it unhelpful.  Instead I prefer
 using the standup time to walk the kanban board.&lt;/p&gt;
@@ -377,15 +377,15 @@ this format there is no initial awkward moment trying to figure out
 who should go first. The context switching is much less and the team
 can focus on what is being said instead of trying to memorize what
 they are going to say.&lt;/p&gt;
-&lt;p&gt;Since &lt;strong&gt;Done&lt;/strong&gt; is often an end state and you don&#39;t necessarily want to
+&lt;p&gt;Since &lt;strong&gt;Done&lt;/strong&gt; is often an end state and you don&amp;rsquo;t necessarily want to
 re-walk this entire list every time you can either cut a Jira release
 after each standup, or create a &lt;strong&gt;Closed&lt;/strong&gt; column and use the standup as
 an opportunity to move tasks from &lt;strong&gt;Closed&lt;/strong&gt; to &lt;strong&gt;Done&lt;/strong&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;closing-comments&#34;&gt;Closing comments&lt;/h3&gt;
 &lt;p&gt;One critique of this format is that it is possible for a team member not
 working on a task to feel left out. If they really are attending
-meetings all day there is a chance to they haven&#39;t picked up any tasks
-and therefore won&#39;t speak.  So, at the end of the standup ask a quick
+meetings all day there is a chance to they haven&amp;rsquo;t picked up any tasks
+and therefore won&amp;rsquo;t speak.  So, at the end of the standup ask a quick
 question for any closing or final comments.  This is the opportunity
 to team members to say &amp;ldquo;I need to leave early today,&amp;rdquo; but I would keep
 the focus on today and away from team members trying to justify their
@@ -396,7 +396,7 @@ the team.&lt;/p&gt;
 significantly more useful as I can tell exactly the progress of the
 project (as I’m looking at the tickets) and I can also be sure that
 Jira tickets for the project are up to date. As an individual
-contributor I don&#39;t feel like I have to prepare as much for this
+contributor I don&amp;rsquo;t feel like I have to prepare as much for this
 standup and I can just attend and focus on what everyone else is
 saying.&lt;/p&gt;
 </description>

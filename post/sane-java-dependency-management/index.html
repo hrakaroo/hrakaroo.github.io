@@ -212,8 +212,8 @@
   
 
   <link rel="manifest" href="/index.webmanifest">
-  <link rel="icon" type="image/png" href="/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_32x32_fill_lanczos_center_2.png">
-  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_192x192_fill_lanczos_center_2.png">
+  <link rel="icon" type="image/png" href="/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_32x32_fill_lanczos_center_3.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_192x192_fill_lanczos_center_3.png">
 
   <link rel="canonical" href="/post/sane-java-dependency-management/">
 
@@ -231,8 +231,8 @@
   <meta property="og:site_name" content="Hrakaroo">
   <meta property="og:url" content="/post/sane-java-dependency-management/">
   <meta property="og:title" content="Trying to solve Java&#39;s Gordian Knot | Hrakaroo">
-  <meta property="og:description" content="An approach to Java&#39;s dependency management problem"><meta property="og:image" content="/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_2.png">
-  <meta property="twitter:image" content="/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  <meta property="og:description" content="An approach to Java&#39;s dependency management problem"><meta property="og:image" content="/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_3.png">
+  <meta property="twitter:image" content="/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_3.png"><meta property="og:locale" content="en-us">
   
     
       <meta property="article:published_time" content="2018-06-01T00:00:00&#43;00:00">
@@ -593,9 +593,9 @@
   <div class="article-container">
 
     <div class="article-style">
-      <p>Java's dependency management suffers from the dreaded diamond
+      <p>Java&rsquo;s dependency management suffers from the dreaded diamond
 dependency issue. And while this issue is not unique to Java, it is,
-perhaps, more acute due to the precompiled nature of Java's Jar files.</p>
+perhaps, more acute due to the precompiled nature of Java&rsquo;s Jar files.</p>
 <h2 id="a-quick-refresher">A Quick Refresher</h2>
 <p>If you are unfamiliar with this issue, here is a
 quick refresher:</p>
@@ -663,8 +663,8 @@ bug they have had so they update to it as</p>
 <p>And publish it under</p>
 <pre><code>    com.hrakaroo : cat : 2.0
 </code></pre>
-<p>But the Dog library makers don't need the new functionality so they
-don't bother to update.</p>
+<p>But the Dog library makers don&rsquo;t need the new functionality so they
+don&rsquo;t bother to update.</p>
 <p>And finally, you decide to update your service to use the newest version
 of Cat which has the bug fix you need.  This changes
 your dependency tree to:</p>
@@ -682,23 +682,23 @@ version) and use that as its version. In this case it will select
 <code>com.hrakaroo : common : 2.0</code> which means that when your service calls
 Dog.method1 it will give you a <em>runtime exception</em> as the JVM will be
 unable to find the definition for <code>helpful(String)</code>.</p>
-<p>Or, if you are using gradle, you can use it's force tag and force the
+<p>Or, if you are using gradle, you can use it&rsquo;s force tag and force the
 version down to <code>com.hrakaroo : common : 2.0</code> which means that when
 your service calls Cat.method2 it will give you a <em>runtime exception</em> as
 the JVM will be unable to find the definition for
 <code>helpful(String, boolean)</code></p>
-<p>The only &ldquo;correct&rdquo; solution here is to use gradle's
+<p>The only &ldquo;correct&rdquo; solution here is to use gradle&rsquo;s
 failOnVersionConfict() which will fail to compile your project unless
 both your dog and cat dependencies use the same version. This means
 you will be forced to fix the issue before your project can compile,
 but this may not be practical as a large project has lots of moving
 parts and compatible versions may not be available.
-Additionally, <code>failOnVersionConflict()</code> doesn't understand semantic
+Additionally, <code>failOnVersionConflict()</code> doesn&rsquo;t understand semantic
 versioning so it will fail on PATCH level differences which often
 makes this a very painful and non-practical solution.</p>
 <p>Most people just choose to go with the plug-and-pray approach where
 they just hope they never call a code path which encounters a
-definition which doesn't exist.</p>
+definition which doesn&rsquo;t exist.</p>
 <h2 id="cutting-the-knot">Cutting the knot</h2>
 <p>As the two easy solutions are wrong and the one correct solution is
 impratical, the only real answer here is to avoid the problem
@@ -707,11 +707,11 @@ altogether. When building a library, limit your dependencies.</p>
 shared library. From the technologies you use to the way you version
 and test it are substantially different. Services are often just thin
 wiring together of different frameworks and libraries while libraries
-are more single tasked. And yet, they too often I don't see people
+are more single tasked. And yet, they too often I don&rsquo;t see people
 appreciate this difference. Instead they hack together libraries like
 they do services.</p>
 <h3 id="stick-to-vanilla-java">Stick to vanilla Java</h3>
-<p>I really like the Kotlin language, but I don't think it has a place
+<p>I really like the Kotlin language, but I don&rsquo;t think it has a place
 (yet) in shared libraries. Part of what makes Kotlin fun are all
 of the extension and infix libraries which are all packaged in the
 kotlin stdlib dependency.  Any time you have more than two kotlin
@@ -719,12 +719,12 @@ library dependencies you are just about assured to have a version
 conflict on the kotlin stdlib.  Libraries should be written in Java
 to remove as many dependencies as possible.</p>
 <h3 id="avoid-huge-common-or-utility-libraries">Avoid huge common or utility libraries</h3>
-<p>Apache's commons-lang3 is a fantastic library, but too often I've seen
+<p>Apache&rsquo;s commons-lang3 is a fantastic library, but too often I&rsquo;ve seen
 brought in so that the developer can use the <code>StringUtils.join()</code>
 method. Not only is this method <em>trivial</em> to write, but with Java 8
 this can be done directly off the stream using
 <code>.collect(Collectors.joining(...))</code>.</p>
-<p>The same can be said for Google's Guava library, which is an enormous
+<p>The same can be said for Google&rsquo;s Guava library, which is an enormous
 library that often makes non-compatible changes. In one library I
 reviewed the author had brought in a dependency on Guava so that they
 could use the <code>Preconditions</code> checks. While I think this type of
@@ -748,7 +748,7 @@ relocate <code>com.apache.commons</code> to <code>com.hrakaroo.apache.commons</c
 resort, but it will guarantee that no one can later change the depenency
 version to something which is incompatable.</p>
 <p>Whatever your approach, you should take the time when creating a shared
-library to minimize it's transitive dependencies as much as possible.
+library to minimize it&rsquo;s transitive dependencies as much as possible.
 By doing so you will help minimize the risk to developers which use your
 library of creating their own diamon dependency nightmare.</p>
 
@@ -1035,7 +1035,7 @@ library of creating their own diamon dependency nightmare.</p>
     
     
     
-    <script src="/js/academic.min.a0d331bcd05dbe8b31e244f796710f08.js"></script>
+    <script src="/js/academic.min.409b0d00283f74c9777416d6d91420f4.js"></script>
 
     
 

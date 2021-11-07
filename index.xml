@@ -5,12 +5,112 @@
     <link>/</link>
       <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <description>Hrakaroo</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 01 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 06 Nov 2021 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_2.png</url>
+      <url>/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_3.png</url>
       <title>Hrakaroo</title>
       <link>/</link>
     </image>
+    
+    <item>
+      <title>Avoiding Read/Write Locks</title>
+      <link>/post/rw-locks/</link>
+      <pubDate>Sat, 06 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>/post/rw-locks/</guid>
+      <description>&lt;p&gt;Intuitively, read/write locks seem to be the perfect solution. They
+allow you to coordinate access to a resource and as long as the write
+operations are fast enough the read/write locks are basically free (or
+at least only as &amp;ldquo;expensive&amp;rdquo; as the time it takes to execute the write
+action.) The idea being that if multiple read routines use a read/write
+lock the only time they are blocked from execution is while the write
+routine holds the lock, but are otherwise totally unblocked.&lt;/p&gt;
+&lt;p&gt;As it turns out this is not necessarily true and read/write locks can end up
+being a lot more expensive than they initially appear.&lt;/p&gt;
+&lt;p&gt;Consider the following:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Thread 1 requests read access to a shared read/write lock.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;At this point in time no one else has requested the lock for either
+read or write access so a read lock is granted to Thread 1.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Thread 2 requests read access to the same read/write lock.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Since the lock is currently only read locked by Thread 1, Thread 2
+is also given read access.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Thread 3 requests write access to the same read/write lock.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Since the lock has been locked for read access by both Thread 1 and
+Thread 2, Thread 3 is put on a wait list for write access until
+Thread 1 and Thread 2 release their read locks.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Thread 4 requests read access to the same read/write lock.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;What happens here?&lt;/p&gt;
+&lt;p&gt;A first guess might be to give Thread 4 the read lock, along with
+Threads 1 and 2, since Thread 3 has not yet obtained the write lock,
+but lets consider the fall out if we let this happen. Imagine a system
+where every read operation took a minute to execute and requests are
+comming in every 30 seconds. If every read request is granted a read
+lock so long as no write thread had been given a write lock, new read
+requests would always come in before previous ones finished ensuring
+that the lock was never free (ie not read locked.) In this situation
+the write operation would essentially be blocked from every achieving
+write access. aka, lock starvation.&lt;/p&gt;
+&lt;p&gt;In order to prevent lock starvation it is necessary that as soon as a
+write lock is requested every subsequent read lock request is blocked
+from obtaining the lock until the thread requesting the write lock is
+given the lock, executes, and then releases the write lock.&lt;/p&gt;
+&lt;p&gt;This means that as soon as a write lock is requested any threads
+currently running essentially block all new read requests. So a
+read/write lock is, worse case, as &amp;ldquo;expensive&amp;rdquo; as the time it takes to
+execute the write operation plus the worse case time it takes to
+execute a read operation.&lt;/p&gt;
+&lt;p&gt;This means that even if you optimize your system so that the write
+operations are as fast as possible, your overall throughput may still
+be dependent on your slowest running read operation.&lt;/p&gt;
+&lt;h2 id=&#34;what-readwrite-locks-are-good-for&#34;&gt;What read/write locks are good for.&lt;/h2&gt;
+&lt;p&gt;Read/Write locks should really be used when you need a memory barrier
+and &lt;em&gt;all&lt;/em&gt; running threads are only allowed to see the memory either
+before or after a write operation, but never both. Meaning that it is
+not allowable for some threads to see the value of the memory before
+the write operations and other threads running at the same time to see
+the memory value after the write operation.&lt;/p&gt;
+&lt;p&gt;But, as we saw above, this comes at a cost and in many cases it&amp;rsquo;s not
+really needed.&lt;/p&gt;
+&lt;p&gt;For example, suppose we had a data structure that held the account
+balance for an individual. Suppose also that this account received a
+constant stream of read requests that, for what ever reason, took
+several minutes to calculate. If we were to use a traditional
+read/write lock here then every time there was a deposit or withdrawal
+(a write operation) all read operations would be blocked until all
+running read operations finished and the write executed.&lt;/p&gt;
+&lt;p&gt;Although the write operation may be quick, the long execution time on
+the read operation is going to cause the system to appear blocked
+while it waits for the write lock. But if we can tolerate concurrent
+threads seeing two different values then we can remove the block all
+together and achieve higher overall throughput.&lt;/p&gt;
+&lt;p&gt;To achieve this we would need to make the data structure immutable.
+Once immutable there would no longer need to be any coordination and
+all locks could be removed. Updates would instead be handled by having
+the write thread copy the immutable data structure locally, modify it
+and then use an atomic operation to swap in the new data structure.&lt;/p&gt;
+&lt;p&gt;Read operations running against the old data structure would continue
+to run and would report the old value, while any new read operation
+would run over the new data structure and report the new value.
+Eventually all old read operations would finish and the only view
+would be of the new data structure, but for a time it would be
+possible for different threads to report different values.&lt;/p&gt;
+&lt;p&gt;We could also re-introduce a simple lock for just the writer
+operations to ensure that multiple write operations always happen in
+sequence so they can never overlap and they would never cause
+inconsistent results.&lt;/p&gt;
+&lt;p&gt;So, in summary, while read/write locks often appear, at first blush,
+like a panacea, they can actually carry a substantial hidden cost.
+And in some cases the functionality provided by a read/write lock may
+not even be what you really need.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Hiking around Mount St. Helens in 3&#43;1 Days</title>
@@ -35,7 +135,7 @@ contacted by someone who had two extra passes as some people in their
 party backed out at the last moment. Further, the person lived in
 Seattle and was only a short distance from Tobin, so two days before
 we were set to leave Tobin drove to their house and bought the two
-passes from the seller. The guy was really nice and didn&#39;t mark up
+passes from the seller. The guy was really nice and didn&amp;rsquo;t mark up
 the cost and just charged us the $20 or so per pass that he had paid.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;the-trip&#34;&gt;The trip&lt;/h2&gt;
@@ -48,24 +148,24 @@ of Aug 1st. Initially we thought we would enter at Sheep Canyon
 trailhead and hike clockwise on the trail.  This would put us around
 Windy Pass on the first night and close to June Lake on the second
 night.  (In retrospect this was probably not a great plan as Windy
-Pass isn&#39;t named ironically.  It is windy as hell and camping there
+Pass isn&amp;rsquo;t named ironically.  It is windy as hell and camping there
 would have been a trick.)  However, the &lt;em&gt;night before&lt;/em&gt; we were
 planning on leaving we realized the trailhead we were going to use had
 been washed out and we had to scramble to come up with a new plan.&lt;/p&gt;
 &lt;p&gt;The new plan was to park at the Windy Ridge trailhead and hike counter
-clockwise around the mountain.  Tobin is from Seattle and I&#39;m from
-Portland so we met at Spiffy&#39;s at I-5 and Highway 12, stashed his car
+clockwise around the mountain.  Tobin is from Seattle and I&amp;rsquo;m from
+Portland so we met at Spiffy&amp;rsquo;s at I-5 and Highway 12, stashed his car
 in a gravel parking near the 76 gas station and drove my car to the
 trailhead.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Spiffy&#39;s is a bit of a dive restaurant off I-5 but there were not a
+&lt;p&gt;Spiffy&amp;rsquo;s is a bit of a dive restaurant off I-5 but there were not a
 lot of other places around and we knew we wanted to get some take away
 sandwiches.  I showed up first, walked in and started looking at the
 menu.  While I was deciding an older guy with a &amp;ldquo;get off my lawn&amp;rdquo; look
 to him walked in with a small lapdog in his arms.  The hostess
 informed him that the dog would need to wait outside which caused him
 to get really upset and he demanded/yelled that it was a &amp;ldquo;therapy
-dog.&amp;rdquo;  The hostess wasn&#39;t having any of it and told him that he needed
+dog.&amp;rdquo;  The hostess wasn&amp;rsquo;t having any of it and told him that he needed
 a permit or some sort of license if it was a therapy dog. At that
 point the guy yelled at the hostess &amp;ldquo;go fuck yourself you fucking
 whore&amp;rdquo; and stormed out.  That was also the exact moment at which Tobin
@@ -77,7 +177,7 @@ handled it really well and the sandwiches were pretty good.&lt;/p&gt;
 &lt;p&gt;The trail head is at the end of NF-99, super easy to find and there is
 plenty of parking and a flush toilet bathroom. There are also some
 interesting informational signs that talk about the eruption and slow
-recovery of the area. We were a bit eager to get started so we didn&#39;t
+recovery of the area. We were a bit eager to get started so we didn&amp;rsquo;t
 linger too long. We ate the sandwiches we had picked up at Spiffy,
 sunscreened up and headed off.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;./Trailhead.jpg&#34; alt=&#34;trailhead&#34;&gt;&lt;/p&gt;
@@ -87,9 +187,9 @@ to three liters.&lt;/p&gt;
 &lt;h2 id=&#34;day-1---122-miles&#34;&gt;Day 1 - 12.2 miles&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&#34;./day1.png&#34; alt=&#34;day1&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;starting&#34;&gt;Starting&lt;/h3&gt;
-&lt;p&gt;For the first 1.7 miles the hike is along a winding gravel road. It&#39;s
+&lt;p&gt;For the first 1.7 miles the hike is along a winding gravel road. It&amp;rsquo;s
 blocked off from cars and well maintained, albeit not terribly
-interesting.  At the end of the gravel road it&#39;s still another 1.2
+interesting.  At the end of the gravel road it&amp;rsquo;s still another 1.2
 miles until you actually connect to the Loowit trail.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;./TobinJoshua.jpg&#34; alt=&#34;Tobin and Joshua&#34;&gt;&lt;/p&gt;
 &lt;p&gt;As we were hiking counter clockwise around the mountain we headed to
@@ -100,18 +200,18 @@ walking is pretty easy.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;./Starting.jpg&#34; alt=&#34;starting&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;loowit-falls&#34;&gt;Loowit Falls&lt;/h3&gt;
 &lt;p&gt;Around a mile into the trail there is a turn out to go see Loowit
-Falls.  It&#39;s about 0.6 miles off the tail but well worth checking out.
-Although you can &lt;em&gt;see&lt;/em&gt; the falls, you can&#39;t actually get near it and
+Falls.  It&amp;rsquo;s about 0.6 miles off the tail but well worth checking out.
+Although you can &lt;em&gt;see&lt;/em&gt; the falls, you can&amp;rsquo;t actually get near it and
 even getting down to the water is a challenge.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;./LoowitFalls.jpg&#34; alt=&#34;loowit falls&#34;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;We did meet up with a forest ranger just before we got to the turn off
 for the falls and chatted with him a bit.  We asked the ranger if the
 waterfall was worth the extra hike (as we had a long ways that day).
-His answer was something like &amp;ldquo;yeah, it&#39;s pretty good&amp;rdquo; which we didn&#39;t
+His answer was something like &amp;ldquo;yeah, it&amp;rsquo;s pretty good&amp;rdquo; which we didn&amp;rsquo;t
 find very convincing.  I think we even said, in a joking way, &amp;ldquo;you are
 not exactly selling it here&amp;rdquo; to which he then responded very excitedly
-&amp;ldquo;it&#39;s a 200 ft waterfall made of glacier melt coming out an active
+&amp;ldquo;it&amp;rsquo;s a 200 ft waterfall made of glacier melt coming out an active
 Volcano!&amp;rdquo;  He was awesome and convinced us to go and waterfall was
 amazing.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -134,13 +234,13 @@ getting back on the trail pretty easy.&lt;/p&gt;
 &lt;h3 id=&#34;castle-ridge&#34;&gt;Castle Ridge&lt;/h3&gt;
 &lt;p&gt;As you get close to Castle Ridge the scenery starts to change
 significantly.  The trail gets close to the ridge itself in sections
-and it&#39;s a steep drop down.  Tobin also recognized Huckleberries so we
+and it&amp;rsquo;s a steep drop down.  Tobin also recognized Huckleberries so we
 stopped at several big patches before continuing on.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;./CastleRidge.jpg&#34; alt=&#34;castle ridge&#34;&gt;&lt;/p&gt;
-&lt;p&gt;From Castle Ridge it&#39;s 1.4 miles down to the Toutle River.  The start
+&lt;p&gt;From Castle Ridge it&amp;rsquo;s 1.4 miles down to the Toutle River.  The start
 of this section is a switch back on a sandy incline that could be
 challenging to walk at time.  At times it could take a fair bit of
-concentration but it wasn&#39;t impossible.  (I would not advise either
+concentration but it wasn&amp;rsquo;t impossible.  (I would not advise either
 this section or the ridge for smaller children.)  After the sandy
 incline you enter the forest and continue your switchbacks down.  It
 was here that Tobin discovered wild Salmonberries within reach of the
@@ -157,7 +257,7 @@ shock it is actually rather easy to do.&lt;/p&gt;
 &lt;p&gt;When we were there the Toutle River was around 5 feet across and we
 were able to cross easily by jumping across rocks.  We set up camp
 next to the river and the sandy floor made for a really plush
-ground. It was honestly one of the best night sleeps I&#39;ve ever had
+ground. It was honestly one of the best night sleeps I&amp;rsquo;ve ever had
 camping.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;./ToutleRiver1.jpg&#34; alt=&#34;toutle river&#34;&gt;&lt;/p&gt;
 &lt;p&gt;There were lots of places to set up our tents and when we arrived were
@@ -171,14 +271,14 @@ easier than the one to climb down and we probably could have managed
 it without the rope.&lt;/p&gt;
 &lt;p&gt;Our goal was to hike down near the Summit trail, find a spot to camp
 and hopefully water nearby.  The other campers at the river were
-hiking the mountain in a clockwise direction and said they didn&#39;t see
+hiking the mountain in a clockwise direction and said they didn&amp;rsquo;t see
 any water other than June Lake. So our fall back plan was to find a
 camping spot around the Summit trail, dump our packs and hike down to
 June Lake for water.&lt;/p&gt;
 &lt;h3 id=&#34;crescent-ridge&#34;&gt;Crescent Ridge&lt;/h3&gt;
 &lt;p&gt;Right out of the river the hike is a brutal uphill climb that takes you
-from 3200 ft to 4700 ft in 1.7 miles.  It&#39;s almost entirely in the
-trees so you don&#39;t get much of a view either.  We did stop to take a
+from 3200 ft to 4700 ft in 1.7 miles.  It&amp;rsquo;s almost entirely in the
+trees so you don&amp;rsquo;t get much of a view either.  We did stop to take a
 couple of breaks on the hike up as we were still finding wild
 Salmonberries and Huckleberries.  The Huckleberries especially were
 perfectly ripe and really good.&lt;/p&gt;
@@ -222,7 +322,7 @@ lot of silt in it and Tobin had a brand new bandana with him.
 Regretfully the bandana was red and had probably only been washed once
 so when we were straining the water it took on a very pink color.
 Even after using the Sawyer squeeze bag it still had a bit of a
-pinkish hue to it, but it didn&#39;t seem to contribute any taste.&lt;/p&gt;
+pinkish hue to it, but it didn&amp;rsquo;t seem to contribute any taste.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;day-3---82-miles---the-summit&#34;&gt;Day 3 - 8.2 miles - The Summit&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&#34;./day3.png&#34; alt=&#34;day3&#34;&gt;&lt;/p&gt;
@@ -240,7 +340,7 @@ we brushed up against the plants on the sides of the trail.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;./SummitRoute1.jpg&#34; alt=&#34;summit route1&#34;&gt;&lt;/p&gt;
 &lt;p&gt;This was not an easy hike.  The very start of this path is like a
 normal, albeit steep, trail but it quickly turns into climbing over
-volcanic boulders.  There isn&#39;t really a trail to follow anymore, but
+volcanic boulders.  There isn&amp;rsquo;t really a trail to follow anymore, but
 the route is marked by posts which are placed just close enough
 together that you can just see the next one.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;./SummitRoute2.jpg&#34; alt=&#34;summit route2&#34;&gt;&lt;/p&gt;
@@ -261,7 +361,7 @@ were going to actually be used.&lt;/p&gt;
 &lt;h3 id=&#34;pumice-path&#34;&gt;Pumice Path&lt;/h3&gt;
 &lt;p&gt;As hard as the hike was so far, the pumice path that is at the end is
 even harder.  The incline is very steep and with every step up you
-take you slip back down almost a half a step.  It&#39;s like this for
+take you slip back down almost a half a step.  It&amp;rsquo;s like this for
 almost half a mile and the pumice easily doubles the distance. There
 is also not a clear visual for how far you still have to go so it can
 seem a bit unending at times.&lt;/p&gt;
@@ -276,10 +376,10 @@ could see all around the mountain.  Unfortunately, the clouds &lt;em&gt;in&lt;/e
 crater did not clear so we never really got a good full look inside,
 although from time to time we got a couple of good glimpses.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;./Crater.jpg&#34; alt=&#34;cater&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Otherwise the view from the top is really amazing and I&#39;m glad we made
+&lt;p&gt;Otherwise the view from the top is really amazing and I&amp;rsquo;m glad we made
 the trip.  We did walk partway around the edge and we did see the
 crack the ranger was talking about.  Because of the scale of
-everything, looking over the edge didn&#39;t seem like a huge drop, but
+everything, looking over the edge didn&amp;rsquo;t seem like a huge drop, but
 apparently its something like a 2600 ft drop.&lt;/p&gt;
 &lt;p&gt;After spending about 30 mins at the top we headed down which gives you
 a totally new perspective on just how far you have climbed and how
@@ -298,7 +398,7 @@ really fortunate we had collected water the night before as it was
 totally dry that morning.&lt;/p&gt;
 &lt;p&gt;It was a 1.2 mile hike to the cut off for June Lake and shortly past
 that past a creek that was flowing and allowed us to get more water.
-This water was clear and didn&#39;t need to be double filtered.  After
+This water was clear and didn&amp;rsquo;t need to be double filtered.  After
 that it was 4.8 miles to Pumice Butte.  The hike was really beautiful
 and you can see several other mountains in the distance.  We stopped
 often for Huckleberries and the very occasional Salmonberry and to move
@@ -309,7 +409,7 @@ off the path at times for runners.&lt;/p&gt;
 &lt;img src=&#34;Trail4.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;pumice-butte&#34;&gt;Pumice Butte&lt;/h3&gt;
 &lt;p&gt;Several people claim you can get water near Pumice Butte but all the
-water we saw was very stagnant and didn&#39;t look good at all.  The 1.8
+water we saw was very stagnant and didn&amp;rsquo;t look good at all.  The 1.8
 miles of The Plains of Abraham are flat, long and because of the time
 of day we were there, very hot.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;Flats1.jpg&#34; alt=&#34;&#34;&gt;
@@ -326,7 +426,7 @@ time.&lt;/p&gt;
 a steep climb up, and short jog forward and then a steep switchback
 back down.  Also, deceptively, they have put posts that run up to the
 left, giving the impression you have to climb much higher than you
-actually do.  I&#39;m not sure if this was someones idea of a joke or if
+actually do.  I&amp;rsquo;m not sure if this was someones idea of a joke or if
 there is another trail up that way.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;WindyPass.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;In any case we made it down and eventually made it back to the spot
@@ -336,7 +436,7 @@ Also the winding gravel road has several false turns where you can
 easily fall into thinking that the car is &amp;ldquo;just ahead&amp;rdquo;.&lt;/p&gt;
 &lt;h3 id=&#34;the-car&#34;&gt;The car&lt;/h3&gt;
 &lt;p&gt;Getting back to the car we changed into clean(er) clothes and headed
-back to Tobins car, stopping off at Plaza Jalisco&#39;s Mexican restaurant
+back to Tobins car, stopping off at Plaza Jalisco&amp;rsquo;s Mexican restaurant
 for dinner.&lt;/p&gt;
 &lt;h2 id=&#34;retrospective&#34;&gt;Retrospective&lt;/h2&gt;
 &lt;h3 id=&#34;equipment&#34;&gt;Equipment&lt;/h3&gt;
@@ -350,9 +450,9 @@ perhaps, overkill.  And by the last day, especially that last 2.5
 miles, my feet were killing me.  Tobin commented that his feet hurt as
 well, but I think the boots were adding to my discomfort.&lt;/p&gt;
 &lt;h4 id=&#34;socks&#34;&gt;Socks&lt;/h4&gt;
-&lt;p&gt;I should have brought more socks.  In the past when I&#39;ve hiked for a
+&lt;p&gt;I should have brought more socks.  In the past when I&amp;rsquo;ve hiked for a
 couple of days (2-4) I usually bring just two pairs of socks, but for
-those hikes I&#39;m often spending the day at the destination or wearing
+those hikes I&amp;rsquo;m often spending the day at the destination or wearing
 my camp shoes. For this trip we were hiking every day and it would
 have been really nice to put on a clean pair of socks every morning.
 Tobin washed his out in the river which seems to have helped, but
@@ -370,7 +470,7 @@ pictures.  I had thought that non-SLR digital cameras were a thing
 of the past, but after this trip I now included a digital camera in my
 packing list.&lt;/p&gt;
 &lt;h4 id=&#34;water&#34;&gt;Water&lt;/h4&gt;
-&lt;p&gt;Similar to the camera, Tobin&#39;s backpack also enabled him to carry at
+&lt;p&gt;Similar to the camera, Tobin&amp;rsquo;s backpack also enabled him to carry at
 least one liter of water where he could easily reach and drink from
 it.  Mine was attached to the back of my backpack making it a pain and
 often I had to ask Tobin to get my water for me.  As a consequence I
@@ -378,8 +478,8 @@ probably drank less than I should have.  I need to either figure out a
 better way to hook up a bottle, or get one of those camel packs.&lt;/p&gt;
 &lt;h4 id=&#34;more-space&#34;&gt;More space&lt;/h4&gt;
 &lt;p&gt;I had brought with me some fleece pants and a fleece top and while
-these don&#39;t weigh much, they do take up a fair bit of space.  Weight
-wasn&#39;t really an issue on this trip, but space was.  As it was, my bag
+these don&amp;rsquo;t weigh much, they do take up a fair bit of space.  Weight
+wasn&amp;rsquo;t really an issue on this trip, but space was.  As it was, my bag
 was packed really tight which required extra time packing up in the
 morning and trying to get to anything in my pack.  Since this trip I
 have replaced some of the gear in my pack with things that just take
@@ -390,20 +490,20 @@ swap my bivy for a tent which I feel was a good call.  I like using a
 bivy because they are fast to set up and overall just more fun.
 However, on this trip it would have been miserable sleeping in the
 bivy when it was raining and the 3 hours we hung out in the tent
-before climbing to the summit.  I&#39;m also not sure I would have been as
+before climbing to the summit.  I&amp;rsquo;m also not sure I would have been as
 keen on leaving my bivy out when we were hiking.&lt;/p&gt;
 &lt;h4 id=&#34;sleeping-pad&#34;&gt;Sleeping pad&lt;/h4&gt;
 &lt;p&gt;I had a blow up air pad while Tobin had the waffle mat.  I think the
 air pad is more comfortable, but you do run the risk that it could
 rupture and then you can be in some real trouble.  I did have a small
-patch kit with me, but I&#39;ve never used it and I&#39;m not sure how well it
+patch kit with me, but I&amp;rsquo;ve never used it and I&amp;rsquo;m not sure how well it
 would work if I had to patch my air pad at night.  Additionally, the
 air pad is noisy as hell when you move around on it.  It makes a sound
-that is similar to rubbing a balloon. For next season I think I&#39;m going
+that is similar to rubbing a balloon. For next season I think I&amp;rsquo;m going
 to try using a waffle pad and see how that works.  I also like that
 the set up for the waffle pad is super quick.&lt;/p&gt;
 &lt;h4 id=&#34;hiking-gloves&#34;&gt;Hiking gloves&lt;/h4&gt;
-&lt;p&gt;I didn&#39;t have a good pair of hiking gloves with me and I really wish I
+&lt;p&gt;I didn&amp;rsquo;t have a good pair of hiking gloves with me and I really wish I
 did.  I did have some fingerless gloves (aka hobo gloves) which
 convert to mittens, and while they were warm enough they were not the
 best for climbing with.  Ultimately I need to get a good pair of
@@ -416,7 +516,7 @@ on stones and trees and the such, but after a long day, and in the
 morning, it is nice to be able to sit on a real chair.  Sitting on the
 stones and logs meant that I was constantly trying to find a
 comfortable one or leaning to the side as I am sitting.  The new
-folding chairs are down around a pound now so I&#39;m hoping to try this
+folding chairs are down around a pound now so I&amp;rsquo;m hoping to try this
 out on my next hike.&lt;/p&gt;
 &lt;h4 id=&#34;sawyer-squeeze-bottles&#34;&gt;Sawyer squeeze bottles&lt;/h4&gt;
 &lt;p&gt;These things are awesome.  When we got home and cleaned it out it was
@@ -424,7 +524,7 @@ amazing how brown the water was and how much they filtered things.
 They are awesome, I just wanted to point that out.&lt;/p&gt;
 &lt;h3 id=&#34;hike&#34;&gt;Hike&lt;/h3&gt;
 &lt;h4 id=&#34;bugs&#34;&gt;Bugs&lt;/h4&gt;
-&lt;p&gt;Normally I&#39;m bothered by mosquitoes but I don&#39;t think we encountered
+&lt;p&gt;Normally I&amp;rsquo;m bothered by mosquitoes but I don&amp;rsquo;t think we encountered
 any on this trip.  Perhaps this is due to the general lack of
 water but even the flies were not that bad.&lt;/p&gt;
 &lt;h4 id=&#34;overall&#34;&gt;Overall&lt;/h4&gt;
@@ -433,7 +533,7 @@ The changes in the scenery were really interesting and the rope climbs
 and wild berries made for an interesting trek. Even though we had to
 scramble to find an alternative, I really think entering at Windy Pass
 and working counter clockwise worked out well for us.  The only
-disappointment was that the weather wasn&#39;t clearer when we were at the
+disappointment was that the weather wasn&amp;rsquo;t clearer when we were at the
 top, but it just means we will have to return sometime.&lt;/p&gt;
 &lt;h3 id=&#34;forest-rangers&#34;&gt;Forest Rangers&lt;/h3&gt;
 &lt;p&gt;And finally, I want to give special thanks to the awesome forest
@@ -452,9 +552,9 @@ So thank you!&lt;/p&gt;
       <description>&lt;h2 id=&#34;quick-background&#34;&gt;Quick Background&lt;/h2&gt;
 &lt;p&gt;I volunteer as a Systems Administrator for a small medical
 clinic. They have a very slim IT budget so while their desktop systems
-are primarily Windows 10, I&#39;ve configured most of their server
+are primarily Windows 10, I&amp;rsquo;ve configured most of their server
 infrastructure with Linux. A &lt;a href=&#34;https://www.proxmox.com/&#34;&gt;Proxmox&lt;/a&gt;
-server is used to manage their virtualized environment and I&#39;m using
+server is used to manage their virtualized environment and I&amp;rsquo;m using
 &lt;a href=&#34;https://www.samba.org/&#34;&gt;Samba4&lt;/a&gt; for their Active Directory
 Domain Controller.&lt;/p&gt;
 &lt;p&gt;When I first set up Samba4 as their Active Directory I was able to use
@@ -468,16 +568,16 @@ rebranded themselves as &lt;a href=&#34;https://samba.plus/&#34;&gt;Samba+&lt;/a
 subscription fee for the binary packages.  While I would love to
 support them, paying a subscription fee is not an option for this
 clinic.&lt;/p&gt;
-&lt;p&gt;I&#39;d really like to stick with CentOS as my server distribution as I
+&lt;p&gt;I&amp;rsquo;d really like to stick with CentOS as my server distribution as I
 have a lot of experience with it and have always found it to be a
 solid, minimial distribution. However, for reasons RedHat has decided
 that the Samba4 build that comes with Fedora should not include the
 ability to act as an Active Directory Domain Controller.&lt;/p&gt;
 &lt;p&gt;I could build the sources from scratch and still use CentOS, but that
-would require installing all the build tools on each server and I&#39;m
+would require installing all the build tools on each server and I&amp;rsquo;m
 trying to keep them as light as possible.  Plus, building from scratch
 often introduces its own host of challenges and I really just want to
-set this up and move on to my next project.  So instead I&#39;m going to
+set this up and move on to my next project.  So instead I&amp;rsquo;m going to
 give a go at using &lt;a href=&#34;https://ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt;, which I really like
 as a desktop system but have never been terribly thrilled with as a
 server system.&lt;/p&gt;
@@ -485,21 +585,21 @@ server system.&lt;/p&gt;
 &lt;a href=&#34;https://www.tecmint.com/install-samba4-active-directory-ubuntu/&#34;&gt;tecmint&lt;/a&gt;
 and specifically &lt;a href=&#34;https://www.tecmint.com/join-additional-ubuntu-dc-to-samba4-ad-dc-failover-replication/&#34;&gt;this
 one&lt;/a&gt;. However,
-these instructions were written for Ubuntu 16.04 so I&#39;m making this
+these instructions were written for Ubuntu 16.04 so I&amp;rsquo;m making this
 post to document the steps I took in setting up Samba4 on an Ubuntu
 system.&lt;/p&gt;
 &lt;h2 id=&#34;networking-overview&#34;&gt;Networking overview&lt;/h2&gt;
 &lt;p&gt;For reference, the main gateway is a
 &lt;a href=&#34;https://www.pfsense.org/&#34;&gt;pfSense&lt;/a&gt; box set up at 10.0.1.1.  This runs
 as the primary DNS and DHCP server for the network.  The domain name
-I&#39;ll use in the instructions is &lt;code&gt;hrakaroo.lan&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;My Active Directory domain is &lt;code&gt;ad.hrakaroo.lan&lt;/code&gt;.  I&#39;ve specifically
-set this up so that Active Directory is on it&#39;s own sub domain as I
-don&#39;t want the rest of the server infrastructure to be dependent on
-Active Directory.  I&#39;d rather isolate Active Directory to its own
+I&amp;rsquo;ll use in the instructions is &lt;code&gt;hrakaroo.lan&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;My Active Directory domain is &lt;code&gt;ad.hrakaroo.lan&lt;/code&gt;.  I&amp;rsquo;ve specifically
+set this up so that Active Directory is on it&amp;rsquo;s own sub domain as I
+don&amp;rsquo;t want the rest of the server infrastructure to be dependent on
+Active Directory.  I&amp;rsquo;d rather isolate Active Directory to its own
 area.&lt;/p&gt;
 &lt;h2 id=&#34;creating-a-new-system-in-proxmox&#34;&gt;Creating a new system in Proxmox&lt;/h2&gt;
-&lt;p&gt;In Proxmox I&#39;ve created the following new host&lt;/p&gt;
+&lt;p&gt;In Proxmox I&amp;rsquo;ve created the following new host&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;Hostname: adc1
 Memory: 2 G
 Disk: 32 G
@@ -508,13 +608,13 @@ Cores: 2
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;In retrospect (by looking at the usage charts in Proxmox) it looks
 like I could have cut the memory, disk and cores in half and it would
-have been fine, but I&#39;m going to leave it as is for now.&lt;/p&gt;
+have been fine, but I&amp;rsquo;m going to leave it as is for now.&lt;/p&gt;
 &lt;p&gt;Once the vm is created, start the server.&lt;/p&gt;
-&lt;p&gt;Most of the installation is pretty straightforward so I&#39;m only
-going to highlight when I didn&#39;t select the default.&lt;/p&gt;
+&lt;p&gt;Most of the installation is pretty straightforward so I&amp;rsquo;m only
+going to highlight when I didn&amp;rsquo;t select the default.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Installer update available&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;During the install it suggests that an update to the installer
-is available and asks if you want to update.  I&#39;m not sure if it
+is available and asks if you want to update.  I&amp;rsquo;m not sure if it
 matters much, but I said yes.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Networking&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Edit the IPv4 configuration and select Manual&lt;/p&gt;
@@ -525,14 +625,14 @@ Name servers: 10.0.1.26
 Search domains: ad.hrakaroo.lan
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;10.0.1.26 is the name servers for the existing Active Directory
-Domain Controller. Once the system is fully configured I&#39;ll change
+Domain Controller. Once the system is fully configured I&amp;rsquo;ll change
 this, but it makes the initial setup much easier if this points
 at your existing Domain Controller.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Profile Setup&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;This is the first thing I don&#39;t like about Ubuntu.  I&#39;d rather just
+&lt;p&gt;This is the first thing I don&amp;rsquo;t like about Ubuntu.  I&amp;rsquo;d rather just
 have a password set for the root account.  I get the reason why they
 are doing this, but for my super small setup this is more of an
-annoyance than a help.  Sadly you also can&#39;t use general accounts like
+annoyance than a help.  Sadly you also can&amp;rsquo;t use general accounts like
 &amp;lsquo;admin&amp;rsquo; or &amp;lsquo;staff&amp;rsquo; either.  So I ended up creating a personal account
 for Joshua Gerth.  (This turned out to be a bit of a mistake, more
 on this can be found in the &lt;a href=&#34;#profile-mistake&#34;&gt;additional things&lt;/a&gt;
@@ -540,7 +640,7 @@ at the bottom.)&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;SSH Setup&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;[X] Enable install the OpenSSH server.&lt;/p&gt;
 &lt;h2 id=&#34;basic-server-configuration&#34;&gt;Basic Server Configuration&lt;/h2&gt;
-&lt;p&gt;For almost all of these commands I find it easier to work by ssh&#39;ing
+&lt;p&gt;For almost all of these commands I find it easier to work by ssh&amp;rsquo;ing
 into the box rather than using the Proxmox console as copy/paste and
 editing all work better.&lt;/p&gt;
 &lt;h3 id=&#34;update-and-install-emacs&#34;&gt;Update and install emacs&lt;/h3&gt;
@@ -555,11 +655,11 @@ $ sudo apt dist-upgrade
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;turn-off-ipv6&#34;&gt;Turn off IPv6&lt;/h3&gt;
 &lt;p&gt;This may not be &lt;em&gt;necessary&lt;/em&gt;, but I find that debugging things when
-only IPv4 is enabled to be a lot easier.  The environment I&#39;m
+only IPv4 is enabled to be a lot easier.  The environment I&amp;rsquo;m
 installing this in is small enough that we are not at risk of running
-out of IP numbers any time soon and since everything gets NAT&#39;ed
-anyhow I don&#39;t really see a need to enable IPv6.&lt;/p&gt;
-&lt;p&gt;That said, this is the second thing that I don&#39;t care for about
+out of IP numbers any time soon and since everything gets NAT&amp;rsquo;ed
+anyhow I don&amp;rsquo;t really see a need to enable IPv6.&lt;/p&gt;
+&lt;p&gt;That said, this is the second thing that I don&amp;rsquo;t care for about
 Ubuntu.  In CentOS turning off IPv6 is sort of trivial, but on Ubuntu
 I this proved to be rather difficult.  Most of the existing
 suggestions only turned off part of IPv6 and it was only after a lot
@@ -574,11 +674,11 @@ end.)&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ update-grub
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;turn-off-dnsmasq&#34;&gt;Turn off dnsmasq&lt;/h3&gt;
-&lt;p&gt;This is the third thing that I don&#39;t like about Ubuntu, it runs a stub
+&lt;p&gt;This is the third thing that I don&amp;rsquo;t like about Ubuntu, it runs a stub
 dnsmasq as a DNS caching server.  Again, I get &lt;em&gt;why&lt;/em&gt; they did this,
-but I&#39;ve never found this to be useful on a server and nine out of ten
+but I&amp;rsquo;ve never found this to be useful on a server and nine out of ten
 times it just causes problems.&lt;/p&gt;
-&lt;p&gt;To disable it I&#39;m mostly following
+&lt;p&gt;To disable it I&amp;rsquo;m mostly following
 &lt;a href=&#34;https://askubuntu.com/questions/1081832/how-do-i-disable-systemd-resolved-and-replace-with-something-sane-on-ubuntu-18&#34;&gt;these instructions&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Edit &lt;code&gt;/etc/systemd/resolved.conf&lt;/code&gt; and add&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;DNSStubListener=no
@@ -597,14 +697,14 @@ configured to use a network time server.  Normally I would configure
 &lt;code&gt;ntpd&lt;/code&gt; on the host, but Ubuntu has decided to ship with &lt;code&gt;timedatectl&lt;/code&gt;
 instead which claims to be a lightweight ntp client.  (Humorously, 90%
 of the google searches for &lt;code&gt;timedatectl&lt;/code&gt; suggest turning it off and
-replacing it with a real ntpd, however, I&#39;m going to try sticking with
+replacing it with a real ntpd, however, I&amp;rsquo;m going to try sticking with
 timedatectl for now.)&lt;/p&gt;
-&lt;p&gt;First I like to set the timezone so I don&#39;t need to convert
+&lt;p&gt;First I like to set the timezone so I don&amp;rsquo;t need to convert
 everything&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ timedatectl set-timezone America/Los_Angeles
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Now, edit the &lt;code&gt;/etc/systemd/timesyncd.conf&lt;/code&gt; file and set the NTP entry
-to point to your NTP server. (I&#39;m running an NTP server on another VM at
+to point to your NTP server. (I&amp;rsquo;m running an NTP server on another VM at
 10.0.1.22).&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;[Time]
 NTP=10.0.1.22
@@ -690,7 +790,7 @@ $ host -t SRV _ldap._tcp.ad.hrakaroo.lan
 &lt;h2 id=&#34;change-dns&#34;&gt;Change DNS&lt;/h2&gt;
 &lt;p&gt;At this point you could be done as the server is now up and running.
 However, it is technically using the other domain controller for DNS
-lookups.  Even if I wasn&#39;t planning on decommissioning the older
+lookups.  Even if I wasn&amp;rsquo;t planning on decommissioning the older
 server this would still be creating an out of band dependency between
 them and as Active Directory is, itself, a DNS server I prefer to update
 the server to use itself for DNS lookups.  (Similar to what
@@ -732,7 +832,7 @@ just fine and I was able to fully decommission the older active domain
 controller.&lt;/p&gt;
 &lt;h3 id=&#34;profile-mistake&#34;&gt;Removing the profile&lt;/h3&gt;
 &lt;p&gt;It turns out that creating the profile as I did during the initial set
-up of Ubuntu was a bit of a mistake.  It didn&#39;t cause an issue for
+up of Ubuntu was a bit of a mistake.  It didn&amp;rsquo;t cause an issue for
 this server but it did on a file server I set up later which was also
 on Ubuntu. The issue was that the Ubuntu account &lt;code&gt;jgerth&lt;/code&gt; conflicted
 with the Active Directory accouunt &lt;code&gt;jgerth&lt;/code&gt; and made testing Windows File
@@ -740,7 +840,7 @@ Sharing under my account difficult.&lt;/p&gt;
 &lt;p&gt;I could have addressed this by using a unique login on the Ubuntu
 server (like &lt;code&gt;jogerth&lt;/code&gt;) but that feels like a pretty hacky solution.
 Plus, it raises the bigger issue that ultimately someday someone else
-is probably going to take over for me as the sysadmin and I don&#39;t
+is probably going to take over for me as the sysadmin and I don&amp;rsquo;t
 really want them to have to use my account.  The &lt;em&gt;right&lt;/em&gt; way to solve
 this is to create an LDAP server for the Linux boxes and host the
 logins centrally, but this feels a bit like overkill to me as we
@@ -748,7 +848,7 @@ currently only have around 5 Linux systems and, at least for the time
 being, I would be the only person in the LDAP server.&lt;/p&gt;
 &lt;p&gt;I suppose I could bind the Linux boxes in to the Active Directory LDAP
 server, but that creates a bit of a chicken and egg dependency on
-Active Directory that I&#39;m just not comfortable with.&lt;/p&gt;
+Active Directory that I&amp;rsquo;m just not comfortable with.&lt;/p&gt;
 &lt;p&gt;What I really want is just a generic sysadmin account, but if you are
 going to do that then why not use the one that already comes with
 every Unix/Linux system, &lt;code&gt;root&lt;/code&gt;.  So in the end I configured an
@@ -756,14 +856,14 @@ explicit password for &lt;code&gt;root&lt;/code&gt;, enabled SSH login for root 
 the account I created on setup.  I would never recommend this for a
 larger environment, but for my small setup this worked out best.&lt;/p&gt;
 &lt;h2 id=&#34;closing-thoughts&#34;&gt;Closing thoughts&lt;/h2&gt;
-&lt;p&gt;In the end I&#39;m glad I set this up from scratch rather than use the
+&lt;p&gt;In the end I&amp;rsquo;m glad I set this up from scratch rather than use the
 build and instructions from SerNet. I have a better understanding
 of what everything is doing and the weird quirkiness I was
 experiencing with the old server has gone away (although, to be fair,
 that could have been due to the older version I was running.)
 I also feel more comfortable with the samba tool and adding and
 removing domain controllers.&lt;/p&gt;
-&lt;p&gt;I&#39;m still not a huge fan of Ubuntu as a server. I don&#39;t care for the
+&lt;p&gt;I&amp;rsquo;m still not a huge fan of Ubuntu as a server. I don&amp;rsquo;t care for the
 dnsmasq stub, the replacement for ntpd or how it forces you to create
 a non-root account, but since it is a popular system I was able to
 search for most of the errors I did encounter.&lt;/p&gt;
@@ -791,42 +891,42 @@ search for most of the errors I did encounter.&lt;/p&gt;
       <link>/post/go-for-java-part2/</link>
       <pubDate>Tue, 01 Oct 2019 00:00:00 +0000</pubDate>
       <guid>/post/go-for-java-part2/</guid>
-      <description>&lt;p&gt;This is my second post on things I&#39;m finding interesting about the Go
+      <description>&lt;p&gt;This is my second post on things I&amp;rsquo;m finding interesting about the Go
 language.  For additional background on this series you might want to read
 &lt;a href=&#34;../go-for-java-part1&#34;&gt;Part 1&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;dependency-management&#34;&gt;Dependency Management&lt;/h2&gt;
-&lt;p&gt;This time I&#39;m going to focus on dependency management and how
+&lt;p&gt;This time I&amp;rsquo;m going to focus on dependency management and how
 go approaches the &lt;a href=&#34;../sane-java-dependency-management&#34;&gt;diamond dependency issue&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;First off, Go does not support pre-compiled libraries the way Java
 does.  (Personally, I think compiled Jar files are from a by-gone time
-and these days cause more harm than good, but that&#39;s not why Go
-doesn&#39;t have them.)  Go doesn&#39;t have them because Go code compiles
+and these days cause more harm than good, but that&amp;rsquo;s not why Go
+doesn&amp;rsquo;t have them.)  Go doesn&amp;rsquo;t have them because Go code compiles
 down into native assembly so it would be impossible to distribute
 anything precompiled by Go and expect it to work on more than one
 platform.&lt;/p&gt;
 &lt;p&gt;So instead, Go publishes libraries as source code with Git tags and
 avoids artifactory all together.  When you want to use a library you
 create a dependency on a git repo with a specific tag version.&lt;/p&gt;
-&lt;p&gt;This doesn&#39;t exactly remove the diamond dependency issue as it is
+&lt;p&gt;This doesn&amp;rsquo;t exactly remove the diamond dependency issue as it is
 entirely possible to have a transitive dependency on two different
 versions of a library. In this case, as with Java, you still have to
 select the version you want to use. However, there are two substantial
 changes.&lt;/p&gt;
-&lt;h3 id=&#34;cant-ignore-the-problem&#34;&gt;Can&#39;t ignore the problem&lt;/h3&gt;
-&lt;p&gt;First, you don&#39;t have the option of ignoring or miss the issue.  This
+&lt;h3 id=&#34;cant-ignore-the-problem&#34;&gt;Can&amp;rsquo;t ignore the problem&lt;/h3&gt;
+&lt;p&gt;First, you don&amp;rsquo;t have the option of ignoring or miss the issue.  This
 means that if your service builds in Go, you can be confident your
 code does not contain any &amp;ldquo;hidden&amp;rdquo; mismatch errors.  This effectively
 removes an entire class of errors that you have with Java.  (TBH,
-these don&#39;t pop up too often, but the more common a library is the
-greater the chance for this to happen.  I&#39;ve seen this error triggered
+these don&amp;rsquo;t pop up too often, but the more common a library is the
+greater the chance for this to happen.  I&amp;rsquo;ve seen this error triggered
 with the Guava libraries.) Being able to completely remove
 them as a class of problems would be nice.&lt;/p&gt;
 &lt;h3 id=&#34;conflicts-identified-at-the-source-code-level&#34;&gt;Conflicts identified at the source code level&lt;/h3&gt;
 &lt;p&gt;Second, conflicts are identified at the source code level and not at
-the version level. This means that PATCH version mismatches won&#39;t
-break your build so long as they don&#39;t change function signature (and
-PATCHES really shouldn&#39;t).&lt;/p&gt;
-&lt;p&gt;I&#39;m not saying that the way Go deals with this is perfect but it does
+the version level. This means that PATCH version mismatches won&amp;rsquo;t
+break your build so long as they don&amp;rsquo;t change function signature (and
+PATCHES really shouldn&amp;rsquo;t).&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m not saying that the way Go deals with this is perfect but it does
 move the problem into a first class issue and forces a
 resolution. Java could take this same approach if you copied all of
 your dependencies into your code base as source code. But I did find
@@ -840,19 +940,19 @@ management.&lt;/p&gt;
       <link>/post/go-for-java-part1/</link>
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       <guid>/post/go-for-java-part1/</guid>
-      <description>&lt;p&gt;For the last 20+ years I&#39;ve been mostly focused on Java development.
+      <description>&lt;p&gt;For the last 20+ years I&amp;rsquo;ve been mostly focused on Java development.
 But recently I had an opportunity to join a team which was focused on
 Go and having spent the early part of my career writing C++ I was
 intrigued by some of the decisions Go made. So this is the first (of
 possibly several) posts on things I found interesting about the
-language and since my I have been doing mostly Java development I&#39;m
+language and since my I have been doing mostly Java development I&amp;rsquo;m
 going to be comparing and contrasting from that perspective.&lt;/p&gt;
 &lt;h2 id=&#34;go-interfaces&#34;&gt;Go interfaces&lt;/h2&gt;
-&lt;p&gt;For this first post I&#39;m going to discuss one specific implication of
+&lt;p&gt;For this first post I&amp;rsquo;m going to discuss one specific implication of
 how Go handles interfaces.&lt;/p&gt;
 &lt;p&gt;If you are unfamiliar with Go, it uses structural typing for
 interfaces (which is more generally called &amp;ldquo;duck typing&amp;rdquo; meaning &amp;ldquo;if
-it walks like a duck and talks like a duck … it&#39;s a duck.&amp;quot;)  This
+it walks like a duck and talks like a duck … it&amp;rsquo;s a duck.&amp;quot;)  This
 means that if a struct in Go has functions on it which match the
 methods of an interface, instances of that struct are types of that
 interface. This sounds more complicated than it actually is so lets
@@ -886,18 +986,18 @@ func (p Person) getName() string {
 }
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Ignoring the syntax differences, what is interesting is that in Go we
-don&#39;t declare Person as implementing Named.  This is implied by the
+don&amp;rsquo;t declare Person as implementing Named.  This is implied by the
 function on Person matching the method in the Named interface. The
 compiler figures this out for us and instances of a Person are
 automatically of type Named.&lt;/p&gt;
-&lt;p&gt;So while this isn&#39;t necessarily a new thing (Python mostly lets you
+&lt;p&gt;So while this isn&amp;rsquo;t necessarily a new thing (Python mostly lets you
 do the same thing), this was something new for a statically typed
 language.&lt;/p&gt;
 &lt;p&gt;When I first saw this I thought &amp;ldquo;meh, so you can leave off the
 &amp;lsquo;implements&amp;rsquo; keyword, whatever.&amp;rdquo;  But I think this feature has a really
 interesting implication.&lt;/p&gt;
 &lt;h3 id=&#34;the-setup&#34;&gt;The setup&lt;/h3&gt;
-&lt;p&gt;Back in Java land, let&#39;s suppose you have a function that takes an SQL
+&lt;p&gt;Back in Java land, let&amp;rsquo;s suppose you have a function that takes an SQL
 PreparedStatement as one of its arguments.  Something like:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Db {
    void setValue(PreparedStatement stmt, String value) {
@@ -949,13 +1049,13 @@ set to &amp;ldquo;dog&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;Ahhh … but there is a devil hidden in these details.
 PreparedStatement is a massive interface with well over 50 methods.
 In order to stub out the one method you want (setString) you are going
-to need to also stub out all of the other ones as well.  We don&#39;t ever
+to need to also stub out all of the other ones as well.  We don&amp;rsquo;t ever
 use them so they can all throw a RuntimeException (and thankfully most
 modern IDEs can automatically generate this code for you) … but you
 are still dealing with a lot of boilerplate code.&lt;/p&gt;
 &lt;h3 id=&#34;the-switch&#34;&gt;The switch&lt;/h3&gt;
-&lt;p&gt;Now let&#39;s take a look at this same problem in Go land.  (For the sake
-of argument let&#39;s assume that PreparedStatement both exists in Go and
+&lt;p&gt;Now let&amp;rsquo;s take a look at this same problem in Go land.  (For the sake
+of argument let&amp;rsquo;s assume that PreparedStatement both exists in Go and
 works much in the same way as its Java counterpart).&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type Db struct {
 }
@@ -969,7 +1069,7 @@ func (db Db) setValue(stmt PreparedStatement, value string) {
 db := Db{}
 db.setValue(stmt, &amp;quot;someValue&amp;quot;)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Now let&#39;s write the unit test:&lt;/p&gt;
+&lt;p&gt;Now let&amp;rsquo;s write the unit test:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func SetValueTest(t* testing.T) {
     db := Db{}
     stmt := ??
@@ -978,8 +1078,8 @@ db.setValue(stmt, &amp;quot;someValue&amp;quot;)
     // todo - verify the statement received the value of &#39;dog
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;We&#39;ve once again hit the same issue.  As with Java, we can use the
-Go&#39;s mock framework (which also uses reflection) or, as before, we can
+&lt;p&gt;We&amp;rsquo;ve once again hit the same issue.  As with Java, we can use the
+Go&amp;rsquo;s mock framework (which also uses reflection) or, as before, we can
 try to roll our own.&lt;/p&gt;
 &lt;p&gt;Approaching it directly we could build out a TestPreparedStatement as:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type TestPreparedStatement struct {
@@ -995,7 +1095,7 @@ we also need to stub out all of the other 50+ methods in the
 PreparedStatement interface which is just as wasteful as it was in
 Java.  But we do have one other option.&lt;/p&gt;
 &lt;h3 id=&#34;duck-typing&#34;&gt;Duck Typing&lt;/h3&gt;
-&lt;p&gt;What if we didn&#39;t stub out all of the other methods and instead
+&lt;p&gt;What if we didn&amp;rsquo;t stub out all of the other methods and instead
 created a new interface which only contained the one method we are
 using?  So something like:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type StringSetter interface {
@@ -1020,7 +1120,7 @@ interfaces to objects by simply copying over the methods we want into
 the interface.&lt;/p&gt;
 &lt;p&gt;I found this to be a surprising feature about Go and is not something
 I had considered before.  It feels really powerful and, to be honest,
-I&#39;m not yet sure if this is a good feature about the language or not,
+I&amp;rsquo;m not yet sure if this is a good feature about the language or not,
 but it is an interesting one.&lt;/p&gt;
 </description>
     </item>
@@ -1269,17 +1369,17 @@ new user interface language was developed to make it easy to query the
 data. This language (or rather sub-language) was called Structured
 English Query Language or SEQUEL. SEQUEL would later evolved into SQL
 and become the preeminent language for querying relational
-databases. In the 45+ years since it&#39;s introduction SQL has evolved
+databases. In the 45+ years since it&amp;rsquo;s introduction SQL has evolved
 slightly but it is still largely similar to the version introduced in
 the 70s. What has changed during that time is how we interact with the
 database. Today, SQL is used significantly more by applications
 querying the database than by end users. This usage pattern has
 created its own ecosystem of utilities and libraries which help
 applications build SQL queries.  One of the more popular libraries for
-building SQL queries in Java is &lt;a href=&#34;https://docs.jboss.org/hibernate/entitymanager/3.5/reference/en/html/querycriteria.html&#34;&gt;Hibernate&#39;s Criteria Builder&lt;/a&gt;
+building SQL queries in Java is &lt;a href=&#34;https://docs.jboss.org/hibernate/entitymanager/3.5/reference/en/html/querycriteria.html&#34;&gt;Hibernate&amp;rsquo;s Criteria Builder&lt;/a&gt;
 which uses an annotation pre-processor and a builder pattern to
-facilitate building SQL queries.  (Java&#39;s Persistence API was based
-heavily on Hibernate&#39;s Criteria Builder). But, at the end of the day
+facilitate building SQL queries.  (Java&amp;rsquo;s Persistence API was based
+heavily on Hibernate&amp;rsquo;s Criteria Builder). But, at the end of the day
 the builder still generates a basic SQL string which is sent to the
 target database, parsed and then executed. Hibernate is just one
 example, but there are hundreds of other libraries that exist across
@@ -1309,7 +1409,7 @@ error. Furthermore, the errors which do get introduced are almost
 always related to the construction of the SQL query rather than actual
 column names or keywords in the query. Meaning the column names and
 keywords are not as likely to be the source of syntax errors as they
-don&#39;t normally change based on the user request. For example, an
+don&amp;rsquo;t normally change based on the user request. For example, an
 application which allows the searching of available flights is less
 likely to return different a type of data depending on the destination
 city. You may get back more or less result, but it will usually be the
@@ -1323,7 +1423,7 @@ the construction of the query itself.&lt;/p&gt;
 include a comma after the last one?&lt;/li&gt;
 &lt;li&gt;If this is the first filter then we need to add the &amp;lsquo;WHERE&amp;rsquo; keyword,
 but if this is the second one we need to add the &amp;lsquo;AND&amp;rsquo; keyword, and
-don&#39;t forget about the parentheses.&lt;/li&gt;
+don&amp;rsquo;t forget about the parentheses.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;These types of syntax errors are often introduced based on the users
 search criteria and can be significantly more difficult to find with
@@ -1336,7 +1436,7 @@ responsive development team which quickly patches any errors that are
 found. It would be safe to say that in the 45+ years since the
 introduction of SQL, millions of lines of code have been written in
 various languages, all attempting to work around this same basic
-problem. It&#39;s a huge waste of intellectual effort for what is
+problem. It&amp;rsquo;s a huge waste of intellectual effort for what is
 essentially a self inflicted problem.&lt;/p&gt;
 &lt;h3 id=&#34;where-to-go-from-here&#34;&gt;Where to go from here&lt;/h3&gt;
 &lt;p&gt;SQL and similar English based DSLs (domain specific languages) are
@@ -1676,9 +1776,9 @@ getting exactly what we hoped to get from these improvements.&lt;/p&gt;
       <link>/post/sane-java-dependency-management/</link>
       <pubDate>Fri, 01 Jun 2018 00:00:00 +0000</pubDate>
       <guid>/post/sane-java-dependency-management/</guid>
-      <description>&lt;p&gt;Java&#39;s dependency management suffers from the dreaded diamond
+      <description>&lt;p&gt;Java&amp;rsquo;s dependency management suffers from the dreaded diamond
 dependency issue. And while this issue is not unique to Java, it is,
-perhaps, more acute due to the precompiled nature of Java&#39;s Jar files.&lt;/p&gt;
+perhaps, more acute due to the precompiled nature of Java&amp;rsquo;s Jar files.&lt;/p&gt;
 &lt;h2 id=&#34;a-quick-refresher&#34;&gt;A Quick Refresher&lt;/h2&gt;
 &lt;p&gt;If you are unfamiliar with this issue, here is a
 quick refresher:&lt;/p&gt;
@@ -1746,8 +1846,8 @@ bug they have had so they update to it as&lt;/p&gt;
 &lt;p&gt;And publish it under&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;    com.hrakaroo : cat : 2.0
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;But the Dog library makers don&#39;t need the new functionality so they
-don&#39;t bother to update.&lt;/p&gt;
+&lt;p&gt;But the Dog library makers don&amp;rsquo;t need the new functionality so they
+don&amp;rsquo;t bother to update.&lt;/p&gt;
 &lt;p&gt;And finally, you decide to update your service to use the newest version
 of Cat which has the bug fix you need.  This changes
 your dependency tree to:&lt;/p&gt;
@@ -1765,23 +1865,23 @@ version) and use that as its version. In this case it will select
 &lt;code&gt;com.hrakaroo : common : 2.0&lt;/code&gt; which means that when your service calls
 Dog.method1 it will give you a &lt;em&gt;runtime exception&lt;/em&gt; as the JVM will be
 unable to find the definition for &lt;code&gt;helpful(String)&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Or, if you are using gradle, you can use it&#39;s force tag and force the
+&lt;p&gt;Or, if you are using gradle, you can use it&amp;rsquo;s force tag and force the
 version down to &lt;code&gt;com.hrakaroo : common : 2.0&lt;/code&gt; which means that when
 your service calls Cat.method2 it will give you a &lt;em&gt;runtime exception&lt;/em&gt; as
 the JVM will be unable to find the definition for
 &lt;code&gt;helpful(String, boolean)&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;The only &amp;ldquo;correct&amp;rdquo; solution here is to use gradle&#39;s
+&lt;p&gt;The only &amp;ldquo;correct&amp;rdquo; solution here is to use gradle&amp;rsquo;s
 failOnVersionConfict() which will fail to compile your project unless
 both your dog and cat dependencies use the same version. This means
 you will be forced to fix the issue before your project can compile,
 but this may not be practical as a large project has lots of moving
 parts and compatible versions may not be available.
-Additionally, &lt;code&gt;failOnVersionConflict()&lt;/code&gt; doesn&#39;t understand semantic
+Additionally, &lt;code&gt;failOnVersionConflict()&lt;/code&gt; doesn&amp;rsquo;t understand semantic
 versioning so it will fail on PATCH level differences which often
 makes this a very painful and non-practical solution.&lt;/p&gt;
 &lt;p&gt;Most people just choose to go with the plug-and-pray approach where
 they just hope they never call a code path which encounters a
-definition which doesn&#39;t exist.&lt;/p&gt;
+definition which doesn&amp;rsquo;t exist.&lt;/p&gt;
 &lt;h2 id=&#34;cutting-the-knot&#34;&gt;Cutting the knot&lt;/h2&gt;
 &lt;p&gt;As the two easy solutions are wrong and the one correct solution is
 impratical, the only real answer here is to avoid the problem
@@ -1790,11 +1890,11 @@ altogether. When building a library, limit your dependencies.&lt;/p&gt;
 shared library. From the technologies you use to the way you version
 and test it are substantially different. Services are often just thin
 wiring together of different frameworks and libraries while libraries
-are more single tasked. And yet, they too often I don&#39;t see people
+are more single tasked. And yet, they too often I don&amp;rsquo;t see people
 appreciate this difference. Instead they hack together libraries like
 they do services.&lt;/p&gt;
 &lt;h3 id=&#34;stick-to-vanilla-java&#34;&gt;Stick to vanilla Java&lt;/h3&gt;
-&lt;p&gt;I really like the Kotlin language, but I don&#39;t think it has a place
+&lt;p&gt;I really like the Kotlin language, but I don&amp;rsquo;t think it has a place
 (yet) in shared libraries. Part of what makes Kotlin fun are all
 of the extension and infix libraries which are all packaged in the
 kotlin stdlib dependency.  Any time you have more than two kotlin
@@ -1802,12 +1902,12 @@ library dependencies you are just about assured to have a version
 conflict on the kotlin stdlib.  Libraries should be written in Java
 to remove as many dependencies as possible.&lt;/p&gt;
 &lt;h3 id=&#34;avoid-huge-common-or-utility-libraries&#34;&gt;Avoid huge common or utility libraries&lt;/h3&gt;
-&lt;p&gt;Apache&#39;s commons-lang3 is a fantastic library, but too often I&#39;ve seen
+&lt;p&gt;Apache&amp;rsquo;s commons-lang3 is a fantastic library, but too often I&amp;rsquo;ve seen
 brought in so that the developer can use the &lt;code&gt;StringUtils.join()&lt;/code&gt;
 method. Not only is this method &lt;em&gt;trivial&lt;/em&gt; to write, but with Java 8
 this can be done directly off the stream using
 &lt;code&gt;.collect(Collectors.joining(...))&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;The same can be said for Google&#39;s Guava library, which is an enormous
+&lt;p&gt;The same can be said for Google&amp;rsquo;s Guava library, which is an enormous
 library that often makes non-compatible changes. In one library I
 reviewed the author had brought in a dependency on Guava so that they
 could use the &lt;code&gt;Preconditions&lt;/code&gt; checks. While I think this type of
@@ -1831,7 +1931,7 @@ relocate &lt;code&gt;com.apache.commons&lt;/code&gt; to &lt;code&gt;com.hrakaroo
 resort, but it will guarantee that no one can later change the depenency
 version to something which is incompatable.&lt;/p&gt;
 &lt;p&gt;Whatever your approach, you should take the time when creating a shared
-library to minimize it&#39;s transitive dependencies as much as possible.
+library to minimize it&amp;rsquo;s transitive dependencies as much as possible.
 By doing so you will help minimize the risk to developers which use your
 library of creating their own diamon dependency nightmare.&lt;/p&gt;
 </description>
@@ -1858,7 +1958,7 @@ From temper tantrums, to crying and yelling and throwing things… and
 that was just the moms.  I wasn’t worried in the least.&lt;/p&gt;
 &lt;p&gt;My first task was to take her to get her makeup for the recital.
 &amp;ldquo;Black eyeliner, red lipstick.&amp;rdquo;  That seemed straightforward, but when
-we got to the makeup counter we found out there isn&#39;t just one black
+we got to the makeup counter we found out there isn&amp;rsquo;t just one black
 eyeliner.  There’s regular black, black out, onyx black, darkest
 black, ferocious black and blackest black, just to name a few. I must
 not be the most color aware person as all the different shades of
@@ -1876,7 +1976,7 @@ included a specific shade number.&lt;/p&gt;
 neither my daughter nor I had ever actually applied either eyeliner or
 lipstick.  These days you could probably find an instruction video
 on-line, but this was pre-YouTube days.  We decided to tackle the
-eyeliner first.  For those that don&#39;t know, an eyeliner pencil is
+eyeliner first.  For those that don&amp;rsquo;t know, an eyeliner pencil is
 essentially a sharpened stick which you need to get really close to
 the eye.  The entire concept seems barbaric and on my first attempt I
 couldn’t bring myself to actually get right up next to her eye.  This
@@ -1967,17 +2067,17 @@ forgotten to say.&lt;/p&gt;
 &lt;p&gt;Without focus, the standup can become a passive competition for who is
 the busiest person.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;I&#39;ve got a meeting with a customer today to talk over a feature they
+&lt;li&gt;I&amp;rsquo;ve got a meeting with a customer today to talk over a feature they
 want added.&lt;/li&gt;
-&lt;li&gt;Well I&#39;ve got &lt;em&gt;two&lt;/em&gt; meetings today to talk over features.&lt;/li&gt;
-&lt;li&gt;I&#39;ve pretty much got meetings all day long so I&#39;m not likely going
+&lt;li&gt;Well I&amp;rsquo;ve got &lt;em&gt;two&lt;/em&gt; meetings today to talk over features.&lt;/li&gt;
+&lt;li&gt;I&amp;rsquo;ve pretty much got meetings all day long so I&amp;rsquo;m not likely going
 to get much else done.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;It sounds silly, but it&#39;s something I&#39;ve seen happen a lot at multiple
+&lt;p&gt;It sounds silly, but it&amp;rsquo;s something I&amp;rsquo;ve seen happen a lot at multiple
 companies, especially if people are feeling insecure (imposter
 syndrome). It can take the form of lamenting (but really bragging)
 about the number of meetings, or making the tasks you completed sound
-like herculean efforts. It&#39;s pointless and unhealthy for the team.&lt;/p&gt;
+like herculean efforts. It&amp;rsquo;s pointless and unhealthy for the team.&lt;/p&gt;
 &lt;h3 id=&#34;forced-update&#34;&gt;Forced Update&lt;/h3&gt;
 &lt;p&gt;Finally, it forces everyone to talk when they may not want to.  There
 have been times in my career where my personal life has taken over and
@@ -1986,9 +2086,9 @@ related. At the update I don’t want to go into details about what I’m
 dealing with. In fact, I may be at work specifically to take a break
 from the other stresses going on.  Perhaps I took off work yesterday
 and I may have to leave early today to take care of a personal issue,
-but now I&#39;m in an unconformable position of either saying &amp;ldquo;I have no
-update&amp;rdquo; or, worse, explain that &amp;ldquo;I&#39;ve got some things going on which I
-don&#39;t want to talk about.&amp;rdquo;&lt;/p&gt;
+but now I&amp;rsquo;m in an unconformable position of either saying &amp;ldquo;I have no
+update&amp;rdquo; or, worse, explain that &amp;ldquo;I&amp;rsquo;ve got some things going on which I
+don&amp;rsquo;t want to talk about.&amp;rdquo;&lt;/p&gt;
 &lt;p&gt;As an individual contributor I find this standup format stressful and
 as a project lead and manager I find it unhelpful.  Instead I prefer
 using the standup time to walk the kanban board.&lt;/p&gt;
@@ -2000,15 +2100,15 @@ this format there is no initial awkward moment trying to figure out
 who should go first. The context switching is much less and the team
 can focus on what is being said instead of trying to memorize what
 they are going to say.&lt;/p&gt;
-&lt;p&gt;Since &lt;strong&gt;Done&lt;/strong&gt; is often an end state and you don&#39;t necessarily want to
+&lt;p&gt;Since &lt;strong&gt;Done&lt;/strong&gt; is often an end state and you don&amp;rsquo;t necessarily want to
 re-walk this entire list every time you can either cut a Jira release
 after each standup, or create a &lt;strong&gt;Closed&lt;/strong&gt; column and use the standup as
 an opportunity to move tasks from &lt;strong&gt;Closed&lt;/strong&gt; to &lt;strong&gt;Done&lt;/strong&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;closing-comments&#34;&gt;Closing comments&lt;/h3&gt;
 &lt;p&gt;One critique of this format is that it is possible for a team member not
 working on a task to feel left out. If they really are attending
-meetings all day there is a chance to they haven&#39;t picked up any tasks
-and therefore won&#39;t speak.  So, at the end of the standup ask a quick
+meetings all day there is a chance to they haven&amp;rsquo;t picked up any tasks
+and therefore won&amp;rsquo;t speak.  So, at the end of the standup ask a quick
 question for any closing or final comments.  This is the opportunity
 to team members to say &amp;ldquo;I need to leave early today,&amp;rdquo; but I would keep
 the focus on today and away from team members trying to justify their
@@ -2019,7 +2119,7 @@ the team.&lt;/p&gt;
 significantly more useful as I can tell exactly the progress of the
 project (as I’m looking at the tickets) and I can also be sure that
 Jira tickets for the project are up to date. As an individual
-contributor I don&#39;t feel like I have to prepare as much for this
+contributor I don&amp;rsquo;t feel like I have to prepare as much for this
 standup and I can just attend and focus on what everyone else is
 saying.&lt;/p&gt;
 </description>
@@ -2045,14 +2145,14 @@ opportunity to build my own service.&lt;/p&gt;
 Vue.js with the Vuetify plugin for several reasons.  Vue.js was
 established enough to have good tutorials, training videos and a
 robust presence on Stack Overflow for questions.  It also had an easy
-ramp up and it didn&#39;t originate from Facebook.  (Petty, I know, but I
+ramp up and it didn&amp;rsquo;t originate from Facebook.  (Petty, I know, but I
 have a personal distain of Facebook).&lt;/p&gt;
 &lt;h2 id=&#34;status&#34;&gt;Status&lt;/h2&gt;
 &lt;p&gt;In November of 2019 I launched the site and moved hosting my game
 night to the system so I can start &amp;ldquo;eating my own dog food.&amp;rdquo;  I still
 have several large features I want to add before I really start
 start trying to push it more globally.&lt;/p&gt;
-&lt;p&gt;For now I&#39;m keeping it closed source, but free to use.  If the service
+&lt;p&gt;For now I&amp;rsquo;m keeping it closed source, but free to use.  If the service
 proves popular I will likely be forced to add either a for-pay section
 or ads to cover my hosting fees, but otherwise I have no immediate
 commercialization plans for the service.&lt;/p&gt;

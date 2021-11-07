@@ -212,8 +212,8 @@
   
 
   <link rel="manifest" href="/index.webmanifest">
-  <link rel="icon" type="image/png" href="/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_32x32_fill_lanczos_center_2.png">
-  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_192x192_fill_lanczos_center_2.png">
+  <link rel="icon" type="image/png" href="/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_32x32_fill_lanczos_center_3.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_192x192_fill_lanczos_center_3.png">
 
   <link rel="canonical" href="/post/go-for-java-part1/">
 
@@ -231,8 +231,8 @@
   <meta property="og:site_name" content="Hrakaroo">
   <meta property="og:url" content="/post/go-for-java-part1/">
   <meta property="og:title" content="Go for Java Developers - Part 1 | Hrakaroo">
-  <meta property="og:description" content="Cool tricks with Go interfaces"><meta property="og:image" content="/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_2.png">
-  <meta property="twitter:image" content="/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  <meta property="og:description" content="Cool tricks with Go interfaces"><meta property="og:image" content="/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_3.png">
+  <meta property="twitter:image" content="/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_3.png"><meta property="og:locale" content="en-us">
   
     
       <meta property="article:published_time" content="2019-08-01T00:00:00&#43;00:00">
@@ -593,19 +593,19 @@
   <div class="article-container">
 
     <div class="article-style">
-      <p>For the last 20+ years I've been mostly focused on Java development.
+      <p>For the last 20+ years I&rsquo;ve been mostly focused on Java development.
 But recently I had an opportunity to join a team which was focused on
 Go and having spent the early part of my career writing C++ I was
 intrigued by some of the decisions Go made. So this is the first (of
 possibly several) posts on things I found interesting about the
-language and since my I have been doing mostly Java development I'm
+language and since my I have been doing mostly Java development I&rsquo;m
 going to be comparing and contrasting from that perspective.</p>
 <h2 id="go-interfaces">Go interfaces</h2>
-<p>For this first post I'm going to discuss one specific implication of
+<p>For this first post I&rsquo;m going to discuss one specific implication of
 how Go handles interfaces.</p>
 <p>If you are unfamiliar with Go, it uses structural typing for
 interfaces (which is more generally called &ldquo;duck typing&rdquo; meaning &ldquo;if
-it walks like a duck and talks like a duck … it's a duck.&quot;)  This
+it walks like a duck and talks like a duck … it&rsquo;s a duck.&quot;)  This
 means that if a struct in Go has functions on it which match the
 methods of an interface, instances of that struct are types of that
 interface. This sounds more complicated than it actually is so lets
@@ -639,18 +639,18 @@ func (p Person) getName() string {
 }
 </code></pre>
 <p>Ignoring the syntax differences, what is interesting is that in Go we
-don't declare Person as implementing Named.  This is implied by the
+don&rsquo;t declare Person as implementing Named.  This is implied by the
 function on Person matching the method in the Named interface. The
 compiler figures this out for us and instances of a Person are
 automatically of type Named.</p>
-<p>So while this isn't necessarily a new thing (Python mostly lets you
+<p>So while this isn&rsquo;t necessarily a new thing (Python mostly lets you
 do the same thing), this was something new for a statically typed
 language.</p>
 <p>When I first saw this I thought &ldquo;meh, so you can leave off the
 &lsquo;implements&rsquo; keyword, whatever.&rdquo;  But I think this feature has a really
 interesting implication.</p>
 <h3 id="the-setup">The setup</h3>
-<p>Back in Java land, let's suppose you have a function that takes an SQL
+<p>Back in Java land, let&rsquo;s suppose you have a function that takes an SQL
 PreparedStatement as one of its arguments.  Something like:</p>
 <pre><code class="language-java">class Db {
    void setValue(PreparedStatement stmt, String value) {
@@ -702,13 +702,13 @@ set to &ldquo;dog&rdquo;.</p>
 <p>Ahhh … but there is a devil hidden in these details.
 PreparedStatement is a massive interface with well over 50 methods.
 In order to stub out the one method you want (setString) you are going
-to need to also stub out all of the other ones as well.  We don't ever
+to need to also stub out all of the other ones as well.  We don&rsquo;t ever
 use them so they can all throw a RuntimeException (and thankfully most
 modern IDEs can automatically generate this code for you) … but you
 are still dealing with a lot of boilerplate code.</p>
 <h3 id="the-switch">The switch</h3>
-<p>Now let's take a look at this same problem in Go land.  (For the sake
-of argument let's assume that PreparedStatement both exists in Go and
+<p>Now let&rsquo;s take a look at this same problem in Go land.  (For the sake
+of argument let&rsquo;s assume that PreparedStatement both exists in Go and
 works much in the same way as its Java counterpart).</p>
 <pre><code class="language-go">type Db struct {
 }
@@ -722,7 +722,7 @@ func (db Db) setValue(stmt PreparedStatement, value string) {
 db := Db{}
 db.setValue(stmt, &quot;someValue&quot;)
 </code></pre>
-<p>Now let's write the unit test:</p>
+<p>Now let&rsquo;s write the unit test:</p>
 <pre><code class="language-go">func SetValueTest(t* testing.T) {
     db := Db{}
     stmt := ??
@@ -731,8 +731,8 @@ db.setValue(stmt, &quot;someValue&quot;)
     // todo - verify the statement received the value of 'dog
 }
 </code></pre>
-<p>We've once again hit the same issue.  As with Java, we can use the
-Go's mock framework (which also uses reflection) or, as before, we can
+<p>We&rsquo;ve once again hit the same issue.  As with Java, we can use the
+Go&rsquo;s mock framework (which also uses reflection) or, as before, we can
 try to roll our own.</p>
 <p>Approaching it directly we could build out a TestPreparedStatement as:</p>
 <pre><code class="language-go">type TestPreparedStatement struct {
@@ -748,7 +748,7 @@ we also need to stub out all of the other 50+ methods in the
 PreparedStatement interface which is just as wasteful as it was in
 Java.  But we do have one other option.</p>
 <h3 id="duck-typing">Duck Typing</h3>
-<p>What if we didn't stub out all of the other methods and instead
+<p>What if we didn&rsquo;t stub out all of the other methods and instead
 created a new interface which only contained the one method we are
 using?  So something like:</p>
 <pre><code class="language-go">type StringSetter interface {
@@ -773,7 +773,7 @@ interfaces to objects by simply copying over the methods we want into
 the interface.</p>
 <p>I found this to be a surprising feature about Go and is not something
 I had considered before.  It feels really powerful and, to be honest,
-I'm not yet sure if this is a good feature about the language or not,
+I&rsquo;m not yet sure if this is a good feature about the language or not,
 but it is an interesting one.</p>
 
     </div>
@@ -1059,7 +1059,7 @@ but it is an interesting one.</p>
     
     
     
-    <script src="/js/academic.min.a0d331bcd05dbe8b31e244f796710f08.js"></script>
+    <script src="/js/academic.min.409b0d00283f74c9777416d6d91420f4.js"></script>
 
     
 

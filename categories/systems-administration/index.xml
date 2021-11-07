@@ -7,7 +7,7 @@
     <description>Systems Administration</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 27 Mar 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_2.png</url>
+      <url>/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_3.png</url>
       <title>Systems Administration</title>
       <link>/categories/systems-administration/</link>
     </image>
@@ -20,9 +20,9 @@
       <description>&lt;h2 id=&#34;quick-background&#34;&gt;Quick Background&lt;/h2&gt;
 &lt;p&gt;I volunteer as a Systems Administrator for a small medical
 clinic. They have a very slim IT budget so while their desktop systems
-are primarily Windows 10, I&#39;ve configured most of their server
+are primarily Windows 10, I&amp;rsquo;ve configured most of their server
 infrastructure with Linux. A &lt;a href=&#34;https://www.proxmox.com/&#34;&gt;Proxmox&lt;/a&gt;
-server is used to manage their virtualized environment and I&#39;m using
+server is used to manage their virtualized environment and I&amp;rsquo;m using
 &lt;a href=&#34;https://www.samba.org/&#34;&gt;Samba4&lt;/a&gt; for their Active Directory
 Domain Controller.&lt;/p&gt;
 &lt;p&gt;When I first set up Samba4 as their Active Directory I was able to use
@@ -36,16 +36,16 @@ rebranded themselves as &lt;a href=&#34;https://samba.plus/&#34;&gt;Samba+&lt;/a
 subscription fee for the binary packages.  While I would love to
 support them, paying a subscription fee is not an option for this
 clinic.&lt;/p&gt;
-&lt;p&gt;I&#39;d really like to stick with CentOS as my server distribution as I
+&lt;p&gt;I&amp;rsquo;d really like to stick with CentOS as my server distribution as I
 have a lot of experience with it and have always found it to be a
 solid, minimial distribution. However, for reasons RedHat has decided
 that the Samba4 build that comes with Fedora should not include the
 ability to act as an Active Directory Domain Controller.&lt;/p&gt;
 &lt;p&gt;I could build the sources from scratch and still use CentOS, but that
-would require installing all the build tools on each server and I&#39;m
+would require installing all the build tools on each server and I&amp;rsquo;m
 trying to keep them as light as possible.  Plus, building from scratch
 often introduces its own host of challenges and I really just want to
-set this up and move on to my next project.  So instead I&#39;m going to
+set this up and move on to my next project.  So instead I&amp;rsquo;m going to
 give a go at using &lt;a href=&#34;https://ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt;, which I really like
 as a desktop system but have never been terribly thrilled with as a
 server system.&lt;/p&gt;
@@ -53,21 +53,21 @@ server system.&lt;/p&gt;
 &lt;a href=&#34;https://www.tecmint.com/install-samba4-active-directory-ubuntu/&#34;&gt;tecmint&lt;/a&gt;
 and specifically &lt;a href=&#34;https://www.tecmint.com/join-additional-ubuntu-dc-to-samba4-ad-dc-failover-replication/&#34;&gt;this
 one&lt;/a&gt;. However,
-these instructions were written for Ubuntu 16.04 so I&#39;m making this
+these instructions were written for Ubuntu 16.04 so I&amp;rsquo;m making this
 post to document the steps I took in setting up Samba4 on an Ubuntu
 system.&lt;/p&gt;
 &lt;h2 id=&#34;networking-overview&#34;&gt;Networking overview&lt;/h2&gt;
 &lt;p&gt;For reference, the main gateway is a
 &lt;a href=&#34;https://www.pfsense.org/&#34;&gt;pfSense&lt;/a&gt; box set up at 10.0.1.1.  This runs
 as the primary DNS and DHCP server for the network.  The domain name
-I&#39;ll use in the instructions is &lt;code&gt;hrakaroo.lan&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;My Active Directory domain is &lt;code&gt;ad.hrakaroo.lan&lt;/code&gt;.  I&#39;ve specifically
-set this up so that Active Directory is on it&#39;s own sub domain as I
-don&#39;t want the rest of the server infrastructure to be dependent on
-Active Directory.  I&#39;d rather isolate Active Directory to its own
+I&amp;rsquo;ll use in the instructions is &lt;code&gt;hrakaroo.lan&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;My Active Directory domain is &lt;code&gt;ad.hrakaroo.lan&lt;/code&gt;.  I&amp;rsquo;ve specifically
+set this up so that Active Directory is on it&amp;rsquo;s own sub domain as I
+don&amp;rsquo;t want the rest of the server infrastructure to be dependent on
+Active Directory.  I&amp;rsquo;d rather isolate Active Directory to its own
 area.&lt;/p&gt;
 &lt;h2 id=&#34;creating-a-new-system-in-proxmox&#34;&gt;Creating a new system in Proxmox&lt;/h2&gt;
-&lt;p&gt;In Proxmox I&#39;ve created the following new host&lt;/p&gt;
+&lt;p&gt;In Proxmox I&amp;rsquo;ve created the following new host&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;Hostname: adc1
 Memory: 2 G
 Disk: 32 G
@@ -76,13 +76,13 @@ Cores: 2
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;In retrospect (by looking at the usage charts in Proxmox) it looks
 like I could have cut the memory, disk and cores in half and it would
-have been fine, but I&#39;m going to leave it as is for now.&lt;/p&gt;
+have been fine, but I&amp;rsquo;m going to leave it as is for now.&lt;/p&gt;
 &lt;p&gt;Once the vm is created, start the server.&lt;/p&gt;
-&lt;p&gt;Most of the installation is pretty straightforward so I&#39;m only
-going to highlight when I didn&#39;t select the default.&lt;/p&gt;
+&lt;p&gt;Most of the installation is pretty straightforward so I&amp;rsquo;m only
+going to highlight when I didn&amp;rsquo;t select the default.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Installer update available&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;During the install it suggests that an update to the installer
-is available and asks if you want to update.  I&#39;m not sure if it
+is available and asks if you want to update.  I&amp;rsquo;m not sure if it
 matters much, but I said yes.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Networking&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Edit the IPv4 configuration and select Manual&lt;/p&gt;
@@ -93,14 +93,14 @@ Name servers: 10.0.1.26
 Search domains: ad.hrakaroo.lan
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;10.0.1.26 is the name servers for the existing Active Directory
-Domain Controller. Once the system is fully configured I&#39;ll change
+Domain Controller. Once the system is fully configured I&amp;rsquo;ll change
 this, but it makes the initial setup much easier if this points
 at your existing Domain Controller.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Profile Setup&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;This is the first thing I don&#39;t like about Ubuntu.  I&#39;d rather just
+&lt;p&gt;This is the first thing I don&amp;rsquo;t like about Ubuntu.  I&amp;rsquo;d rather just
 have a password set for the root account.  I get the reason why they
 are doing this, but for my super small setup this is more of an
-annoyance than a help.  Sadly you also can&#39;t use general accounts like
+annoyance than a help.  Sadly you also can&amp;rsquo;t use general accounts like
 &amp;lsquo;admin&amp;rsquo; or &amp;lsquo;staff&amp;rsquo; either.  So I ended up creating a personal account
 for Joshua Gerth.  (This turned out to be a bit of a mistake, more
 on this can be found in the &lt;a href=&#34;#profile-mistake&#34;&gt;additional things&lt;/a&gt;
@@ -108,7 +108,7 @@ at the bottom.)&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;SSH Setup&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;[X] Enable install the OpenSSH server.&lt;/p&gt;
 &lt;h2 id=&#34;basic-server-configuration&#34;&gt;Basic Server Configuration&lt;/h2&gt;
-&lt;p&gt;For almost all of these commands I find it easier to work by ssh&#39;ing
+&lt;p&gt;For almost all of these commands I find it easier to work by ssh&amp;rsquo;ing
 into the box rather than using the Proxmox console as copy/paste and
 editing all work better.&lt;/p&gt;
 &lt;h3 id=&#34;update-and-install-emacs&#34;&gt;Update and install emacs&lt;/h3&gt;
@@ -123,11 +123,11 @@ $ sudo apt dist-upgrade
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;turn-off-ipv6&#34;&gt;Turn off IPv6&lt;/h3&gt;
 &lt;p&gt;This may not be &lt;em&gt;necessary&lt;/em&gt;, but I find that debugging things when
-only IPv4 is enabled to be a lot easier.  The environment I&#39;m
+only IPv4 is enabled to be a lot easier.  The environment I&amp;rsquo;m
 installing this in is small enough that we are not at risk of running
-out of IP numbers any time soon and since everything gets NAT&#39;ed
-anyhow I don&#39;t really see a need to enable IPv6.&lt;/p&gt;
-&lt;p&gt;That said, this is the second thing that I don&#39;t care for about
+out of IP numbers any time soon and since everything gets NAT&amp;rsquo;ed
+anyhow I don&amp;rsquo;t really see a need to enable IPv6.&lt;/p&gt;
+&lt;p&gt;That said, this is the second thing that I don&amp;rsquo;t care for about
 Ubuntu.  In CentOS turning off IPv6 is sort of trivial, but on Ubuntu
 I this proved to be rather difficult.  Most of the existing
 suggestions only turned off part of IPv6 and it was only after a lot
@@ -142,11 +142,11 @@ end.)&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ update-grub
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;turn-off-dnsmasq&#34;&gt;Turn off dnsmasq&lt;/h3&gt;
-&lt;p&gt;This is the third thing that I don&#39;t like about Ubuntu, it runs a stub
+&lt;p&gt;This is the third thing that I don&amp;rsquo;t like about Ubuntu, it runs a stub
 dnsmasq as a DNS caching server.  Again, I get &lt;em&gt;why&lt;/em&gt; they did this,
-but I&#39;ve never found this to be useful on a server and nine out of ten
+but I&amp;rsquo;ve never found this to be useful on a server and nine out of ten
 times it just causes problems.&lt;/p&gt;
-&lt;p&gt;To disable it I&#39;m mostly following
+&lt;p&gt;To disable it I&amp;rsquo;m mostly following
 &lt;a href=&#34;https://askubuntu.com/questions/1081832/how-do-i-disable-systemd-resolved-and-replace-with-something-sane-on-ubuntu-18&#34;&gt;these instructions&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Edit &lt;code&gt;/etc/systemd/resolved.conf&lt;/code&gt; and add&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;DNSStubListener=no
@@ -165,14 +165,14 @@ configured to use a network time server.  Normally I would configure
 &lt;code&gt;ntpd&lt;/code&gt; on the host, but Ubuntu has decided to ship with &lt;code&gt;timedatectl&lt;/code&gt;
 instead which claims to be a lightweight ntp client.  (Humorously, 90%
 of the google searches for &lt;code&gt;timedatectl&lt;/code&gt; suggest turning it off and
-replacing it with a real ntpd, however, I&#39;m going to try sticking with
+replacing it with a real ntpd, however, I&amp;rsquo;m going to try sticking with
 timedatectl for now.)&lt;/p&gt;
-&lt;p&gt;First I like to set the timezone so I don&#39;t need to convert
+&lt;p&gt;First I like to set the timezone so I don&amp;rsquo;t need to convert
 everything&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ timedatectl set-timezone America/Los_Angeles
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Now, edit the &lt;code&gt;/etc/systemd/timesyncd.conf&lt;/code&gt; file and set the NTP entry
-to point to your NTP server. (I&#39;m running an NTP server on another VM at
+to point to your NTP server. (I&amp;rsquo;m running an NTP server on another VM at
 10.0.1.22).&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;[Time]
 NTP=10.0.1.22
@@ -258,7 +258,7 @@ $ host -t SRV _ldap._tcp.ad.hrakaroo.lan
 &lt;h2 id=&#34;change-dns&#34;&gt;Change DNS&lt;/h2&gt;
 &lt;p&gt;At this point you could be done as the server is now up and running.
 However, it is technically using the other domain controller for DNS
-lookups.  Even if I wasn&#39;t planning on decommissioning the older
+lookups.  Even if I wasn&amp;rsquo;t planning on decommissioning the older
 server this would still be creating an out of band dependency between
 them and as Active Directory is, itself, a DNS server I prefer to update
 the server to use itself for DNS lookups.  (Similar to what
@@ -300,7 +300,7 @@ just fine and I was able to fully decommission the older active domain
 controller.&lt;/p&gt;
 &lt;h3 id=&#34;profile-mistake&#34;&gt;Removing the profile&lt;/h3&gt;
 &lt;p&gt;It turns out that creating the profile as I did during the initial set
-up of Ubuntu was a bit of a mistake.  It didn&#39;t cause an issue for
+up of Ubuntu was a bit of a mistake.  It didn&amp;rsquo;t cause an issue for
 this server but it did on a file server I set up later which was also
 on Ubuntu. The issue was that the Ubuntu account &lt;code&gt;jgerth&lt;/code&gt; conflicted
 with the Active Directory accouunt &lt;code&gt;jgerth&lt;/code&gt; and made testing Windows File
@@ -308,7 +308,7 @@ Sharing under my account difficult.&lt;/p&gt;
 &lt;p&gt;I could have addressed this by using a unique login on the Ubuntu
 server (like &lt;code&gt;jogerth&lt;/code&gt;) but that feels like a pretty hacky solution.
 Plus, it raises the bigger issue that ultimately someday someone else
-is probably going to take over for me as the sysadmin and I don&#39;t
+is probably going to take over for me as the sysadmin and I don&amp;rsquo;t
 really want them to have to use my account.  The &lt;em&gt;right&lt;/em&gt; way to solve
 this is to create an LDAP server for the Linux boxes and host the
 logins centrally, but this feels a bit like overkill to me as we
@@ -316,7 +316,7 @@ currently only have around 5 Linux systems and, at least for the time
 being, I would be the only person in the LDAP server.&lt;/p&gt;
 &lt;p&gt;I suppose I could bind the Linux boxes in to the Active Directory LDAP
 server, but that creates a bit of a chicken and egg dependency on
-Active Directory that I&#39;m just not comfortable with.&lt;/p&gt;
+Active Directory that I&amp;rsquo;m just not comfortable with.&lt;/p&gt;
 &lt;p&gt;What I really want is just a generic sysadmin account, but if you are
 going to do that then why not use the one that already comes with
 every Unix/Linux system, &lt;code&gt;root&lt;/code&gt;.  So in the end I configured an
@@ -324,14 +324,14 @@ explicit password for &lt;code&gt;root&lt;/code&gt;, enabled SSH login for root 
 the account I created on setup.  I would never recommend this for a
 larger environment, but for my small setup this worked out best.&lt;/p&gt;
 &lt;h2 id=&#34;closing-thoughts&#34;&gt;Closing thoughts&lt;/h2&gt;
-&lt;p&gt;In the end I&#39;m glad I set this up from scratch rather than use the
+&lt;p&gt;In the end I&amp;rsquo;m glad I set this up from scratch rather than use the
 build and instructions from SerNet. I have a better understanding
 of what everything is doing and the weird quirkiness I was
 experiencing with the old server has gone away (although, to be fair,
 that could have been due to the older version I was running.)
 I also feel more comfortable with the samba tool and adding and
 removing domain controllers.&lt;/p&gt;
-&lt;p&gt;I&#39;m still not a huge fan of Ubuntu as a server. I don&#39;t care for the
+&lt;p&gt;I&amp;rsquo;m still not a huge fan of Ubuntu as a server. I don&amp;rsquo;t care for the
 dnsmasq stub, the replacement for ntpd or how it forces you to create
 a non-root account, but since it is a popular system I was able to
 search for most of the errors I did encounter.&lt;/p&gt;

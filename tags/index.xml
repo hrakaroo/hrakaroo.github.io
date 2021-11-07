@@ -7,58 +7,10 @@
     <description>Tags</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 26 Dec 2019 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_2.png</url>
+      <url>/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_3.png</url>
       <title>Tags</title>
       <link>/tags/</link>
     </image>
-    
-    <item>
-      <title>Java</title>
-      <link>/tags/java/</link>
-      <pubDate>Thu, 26 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>/tags/java/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Go</title>
-      <link>/tags/go/</link>
-      <pubDate>Thu, 21 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/tags/go/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>RayTracer</title>
-      <link>/tags/raytracer/</link>
-      <pubDate>Thu, 21 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/tags/raytracer/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Kotlin</title>
-      <link>/tags/kotlin/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
-      <guid>/tags/kotlin/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Vuejs</title>
-      <link>/tags/vuejs/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
-      <guid>/tags/vuejs/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Cpp</title>
-      <link>/tags/cpp/</link>
-      <pubDate>Sat, 10 Feb 2007 00:00:00 +0000</pubDate>
-      <guid>/tags/cpp/</guid>
-      <description></description>
-    </item>
     
   </channel>
 </rss>

@@ -5,54 +5,154 @@
     <link>/categories/software-development/</link>
       <atom:link href="/categories/software-development/index.xml" rel="self" type="application/rss+xml" />
     <description>Software Development</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 01 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 06 Nov 2021 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_2.png</url>
+      <url>/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_3.png</url>
       <title>Software Development</title>
       <link>/categories/software-development/</link>
     </image>
+    
+    <item>
+      <title>Avoiding Read/Write Locks</title>
+      <link>/post/rw-locks/</link>
+      <pubDate>Sat, 06 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>/post/rw-locks/</guid>
+      <description>&lt;p&gt;Intuitively, read/write locks seem to be the perfect solution. They
+allow you to coordinate access to a resource and as long as the write
+operations are fast enough the read/write locks are basically free (or
+at least only as &amp;ldquo;expensive&amp;rdquo; as the time it takes to execute the write
+action.) The idea being that if multiple read routines use a read/write
+lock the only time they are blocked from execution is while the write
+routine holds the lock, but are otherwise totally unblocked.&lt;/p&gt;
+&lt;p&gt;As it turns out this is not necessarily true and read/write locks can end up
+being a lot more expensive than they initially appear.&lt;/p&gt;
+&lt;p&gt;Consider the following:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Thread 1 requests read access to a shared read/write lock.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;At this point in time no one else has requested the lock for either
+read or write access so a read lock is granted to Thread 1.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Thread 2 requests read access to the same read/write lock.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Since the lock is currently only read locked by Thread 1, Thread 2
+is also given read access.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Thread 3 requests write access to the same read/write lock.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Since the lock has been locked for read access by both Thread 1 and
+Thread 2, Thread 3 is put on a wait list for write access until
+Thread 1 and Thread 2 release their read locks.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Thread 4 requests read access to the same read/write lock.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;What happens here?&lt;/p&gt;
+&lt;p&gt;A first guess might be to give Thread 4 the read lock, along with
+Threads 1 and 2, since Thread 3 has not yet obtained the write lock,
+but lets consider the fall out if we let this happen. Imagine a system
+where every read operation took a minute to execute and requests are
+comming in every 30 seconds. If every read request is granted a read
+lock so long as no write thread had been given a write lock, new read
+requests would always come in before previous ones finished ensuring
+that the lock was never free (ie not read locked.) In this situation
+the write operation would essentially be blocked from every achieving
+write access. aka, lock starvation.&lt;/p&gt;
+&lt;p&gt;In order to prevent lock starvation it is necessary that as soon as a
+write lock is requested every subsequent read lock request is blocked
+from obtaining the lock until the thread requesting the write lock is
+given the lock, executes, and then releases the write lock.&lt;/p&gt;
+&lt;p&gt;This means that as soon as a write lock is requested any threads
+currently running essentially block all new read requests. So a
+read/write lock is, worse case, as &amp;ldquo;expensive&amp;rdquo; as the time it takes to
+execute the write operation plus the worse case time it takes to
+execute a read operation.&lt;/p&gt;
+&lt;p&gt;This means that even if you optimize your system so that the write
+operations are as fast as possible, your overall throughput may still
+be dependent on your slowest running read operation.&lt;/p&gt;
+&lt;h2 id=&#34;what-readwrite-locks-are-good-for&#34;&gt;What read/write locks are good for.&lt;/h2&gt;
+&lt;p&gt;Read/Write locks should really be used when you need a memory barrier
+and &lt;em&gt;all&lt;/em&gt; running threads are only allowed to see the memory either
+before or after a write operation, but never both. Meaning that it is
+not allowable for some threads to see the value of the memory before
+the write operations and other threads running at the same time to see
+the memory value after the write operation.&lt;/p&gt;
+&lt;p&gt;But, as we saw above, this comes at a cost and in many cases it&amp;rsquo;s not
+really needed.&lt;/p&gt;
+&lt;p&gt;For example, suppose we had a data structure that held the account
+balance for an individual. Suppose also that this account received a
+constant stream of read requests that, for what ever reason, took
+several minutes to calculate. If we were to use a traditional
+read/write lock here then every time there was a deposit or withdrawal
+(a write operation) all read operations would be blocked until all
+running read operations finished and the write executed.&lt;/p&gt;
+&lt;p&gt;Although the write operation may be quick, the long execution time on
+the read operation is going to cause the system to appear blocked
+while it waits for the write lock. But if we can tolerate concurrent
+threads seeing two different values then we can remove the block all
+together and achieve higher overall throughput.&lt;/p&gt;
+&lt;p&gt;To achieve this we would need to make the data structure immutable.
+Once immutable there would no longer need to be any coordination and
+all locks could be removed. Updates would instead be handled by having
+the write thread copy the immutable data structure locally, modify it
+and then use an atomic operation to swap in the new data structure.&lt;/p&gt;
+&lt;p&gt;Read operations running against the old data structure would continue
+to run and would report the old value, while any new read operation
+would run over the new data structure and report the new value.
+Eventually all old read operations would finish and the only view
+would be of the new data structure, but for a time it would be
+possible for different threads to report different values.&lt;/p&gt;
+&lt;p&gt;We could also re-introduce a simple lock for just the writer
+operations to ensure that multiple write operations always happen in
+sequence so they can never overlap and they would never cause
+inconsistent results.&lt;/p&gt;
+&lt;p&gt;So, in summary, while read/write locks often appear, at first blush,
+like a panacea, they can actually carry a substantial hidden cost.
+And in some cases the functionality provided by a read/write lock may
+not even be what you really need.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Go for Java Developers - Part 2</title>
       <link>/post/go-for-java-part2/</link>
       <pubDate>Tue, 01 Oct 2019 00:00:00 +0000</pubDate>
       <guid>/post/go-for-java-part2/</guid>
-      <description>&lt;p&gt;This is my second post on things I&#39;m finding interesting about the Go
+      <description>&lt;p&gt;This is my second post on things I&amp;rsquo;m finding interesting about the Go
 language.  For additional background on this series you might want to read
 &lt;a href=&#34;../go-for-java-part1&#34;&gt;Part 1&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;dependency-management&#34;&gt;Dependency Management&lt;/h2&gt;
-&lt;p&gt;This time I&#39;m going to focus on dependency management and how
+&lt;p&gt;This time I&amp;rsquo;m going to focus on dependency management and how
 go approaches the &lt;a href=&#34;../sane-java-dependency-management&#34;&gt;diamond dependency issue&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;First off, Go does not support pre-compiled libraries the way Java
 does.  (Personally, I think compiled Jar files are from a by-gone time
-and these days cause more harm than good, but that&#39;s not why Go
-doesn&#39;t have them.)  Go doesn&#39;t have them because Go code compiles
+and these days cause more harm than good, but that&amp;rsquo;s not why Go
+doesn&amp;rsquo;t have them.)  Go doesn&amp;rsquo;t have them because Go code compiles
 down into native assembly so it would be impossible to distribute
 anything precompiled by Go and expect it to work on more than one
 platform.&lt;/p&gt;
 &lt;p&gt;So instead, Go publishes libraries as source code with Git tags and
 avoids artifactory all together.  When you want to use a library you
 create a dependency on a git repo with a specific tag version.&lt;/p&gt;
-&lt;p&gt;This doesn&#39;t exactly remove the diamond dependency issue as it is
+&lt;p&gt;This doesn&amp;rsquo;t exactly remove the diamond dependency issue as it is
 entirely possible to have a transitive dependency on two different
 versions of a library. In this case, as with Java, you still have to
 select the version you want to use. However, there are two substantial
 changes.&lt;/p&gt;
-&lt;h3 id=&#34;cant-ignore-the-problem&#34;&gt;Can&#39;t ignore the problem&lt;/h3&gt;
-&lt;p&gt;First, you don&#39;t have the option of ignoring or miss the issue.  This
+&lt;h3 id=&#34;cant-ignore-the-problem&#34;&gt;Can&amp;rsquo;t ignore the problem&lt;/h3&gt;
+&lt;p&gt;First, you don&amp;rsquo;t have the option of ignoring or miss the issue.  This
 means that if your service builds in Go, you can be confident your
 code does not contain any &amp;ldquo;hidden&amp;rdquo; mismatch errors.  This effectively
 removes an entire class of errors that you have with Java.  (TBH,
-these don&#39;t pop up too often, but the more common a library is the
-greater the chance for this to happen.  I&#39;ve seen this error triggered
+these don&amp;rsquo;t pop up too often, but the more common a library is the
+greater the chance for this to happen.  I&amp;rsquo;ve seen this error triggered
 with the Guava libraries.) Being able to completely remove
 them as a class of problems would be nice.&lt;/p&gt;
 &lt;h3 id=&#34;conflicts-identified-at-the-source-code-level&#34;&gt;Conflicts identified at the source code level&lt;/h3&gt;
 &lt;p&gt;Second, conflicts are identified at the source code level and not at
-the version level. This means that PATCH version mismatches won&#39;t
-break your build so long as they don&#39;t change function signature (and
-PATCHES really shouldn&#39;t).&lt;/p&gt;
-&lt;p&gt;I&#39;m not saying that the way Go deals with this is perfect but it does
+the version level. This means that PATCH version mismatches won&amp;rsquo;t
+break your build so long as they don&amp;rsquo;t change function signature (and
+PATCHES really shouldn&amp;rsquo;t).&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m not saying that the way Go deals with this is perfect but it does
 move the problem into a first class issue and forces a
 resolution. Java could take this same approach if you copied all of
 your dependencies into your code base as source code. But I did find
@@ -66,19 +166,19 @@ management.&lt;/p&gt;
       <link>/post/go-for-java-part1/</link>
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       <guid>/post/go-for-java-part1/</guid>
-      <description>&lt;p&gt;For the last 20+ years I&#39;ve been mostly focused on Java development.
+      <description>&lt;p&gt;For the last 20+ years I&amp;rsquo;ve been mostly focused on Java development.
 But recently I had an opportunity to join a team which was focused on
 Go and having spent the early part of my career writing C++ I was
 intrigued by some of the decisions Go made. So this is the first (of
 possibly several) posts on things I found interesting about the
-language and since my I have been doing mostly Java development I&#39;m
+language and since my I have been doing mostly Java development I&amp;rsquo;m
 going to be comparing and contrasting from that perspective.&lt;/p&gt;
 &lt;h2 id=&#34;go-interfaces&#34;&gt;Go interfaces&lt;/h2&gt;
-&lt;p&gt;For this first post I&#39;m going to discuss one specific implication of
+&lt;p&gt;For this first post I&amp;rsquo;m going to discuss one specific implication of
 how Go handles interfaces.&lt;/p&gt;
 &lt;p&gt;If you are unfamiliar with Go, it uses structural typing for
 interfaces (which is more generally called &amp;ldquo;duck typing&amp;rdquo; meaning &amp;ldquo;if
-it walks like a duck and talks like a duck … it&#39;s a duck.&amp;quot;)  This
+it walks like a duck and talks like a duck … it&amp;rsquo;s a duck.&amp;quot;)  This
 means that if a struct in Go has functions on it which match the
 methods of an interface, instances of that struct are types of that
 interface. This sounds more complicated than it actually is so lets
@@ -112,18 +212,18 @@ func (p Person) getName() string {
 }
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Ignoring the syntax differences, what is interesting is that in Go we
-don&#39;t declare Person as implementing Named.  This is implied by the
+don&amp;rsquo;t declare Person as implementing Named.  This is implied by the
 function on Person matching the method in the Named interface. The
 compiler figures this out for us and instances of a Person are
 automatically of type Named.&lt;/p&gt;
-&lt;p&gt;So while this isn&#39;t necessarily a new thing (Python mostly lets you
+&lt;p&gt;So while this isn&amp;rsquo;t necessarily a new thing (Python mostly lets you
 do the same thing), this was something new for a statically typed
 language.&lt;/p&gt;
 &lt;p&gt;When I first saw this I thought &amp;ldquo;meh, so you can leave off the
 &amp;lsquo;implements&amp;rsquo; keyword, whatever.&amp;rdquo;  But I think this feature has a really
 interesting implication.&lt;/p&gt;
 &lt;h3 id=&#34;the-setup&#34;&gt;The setup&lt;/h3&gt;
-&lt;p&gt;Back in Java land, let&#39;s suppose you have a function that takes an SQL
+&lt;p&gt;Back in Java land, let&amp;rsquo;s suppose you have a function that takes an SQL
 PreparedStatement as one of its arguments.  Something like:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Db {
    void setValue(PreparedStatement stmt, String value) {
@@ -175,13 +275,13 @@ set to &amp;ldquo;dog&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;Ahhh … but there is a devil hidden in these details.
 PreparedStatement is a massive interface with well over 50 methods.
 In order to stub out the one method you want (setString) you are going
-to need to also stub out all of the other ones as well.  We don&#39;t ever
+to need to also stub out all of the other ones as well.  We don&amp;rsquo;t ever
 use them so they can all throw a RuntimeException (and thankfully most
 modern IDEs can automatically generate this code for you) … but you
 are still dealing with a lot of boilerplate code.&lt;/p&gt;
 &lt;h3 id=&#34;the-switch&#34;&gt;The switch&lt;/h3&gt;
-&lt;p&gt;Now let&#39;s take a look at this same problem in Go land.  (For the sake
-of argument let&#39;s assume that PreparedStatement both exists in Go and
+&lt;p&gt;Now let&amp;rsquo;s take a look at this same problem in Go land.  (For the sake
+of argument let&amp;rsquo;s assume that PreparedStatement both exists in Go and
 works much in the same way as its Java counterpart).&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type Db struct {
 }
@@ -195,7 +295,7 @@ func (db Db) setValue(stmt PreparedStatement, value string) {
 db := Db{}
 db.setValue(stmt, &amp;quot;someValue&amp;quot;)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Now let&#39;s write the unit test:&lt;/p&gt;
+&lt;p&gt;Now let&amp;rsquo;s write the unit test:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func SetValueTest(t* testing.T) {
     db := Db{}
     stmt := ??
@@ -204,8 +304,8 @@ db.setValue(stmt, &amp;quot;someValue&amp;quot;)
     // todo - verify the statement received the value of &#39;dog
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;We&#39;ve once again hit the same issue.  As with Java, we can use the
-Go&#39;s mock framework (which also uses reflection) or, as before, we can
+&lt;p&gt;We&amp;rsquo;ve once again hit the same issue.  As with Java, we can use the
+Go&amp;rsquo;s mock framework (which also uses reflection) or, as before, we can
 try to roll our own.&lt;/p&gt;
 &lt;p&gt;Approaching it directly we could build out a TestPreparedStatement as:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type TestPreparedStatement struct {
@@ -221,7 +321,7 @@ we also need to stub out all of the other 50+ methods in the
 PreparedStatement interface which is just as wasteful as it was in
 Java.  But we do have one other option.&lt;/p&gt;
 &lt;h3 id=&#34;duck-typing&#34;&gt;Duck Typing&lt;/h3&gt;
-&lt;p&gt;What if we didn&#39;t stub out all of the other methods and instead
+&lt;p&gt;What if we didn&amp;rsquo;t stub out all of the other methods and instead
 created a new interface which only contained the one method we are
 using?  So something like:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type StringSetter interface {
@@ -246,7 +346,7 @@ interfaces to objects by simply copying over the methods we want into
 the interface.&lt;/p&gt;
 &lt;p&gt;I found this to be a surprising feature about Go and is not something
 I had considered before.  It feels really powerful and, to be honest,
-I&#39;m not yet sure if this is a good feature about the language or not,
+I&amp;rsquo;m not yet sure if this is a good feature about the language or not,
 but it is an interesting one.&lt;/p&gt;
 </description>
     </item>
@@ -495,17 +595,17 @@ new user interface language was developed to make it easy to query the
 data. This language (or rather sub-language) was called Structured
 English Query Language or SEQUEL. SEQUEL would later evolved into SQL
 and become the preeminent language for querying relational
-databases. In the 45+ years since it&#39;s introduction SQL has evolved
+databases. In the 45+ years since it&amp;rsquo;s introduction SQL has evolved
 slightly but it is still largely similar to the version introduced in
 the 70s. What has changed during that time is how we interact with the
 database. Today, SQL is used significantly more by applications
 querying the database than by end users. This usage pattern has
 created its own ecosystem of utilities and libraries which help
 applications build SQL queries.  One of the more popular libraries for
-building SQL queries in Java is &lt;a href=&#34;https://docs.jboss.org/hibernate/entitymanager/3.5/reference/en/html/querycriteria.html&#34;&gt;Hibernate&#39;s Criteria Builder&lt;/a&gt;
+building SQL queries in Java is &lt;a href=&#34;https://docs.jboss.org/hibernate/entitymanager/3.5/reference/en/html/querycriteria.html&#34;&gt;Hibernate&amp;rsquo;s Criteria Builder&lt;/a&gt;
 which uses an annotation pre-processor and a builder pattern to
-facilitate building SQL queries.  (Java&#39;s Persistence API was based
-heavily on Hibernate&#39;s Criteria Builder). But, at the end of the day
+facilitate building SQL queries.  (Java&amp;rsquo;s Persistence API was based
+heavily on Hibernate&amp;rsquo;s Criteria Builder). But, at the end of the day
 the builder still generates a basic SQL string which is sent to the
 target database, parsed and then executed. Hibernate is just one
 example, but there are hundreds of other libraries that exist across
@@ -535,7 +635,7 @@ error. Furthermore, the errors which do get introduced are almost
 always related to the construction of the SQL query rather than actual
 column names or keywords in the query. Meaning the column names and
 keywords are not as likely to be the source of syntax errors as they
-don&#39;t normally change based on the user request. For example, an
+don&amp;rsquo;t normally change based on the user request. For example, an
 application which allows the searching of available flights is less
 likely to return different a type of data depending on the destination
 city. You may get back more or less result, but it will usually be the
@@ -549,7 +649,7 @@ the construction of the query itself.&lt;/p&gt;
 include a comma after the last one?&lt;/li&gt;
 &lt;li&gt;If this is the first filter then we need to add the &amp;lsquo;WHERE&amp;rsquo; keyword,
 but if this is the second one we need to add the &amp;lsquo;AND&amp;rsquo; keyword, and
-don&#39;t forget about the parentheses.&lt;/li&gt;
+don&amp;rsquo;t forget about the parentheses.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;These types of syntax errors are often introduced based on the users
 search criteria and can be significantly more difficult to find with
@@ -562,7 +662,7 @@ responsive development team which quickly patches any errors that are
 found. It would be safe to say that in the 45+ years since the
 introduction of SQL, millions of lines of code have been written in
 various languages, all attempting to work around this same basic
-problem. It&#39;s a huge waste of intellectual effort for what is
+problem. It&amp;rsquo;s a huge waste of intellectual effort for what is
 essentially a self inflicted problem.&lt;/p&gt;
 &lt;h3 id=&#34;where-to-go-from-here&#34;&gt;Where to go from here&lt;/h3&gt;
 &lt;p&gt;SQL and similar English based DSLs (domain specific languages) are
@@ -610,9 +710,9 @@ what ever you do, keep the two domains separate.  SQL is a terrible API.&lt;/p&g
       <link>/post/sane-java-dependency-management/</link>
       <pubDate>Fri, 01 Jun 2018 00:00:00 +0000</pubDate>
       <guid>/post/sane-java-dependency-management/</guid>
-      <description>&lt;p&gt;Java&#39;s dependency management suffers from the dreaded diamond
+      <description>&lt;p&gt;Java&amp;rsquo;s dependency management suffers from the dreaded diamond
 dependency issue. And while this issue is not unique to Java, it is,
-perhaps, more acute due to the precompiled nature of Java&#39;s Jar files.&lt;/p&gt;
+perhaps, more acute due to the precompiled nature of Java&amp;rsquo;s Jar files.&lt;/p&gt;
 &lt;h2 id=&#34;a-quick-refresher&#34;&gt;A Quick Refresher&lt;/h2&gt;
 &lt;p&gt;If you are unfamiliar with this issue, here is a
 quick refresher:&lt;/p&gt;
@@ -680,8 +780,8 @@ bug they have had so they update to it as&lt;/p&gt;
 &lt;p&gt;And publish it under&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;    com.hrakaroo : cat : 2.0
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;But the Dog library makers don&#39;t need the new functionality so they
-don&#39;t bother to update.&lt;/p&gt;
+&lt;p&gt;But the Dog library makers don&amp;rsquo;t need the new functionality so they
+don&amp;rsquo;t bother to update.&lt;/p&gt;
 &lt;p&gt;And finally, you decide to update your service to use the newest version
 of Cat which has the bug fix you need.  This changes
 your dependency tree to:&lt;/p&gt;
@@ -699,23 +799,23 @@ version) and use that as its version. In this case it will select
 &lt;code&gt;com.hrakaroo : common : 2.0&lt;/code&gt; which means that when your service calls
 Dog.method1 it will give you a &lt;em&gt;runtime exception&lt;/em&gt; as the JVM will be
 unable to find the definition for &lt;code&gt;helpful(String)&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Or, if you are using gradle, you can use it&#39;s force tag and force the
+&lt;p&gt;Or, if you are using gradle, you can use it&amp;rsquo;s force tag and force the
 version down to &lt;code&gt;com.hrakaroo : common : 2.0&lt;/code&gt; which means that when
 your service calls Cat.method2 it will give you a &lt;em&gt;runtime exception&lt;/em&gt; as
 the JVM will be unable to find the definition for
 &lt;code&gt;helpful(String, boolean)&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;The only &amp;ldquo;correct&amp;rdquo; solution here is to use gradle&#39;s
+&lt;p&gt;The only &amp;ldquo;correct&amp;rdquo; solution here is to use gradle&amp;rsquo;s
 failOnVersionConfict() which will fail to compile your project unless
 both your dog and cat dependencies use the same version. This means
 you will be forced to fix the issue before your project can compile,
 but this may not be practical as a large project has lots of moving
 parts and compatible versions may not be available.
-Additionally, &lt;code&gt;failOnVersionConflict()&lt;/code&gt; doesn&#39;t understand semantic
+Additionally, &lt;code&gt;failOnVersionConflict()&lt;/code&gt; doesn&amp;rsquo;t understand semantic
 versioning so it will fail on PATCH level differences which often
 makes this a very painful and non-practical solution.&lt;/p&gt;
 &lt;p&gt;Most people just choose to go with the plug-and-pray approach where
 they just hope they never call a code path which encounters a
-definition which doesn&#39;t exist.&lt;/p&gt;
+definition which doesn&amp;rsquo;t exist.&lt;/p&gt;
 &lt;h2 id=&#34;cutting-the-knot&#34;&gt;Cutting the knot&lt;/h2&gt;
 &lt;p&gt;As the two easy solutions are wrong and the one correct solution is
 impratical, the only real answer here is to avoid the problem
@@ -724,11 +824,11 @@ altogether. When building a library, limit your dependencies.&lt;/p&gt;
 shared library. From the technologies you use to the way you version
 and test it are substantially different. Services are often just thin
 wiring together of different frameworks and libraries while libraries
-are more single tasked. And yet, they too often I don&#39;t see people
+are more single tasked. And yet, they too often I don&amp;rsquo;t see people
 appreciate this difference. Instead they hack together libraries like
 they do services.&lt;/p&gt;
 &lt;h3 id=&#34;stick-to-vanilla-java&#34;&gt;Stick to vanilla Java&lt;/h3&gt;
-&lt;p&gt;I really like the Kotlin language, but I don&#39;t think it has a place
+&lt;p&gt;I really like the Kotlin language, but I don&amp;rsquo;t think it has a place
 (yet) in shared libraries. Part of what makes Kotlin fun are all
 of the extension and infix libraries which are all packaged in the
 kotlin stdlib dependency.  Any time you have more than two kotlin
@@ -736,12 +836,12 @@ library dependencies you are just about assured to have a version
 conflict on the kotlin stdlib.  Libraries should be written in Java
 to remove as many dependencies as possible.&lt;/p&gt;
 &lt;h3 id=&#34;avoid-huge-common-or-utility-libraries&#34;&gt;Avoid huge common or utility libraries&lt;/h3&gt;
-&lt;p&gt;Apache&#39;s commons-lang3 is a fantastic library, but too often I&#39;ve seen
+&lt;p&gt;Apache&amp;rsquo;s commons-lang3 is a fantastic library, but too often I&amp;rsquo;ve seen
 brought in so that the developer can use the &lt;code&gt;StringUtils.join()&lt;/code&gt;
 method. Not only is this method &lt;em&gt;trivial&lt;/em&gt; to write, but with Java 8
 this can be done directly off the stream using
 &lt;code&gt;.collect(Collectors.joining(...))&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;The same can be said for Google&#39;s Guava library, which is an enormous
+&lt;p&gt;The same can be said for Google&amp;rsquo;s Guava library, which is an enormous
 library that often makes non-compatible changes. In one library I
 reviewed the author had brought in a dependency on Guava so that they
 could use the &lt;code&gt;Preconditions&lt;/code&gt; checks. While I think this type of
@@ -765,7 +865,7 @@ relocate &lt;code&gt;com.apache.commons&lt;/code&gt; to &lt;code&gt;com.hrakaroo
 resort, but it will guarantee that no one can later change the depenency
 version to something which is incompatable.&lt;/p&gt;
 &lt;p&gt;Whatever your approach, you should take the time when creating a shared
-library to minimize it&#39;s transitive dependencies as much as possible.
+library to minimize it&amp;rsquo;s transitive dependencies as much as possible.
 By doing so you will help minimize the risk to developers which use your
 library of creating their own diamon dependency nightmare.&lt;/p&gt;
 </description>

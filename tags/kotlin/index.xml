@@ -7,7 +7,7 @@
     <description>Kotlin</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 27 Apr 2016 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_2.png</url>
+      <url>/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_3.png</url>
       <title>Kotlin</title>
       <link>/tags/kotlin/</link>
     </image>
@@ -32,14 +32,14 @@ opportunity to build my own service.&lt;/p&gt;
 Vue.js with the Vuetify plugin for several reasons.  Vue.js was
 established enough to have good tutorials, training videos and a
 robust presence on Stack Overflow for questions.  It also had an easy
-ramp up and it didn&#39;t originate from Facebook.  (Petty, I know, but I
+ramp up and it didn&amp;rsquo;t originate from Facebook.  (Petty, I know, but I
 have a personal distain of Facebook).&lt;/p&gt;
 &lt;h2 id=&#34;status&#34;&gt;Status&lt;/h2&gt;
 &lt;p&gt;In November of 2019 I launched the site and moved hosting my game
 night to the system so I can start &amp;ldquo;eating my own dog food.&amp;rdquo;  I still
 have several large features I want to add before I really start
 start trying to push it more globally.&lt;/p&gt;
-&lt;p&gt;For now I&#39;m keeping it closed source, but free to use.  If the service
+&lt;p&gt;For now I&amp;rsquo;m keeping it closed source, but free to use.  If the service
 proves popular I will likely be forced to add either a for-pay section
 or ads to cover my hosting fees, but otherwise I have no immediate
 commercialization plans for the service.&lt;/p&gt;

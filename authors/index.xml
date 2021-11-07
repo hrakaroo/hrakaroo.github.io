@@ -5,23 +5,12 @@
     <link>/authors/</link>
       <atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
     <description>Authors</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 01 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 06 Nov 2021 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_2.png</url>
+      <url>/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_3.png</url>
       <title>Authors</title>
       <link>/authors/</link>
     </image>
-    
-    <item>
-      <title></title>
-      <link>/authors/admin/</link>
-      <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
-      <guid>/authors/admin/</guid>
-      <description>&lt;p&gt;Joshua Gerth is a software professional with over twenty years
-experience in system design and software development. He is an active
-public speaker and has won several awards for humorous speaking.&lt;/p&gt;
-</description>
-    </item>
     
   </channel>
 </rss>
