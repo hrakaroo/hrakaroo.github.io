@@ -1,121 +1,199 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
   <url>
     <loc>/authors/admin/</loc>
     <lastmod>2021-11-07T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/authors/</loc>
     <lastmod>2021-11-07T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/categories/</loc>
     <lastmod>2021-11-07T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/</loc>
     <lastmod>2021-11-07T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/post/obscure-names/</loc>
     <lastmod>2021-11-07T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/post/</loc>
     <lastmod>2021-11-07T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/categories/software-development/</loc>
     <lastmod>2021-11-07T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/post/rw-locks/</loc>
     <lastmod>2021-11-06T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/categories/hiking/</loc>
     <lastmod>2020-04-01T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/post/hiking-st-helens/</loc>
     <lastmod>2020-04-01T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/post/samba4-ubuntu18.04/</loc>
     <lastmod>2020-03-27T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/categories/systems-administration/</loc>
     <lastmod>2020-03-27T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/project/glob-library-java/</loc>
     <lastmod>2019-12-26T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/java/</loc>
     <lastmod>2019-12-26T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/project/</loc>
     <lastmod>2019-12-26T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/</loc>
     <lastmod>2019-12-26T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/go/</loc>
     <lastmod>2019-11-21T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/project/ray-the-tracer/</loc>
     <lastmod>2019-11-21T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/raytracer/</loc>
     <lastmod>2019-11-21T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/post/go-for-java-part2/</loc>
     <lastmod>2019-10-01T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/post/go-for-java-part1/</loc>
     <lastmod>2019-08-01T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/categories/api/</loc>
     <lastmod>2019-06-06T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/post/three-questions/</loc>
     <lastmod>2019-06-06T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/post/sql-terrible-api/</loc>
     <lastmod>2018-11-01T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/post/code-reviews/</loc>
     <lastmod>2018-10-09T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/categories/development-process/</loc>
     <lastmod>2018-10-09T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/categories/teams/</loc>
     <lastmod>2018-10-09T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/categories/java/</loc>
     <lastmod>2018-06-01T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/post/sane-java-dependency-management/</loc>
     <lastmod>2018-06-01T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/post/the-dance-recital/</loc>
     <lastmod>2017-10-01T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/categories/toastmasters/</loc>
     <lastmod>2017-10-01T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/post/walking-the-board/</loc>
     <lastmod>2017-07-09T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/kotlin/</loc>
     <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/project/one-seat-open/</loc>
     <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/vuejs/</loc>
     <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/cpp/</loc>
     <lastmod>2007-02-10T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/project/rebound/</loc>
     <lastmod>2007-02-10T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/project/soda-water-ray-tracer/</loc>
     <lastmod>2004-11-21T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/publication_types/</loc>
   </url>
+  
 </urlset>
