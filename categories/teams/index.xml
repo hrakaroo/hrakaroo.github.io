@@ -328,17 +328,17 @@ to track actual progress becomes increasingly difficult.&lt;/p&gt;
 &lt;h3 id=&#34;project-status&#34;&gt;Project Status&lt;/h3&gt;
 &lt;p&gt;Related to context switching, it’s nearly impossible tell the overall
 project status from this type of update.  Even if you could figure out
-how many tickets were closed, without looking at the kanban board it’s
+how many tickets were closed, without looking at the board it’s
 impossible to get even a sense of how far along the project is.  Plus,
 this format does nothing to encourage people to actually update the
-kanban board, compounding the issue.&lt;/p&gt;
+board, compounding the issue.&lt;/p&gt;
 &lt;h3 id=&#34;public-speaking&#34;&gt;Public Speaking&lt;/h3&gt;
 &lt;p&gt;Public speaking does not come naturally to everyone, even when
 presenting just to the team.  I’m much more relaxed with it now, but
 there was a time when this type of setting would cause me enough
 stress and I would ignore whatever was being said and just rehearse
 what I was going to say.  Then, after I gave my update, I would spend
-rest of the standup obsessing over the things I had messed up or
+the rest of the standup obsessing over the things I had messed up or
 forgotten to say.&lt;/p&gt;
 &lt;h3 id=&#34;competition-for-busiest&#34;&gt;Competition for Busiest&lt;/h3&gt;
 &lt;p&gt;Without focus, the standup can become a passive competition for who is
@@ -368,9 +368,9 @@ update&amp;rdquo; or, worse, explain that &amp;ldquo;I&amp;rsquo;ve got some thi
 don&amp;rsquo;t want to talk about.&amp;rdquo;&lt;/p&gt;
 &lt;p&gt;As an individual contributor I find this standup format stressful and
 as a project lead and manager I find it unhelpful.  Instead I prefer
-using the standup time to walk the kanban board.&lt;/p&gt;
+using the standup time to walk the board.&lt;/p&gt;
 &lt;h2 id=&#34;walking-the-board&#34;&gt;Walking the board&lt;/h2&gt;
-&lt;p&gt;With a Jira you can use swim planes to split up your kanban board into
+&lt;p&gt;With a Jira you can use swim planes to split up your board into
 project tasks and hero tasks.  Then starting at the &lt;strong&gt;Done&lt;/strong&gt; column, just
 go down each column and each owner gives an update for their task.  In
 this format there is no initial awkward moment trying to figure out
