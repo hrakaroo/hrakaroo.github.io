@@ -926,7 +926,8 @@ upgrade to Ubuntu 22.x, but since that&rsquo;s bound to cause it&rsquo;s own hos
 of complications I instead opted to just change the source for Samba
 by following these instructions</p>
 <p><a href="https://ubunlog.com/en/ya-fue-liberada-la-nueva-version-de-samba-4-16-0-y-estos-son-sus-cambios/">https://ubunlog.com/en/ya-fue-liberada-la-nueva-version-de-samba-4-16-0-y-estos-son-sus-cambios/</a></p>
-<pre><code class="language-sudo">sudo apt-get update
+<pre><code>sudo add-apt-repository ppa:linux-schools/samba-latest
+sudo apt-get update
 sudo apt install samba
 </code></pre>
 <p>This was enough to upgrade samba on 18.04 to 4.16.0. Once I restarted both domain controllers
