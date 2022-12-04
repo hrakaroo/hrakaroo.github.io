@@ -7,7 +7,7 @@
     <description>Software Development</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 07 Nov 2021 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_2.png</url>
+      <url>/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_3.png</url>
       <title>Software Development</title>
       <link>/categories/software-development/</link>
     </image>
@@ -263,7 +263,7 @@ going to be comparing and contrasting from that perspective.&lt;/p&gt;
 how Go handles interfaces.&lt;/p&gt;
 &lt;p&gt;If you are unfamiliar with Go, it uses structural typing for
 interfaces (which is more generally called &amp;ldquo;duck typing&amp;rdquo; meaning &amp;ldquo;if
-it walks like a duck and talks like a duck … it&amp;rsquo;s a duck.&amp;quot;)  This
+it walks like a duck and talks like a duck … it&amp;rsquo;s a duck.&amp;rdquo;)  This
 means that if a struct in Go has functions on it which match the
 methods of an interface, instances of that struct are types of that
 interface. This sounds more complicated than it actually is so lets

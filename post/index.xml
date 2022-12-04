@@ -7,7 +7,7 @@
     <description>Posts</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 07 Nov 2021 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_2.png</url>
+      <url>/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_3.png</url>
       <title>Posts</title>
       <link>/post/</link>
     </image>
@@ -952,6 +952,27 @@ removing domain controllers.&lt;/p&gt;
 dnsmasq stub, the replacement for ntpd or how it forces you to create
 a non-root account, but since it is a popular system I was able to
 search for most of the errors I did encounter.&lt;/p&gt;
+&lt;h2 id=&#34;supporting-windows-11-22h2&#34;&gt;Supporting Windows 11 22H2&lt;/h2&gt;
+&lt;p&gt;In the two years since I set this system up it has been running
+nearly flawlessly. The only real issue is that with Windows 11 update
+22H2 Microsoft changed the encryption protocol (or something similar)
+and new boxes with Windows 11 update 22H2 are no longer able to bind
+to the domain controller. (This does not seem to impact existing systems
+that are already bound to the domain.)&lt;/p&gt;
+&lt;p&gt;The following Reddit link talks about the issue in depth
+&lt;a href=&#34;https://www.reddit.com/r/sysadmin/comments/xoqend/samba_495_windows_11_22h2_kerberos/&#34;&gt;https://www.reddit.com/r/sysadmin/comments/xoqend/samba_495_windows_11_22h2_kerberos/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The fix seems to be to update Samba to version 4.16.0, which isn&amp;rsquo;t directly
+available for Ubuntu 18.04. The recommended path is probably to upgrade to Ubuntu 22.x,
+but since that&amp;rsquo;s bound to cause it&amp;rsquo;s own host of complications I instead opted to
+just change the source for Samba by following these instructions&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://ubunlog.com/en/ya-fue-liberada-la-nueva-version-de-samba-4-16-0-y-estos-son-sus-cambios/&#34;&gt;https://ubunlog.com/en/ya-fue-liberada-la-nueva-version-de-samba-4-16-0-y-estos-son-sus-cambios/&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sudo&#34;&gt;sudo apt-get update
+sudo apt install samba```
+
+This was enough to upgrade samba on 18.04 to 4.16.0. Once I restarted both domain controllers
+the Windows 11 update 22H2 system was able to bind to the Domain.
+
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
@@ -1021,7 +1042,7 @@ going to be comparing and contrasting from that perspective.&lt;/p&gt;
 how Go handles interfaces.&lt;/p&gt;
 &lt;p&gt;If you are unfamiliar with Go, it uses structural typing for
 interfaces (which is more generally called &amp;ldquo;duck typing&amp;rdquo; meaning &amp;ldquo;if
-it walks like a duck and talks like a duck … it&amp;rsquo;s a duck.&amp;quot;)  This
+it walks like a duck and talks like a duck … it&amp;rsquo;s a duck.&amp;rdquo;)  This
 means that if a struct in Go has functions on it which match the
 methods of an interface, instances of that struct are types of that
 interface. This sounds more complicated than it actually is so lets
@@ -2120,17 +2141,17 @@ to track actual progress becomes increasingly difficult.&lt;/p&gt;
 &lt;h3 id=&#34;project-status&#34;&gt;Project Status&lt;/h3&gt;
 &lt;p&gt;Related to context switching, it’s nearly impossible tell the overall
 project status from this type of update.  Even if you could figure out
-how many tickets were closed, without looking at the board it’s
+how many tickets were closed, without looking at the kanban board it’s
 impossible to get even a sense of how far along the project is.  Plus,
 this format does nothing to encourage people to actually update the
-board, compounding the issue.&lt;/p&gt;
+kanban board, compounding the issue.&lt;/p&gt;
 &lt;h3 id=&#34;public-speaking&#34;&gt;Public Speaking&lt;/h3&gt;
 &lt;p&gt;Public speaking does not come naturally to everyone, even when
 presenting just to the team.  I’m much more relaxed with it now, but
 there was a time when this type of setting would cause me enough
 stress and I would ignore whatever was being said and just rehearse
 what I was going to say.  Then, after I gave my update, I would spend
-the rest of the standup obsessing over the things I had messed up or
+rest of the standup obsessing over the things I had messed up or
 forgotten to say.&lt;/p&gt;
 &lt;h3 id=&#34;competition-for-busiest&#34;&gt;Competition for Busiest&lt;/h3&gt;
 &lt;p&gt;Without focus, the standup can become a passive competition for who is
@@ -2160,9 +2181,9 @@ update&amp;rdquo; or, worse, explain that &amp;ldquo;I&amp;rsquo;ve got some thi
 don&amp;rsquo;t want to talk about.&amp;rdquo;&lt;/p&gt;
 &lt;p&gt;As an individual contributor I find this standup format stressful and
 as a project lead and manager I find it unhelpful.  Instead I prefer
-using the standup time to walk the board.&lt;/p&gt;
+using the standup time to walk the kanban board.&lt;/p&gt;
 &lt;h2 id=&#34;walking-the-board&#34;&gt;Walking the board&lt;/h2&gt;
-&lt;p&gt;With a Jira you can use swim planes to split up your board into
+&lt;p&gt;With a Jira you can use swim planes to split up your kanban board into
 project tasks and hero tasks.  Then starting at the &lt;strong&gt;Done&lt;/strong&gt; column, just
 go down each column and each owner gives an update for their task.  In
 this format there is no initial awkward moment trying to figure out
