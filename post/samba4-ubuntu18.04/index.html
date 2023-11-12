@@ -596,7 +596,7 @@
       <h2 id="quick-background">Quick Background</h2>
 <p>I volunteer as a Systems Administrator for a small medical
 clinic. They have a very slim IT budget so while their desktop systems
-are primarily Windows 10, I&rsquo;ve configured most of their server
+are primarily Windows 11, I&rsquo;ve configured most of their server
 infrastructure with Linux. A <a href="https://www.proxmox.com/">Proxmox</a>
 server is used to manage their virtualized environment and I&rsquo;m using
 <a href="https://www.samba.org/">Samba4</a> for their Active Directory
@@ -612,7 +612,7 @@ rebranded themselves as <a href="https://samba.plus/">Samba+</a> and now charge 
 subscription fee for the binary packages.  While I would love to
 support them, paying a subscription fee is not an option for this
 clinic.</p>
-<p>I&rsquo;d really like to stick with CentOS as my server distribution as I
+<p>I&rsquo;d really like to stick with CentOS as the server distribution as I
 have a lot of experience with it and have always found it to be a
 solid, minimial distribution. However, for reasons RedHat has decided
 that the Samba4 build that comes with Fedora should not include the
@@ -631,13 +631,13 @@ and specifically <a href="https://www.tecmint.com/join-additional-ubuntu-dc-to-s
 one</a>. However,
 these instructions were written for Ubuntu 16.04 so I&rsquo;m making this
 post to document the steps I took in setting up Samba4 on an Ubuntu
-system.</p>
+18.04 system.</p>
 <h2 id="networking-overview">Networking overview</h2>
 <p>For reference, the main gateway is a
-<a href="https://www.pfsense.org/">pfSense</a> box set up at 10.0.1.1.  This runs
+<a href="https://www.pfsense.org/">pfSense</a> system set up at 10.0.1.1.  This runs
 as the primary DNS and DHCP server for the network.  The domain name
-I&rsquo;ll use in the instructions is <code>hrakaroo.lan</code>.</p>
-<p>My Active Directory domain is <code>ad.hrakaroo.lan</code>.  I&rsquo;ve specifically
+I&rsquo;ll use in these instructions is <code>hrakaroo.lan</code>.</p>
+<p>The Active Directory domain is <code>ad.hrakaroo.lan</code>.  I&rsquo;ve specifically
 set this up so that Active Directory is on it&rsquo;s own sub domain as I
 don&rsquo;t want the rest of the server infrastructure to be dependent on
 Active Directory.  I&rsquo;d rather isolate Active Directory to its own
@@ -675,7 +675,7 @@ at your existing Domain Controller.</p>
 <p><em>Profile Setup</em></p>
 <p>This is the first thing I don&rsquo;t like about Ubuntu.  I&rsquo;d rather just
 have a password set for the root account.  I get the reason why they
-are doing this, but for my super small setup this is more of an
+are doing this, but for a super small setup this is more of an
 annoyance than a help.  Sadly you also can&rsquo;t use general accounts like
 &lsquo;admin&rsquo; or &lsquo;staff&rsquo; either.  So I ended up creating a personal account
 for Joshua Gerth.  (This turned out to be a bit of a mistake, more
@@ -898,7 +898,7 @@ going to do that then why not use the one that already comes with
 every Unix/Linux system, <code>root</code>.  So in the end I configured an
 explicit password for <code>root</code>, enabled SSH login for root and deleted
 the account I created on setup.  I would never recommend this for a
-larger environment, but for my small setup this worked out best.</p>
+larger environment, but for a small setup this worked out best.</p>
 <h2 id="closing-thoughts">Closing thoughts</h2>
 <p>In the end I&rsquo;m glad I set this up from scratch rather than use the
 build and instructions from SerNet. I have a better understanding
@@ -930,8 +930,9 @@ by following these instructions</p>
 sudo apt-get update
 sudo apt install samba
 </code></pre>
-<p>This was enough to upgrade samba on 18.04 to 4.16.0. Once I restarted both domain controllers
-the Windows 11 with update 22H2 system was able to bind to the Domain.</p>
+<p>This was enough to upgrade samba on 18.04 to 4.16.0. Once I restarted
+both domain controllers the Windows 11 with update 22H2 system was
+able to bind to the Domain.</p>
 
     </div>
 
@@ -1064,7 +1065,7 @@ the Windows 11 with update 22H2 system was able to bind to the Domain.</p>
     <div class="media-body">
       <h5 class="card-title"><a href="/">Joshua Gerth</a></h5>
       <h6 class="card-subtitle">Engineering Manager<br/>Systems Architect</h6>
-      <p class="card-text">My research interests include big data, language parsing, ray tracing and blockchain.</p>
+      <p class="card-text">My research interests include big data, language parsing and ray tracing.</p>
       <ul class="network-icon" aria-hidden="true">
   
     

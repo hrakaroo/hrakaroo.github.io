@@ -20,7 +20,7 @@
       <description>&lt;h2 id=&#34;quick-background&#34;&gt;Quick Background&lt;/h2&gt;
 &lt;p&gt;I volunteer as a Systems Administrator for a small medical
 clinic. They have a very slim IT budget so while their desktop systems
-are primarily Windows 10, I&amp;rsquo;ve configured most of their server
+are primarily Windows 11, I&amp;rsquo;ve configured most of their server
 infrastructure with Linux. A &lt;a href=&#34;https://www.proxmox.com/&#34;&gt;Proxmox&lt;/a&gt;
 server is used to manage their virtualized environment and I&amp;rsquo;m using
 &lt;a href=&#34;https://www.samba.org/&#34;&gt;Samba4&lt;/a&gt; for their Active Directory
@@ -36,7 +36,7 @@ rebranded themselves as &lt;a href=&#34;https://samba.plus/&#34;&gt;Samba+&lt;/a
 subscription fee for the binary packages.  While I would love to
 support them, paying a subscription fee is not an option for this
 clinic.&lt;/p&gt;
-&lt;p&gt;I&amp;rsquo;d really like to stick with CentOS as my server distribution as I
+&lt;p&gt;I&amp;rsquo;d really like to stick with CentOS as the server distribution as I
 have a lot of experience with it and have always found it to be a
 solid, minimial distribution. However, for reasons RedHat has decided
 that the Samba4 build that comes with Fedora should not include the
@@ -55,13 +55,13 @@ and specifically &lt;a href=&#34;https://www.tecmint.com/join-additional-ubuntu-
 one&lt;/a&gt;. However,
 these instructions were written for Ubuntu 16.04 so I&amp;rsquo;m making this
 post to document the steps I took in setting up Samba4 on an Ubuntu
-system.&lt;/p&gt;
+18.04 system.&lt;/p&gt;
 &lt;h2 id=&#34;networking-overview&#34;&gt;Networking overview&lt;/h2&gt;
 &lt;p&gt;For reference, the main gateway is a
-&lt;a href=&#34;https://www.pfsense.org/&#34;&gt;pfSense&lt;/a&gt; box set up at 10.0.1.1.  This runs
+&lt;a href=&#34;https://www.pfsense.org/&#34;&gt;pfSense&lt;/a&gt; system set up at 10.0.1.1.  This runs
 as the primary DNS and DHCP server for the network.  The domain name
-I&amp;rsquo;ll use in the instructions is &lt;code&gt;hrakaroo.lan&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;My Active Directory domain is &lt;code&gt;ad.hrakaroo.lan&lt;/code&gt;.  I&amp;rsquo;ve specifically
+I&amp;rsquo;ll use in these instructions is &lt;code&gt;hrakaroo.lan&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The Active Directory domain is &lt;code&gt;ad.hrakaroo.lan&lt;/code&gt;.  I&amp;rsquo;ve specifically
 set this up so that Active Directory is on it&amp;rsquo;s own sub domain as I
 don&amp;rsquo;t want the rest of the server infrastructure to be dependent on
 Active Directory.  I&amp;rsquo;d rather isolate Active Directory to its own
@@ -99,7 +99,7 @@ at your existing Domain Controller.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Profile Setup&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;This is the first thing I don&amp;rsquo;t like about Ubuntu.  I&amp;rsquo;d rather just
 have a password set for the root account.  I get the reason why they
-are doing this, but for my super small setup this is more of an
+are doing this, but for a super small setup this is more of an
 annoyance than a help.  Sadly you also can&amp;rsquo;t use general accounts like
 &amp;lsquo;admin&amp;rsquo; or &amp;lsquo;staff&amp;rsquo; either.  So I ended up creating a personal account
 for Joshua Gerth.  (This turned out to be a bit of a mistake, more
@@ -322,7 +322,7 @@ going to do that then why not use the one that already comes with
 every Unix/Linux system, &lt;code&gt;root&lt;/code&gt;.  So in the end I configured an
 explicit password for &lt;code&gt;root&lt;/code&gt;, enabled SSH login for root and deleted
 the account I created on setup.  I would never recommend this for a
-larger environment, but for my small setup this worked out best.&lt;/p&gt;
+larger environment, but for a small setup this worked out best.&lt;/p&gt;
 &lt;h2 id=&#34;closing-thoughts&#34;&gt;Closing thoughts&lt;/h2&gt;
 &lt;p&gt;In the end I&amp;rsquo;m glad I set this up from scratch rather than use the
 build and instructions from SerNet. I have a better understanding
@@ -354,8 +354,9 @@ by following these instructions&lt;/p&gt;
 sudo apt-get update
 sudo apt install samba
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;This was enough to upgrade samba on 18.04 to 4.16.0. Once I restarted both domain controllers
-the Windows 11 with update 22H2 system was able to bind to the Domain.&lt;/p&gt;
+&lt;p&gt;This was enough to upgrade samba on 18.04 to 4.16.0. Once I restarted
+both domain controllers the Windows 11 with update 22H2 system was
+able to bind to the Domain.&lt;/p&gt;
 </description>
     </item>
     
