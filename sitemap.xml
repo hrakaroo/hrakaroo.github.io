@@ -2,141 +2,195 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/authors/admin/</loc>
-    <lastmod>2023-12-11T00:00:00+00:00</lastmod>
+    <loc>https://hrakaroo.com/talk/example-talk/</loc>
+    <lastmod>2030-06-01T13:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/post/white-oak-table/</loc>
-    <lastmod>2023-12-11T00:00:00+00:00</lastmod>
+    <loc>https://hrakaroo.com/event/</loc>
+    <lastmod>2030-06-01T13:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/authors/</loc>
+    <loc>https://hrakaroo.com/post/white-oak-table/</loc>
     <lastmod>2023-12-11T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/categories/</loc>
+    <loc>https://hrakaroo.com/categories/</loc>
     <lastmod>2023-12-11T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/</loc>
+    <loc>https://hrakaroo.com/post/</loc>
     <lastmod>2023-12-11T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/post/</loc>
+    <loc>https://hrakaroo.com/category/woodworking/</loc>
     <lastmod>2023-12-11T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/categories/woodworking/</loc>
-    <lastmod>2023-12-11T00:00:00+00:00</lastmod>
+    <loc>https://hrakaroo.com/</loc>
+    <lastmod>2022-10-24T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/categories/climbing/</loc>
+    <loc>https://hrakaroo.com/category/climbing/</loc>
     <lastmod>2022-05-08T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/post/summiting-hood-2022/</loc>
+    <loc>https://hrakaroo.com/post/summiting-hood-2022/</loc>
     <lastmod>2022-05-08T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/post/obscure-names/</loc>
+    <loc>https://hrakaroo.com/post/obscure-names/</loc>
     <lastmod>2021-11-07T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/categories/software-development/</loc>
+    <loc>https://hrakaroo.com/category/software-development/</loc>
     <lastmod>2021-11-07T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/post/rw-locks/</loc>
+    <loc>https://hrakaroo.com/post/rw-locks/</loc>
     <lastmod>2021-11-06T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/post/garage-wall/</loc>
+    <loc>https://hrakaroo.com/post/garage-wall/</loc>
     <lastmod>2020-04-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/post/summiting-st-helens-2019/</loc>
+    <loc>https://hrakaroo.com/post/summiting-st-helens-2019/</loc>
     <lastmod>2020-04-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/post/samba4-ubuntu18.04/</loc>
+    <loc>https://hrakaroo.com/post/samba4-ubuntu18.04/</loc>
     <lastmod>2020-03-27T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/categories/systems-administration/</loc>
+    <loc>https://hrakaroo.com/category/systems-administration/</loc>
     <lastmod>2020-03-27T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/tags/fractal/</loc>
+    <loc>https://hrakaroo.com/tag/fractal/</loc>
     <lastmod>2020-03-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/project/fractal-rust/</loc>
+    <loc>https://hrakaroo.com/project/fractal-rust/</loc>
     <lastmod>2020-03-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/project/</loc>
+    <loc>https://hrakaroo.com/project/</loc>
     <lastmod>2020-03-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/tags/rust/</loc>
+    <loc>https://hrakaroo.com/tag/rust/</loc>
     <lastmod>2020-03-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/tags/</loc>
+    <loc>https://hrakaroo.com/tags/</loc>
     <lastmod>2020-03-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/project/glob-library-java/</loc>
+    <loc>https://hrakaroo.com/project/glob-library-java/</loc>
     <lastmod>2019-12-26T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/tags/java/</loc>
+    <loc>https://hrakaroo.com/tag/java/</loc>
     <lastmod>2019-12-26T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/tags/go/</loc>
+    <loc>https://hrakaroo.com/tag/go/</loc>
     <lastmod>2019-11-21T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/project/ray-the-tracer/</loc>
+    <loc>https://hrakaroo.com/project/ray-the-tracer/</loc>
     <lastmod>2019-11-21T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/tags/raytracer/</loc>
+    <loc>https://hrakaroo.com/tag/raytracer/</loc>
     <lastmod>2019-11-21T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/post/go-for-java-part2/</loc>
+    <loc>https://hrakaroo.com/post/go-for-java-part2/</loc>
     <lastmod>2019-10-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/post/go-for-java-part1/</loc>
+    <loc>https://hrakaroo.com/post/go-for-java-part1/</loc>
     <lastmod>2019-08-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/categories/api/</loc>
+    <loc>https://hrakaroo.com/category/api/</loc>
     <lastmod>2019-06-06T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/post/three-questions/</loc>
+    <loc>https://hrakaroo.com/post/three-questions/</loc>
     <lastmod>2019-06-06T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/post/sql-terrible-api/</loc>
+    <loc>https://hrakaroo.com/slides/</loc>
+    <lastmod>2019-02-05T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>https://hrakaroo.com/slides/example/</loc>
+    <lastmod>2019-02-05T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>https://hrakaroo.com/post/sql-terrible-api/</loc>
     <lastmod>2018-11-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/post/code-reviews/</loc>
+    <loc>https://hrakaroo.com/post/code-reviews/</loc>
     <lastmod>2018-10-09T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/categories/development-process/</loc>
+    <loc>https://hrakaroo.com/category/development-process/</loc>
     <lastmod>2018-10-09T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/categories/teams/</loc>
+    <loc>https://hrakaroo.com/category/teams/</loc>
     <lastmod>2018-10-09T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/categories/java/</loc>
+    <loc>https://hrakaroo.com/category/java/</loc>
     <lastmod>2018-06-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/post/sane-java-dependency-management/</loc>
+    <loc>https://hrakaroo.com/post/sane-java-dependency-management/</loc>
     <lastmod>2018-06-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/post/the-dance-recital/</loc>
+    <loc>https://hrakaroo.com/post/the-dance-recital/</loc>
     <lastmod>2017-10-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/categories/toastmasters/</loc>
+    <loc>https://hrakaroo.com/category/toastmasters/</loc>
     <lastmod>2017-10-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/post/walking-the-board/</loc>
+    <loc>https://hrakaroo.com/post/walking-the-board/</loc>
     <lastmod>2017-07-09T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/tags/kotlin/</loc>
+    <loc>https://hrakaroo.com/tag/kotlin/</loc>
     <lastmod>2016-04-27T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/project/one-seat-open/</loc>
+    <loc>https://hrakaroo.com/project/one-seat-open/</loc>
     <lastmod>2016-04-27T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/tags/vuejs/</loc>
+    <loc>https://hrakaroo.com/tag/vuejs/</loc>
     <lastmod>2016-04-27T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/tags/cpp/</loc>
+    <loc>https://hrakaroo.com/tag/cpp/</loc>
     <lastmod>2007-02-10T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/project/rebound/</loc>
+    <loc>https://hrakaroo.com/project/rebound/</loc>
     <lastmod>2007-02-10T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/project/soda-water-ray-tracer/</loc>
+    <loc>https://hrakaroo.com/project/soda-water-ray-tracer/</loc>
     <lastmod>2004-11-21T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
   </url><url>
-    <loc>/publication_types/</loc>
+    <loc>https://hrakaroo.com/publication_types/</loc>
+    <changefreq>weekly</changefreq>
   </url>
 </urlset>

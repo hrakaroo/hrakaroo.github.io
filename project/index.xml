@@ -2,46 +2,46 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projects | Hrakaroo</title>
-    <link>/project/</link>
-      <atom:link href="/project/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://hrakaroo.com/project/</link>
+      <atom:link href="https://hrakaroo.com/project/index.xml" rel="self" type="application/rss+xml" />
     <description>Projects</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 01 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sun, 01 Mar 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/images/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_3.png</url>
+      <url>https://hrakaroo.com/media/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_3.png</url>
       <title>Projects</title>
-      <link>/project/</link>
+      <link>https://hrakaroo.com/project/</link>
     </image>
     
     <item>
       <title>Fractal Rust</title>
-      <link>/project/fractal-rust/</link>
+      <link>https://hrakaroo.com/project/fractal-rust/</link>
       <pubDate>Sun, 01 Mar 2020 00:00:00 +0000</pubDate>
-      <guid>/project/fractal-rust/</guid>
+      <guid>https://hrakaroo.com/project/fractal-rust/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Glob Library for Java</title>
-      <link>/project/glob-library-java/</link>
+      <link>https://hrakaroo.com/project/glob-library-java/</link>
       <pubDate>Thu, 26 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>/project/glob-library-java/</guid>
+      <guid>https://hrakaroo.com/project/glob-library-java/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ray the Tracer</title>
-      <link>/project/ray-the-tracer/</link>
+      <link>https://hrakaroo.com/project/ray-the-tracer/</link>
       <pubDate>Thu, 21 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/project/ray-the-tracer/</guid>
+      <guid>https://hrakaroo.com/project/ray-the-tracer/</guid>
       <description></description>
     </item>
     
     <item>
       <title>One Seat Open</title>
-      <link>/project/one-seat-open/</link>
+      <link>https://hrakaroo.com/project/one-seat-open/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
-      <guid>/project/one-seat-open/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://www.oneseatopen.com&#34;&gt;One Seat Open&lt;/a&gt;, an invitation system for
+      <guid>https://hrakaroo.com/project/one-seat-open/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.oneseatopen.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;One Seat Open&lt;/a&gt;, an invitation system for
 limited seating events.&lt;/p&gt;
 &lt;h2 id=&#34;history&#34;&gt;History&lt;/h2&gt;
 &lt;p&gt;This project primarily came from a personal frustration in hosting my
@@ -72,17 +72,17 @@ commercialization plans for the service.&lt;/p&gt;
     
     <item>
       <title>Rebound</title>
-      <link>/project/rebound/</link>
+      <link>https://hrakaroo.com/project/rebound/</link>
       <pubDate>Sat, 10 Feb 2007 00:00:00 +0000</pubDate>
-      <guid>/project/rebound/</guid>
+      <guid>https://hrakaroo.com/project/rebound/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Soda Water Ray Tracer</title>
-      <link>/project/soda-water-ray-tracer/</link>
+      <link>https://hrakaroo.com/project/soda-water-ray-tracer/</link>
       <pubDate>Sun, 21 Nov 2004 00:00:00 +0000</pubDate>
-      <guid>/project/soda-water-ray-tracer/</guid>
+      <guid>https://hrakaroo.com/project/soda-water-ray-tracer/</guid>
       <description></description>
     </item>
     

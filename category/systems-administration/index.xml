@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Systems Administration | Hrakaroo</title>
+    <link>https://hrakaroo.com/category/systems-administration/</link>
+      <atom:link href="https://hrakaroo.com/category/systems-administration/index.xml" rel="self" type="application/rss+xml" />
+    <description>Systems Administration</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Fri, 27 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://hrakaroo.com/media/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_3.png</url>
+      <title>Systems Administration</title>
+      <link>https://hrakaroo.com/category/systems-administration/</link>
+    </image>
+    
+    <item>
+      <title>Samba4 Domain Controller on Ubuntu 18.04</title>
+      <link>https://hrakaroo.com/post/samba4-ubuntu18.04/</link>
+      <pubDate>Fri, 27 Mar 2020 00:00:00 +0000</pubDate>
+      <guid>https://hrakaroo.com/post/samba4-ubuntu18.04/</guid>
+      <description>&lt;h2 id=&#34;quick-background&#34;&gt;Quick Background&lt;/h2&gt;
+&lt;p&gt;I volunteer as a Systems Administrator for a small medical
+clinic. They have a very slim IT budget so while their desktop systems
+are primarily Windows 11, I&amp;rsquo;ve configured most of their server
+infrastructure with Linux. A &lt;a href=&#34;https://www.proxmox.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Proxmox&lt;/a&gt;
+server is used to manage their virtualized environment and I&amp;rsquo;m using
+&lt;a href=&#34;https://www.samba.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Samba4&lt;/a&gt; for their Active Directory
+Domain Controller.&lt;/p&gt;
+&lt;p&gt;When I first set up Samba4 as their Active Directory I was able to use
+&lt;a href=&#34;https://www.centos.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CentOS&lt;/a&gt; 6 with the Samba4 binary packages
+from SerNet. Although this has been working well enough, it has always
+been a little quirky and I had only ever set up a single Domain
+Controller. So recently I decided to upgrade their Domain Controllers
+to the newest version and add a second Domain Controller.&lt;/p&gt;
+&lt;p&gt;Initially I tried to find the SerNet packages but it appears they have
+rebranded themselves as &lt;a href=&#34;https://samba.plus/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Samba+&lt;/a&gt; and now charge a
+subscription fee for the binary packages.  While I would love to
+support them, paying a subscription fee is not an option for this
+clinic.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;d really like to stick with CentOS as the server distribution as I
+have a lot of experience with it and have always found it to be a
+solid, minimial distribution. However, for reasons RedHat has decided
+that the Samba4 build that comes with Fedora should not include the
+ability to act as an Active Directory Domain Controller.&lt;/p&gt;
+&lt;p&gt;I could build the sources from scratch and still use CentOS, but that
+would require installing all the build tools on each server and I&amp;rsquo;m
+trying to keep them as light as possible.  Plus, building from scratch
+often introduces its own host of challenges and I really just want to
+set this up and move on to my next project.  So instead I&amp;rsquo;m going to
+give a go at using &lt;a href=&#34;https://ubuntu.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Ubuntu&lt;/a&gt;, which I really like
+as a desktop system but have never been terribly thrilled with as a
+server system.&lt;/p&gt;
+&lt;p&gt;For setting this up I am mostly following the instructions from
+&lt;a href=&#34;https://www.tecmint.com/install-samba4-active-directory-ubuntu/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;tecmint&lt;/a&gt;
+and specifically &lt;a href=&#34;https://www.tecmint.com/join-additional-ubuntu-dc-to-samba4-ad-dc-failover-replication/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this
+one&lt;/a&gt;. However,
+these instructions were written for Ubuntu 16.04 so I&amp;rsquo;m making this
+post to document the steps I took in setting up Samba4 on an Ubuntu
+18.04 system.&lt;/p&gt;
+&lt;h2 id=&#34;networking-overview&#34;&gt;Networking overview&lt;/h2&gt;
+&lt;p&gt;For reference, the main gateway is a
+&lt;a href=&#34;https://www.pfsense.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;pfSense&lt;/a&gt; system set up at 10.0.1.1.  This runs
+as the primary DNS and DHCP server for the network.  The domain name
+I&amp;rsquo;ll use in these instructions is &lt;code&gt;hrakaroo.lan&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The Active Directory domain is &lt;code&gt;ad.hrakaroo.lan&lt;/code&gt;.  I&amp;rsquo;ve specifically
+set this up so that Active Directory is on it&amp;rsquo;s own sub domain as I
+don&amp;rsquo;t want the rest of the server infrastructure to be dependent on
+Active Directory.  I&amp;rsquo;d rather isolate Active Directory to its own
+area.&lt;/p&gt;
+&lt;h2 id=&#34;creating-a-new-system-in-proxmox&#34;&gt;Creating a new system in Proxmox&lt;/h2&gt;
+&lt;p&gt;In Proxmox I&amp;rsquo;ve created the following new host&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Hostname: adc1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Memory: 2 G
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Disk: 32 G
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Processors: 1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Cores: 2
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In retrospect (by looking at the usage charts in Proxmox) it looks
+like I could have cut the memory, disk and cores in half and it would
+have been fine, but I&amp;rsquo;m going to leave it as is for now.&lt;/p&gt;
+&lt;p&gt;Once the vm is created, start the server.&lt;/p&gt;
+&lt;p&gt;Most of the installation is pretty straightforward so I&amp;rsquo;m only
+going to highlight when I didn&amp;rsquo;t select the default.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Installer update available&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;During the install it suggests that an update to the installer
+is available and asks if you want to update.  I&amp;rsquo;m not sure if it
+matters much, but I said yes.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Networking&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Edit the IPv4 configuration and select Manual&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Subnet: 10.0.1.0/24
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Address: 10.0.1.25
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Gateway: 10.0.1.1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Name servers: 10.0.1.26
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Search domains: ad.hrakaroo.lan
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;10.0.1.26 is the name servers for the existing Active Directory
+Domain Controller. Once the system is fully configured I&amp;rsquo;ll change
+this, but it makes the initial setup much easier if this points
+at your existing Domain Controller.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Profile Setup&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;This is the first thing I don&amp;rsquo;t like about Ubuntu.  I&amp;rsquo;d rather just
+have a password set for the root account.  I get the reason why they
+are doing this, but for a super small setup this is more of an
+annoyance than a help.  Sadly you also can&amp;rsquo;t use general accounts like
+&amp;lsquo;admin&amp;rsquo; or &amp;lsquo;staff&amp;rsquo; either.  So I ended up creating a personal account
+for Joshua Gerth.  (This turned out to be a bit of a mistake, more
+on this can be found in the &lt;a href=&#34;#profile-mistake&#34;&gt;additional things&lt;/a&gt;
+at the bottom.)&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;SSH Setup&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;[X] Enable install the OpenSSH server.&lt;/p&gt;
+&lt;h2 id=&#34;basic-server-configuration&#34;&gt;Basic Server Configuration&lt;/h2&gt;
+&lt;p&gt;For almost all of these commands I find it easier to work by ssh&amp;rsquo;ing
+into the box rather than using the Proxmox console as copy/paste and
+editing all work better.&lt;/p&gt;
+&lt;h3 id=&#34;update-and-install-emacs&#34;&gt;Update and install emacs&lt;/h3&gt;
+&lt;p&gt;Okay, once the server is up and running I always run the update commands
+to make sure everything is up to date:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ sudo apt update 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ sudo apt upgrade
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ sudo apt dist-upgrade
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;and also, because vi is terrible I always install emacs:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ sudo apt install -y emacs
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;turn-off-ipv6&#34;&gt;Turn off IPv6&lt;/h3&gt;
+&lt;p&gt;This may not be &lt;em&gt;necessary&lt;/em&gt;, but I find that debugging things when
+only IPv4 is enabled to be a lot easier.  The environment I&amp;rsquo;m
+installing this in is small enough that we are not at risk of running
+out of IP numbers any time soon and since everything gets NAT&amp;rsquo;ed
+anyhow I don&amp;rsquo;t really see a need to enable IPv6.&lt;/p&gt;
+&lt;p&gt;That said, this is the second thing that I don&amp;rsquo;t care for about
+Ubuntu.  In CentOS turning off IPv6 is sort of trivial, but on Ubuntu
+I this proved to be rather difficult.  Most of the existing
+suggestions only turned off part of IPv6 and it was only after a lot
+of trial and error did I happen on a post with the best answer.&lt;/p&gt;
+&lt;p&gt;Basically you need to edit &lt;code&gt;/etc/default/grub&lt;/code&gt; and set&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  GRUB_CMDLINE_LINUX=&amp;#34;xxxxx ipv6.disable=1&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;(For me there was nothing in the xxxxx area, but if you have any
+existing options then leave them there and add the ipv6.disable at the
+end.)&lt;/p&gt;
+&lt;p&gt;and then run&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ update-grub
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;turn-off-dnsmasq&#34;&gt;Turn off dnsmasq&lt;/h3&gt;
+&lt;p&gt;This is the third thing that I don&amp;rsquo;t like about Ubuntu, it runs a stub
+dnsmasq as a DNS caching server.  Again, I get &lt;em&gt;why&lt;/em&gt; they did this,
+but I&amp;rsquo;ve never found this to be useful on a server and nine out of ten
+times it just causes problems.&lt;/p&gt;
+&lt;p&gt;To disable it I&amp;rsquo;m mostly following
+&lt;a href=&#34;https://askubuntu.com/questions/1081832/how-do-i-disable-systemd-resolved-and-replace-with-something-sane-on-ubuntu-18&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;these instructions&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Edit &lt;code&gt;/etc/systemd/resolved.conf&lt;/code&gt; and add&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;DNSStubListener=no
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then remove the existing symlink at /etc/resolv.conf and rebuild it&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ rm /etc/resolv.conf
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Since this has been such a thorn in my side I prefer to reboot here
+to make damn sure the new settings have taken.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;/etc/resolv.conf&lt;/code&gt; should now show the values that you entered on
+initial setup.&lt;/p&gt;
+&lt;h3 id=&#34;ntp&#34;&gt;NTP&lt;/h3&gt;
+&lt;p&gt;Domain Controllers are sensitive to clock drift and need to be
+configured to use a network time server.  Normally I would configure
+&lt;code&gt;ntpd&lt;/code&gt; on the host, but Ubuntu has decided to ship with &lt;code&gt;timedatectl&lt;/code&gt;
+instead which claims to be a lightweight ntp client.  (Humorously, 90%
+of the google searches for &lt;code&gt;timedatectl&lt;/code&gt; suggest turning it off and
+replacing it with a real ntpd, however, I&amp;rsquo;m going to try sticking with
+timedatectl for now.)&lt;/p&gt;
+&lt;p&gt;First I like to set the timezone so I don&amp;rsquo;t need to convert
+everything&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ timedatectl set-timezone America/Los_Angeles
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now, edit the &lt;code&gt;/etc/systemd/timesyncd.conf&lt;/code&gt; file and set the NTP entry
+to point to your NTP server. (I&amp;rsquo;m running an NTP server on another VM at
+10.0.1.22).&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[Time]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;NTP=10.0.1.22
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;restart the timesyncd&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ systemctl restart systemd-timesyncd
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;and verify it with&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ cat /var/log/syslog &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; grep systemd-timesyncd
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   XXX adc1 systemd-timesyncd&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;1416&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;: Synchronized to &lt;span class=&#34;nb&#34;&gt;time&lt;/span&gt; server 10.0.1.22:123 &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;10.0.1.22&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;install-samba&#34;&gt;Install Samba&lt;/h2&gt;
+&lt;p&gt;Since we are actually about to install Samba I like to do one more
+reboot here.&lt;/p&gt;
+&lt;h3 id=&#34;update-the-hosts-file&#34;&gt;Update the hosts file&lt;/h3&gt;
+&lt;p&gt;The &lt;code&gt;/etc/hosts&lt;/code&gt; file should have an entry for every domain
+controller, including itself.  (I also removed the old IPv6 stuff)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;127.0.0.1 localhost
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;10.0.1.25 adc1.ad.hrakaroo.lan adc1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;10.0.1.26 oldadc.ad.hrakaroo.lan oldadc
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Again, 10.0.1.25 is this box, the new Active Directory server and 10.0.1.26
+is the old Active Directory server.&lt;/p&gt;
+&lt;h3 id=&#34;install-samba4&#34;&gt;Install Samba4&lt;/h3&gt;
+&lt;p&gt;Actually install samba&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ apt install -y samba krb5-user krb5-config winbind libpam-winbind libnss-winbind
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you already have things correctly setup then this should
+automatically find the kerberos SRV records for your domain which are
+being hosted on your existing Active Directory server, if not it may
+prompt you for them.  If it does prompt you enter the domain in all
+upper case for the Default realm and in regular case for the Kerberos
+servers and Administrative server.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   Default Kerberos realm:  AD.HRAKAROO.LAN
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   Kerberos servers realm:  ad.hrakaroo.lan
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   Administrative server:   ad.hrakaroo.lan
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Verify kerberos works by&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ kinit jgerth@AD.HRAKAROO.LAN
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   Password &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; jgerth@AD.HRAKAROO.LAN:  &amp;lt;passwd&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ klist
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   Ticket cache: FILE:/tmp/krb5cc_0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   Default principal: jgerth@AD.HRAKAROO.LAN
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   Valid starting     Expires            Service principal
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   03/27/20 18:54:49  03/28/20 04:54:49  krbtgt/AD.HRAKAROO.LAN@AD.HRAKAROO.LAN
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;           renew &lt;span class=&#34;k&#34;&gt;until&lt;/span&gt; 03/28/20 18:54:46
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;join-the-domain&#34;&gt;Join the Domain&lt;/h3&gt;
+&lt;p&gt;Remove the existing smb.conf as it will be recreated by samba-tool.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ systemctl stop samba-ad-dc smbd nmbd winbind
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ mv /etc/samba/smb.conf /etc/samba/smb.conf.initial
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Use samba-tool to join the domain&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ samba-tool domain join ad.hrakaroo.lan DC -U &lt;span class=&#34;s2&#34;&gt;&amp;#34;AD\jgerth&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now configure the server to start samba-ad-dc automatically&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ systemctl mask smbd nmbd winbind
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   Created symlink /etc/systemd/system/smbd.service → /dev/null.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   Created symlink /etc/systemd/system/nmbd.service → /dev/null.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   Created symlink /etc/systemd/system/winbind.service → /dev/null.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ systemctl unmask samba-ad-dc
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   Removed /etc/systemd/system/samba-ad-dc.service.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ systemctl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; samba-ad-dc
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Use the host command to verify your configuration.  This apparently
+hits every nameserver listed so you may get some errors when it tries
+to hit the non-active directory DNS servers.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ host ad.hrakaroo.lan
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   ad.hrakaroo.lan has address 10.0.1.26
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   ad.hrakaroo.lan has address 10.0.1.25
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   Host ad.hrakaroo.lan not found: 3&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;NXDOMAIN&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   Host ad.hrakaroo.lan not found: 3&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;NXDOMAIN&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ host -t SRV _kerberos._udp.ad.hrakaroo.lan
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   _kerberos._udp.ad.hrakaroo.lan has SRV record &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;100&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;88&lt;/span&gt; oldadc.ad.hrakaroo.lan.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   _kerberos._udp.ad.hrakaroo.lan has SRV record &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;100&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;88&lt;/span&gt; adc1.ad.hrakaroo.lan.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ host -t SRV _ldap._tcp.ad.hrakaroo.lan
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   _ldap._tcp.ad.hrakaroo.lan has SRV record &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;100&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;389&lt;/span&gt; oldadc.ad.hrakaroo.lan.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   _ldap._tcp.ad.hrakaroo.lan has SRV record &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;100&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;389&lt;/span&gt; adc1.ad.hrakaroo.lan.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;change-dns&#34;&gt;Change DNS&lt;/h2&gt;
+&lt;p&gt;At this point you could be done as the server is now up and running.
+However, it is technically using the other domain controller for DNS
+lookups.  Even if I wasn&amp;rsquo;t planning on decommissioning the older
+server this would still be creating an out of band dependency between
+them and as Active Directory is, itself, a DNS server I prefer to update
+the server to use itself for DNS lookups.  (Similar to what
+Ubuntu was initially trying to do with the dnsmasq stuff).&lt;/p&gt;
+&lt;p&gt;To do this, modify &lt;code&gt;/etc/netplan&lt;/code&gt; and set &lt;code&gt;127.0.0.1&lt;/code&gt; as first in
+your nameserver list and then the upstream DNS server second.&lt;/p&gt;
+&lt;p&gt;Also verify that &lt;code&gt;search&lt;/code&gt; is set to use the ad domain first and then
+your global domain.  Like this&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            nameservers:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                addresses:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                - 127.0.0.1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                - 10.0.1.1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                search:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                - ad.hrakaroo.lan
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                - hrakaroo.lan
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;As always, reboot and check the values in the &lt;code&gt;/etc/resolv.conf&lt;/code&gt; and
+do a couple of tests with &lt;code&gt;nslookup&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;configure-proxmox-to-boot-the-server&#34;&gt;Configure Proxmox to boot the server&lt;/h2&gt;
+&lt;p&gt;I also configure Proxmox to start the service at boot.  This way if there
+is a power outage Proxmox will be sure to start your domain controllers.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Options -&amp;gt; Start at boot -&amp;gt; True&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;additional-things&#34;&gt;Additional things&lt;/h2&gt;
+&lt;h3 id=&#34;decommissioning-the-old-active-directory-controller&#34;&gt;Decommissioning the old Active Directory Controller&lt;/h3&gt;
+&lt;p&gt;With the new Domain Controller up you can now decommission the old
+Domain Controller by moving the roles (7) from the old DC to your
+new one.  However, the version of Samba which shipps with Ubuntu 18.04
+is 4.7 which, apparently, has a bug with the python code that you
+use to move the roles.  To fix this I had to edit
+&lt;code&gt;/usr/lib/python2.7/dist-packages/samba/netcmd/fsmo.py&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;and insert line&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;samba.drs_utils&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;just after&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;samba&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;around line 20. After doing this the command to move the roles worked
+just fine and I was able to fully decommission the older active domain
+controller.&lt;/p&gt;
+&lt;h3 id=&#34;profile-mistake&#34;&gt;Removing the profile&lt;/h3&gt;
+&lt;p&gt;It turns out that creating the profile as I did during the initial set
+up of Ubuntu was a bit of a mistake.  It didn&amp;rsquo;t cause an issue for
+this server but it did on a file server I set up later which was also
+on Ubuntu. The issue was that the Ubuntu account &lt;code&gt;jgerth&lt;/code&gt; conflicted
+with the Active Directory accouunt &lt;code&gt;jgerth&lt;/code&gt; and made testing Windows File
+Sharing under my account difficult.&lt;/p&gt;
+&lt;p&gt;I could have addressed this by using a unique login on the Ubuntu
+server (like &lt;code&gt;jogerth&lt;/code&gt;) but that feels like a pretty hacky solution.
+Plus, it raises the bigger issue that ultimately someday someone else
+is probably going to take over for me as the sysadmin and I don&amp;rsquo;t
+really want them to have to use my account.  The &lt;em&gt;right&lt;/em&gt; way to solve
+this is to create an LDAP server for the Linux boxes and host the
+logins centrally, but this feels a bit like overkill to me as we
+currently only have around 5 Linux systems and, at least for the time
+being, I would be the only person in the LDAP server.&lt;/p&gt;
+&lt;p&gt;I suppose I could bind the Linux boxes in to the Active Directory LDAP
+server, but that creates a bit of a chicken and egg dependency on
+Active Directory that I&amp;rsquo;m just not comfortable with.&lt;/p&gt;
+&lt;p&gt;What I really want is just a generic sysadmin account, but if you are
+going to do that then why not use the one that already comes with
+every Unix/Linux system, &lt;code&gt;root&lt;/code&gt;.  So in the end I configured an
+explicit password for &lt;code&gt;root&lt;/code&gt;, enabled SSH login for root and deleted
+the account I created on setup.  I would never recommend this for a
+larger environment, but for a small setup this worked out best.&lt;/p&gt;
+&lt;h2 id=&#34;closing-thoughts&#34;&gt;Closing thoughts&lt;/h2&gt;
+&lt;p&gt;In the end I&amp;rsquo;m glad I set this up from scratch rather than use the
+build and instructions from SerNet. I have a better understanding
+of what everything is doing and the weird quirkiness I was
+experiencing with the old server has gone away (although, to be fair,
+that could have been due to the older version I was running.)
+I also feel more comfortable with the samba tool and adding and
+removing domain controllers.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m still not a huge fan of Ubuntu as a server. I don&amp;rsquo;t care for the
+dnsmasq stub, the replacement for ntpd or how it forces you to create
+a non-root account, but since it is a popular system I was able to
+search for most of the errors I did encounter.&lt;/p&gt;
+&lt;h2 id=&#34;supporting-windows-11-22h2&#34;&gt;Supporting Windows 11 22H2&lt;/h2&gt;
+&lt;p&gt;In the two years since I set this system up it has been running nearly
+flawlessly. The only real issue is that with Windows 11 update 22H2
+Microsoft changed the encryption protocol (or something similar) and
+they are no longer able to bind to the domain controller. (This does
+not seem to impact existing systems that are already bound to the
+domain.)&lt;/p&gt;
+&lt;p&gt;The following Reddit link talks about the issue in depth
+&lt;a href=&#34;https://www.reddit.com/r/sysadmin/comments/xoqend/samba_495_windows_11_22h2_kerberos/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.reddit.com/r/sysadmin/comments/xoqend/samba_495_windows_11_22h2_kerberos/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The fix is to update Samba to version 4.16.0, which isn&amp;rsquo;t directly
+available for Ubuntu 18.04. The recommended path is probably to
+upgrade to Ubuntu 22.x, but since that&amp;rsquo;s bound to cause it&amp;rsquo;s own host
+of complications I instead opted to just change the source for Samba
+by following these instructions&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://ubunlog.com/en/ya-fue-liberada-la-nueva-version-de-samba-4-16-0-y-estos-son-sus-cambios/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://ubunlog.com/en/ya-fue-liberada-la-nueva-version-de-samba-4-16-0-y-estos-son-sus-cambios/&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo add-apt-repository ppa:linux-schools/samba-latest
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-get update
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install samba
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This was enough to upgrade samba on 18.04 to 4.16.0. Once I restarted
+both domain controllers the Windows 11 with update 22H2 system was
+able to bind to the Domain.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

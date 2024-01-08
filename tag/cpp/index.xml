@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cpp | Hrakaroo</title>
+    <link>https://hrakaroo.com/tag/cpp/</link>
+      <atom:link href="https://hrakaroo.com/tag/cpp/index.xml" rel="self" type="application/rss+xml" />
+    <description>Cpp</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sat, 10 Feb 2007 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://hrakaroo.com/media/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_3.png</url>
+      <title>Cpp</title>
+      <link>https://hrakaroo.com/tag/cpp/</link>
+    </image>
+    
+    <item>
+      <title>Rebound</title>
+      <link>https://hrakaroo.com/project/rebound/</link>
+      <pubDate>Sat, 10 Feb 2007 00:00:00 +0000</pubDate>
+      <guid>https://hrakaroo.com/project/rebound/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Soda Water Ray Tracer</title>
+      <link>https://hrakaroo.com/project/soda-water-ray-tracer/</link>
+      <pubDate>Sun, 21 Nov 2004 00:00:00 +0000</pubDate>
+      <guid>https://hrakaroo.com/project/soda-water-ray-tracer/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
