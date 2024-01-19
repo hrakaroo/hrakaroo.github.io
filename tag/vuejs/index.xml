@@ -17,8 +17,7 @@
       <link>https://hrakaroo.com/project/one-seat-open/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       <guid>https://hrakaroo.com/project/one-seat-open/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://www.oneseatopen.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;One Seat Open&lt;/a&gt;, an invitation system for
-limited seating events.&lt;/p&gt;
+      <description>&lt;p&gt;One Seat Open, an invitation system for limited seating events.&lt;/p&gt;
 &lt;h2 id=&#34;history&#34;&gt;History&lt;/h2&gt;
 &lt;p&gt;This project primarily came from a personal frustration in hosting my
 own game nights.  Most invitation systems I researched were open ended
@@ -40,19 +39,19 @@ to host a couple of game nights on the system.  It was working pretty
 well but then the pandemic hit and I halted my home games, which halted
 my motiviation for working on the service.  So it sat mostly idle until
 recently when I decided to start working on it again.&lt;/p&gt;
-&lt;p&gt;However, I initially wrote this service in Kotlin while I was at a
-job where I was doing a lot of Kotlin development.  After changing
-companies I switched to primarily using Go for my work development
-and haven&amp;rsquo;t really done a lot of Kotlin development since then.&lt;br&gt;
-I still really like the Kotlin language, but it is much easier to
-develop in a language you are  currently using. Plus, I often use my
+&lt;p&gt;I initially wrote this service in Kotlin while I was doing a lot of
+Kotlin development at work. After changing companies I switched to
+primarily using Go for my work development and haven&amp;rsquo;t really done
+a lot of Kotlin development since then.&lt;/p&gt;
+&lt;p&gt;I still really like the Kotlin language, but it is much easier to
+develop in a language you are currently using. Plus, I often use my
 personal projects as a way to explore different solutions to technical
 challenges at work, so aligning the two can be useful.&lt;/p&gt;
 &lt;p&gt;All that said, I&amp;rsquo;ve decided to rewrite the project completely in
-Go with Vue3, but still using the Vuetify plugin.&lt;/p&gt;
-&lt;p&gt;All of that said, I&amp;rsquo;ve decided to keep this code base closed source
-for the time being.  I&amp;rsquo;m not 100% sure yet what I want to do with
-it once/if I finish it and want to keep my options open for now.&lt;/p&gt;
+Go with Vue3, but still using the Vuetify plugin. However, I&amp;rsquo;ve decided
+to keep this code base closed source for the time being.  I&amp;rsquo;m not 100%
+sure yet what I want to do with  it once/if I finish it and want to
+keep my options open for now.&lt;/p&gt;
 </description>
     </item>
     
