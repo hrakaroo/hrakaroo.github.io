@@ -40,7 +40,7 @@ going to be incorrect at some point in the future.&lt;/p&gt;
 &lt;h2 id=&#34;renaming-isnt-always-easy&#34;&gt;Renaming isn&amp;rsquo;t always easy&lt;/h2&gt;
 &lt;p&gt;So, if the scope does evolve and the original name is no longer
 correct we should just rename it, right? Sometimes this is
-the answer. Tools for Computer Science have come a long way
+the answer. Tools for software development have come a long way
 and doing a code refactoring is&amp;rsquo;t as hard as it once was. So if we
 have a variable name, function name, or even a class/object name that
 is no longer accurate we usually have the ability to safely rename it
@@ -64,9 +64,9 @@ interesting. Her name was something rather basic, (think Jane Doe) and
 her argument was that while &lt;code&gt;doe@lclark.edu&lt;/code&gt; runs the risk of being
 mistaken for someone else, &lt;code&gt;squidlips@lclark.edu&lt;/code&gt; is almost guaranteed
 not to.&lt;/p&gt;
-&lt;p&gt;This proved to be more than just an academic observation as it
-happened that I was not the only Gerth at Lewis &amp;amp; Clark College. There
-was one other one, my father, who was a tenured professor and I
+&lt;p&gt;This proved to be more than just an academic observation for as it
+happened, I was not the only Gerth at Lewis &amp;amp; Clark College. There
+was one other one, my father, a tenured professor, and I
 started to receive the occasional email intended for him. People had
 seen &lt;code&gt;gerth@lclark.edu&lt;/code&gt; and had incorrectly assumed I was my father
 and were sending me information clearly not intended for the
