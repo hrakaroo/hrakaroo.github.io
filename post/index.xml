@@ -5,12 +5,86 @@
     <link>https://hrakaroo.com/post/</link>
       <atom:link href="https://hrakaroo.com/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 11 Dec 2023 00:00:00 +0000</lastBuildDate>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 22 Apr 2024 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://hrakaroo.com/media/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_3.png</url>
       <title>Posts</title>
       <link>https://hrakaroo.com/post/</link>
     </image>
+    
+    <item>
+      <title>Start with On-Call</title>
+      <link>https://hrakaroo.com/post/start-with-oncall/</link>
+      <pubDate>Mon, 22 Apr 2024 00:00:00 +0000</pubDate>
+      <guid>https://hrakaroo.com/post/start-with-oncall/</guid>
+      <description>&lt;p&gt;This is a follow up post to my earlier one about running a productive
+and focused standup. While I still believe in the arguments I made in
+that post, I&amp;rsquo;ve come to realize that it&amp;rsquo;s not the full story.&lt;/p&gt;
+&lt;h3 id=&#34;start-the-day-discussing-the-previous-on-call-shift&#34;&gt;Start the day discussing the previous on-call shift&lt;/h3&gt;
+&lt;p&gt;Being on-call can be an isolating, exhausting and thankless task.
+I&amp;rsquo;ve had on-call shifts where I was woken up pretty much constantly
+the entire night though and I&amp;rsquo;m cranky, exhausted, and the next night
+is likely to be more of the same. In these situations the last thing I
+want to talk about is how much progress we have made on the current
+project.  Instead, I want to talk about what I&amp;rsquo;ve been getting woken
+up for, and what the team can do to try to alleviate the
+situation. This is why I always recommend teams start off the day
+discussing the previous on-call shift.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Did the person on-call get paged, and if so, why?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;It is also criticially important that you ask this question as early
+as possible in the day. If the on-call was bad enough, it may be
+important to halt all project work for the entire team and divert
+everyone to resolving the issue. Or, maybe the on-call was so bad that
+after giving a hand off you want to excuse the on-call person so they
+can log out and go to sleep. Either way, it&amp;rsquo;s important to ask this
+question as soon as possible. It&amp;rsquo;s the most important question you
+can ask for the health of the team so it should be your first question.&lt;/p&gt;
+&lt;h3 id=&#34;have-an-answer-for-every-page&#34;&gt;Have an answer for every page&lt;/h3&gt;
+&lt;p&gt;Every pagable event needs to fall into one of the following categories:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;This is a known issue for which we are already working on a
+solution.&lt;/em&gt;
+Maybe the services are under provisioned and the team is already working
+on scaling and by next week these will be resolved. In these situations it is
+best if the pages can be muted but sometimes that is not an option as it may
+hide other issues. Either way, be honest with yourself and resist the urge
+to group pages together which are not actually related.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;This was a once-in-a-lifetime-event and can be ignored.&lt;/em&gt;
+These should be pretty rare and what the team defines as &amp;ldquo;lifetime&amp;rdquo;
+should gradually increase over time.  It is fine to start off with
+&amp;ldquo;lifetime&amp;rdquo; meaning &amp;ldquo;once a month&amp;rdquo; but this should eventually stretch
+out to &amp;ldquo;once a quarter&amp;rdquo; and then &amp;ldquo;once a year&amp;rdquo;.  If you are getting paged
+weekly for anything, that is not a once-in-a-lifetime event.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;This is a new issue which needs to be investigated.&lt;/em&gt;
+Often once-in-a-lifetime issues are promoted to new issues when they
+suddenly start happening more often. But regardless, all new issues
+should have an investigation issue created.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The investigation of all new issues should take top priority for the
+on-call and possibly secondary person. Failing to properly investigate
+an issue not only means that the on-call person is likely to get woken
+up from it again, but it can also be a missed opportunity to deal with
+an issue before it becomes a major incident.  &amp;ldquo;Keep small problems
+small.&amp;rdquo;&lt;/p&gt;
+&lt;h3 id=&#34;offer-the-on-call-person-a-break&#34;&gt;Offer the on-call person a break&lt;/h3&gt;
+&lt;p&gt;Getting woken up multiple nights in a row can be highly disruptive and
+can lead to serious medical issues.  If the on-call person was woken
+up between the hours of 9pm - 9am, I highly recommend switching the
+primary and secondary for the following 9pm - 9am shift.  Just
+knowning that the following night they will be able to get a full
+night sleep can make the world of difference to the person getting
+woken up every hour.&lt;/p&gt;
+&lt;p&gt;WIP&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>42 Inch Round Table in White Oak</title>
