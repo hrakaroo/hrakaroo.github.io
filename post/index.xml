@@ -17,11 +17,11 @@
       <link>https://hrakaroo.com/post/start-with-oncall/</link>
       <pubDate>Mon, 22 Apr 2024 00:00:00 +0000</pubDate>
       <guid>https://hrakaroo.com/post/start-with-oncall/</guid>
-      <description>&lt;p&gt;This is a follow up post to my earlier one about &lt;a href=&#34;../walking-the-board/&#34;&gt;running a productive
-and focused standup&lt;/a&gt;. While I still believe in
-the arguments I made in that post, I&amp;rsquo;ve come to realize it&amp;rsquo;s maybe not
-the full story.&lt;/p&gt;
-&lt;h3 id=&#34;start-the-day-discussing-the-previous-on-call-shift&#34;&gt;Start the day discussing the previous on-call shift&lt;/h3&gt;
+      <description>&lt;p&gt;This is a follow up to my earlier post about &lt;a href=&#34;../walking-the-board/&#34;&gt;running a productive and
+focused standup&lt;/a&gt;. While I still believe in the
+arguments I made in that post, I&amp;rsquo;ve come to realize it doesn&amp;rsquo;t
+necessarily represent a full story.&lt;/p&gt;
+&lt;h3 id=&#34;being-on-call-is-exhausting&#34;&gt;Being on-call is exhausting&lt;/h3&gt;
 &lt;p&gt;Being on-call can be an isolating, exhausting and thankless task.
 I&amp;rsquo;ve had on-call shifts where I was woken up multiple times throughout
 the night and by morning I&amp;rsquo;m exhausted and cranky. Worse still, the
@@ -29,13 +29,14 @@ next night is likely to be more of the same. In these situations the
 last thing I want to talk about is how much progress the team has made
 on the current project. Instead, I want to talk about what I&amp;rsquo;ve been
 getting woken up for, and how the team can help make this waking
-nightmare stop. This is why I always recommend teams start off the day
-discussing the previous on-call shift.&lt;/p&gt;
+nightmare stop.&lt;/p&gt;
+&lt;h3 id=&#34;start-the-day-discussing-the-previous-on-call-shift&#34;&gt;Start the day discussing the previous on-call shift&lt;/h3&gt;
+&lt;p&gt;Start off each day asking the question&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Did the person on-call get paged, and if so, why?&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;It is also criticially important that you ask this question as early
-as possible in the day. If the on-call was bad enough, it may require
+&lt;p&gt;It is criticially important that you ask this question as early as
+possible in the day. If the on-call was bad enough, it may require
 halting all project work and diverting everyone to resolving an
 ongoing issue. Or maybe the previous shift was so bad that after
 giving a hand off, you want to excuse the on-call person so they can
@@ -43,26 +44,27 @@ log out and catch up on sleep. Either way, it&amp;rsquo;s important to ask this
 question as soon as possible in the day. It&amp;rsquo;s the most important
 question you can ask for the health of the team so it should be your
 first question.&lt;/p&gt;
-&lt;p&gt;If reviewing on-call takes up your full standup it means that your
-on-call needs attention.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;If reviewing on-call takes up your full standup it means that your
+on-call needs attention.&lt;/em&gt;&lt;/p&gt;
 &lt;h3 id=&#34;have-an-answer-for-every-page&#34;&gt;Have an answer for every page&lt;/h3&gt;
 &lt;p&gt;Every pagable event needs to fall into one of the following categories:&lt;/p&gt;
-&lt;h4 id=&#34;this-is-a-known-issue-for-which-the-team-is-already-working-towards&#34;&gt;This is a known issue for which the team is already working towards&lt;/h4&gt;
-&lt;p&gt;a solution.&lt;/p&gt;
+&lt;h4 id=&#34;this-is-a-known-issue-for-which-the-team-is-already-working-towards-a-solution&#34;&gt;This is a known issue for which the team is already working towards a solution&lt;/h4&gt;
 &lt;p&gt;These pages can be mostly ignored as the team is already working on
 resolving the underlying issue. Maybe the services are under
-provisioned and the team is working on scaling things up so by next
-week this will be resolved. It would be ideal if these pages could be
+provisioned and the team is working on scaling things up. Or maybe
+this is a known bug that the team is working on a fix for.  Either way
+the expectation is that over the next couple of days the underlying
+issue will be resolved. It would be ideal if these pages could be
 muted but that is not always possible as it may hide other
-issues. Either way, be honest with yourself and resist the urge to
-group pages together which are not actually related.&lt;/p&gt;
-&lt;h4 id=&#34;this-is-a-once-in-a-lifetime-event-and-can-be-ignored&#34;&gt;This is a once-in-a-lifetime-event and can be ignored.&lt;/h4&gt;
-&lt;p&gt;These should be pretty rare and what the team defines as &amp;ldquo;lifetime&amp;rdquo;
-should increase over time.  It is fine to start off with &amp;ldquo;lifetime&amp;rdquo;
+issues. Just be honest with yourself and resist the urge to group
+pages together which are not actually related.&lt;/p&gt;
+&lt;h4 id=&#34;this-is-a-once-in-a-lifetime-event-and-can-be-ignored&#34;&gt;This is a once-in-a-lifetime-event and can be ignored&lt;/h4&gt;
+&lt;p&gt;These should be pretty rare and what the team defines as &lt;em&gt;lifetime&lt;/em&gt;
+should increase over time.  It is fine to start off with lifetime
 meaning &amp;ldquo;once a month&amp;rdquo; but this should eventually stretch out to &amp;ldquo;once
-a quarter&amp;rdquo; and then &amp;ldquo;once a year&amp;rdquo;.  If you are getting paged weekly
+a quarter&amp;rdquo; and then &amp;ldquo;once a year&amp;rdquo;. If you are getting paged weekly
 for anything, that is not a once-in-a-lifetime event.&lt;/p&gt;
-&lt;h4 id=&#34;this-is-a-new-issue-which-needs-to-be-investigated&#34;&gt;This is a new issue which needs to be investigated.&lt;/h4&gt;
+&lt;h4 id=&#34;this-is-a-new-issue-which-needs-to-be-investigated&#34;&gt;This is a new issue which needs to be investigated&lt;/h4&gt;
 &lt;p&gt;Often once-in-a-lifetime issues are promoted to new issues when they
 suddenly start happening more often. But regardless, all new issues
 should have an investigation issue created.&lt;/p&gt;
@@ -75,12 +77,14 @@ an issue before it becomes a major incident. As the backpacking
 mantra goes, &amp;ldquo;keep small problems small.&amp;rdquo;&lt;/p&gt;
 &lt;h3 id=&#34;offer-the-person-on-call-a-break&#34;&gt;Offer the person on-call a break&lt;/h3&gt;
 &lt;p&gt;Getting woken up multiple nights in a row can be highly disruptive and
-ultimately lead to serious medical issues. If the on-call person was
-woken up between the hours of 9pm - 9am, it&amp;rsquo;s highly recommend to
-switch the primary and secondary rotations for the following 9pm - 9am
-shift. Just knowning that the following night they will be able to
-get a full night sleep can make the world of difference to the person
+ultimately lead to health issues. If the on-call person was woken up
+between the hours of 9pm - 9am, it is highly recommend to switch the
+primary and secondary rotations for the following 9pm - 9am
+shift. Just knowning that the following night they will be able to get
+a full night sleep can make the world of difference to the person
 getting woken up every hour.&lt;/p&gt;
+&lt;p&gt;It also offers a &lt;em&gt;motivation&lt;/em&gt; for the secondary to help out as they are
+going to be on the hook for the next night.&lt;/p&gt;
 </description>
     </item>
     
