@@ -24,26 +24,25 @@ post about walking the board &lt;a href=&#34;../walking-the-board/&#34;&gt;here&
 I&amp;rsquo;ve had on-call shifts where I was woken up multiple times throughout
 the night and by morning I am wiped out and cranky. Worse still, the
 next night is likely to be more of the same. In these situations the
-last thing I want to do is spend standup talking about how much progress
-the team has made on the current projects. I want to talk about what
-I&amp;rsquo;ve been getting woken up for, and how the team can help make this
+last thing I want to do is spend standup talking about how much
+progress the team has made on the current projects. I want to talk
+about why I&amp;rsquo;ve been getting paged, and how the team can help make this
 waking nightmare stop.&lt;/p&gt;
 &lt;h3 id=&#34;start-the-day-discussing-the-previous-on-call-shift&#34;&gt;Start the day discussing the previous on-call shift&lt;/h3&gt;
 &lt;p&gt;Standup should already be one of the first meetings of the day. It helps
-to get everyone aligned on the on going tasks and brings up to speed
+to get everyone aligned on the ongoing tasks and brings up to speed
 anyone who may have been on vacation. But before discussing any projects
 you should start off asking the question:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Did the person on-call get paged, and if so, why?&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;It is criticially important this question is asked as early as
-possible in the day. If the on-call was bad enough, it may require
-halting all project work and diverting everyone to resolving an
-on-going issue. Or maybe the previous shift was so bad that after
-giving a hand off, you want to excuse the on-call person so they can
-log out and catch up on sleep. Either it&amp;rsquo;s the most important
-question you can ask for the health of the team so it should be your
-first question.&lt;/p&gt;
+&lt;p&gt;It is criticially important this question is asked first. If the
+on-call was bad enough, it may require halting all project work and
+diverting everyone to resolving an ongoing issue. Or maybe the
+previous shift was so bad that after giving a hand off, you want to
+excuse the person on-call so they can log out and catch up on
+sleep. Either it&amp;rsquo;s the most important question you can ask for the
+health of the team so it should be your first question.&lt;/p&gt;
 &lt;p&gt;A common push back is the concern that reviewing the pages may end up
 taking the full time of your standup. If this is happening it is either
 because you are allowing runaway conversations (that would be better
@@ -64,14 +63,14 @@ yourself and resist the urge to group pages together which are not
 actually related.&lt;/p&gt;
 &lt;h4 id=&#34;this-is-a-once-in-a-lifetime-event-and-can-be-ignored&#34;&gt;This is a once-in-a-lifetime-event and can be ignored&lt;/h4&gt;
 &lt;p&gt;These should be pretty rare and what the team defines as &lt;em&gt;lifetime&lt;/em&gt;
-should increase over time.  It is fine to start off with lifetime
-meaning &amp;ldquo;once a month&amp;rdquo; but this should eventually stretch out to &amp;ldquo;once
-a quarter&amp;rdquo; and then &amp;ldquo;once a year&amp;rdquo;. If you are getting paged weekly
-for anything, that is not a once-in-a-lifetime event.&lt;/p&gt;
+should increase in duration over time. Initially lifetime can mean
+&amp;ldquo;once a month&amp;rdquo; but this should eventually stretch out to &amp;ldquo;once a
+quarter&amp;rdquo; and then &amp;ldquo;once a year&amp;rdquo;. If you are getting paged weekly for
+anything, that is not a once-in-a-lifetime event.&lt;/p&gt;
 &lt;h4 id=&#34;this-is-a-new-issue-which-needs-to-be-investigated&#34;&gt;This is a new issue which needs to be investigated&lt;/h4&gt;
-&lt;p&gt;Often once-in-a-lifetime issues are promoted to new issues when they
-suddenly start happening more often. But regardless, all new issues
-should have an investigation issue created.&lt;/p&gt;
+&lt;p&gt;This is really everything else. Sometimes these are once-in-a-lifetime
+issues that suddenly start happening more often. But regardless, all
+new issues should have an investigation issue created.&lt;/p&gt;
 &lt;h3 id=&#34;keep-small-problems-small&#34;&gt;Keep small problems small&lt;/h3&gt;
 &lt;p&gt;The investigation of all new issues should take top priority for the
 on-call and possibly secondary person. Failing to properly investigate
@@ -82,13 +81,21 @@ mantra goes, &amp;ldquo;keep small problems small.&amp;rdquo;&lt;/p&gt;
 &lt;h3 id=&#34;offer-the-person-on-call-a-break&#34;&gt;Offer the person on-call a break&lt;/h3&gt;
 &lt;p&gt;Getting woken up multiple nights in a row can be highly disruptive and
 ultimately lead to health issues. If the on-call person was woken up
-between the hours of 9pm - 9am, I strongly recommend the
-primary and secondary rotations switch for the following 9pm - 9am
-shift. Just knowning that the following night they will be able to get
-a full night sleep can make the world of difference to the person
-getting woken up every hour.&lt;/p&gt;
+between the hours of 9pm - 9am, I strongly recommend the primary and
+secondary rotations switch for the following 9pm - 9am shift. Just
+knowning that the following night they will be able to get a full
+night sleep can make the world of difference to the person getting
+woken up every hour.&lt;/p&gt;
 &lt;p&gt;It also offers a &lt;em&gt;motivation&lt;/em&gt; for the secondary to help out as they are
 going to be on the hook for the next night.&lt;/p&gt;
+&lt;h2 id=&#34;closing-comments&#34;&gt;Closing Comments&lt;/h2&gt;
+&lt;p&gt;At many organizations the manager for a team is not in the primary
+on-call rotation and this level of separation can already cause some
+resentment in the team. Especially with a high pager volume the team
+may feel like the manager is not aware or doesn&amp;rsquo;t care about the
+struggles they are going through. Starting the day by focusing on the
+on-call rotation helps to assure the team that even after a bad night
+their team is going to be there for them in the morning.&lt;/p&gt;
 </description>
     </item>
     
