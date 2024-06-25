@@ -1397,10 +1397,10 @@ all that hard after all.&lt;/p&gt;
 prevent the read/write and write/write race conditions while making
 sure multiple read routines don&amp;rsquo;t block one another. So as long as
 the write operations are optimized to be as fast as possible, the
-overall throughput should be really high.&lt;/p&gt;
-&lt;p&gt;While this is mostly true, there is a subtlety to read/write locks
-that can and up causing them to be more expensive than they initially
-appear.&lt;/p&gt;
+overall throughput &lt;em&gt;should&lt;/em&gt; be high.&lt;/p&gt;
+&lt;p&gt;In most cases this is true, but there is a subtlety to read/write
+locks that can end up causing them to be considerably more expensive
+than they initially appear.&lt;/p&gt;
 &lt;p&gt;Consider the following:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Thread 1 requests read access to a shared read/write lock.&lt;/p&gt;
@@ -1447,12 +1447,12 @@ dependent on your slowest running read operation.&lt;/p&gt;
 &lt;h2 id=&#34;what-readwrite-locks-are-good-for&#34;&gt;What read/write locks are good for.&lt;/h2&gt;
 &lt;p&gt;Read/Write are useful when you need a memory barrier and &lt;em&gt;every&lt;/em&gt;
 thread on your service should only see the state of some memory either
-before or after a write operation but never but never both. Meaning
+before or after a write operation, but never but never both. Meaning
 that it is not allowable for some threads to see the value of the
 memory before the write operations and other threads running at the
 same time to see the memory value after the write operation.&lt;/p&gt;
-&lt;p&gt;But, as we saw above, this comes at a cost and in &lt;em&gt;many&lt;/em&gt; cases it&amp;rsquo;s
-not really needed.&lt;/p&gt;
+&lt;p&gt;But, as we saw above, this comes at a cost and in &lt;em&gt;many&lt;/em&gt; cases it may
+not be needed.&lt;/p&gt;
 &lt;p&gt;For example, suppose we have a data structure that holds the account
 balance for an individual. Suppose also that this account receives a
 constant stream of read requests that, for what ever reason, take

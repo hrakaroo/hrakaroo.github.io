@@ -795,10 +795,10 @@
 prevent the read/write and write/write race conditions while making
 sure multiple read routines don&rsquo;t block one another. So as long as
 the write operations are optimized to be as fast as possible, the
-overall throughput should be really high.</p>
-<p>While this is mostly true, there is a subtlety to read/write locks
-that can and up causing them to be more expensive than they initially
-appear.</p>
+overall throughput <em>should</em> be high.</p>
+<p>In most cases this is true, but there is a subtlety to read/write
+locks that can end up causing them to be considerably more expensive
+than they initially appear.</p>
 <p>Consider the following:</p>
 <blockquote>
 <p>Thread 1 requests read access to a shared read/write lock.</p>
@@ -845,12 +845,12 @@ dependent on your slowest running read operation.</p>
 <h2 id="what-readwrite-locks-are-good-for">What read/write locks are good for.</h2>
 <p>Read/Write are useful when you need a memory barrier and <em>every</em>
 thread on your service should only see the state of some memory either
-before or after a write operation but never but never both. Meaning
+before or after a write operation, but never but never both. Meaning
 that it is not allowable for some threads to see the value of the
 memory before the write operations and other threads running at the
 same time to see the memory value after the write operation.</p>
-<p>But, as we saw above, this comes at a cost and in <em>many</em> cases it&rsquo;s
-not really needed.</p>
+<p>But, as we saw above, this comes at a cost and in <em>many</em> cases it may
+not be needed.</p>
 <p>For example, suppose we have a data structure that holds the account
 balance for an individual. Suppose also that this account receives a
 constant stream of read requests that, for what ever reason, take
