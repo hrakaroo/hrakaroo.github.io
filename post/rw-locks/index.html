@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- This site was created with Hugo Blox. https://hugoblox.com -->
-<!-- Last Published: June 24, 2024 --><html lang="en-us" >
+<!-- Last Published: June 25, 2024 --><html lang="en-us" >
 
 
 <head>
@@ -279,7 +279,7 @@
 
   
 
-<meta name="description" content="Read/Write locks are not the panacea they seem to be" />
+<meta name="description" content="Subtle implications of Read/Write locks" />
 
 
 
@@ -328,7 +328,7 @@
 <meta property="og:site_name" content="Hrakaroo" />
 <meta property="og:url" content="https://hrakaroo.com/post/rw-locks/" />
 <meta property="og:title" content="Avoiding Read/Write Locks | Hrakaroo" />
-<meta property="og:description" content="Read/Write locks are not the panacea they seem to be" /><meta property="og:image" content="https://hrakaroo.com/media/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+<meta property="og:description" content="Subtle implications of Read/Write locks" /><meta property="og:image" content="https://hrakaroo.com/media/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
 
   
     <meta
@@ -383,7 +383,7 @@
       "url": "https://hrakaroo.com/media/icon_hu82bb96251336236c27845c6dd2b93c07_14416_192x192_fill_lanczos_center_3.png"
     }
   },
-  "description": "Read/Write locks are not the panacea they seem to be"
+  "description": "Subtle implications of Read/Write locks"
 }
 </script>
 
@@ -791,15 +791,14 @@
   <div class="article-container">
 
     <div class="article-style">
-      <p>Intuitively, read/write locks seem to be a perfect solution. They
-allow you to coordinate access to a resource and as long as the write
-operations are fast enough the read/write locks are basically free (or
-at least only as &ldquo;expensive&rdquo; as the time it takes to execute the write
-action.) The idea being that if multiple read routines use a read/write
-lock the only time they are blocked from execution is while the write
-routine holds the lock, but are otherwise totally unblocked.</p>
-<p>As it turns out this is not necessarily true and read/write locks can
-end up being a lot more expensive than they initially appear.</p>
+      <p>Intuitively, read/write locks seem to be a ideal solution. They
+prevent the read/write and write/write race conditions while making
+sure multiple read routines don&rsquo;t block one another. So as long as
+the write operations are optimized to be as fast as possible, the
+overall throughput should be really high.</p>
+<p>While this is mostly true, there is a subtlety to read/write locks
+that can and up causing them to be more expensive than they initially
+appear.</p>
 <p>Consider the following:</p>
 <blockquote>
 <p>Thread 1 requests read access to a shared read/write lock.</p>
@@ -883,7 +882,7 @@ operations to ensure that multiple write operations always happen in
 sequence so they can never overlap and they would never cause
 inconsistent results.</p>
 <p>So while read/write locks often appear, at first blush, like a
-panacea, they can actually carry a substantial hidden cost.  And in
+panacea, they can actually carry a substantial hidden cost. And in
 some cases the functionality provided by a read/write lock may not
 even be what you really need.</p>
 

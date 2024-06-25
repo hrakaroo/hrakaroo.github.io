@@ -1357,15 +1357,14 @@ all that hard after all.&lt;/p&gt;
       <link>https://hrakaroo.com/post/rw-locks/</link>
       <pubDate>Sat, 06 Nov 2021 00:00:00 +0000</pubDate>
       <guid>https://hrakaroo.com/post/rw-locks/</guid>
-      <description>&lt;p&gt;Intuitively, read/write locks seem to be a perfect solution. They
-allow you to coordinate access to a resource and as long as the write
-operations are fast enough the read/write locks are basically free (or
-at least only as &amp;ldquo;expensive&amp;rdquo; as the time it takes to execute the write
-action.) The idea being that if multiple read routines use a read/write
-lock the only time they are blocked from execution is while the write
-routine holds the lock, but are otherwise totally unblocked.&lt;/p&gt;
-&lt;p&gt;As it turns out this is not necessarily true and read/write locks can
-end up being a lot more expensive than they initially appear.&lt;/p&gt;
+      <description>&lt;p&gt;Intuitively, read/write locks seem to be a ideal solution. They
+prevent the read/write and write/write race conditions while making
+sure multiple read routines don&amp;rsquo;t block one another. So as long as
+the write operations are optimized to be as fast as possible, the
+overall throughput should be really high.&lt;/p&gt;
+&lt;p&gt;While this is mostly true, there is a subtlety to read/write locks
+that can and up causing them to be more expensive than they initially
+appear.&lt;/p&gt;
 &lt;p&gt;Consider the following:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Thread 1 requests read access to a shared read/write lock.&lt;/p&gt;
@@ -1449,7 +1448,7 @@ operations to ensure that multiple write operations always happen in
 sequence so they can never overlap and they would never cause
 inconsistent results.&lt;/p&gt;
 &lt;p&gt;So while read/write locks often appear, at first blush, like a
-panacea, they can actually carry a substantial hidden cost.  And in
+panacea, they can actually carry a substantial hidden cost. And in
 some cases the functionality provided by a read/write lock may not
 even be what you really need.&lt;/p&gt;
 </description>
