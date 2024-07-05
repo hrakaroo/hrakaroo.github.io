@@ -473,12 +473,13 @@ getting exactly what we hoped to get from these improvements.&lt;/p&gt;
     </item>
     
     <item>
-      <title>Walking the board</title>
+      <title>Walking The Board</title>
       <link>https://hrakaroo.com/post/walking-the-board/</link>
       <pubDate>Sun, 09 Jul 2017 00:00:00 +0000</pubDate>
       <guid>https://hrakaroo.com/post/walking-the-board/</guid>
       <description>&lt;p&gt;In the traditional standup format everyone stands in a circle and each
-person, in order, gives an update. The updates follow the Agile
+person, in order, gives an update. The updates follow the
+&lt;a href=&#34;https://www.agilealliance.org/glossary/three-questions/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;agile&lt;/a&gt;
 format:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;What they did yesterday&lt;/li&gt;
@@ -489,17 +490,18 @@ format:&lt;/p&gt;
 &lt;h3 id=&#34;context-switching&#34;&gt;Context Switching&lt;/h3&gt;
 &lt;p&gt;People don’t usually stand in any particular order so the updates from
 person to person often jump between the project(s) the team is working
-on and hero tasks. Additionally, if we’ve sized our tasks correctly
-often what one person is working from day to day changes. This makes
-sense to the person giving the update, but for everyone else, trying
-to track actual progress becomes increasingly difficult.&lt;/p&gt;
+on and support tasks. Additionally, if we’ve sized our tasks
+correctly, then a single person could potentially be working on a new
+task each day. This makes sense to the person giving the update, but
+for everyone else, trying to track actual progress becomes
+increasingly difficult.&lt;/p&gt;
 &lt;h3 id=&#34;project-status&#34;&gt;Project Status&lt;/h3&gt;
 &lt;p&gt;Related to context switching, it’s nearly impossible tell the overall
 project status from this type of update. Even if you could figure out
 how many tickets were closed, without looking at the kanban board it’s
-impossible to get even a sense of how far along the project is. Plus,
-this format does nothing to encourage people to actually update the
-kanban board, compounding the issue.&lt;/p&gt;
+nearly impossible to get even a sense of what is left todo on the
+project. Plus, this format does nothing to encourage people to
+actually update the kanban board, compounding the issue.&lt;/p&gt;
 &lt;h3 id=&#34;public-speaking&#34;&gt;Public Speaking&lt;/h3&gt;
 &lt;p&gt;Public speaking does not come naturally to everyone, even when
 presenting just to the team. I’m much more relaxed with it now, but
@@ -512,11 +514,15 @@ forgotten to say.&lt;/p&gt;
 &lt;p&gt;Without focus, the standup can become a passive competition for who is
 the busiest person.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;I&amp;rsquo;ve got a meeting with a customer today to talk over a feature they
-want added.&lt;/li&gt;
-&lt;li&gt;Well I&amp;rsquo;ve got &lt;em&gt;two&lt;/em&gt; meetings today to talk over features.&lt;/li&gt;
-&lt;li&gt;I&amp;rsquo;ve pretty much got meetings all day long so I&amp;rsquo;m not likely going
-to get much else done.&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I’ve got a meeting with a customer today to talk over a feature they want added.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Well I’ve got two meetings today to talk over features.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I’ve got meetings pretty much all day long so I’m not likely going to get much else done.&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;It sounds silly, but it&amp;rsquo;s something I&amp;rsquo;ve seen happen at multiple
 companies, especially if people are feeling insecure (imposter
@@ -527,47 +533,51 @@ like herculean efforts. It&amp;rsquo;s pointless and unhealthy for the team.&lt;
 &lt;p&gt;Finally, it forces everyone to talk when they may not want to. Maybe
 they just got back from vacation and are still working at getting
 caught up. There have also been times in my career where my personal
-life has taken over and I’ve needed to take some time off. Be it
+life has taken over and I’ve needed to take some time off, be it
 medical or family related. At the update I don’t want to go into
 details about what I’m dealing with. In fact, I may be at work
-specifically to take a break from the other stresses going on.  The
-last thing I want to do is try to make something up, or have to say &amp;ldquo;I
-have no update&amp;rdquo; or, worse, explain that &amp;ldquo;I&amp;rsquo;ve got some things going on
-which I don&amp;rsquo;t want to talk about.&amp;rdquo;&lt;/p&gt;
+specifically to take a break from the other stresses going on. The
+last thing I want to do is be forced to talk, or worse, explain why I
+don’t want to talk.&lt;/p&gt;
 &lt;p&gt;As an individual contributor I find this standup format stressful and
 as a project lead and manager I find it unhelpful. Instead I prefer
 using the standup time to walk the kanban board.&lt;/p&gt;
 &lt;h2 id=&#34;walking-the-board&#34;&gt;Walking the board&lt;/h2&gt;
-&lt;p&gt;With a Jira you can use swim planes to split up your kanban board into
-project tasks and hero tasks. Then starting at the &lt;strong&gt;Done&lt;/strong&gt; column, just
-go down each column and each owner gives an update for their task. In
-this format there is no initial awkward moment trying to figure out
-who should go first. The context switching is much less and the team
-can focus on what is being said instead of trying to memorize what
-they are going to say.&lt;/p&gt;
-&lt;p&gt;Since &lt;strong&gt;Done&lt;/strong&gt; is often an end state and you don&amp;rsquo;t necessarily want to
-re-walk this entire list every time you can either cut a Jira release
-after each standup, or create a &lt;strong&gt;Closed&lt;/strong&gt; column and use the standup as
-an opportunity to move tasks from &lt;strong&gt;Closed&lt;/strong&gt; to &lt;strong&gt;Done&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;With most ticket tracking systems you can use swim lanes to split up
+your kanban board into project tasks and support tasks. Then, starting
+with the top swim lane, go down the &lt;strong&gt;Done&lt;/strong&gt; column and each each
+owner can give an update for their ticket. (This also avoids that
+initial awkward moment of trying to figure out who should be the first
+to speak.)&lt;/p&gt;
+&lt;p&gt;Once the &lt;strong&gt;Done&lt;/strong&gt; column is finished, move to column to the left
+(likely &lt;strong&gt;In Progress&lt;/strong&gt; or &lt;strong&gt;Blocked&lt;/strong&gt;) and repeat the
+process. Continue until you are done with all &lt;em&gt;assigned&lt;/em&gt; tickets for
+that swim lane. Rinse and repeat for the next swim lane until all
+updates are done. The context switching is much less and the team can
+focus on what is being said instead of trying to memorize what they
+are going to say.&lt;/p&gt;
+&lt;p&gt;(Since &lt;strong&gt;Done&lt;/strong&gt; is often an end state and you don’t necessarily want
+to re-walk this entire list every time, some teams will create a
+&lt;strong&gt;Closed&lt;/strong&gt; column and use the standup as an opportunity to move tasks
+from &lt;strong&gt;Closed&lt;/strong&gt; to &lt;strong&gt;Done&lt;/strong&gt;.)&lt;/p&gt;
 &lt;h3 id=&#34;closing-comments&#34;&gt;Closing comments&lt;/h3&gt;
 &lt;p&gt;One critique of this format is that it is possible for a team member
-not working on a task to feel left out. If they really are attending
-meetings all day there is a chance to they haven&amp;rsquo;t picked up any tasks
-and therefore won&amp;rsquo;t speak. There are a couple of ways to handle
-this. First standup is suppose to be project focused so I&amp;rsquo;ve always
-stressed that if you don&amp;rsquo;t have any updates it is okay to not talk if
-you have no project updates. If you &lt;em&gt;really&lt;/em&gt; want to explain to the
-team why you haven&amp;rsquo;t picked up any tasks you can always add something
-during post-standup, but it really isn&amp;rsquo;t necessary. If, as a manager,
-you notice that an individual is not picking up any tasks that should
-be brought up with them during their 1:1 and not in front of the team.&lt;/p&gt;
+not working on a task to feel left out. There are a couple of ways to
+handle this: First although standup is suppose to be project focused,
+so I’ve always stressed that if you don’t have any updates for the
+project it is okay to not talk. (This assumes your team is a safe
+space where individuals won’t feel like they are being judged if they
+don’t talk.) But, if an individual &lt;em&gt;really&lt;/em&gt; wants to explain to the
+team why they haven’t picked up any tasks, they should save that for
+the post-standup discussion. If, in the rare case, an individual is
+checking out and not picking up any tasks, that is something the
+manager should bring up during their 1:1 and not in front of the team.&lt;/p&gt;
 &lt;p&gt;As a project lead and manager I find walking the board to be
 significantly more useful as I can tell exactly the progress of the
 project (as I’m looking at the tickets) and I can also be sure that
-Jira tickets for the project are up to date. As an individual
-contributor I don&amp;rsquo;t feel like I have to prepare as much for this
-standup and I can just attend and focus on what everyone else is
-saying.&lt;/p&gt;
+tickets for the project are up to date. As an individual contributor I
+don’t feel like I have to prepare as much for this standup and I can
+just attend and focus on what everyone else is saying.&lt;/p&gt;
 </description>
     </item>
     
