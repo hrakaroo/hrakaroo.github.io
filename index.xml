@@ -7,7 +7,7 @@
     <description>Hrakaroo</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 24 Oct 2022 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://hrakaroo.com/media/icon_hu82bb96251336236c27845c6dd2b93c07_14416_512x512_fill_lanczos_center_3.png</url>
+      <url>https://hrakaroo.com/media/icon_hu987151019769935369.png</url>
       <title>Hrakaroo</title>
       <link>https://hrakaroo.com/</link>
     </image>
@@ -1321,70 +1321,71 @@ invalidation and naming things.  &amp;ndash; Phil Karlton&lt;/p&gt;
 &lt;p&gt;and while this is funny (perhaps only to those in Computer Science)
 underlying the quote is a real issue, naming things is really hard.&lt;/p&gt;
 &lt;p&gt;The challenge is not just in giving something an appropriate name for
-right now, but trying to predict how they may evolve and be used in
+right now, but in trying to predict how it may evolve and be used in
 the future.&lt;/p&gt;
 &lt;p&gt;Maybe you start with a database of bicycles, but as powered bicycles
-are introduced you start adding those but then it&amp;rsquo;s a slippery slope
-to electric motorcycles and then gas powered motorcycles. Pretty soon
-your database of bicycles includes all motorcycles and perhaps those
-three wheeled things I&amp;rsquo;ve seen driving on the freeway. Unless you had
-amazing forethought and were able to predict exactly how the
-industry was going to evolve chances are whatever name you select is
+are introduced you start adding those but from there it&amp;rsquo;s a slippery
+slope to electric motorcycles and then gas powered motorcycles. Pretty
+soon your database of bicycles includes all motorcycles and perhaps
+those three wheeled things I&amp;rsquo;ve seen driving on the freeway. Unless
+you had amazing forethought and were able to predict exactly how the
+industry was going to evolve, chances are whichever name you select is
 going to be incorrect at some point in the future.&lt;/p&gt;
 &lt;h2 id=&#34;renaming-isnt-always-easy&#34;&gt;Renaming isn&amp;rsquo;t always easy&lt;/h2&gt;
 &lt;p&gt;So, if the scope does evolve and the original name is no longer
-correct we should just rename it, right? Sometimes this is
-the answer. Tools for software development have come a long way
-and doing a code refactoring is&amp;rsquo;t as hard as it once was. So if we
-have a variable name, function name, or even a class/object name that
-is no longer accurate we usually have the ability to safely rename it
-across all dependencies to a new and more appropriate name.&lt;/p&gt;
+correct we should just rename it, right? Sometimes this is the
+answer. Tools for software development have come a long way and doing
+a code refactoring isn&amp;rsquo;t nearly as hard as it once was. So if we have
+a variable name, function name, or even a class/object name that is no
+longer accurate we usually have the ability to safely rename it across
+all dependencies to a new and more appropriate name.&lt;/p&gt;
 &lt;p&gt;But the coding level is often where this capability ends. The industry
 has not yet developed the capability to reliability refactor service
-names across a distributed system and trying to do it manually is
-often fraught with errors that can greatly impact uptime.&lt;/p&gt;
+names across a distributed environment and trying to do it manually is
+time consuming and often fraught with errors that can negatively
+impact uptime.&lt;/p&gt;
 &lt;h2 id=&#34;in-defense-of-the-obscure&#34;&gt;In defense of the obscure&lt;/h2&gt;
 &lt;p&gt;So if changing the name of something is difficult and if naming things
 correctly &lt;em&gt;now&lt;/em&gt; is hard, (and predicting how they may evolve is nearly
-impossible,) then maybe the best thing to do is to purposely give
-them obscure names.&lt;/p&gt;
+impossible,) then maybe the best thing we can do is to purposely give
+them an obscure name.&lt;/p&gt;
 &lt;p&gt;When I was in college we were able to select our own email
-addresses. Like most people knew I opted for the straightforward and
-used my last name for my address: &lt;code&gt;gerth@lclark.edu&lt;/code&gt;. However, one of
-my classmates opted for something entirely different, she selected the
-email address of &lt;code&gt;squidlips@lclark.edu&lt;/code&gt;. At first I thought she was
-just trying to rebel, but her reasoning was actually pretty
-interesting. Her name was something rather basic, (think Jane Doe) and
-her argument was that while &lt;code&gt;doe@lclark.edu&lt;/code&gt; runs the risk of being
-mistaken for someone else, &lt;code&gt;squidlips@lclark.edu&lt;/code&gt; is almost guaranteed
-not to.&lt;/p&gt;
+address. Like most people I knew, I opted for the straightforward and
+used my last name for my email address: &lt;code&gt;gerth@lclark.edu&lt;/code&gt;. However,
+one of my classmates opted for something entirely different, she
+selected the email address of &lt;code&gt;squidlips@lclark.edu&lt;/code&gt;. At first I
+thought she was just trying to rebel, but her reasoning was actually
+pretty interesting. Her name was something rather common, (think Jane
+Doe) and her argument was that while &lt;code&gt;doe@lclark.edu&lt;/code&gt; runs the risk of
+being mistaken for someone else, &lt;code&gt;squidlips@lclark.edu&lt;/code&gt; is almost
+guaranteed not to.&lt;/p&gt;
 &lt;p&gt;This proved to be more than just an academic observation for as it
-happened, I was not the only Gerth at Lewis &amp;amp; Clark College. There
-was one other one, my father, a tenured professor, and I
-started to receive the occasional email intended for him. People had
-seen &lt;code&gt;gerth@lclark.edu&lt;/code&gt; and had incorrectly assumed I was my father
-and were sending me information clearly not intended for the
+happened, I was not the only Gerth at Lewis &amp;amp; Clark College. There was
+one other one, my father, a tenured professor, and I would
+occasionally receive email intended for him. People had seen
+&lt;code&gt;gerth@lclark.edu&lt;/code&gt; and had incorrectly assumed I was my father, and
+were sending me information clearly not intended for the
 students. (Nothing salacious I&amp;rsquo;m sad to say).&lt;/p&gt;
 &lt;p&gt;In this case the name (my email address) was even 100% correct and it
-was still getting used incorrectly.  And while while no one may have
-known who Squid Lips was, she never got any email not intended for
+was still getting used incorrectly. And while while no one may have
+guessed who Squid Lips was, she never got any email not intended for
 her.&lt;/p&gt;
 &lt;h2 id=&#34;obscure-is-better-than-wrong&#34;&gt;Obscure is better than wrong&lt;/h2&gt;
 &lt;p&gt;We make snap decisions all the time and if I was looking to get a list
-of vehicles for an endpoint and came across a service named &lt;code&gt;bicycles&lt;/code&gt;
+of vehicles from an endpoint and came across a service named &lt;code&gt;bicycles&lt;/code&gt;
 I would immediately cross it off my list. But, if instead the service
 was named &lt;code&gt;x34a5a&lt;/code&gt; or even &lt;code&gt;horsetail&lt;/code&gt; I would at least have to
-consider it. I may first go looking for something more accurate, but
+consider it. I may first go looking for something more specific, but
 at least I wouldn&amp;rsquo;t cross it off my list.&lt;/p&gt;
-&lt;p&gt;I also prefer calling something &lt;code&gt;horsetail&lt;/code&gt; rather than some obscure
-id designation as it&amp;rsquo;s much easier to remember &lt;code&gt;horsetail&lt;/code&gt; and
-distinguish it from &lt;code&gt;pigfoot&lt;/code&gt; than trying to remember &lt;code&gt;a20b23&lt;/code&gt; and
-distinguish it from &lt;code&gt;c23s40&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;So if a thing is going to exist for a while, likely evolve in scope,
-and changing it&amp;rsquo;s name is non trivial, then maybe giving it an obscure
-name may actually be better and ultimately easier than trying to come
-up with the perfect name. In some cases, naming things may not be
-all that hard after all.&lt;/p&gt;
+&lt;p&gt;(I also prefer the name &lt;code&gt;horsetail&lt;/code&gt; over an obscure id designation as
+it&amp;rsquo;s much easier to remember &lt;code&gt;horsetail&lt;/code&gt; and distinguish it from
+&lt;code&gt;pigfoot&lt;/code&gt; than trying to remember &lt;code&gt;a20b23&lt;/code&gt; and distinguish it from
+&lt;code&gt;c23s40&lt;/code&gt;.)&lt;/p&gt;
+&lt;p&gt;So if a thing is going to exist for a while, is likely to evolve in
+scope, and changing it&amp;rsquo;s name is non trivial, then giving it an
+obscure name may actually be better and ultimately easier than trying
+to come up with the perfect name. So in some cases, naming things may
+not be all that hard after all.&lt;/p&gt;
 </description>
     </item>
     
@@ -2263,10 +2264,10 @@ rocky and the mountain looks blown out.&lt;/p&gt;
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Blast&#34; srcset=&#34;
-               /post/summiting-st-helens-2019/BlastZone_hud6439a3124bad718c889d072fb945440_1817268_f322d93d9ddc0425372fe64921ecac90.webp 400w,
-               /post/summiting-st-helens-2019/BlastZone_hud6439a3124bad718c889d072fb945440_1817268_d0f1ded73f5731fda7420f756e3ce75d.webp 760w,
-               /post/summiting-st-helens-2019/BlastZone_hud6439a3124bad718c889d072fb945440_1817268_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
-               src=&#34;https://hrakaroo.com/post/summiting-st-helens-2019/BlastZone_hud6439a3124bad718c889d072fb945440_1817268_f322d93d9ddc0425372fe64921ecac90.webp&#34;
+               /post/summiting-st-helens-2019/BlastZone_hu1214579225259804513.webp 400w,
+               /post/summiting-st-helens-2019/BlastZone_hu1502458264569361636.webp 760w,
+               /post/summiting-st-helens-2019/BlastZone_hu8247176974282423838.webp 1200w&#34;
+               src=&#34;https://hrakaroo.com/post/summiting-st-helens-2019/BlastZone_hu1214579225259804513.webp&#34;
                width=&#34;760&#34;
                height=&#34;507&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -2970,10 +2971,10 @@ off the path at times for runners.&lt;/p&gt;
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/summiting-st-helens-2019/Trail1_hu415f331dd6639384d0d68bef0b84c3d0_1603966_1cd74d7e3c2ecef69b08ebf74f591020.webp 400w,
-               /post/summiting-st-helens-2019/Trail1_hu415f331dd6639384d0d68bef0b84c3d0_1603966_1312e2fbf6e597d62dd290a6d8c49442.webp 760w,
-               /post/summiting-st-helens-2019/Trail1_hu415f331dd6639384d0d68bef0b84c3d0_1603966_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
-               src=&#34;https://hrakaroo.com/post/summiting-st-helens-2019/Trail1_hu415f331dd6639384d0d68bef0b84c3d0_1603966_1cd74d7e3c2ecef69b08ebf74f591020.webp&#34;
+               /post/summiting-st-helens-2019/Trail1_hu15353432498820336159.webp 400w,
+               /post/summiting-st-helens-2019/Trail1_hu875811461713455652.webp 760w,
+               /post/summiting-st-helens-2019/Trail1_hu9792050477027702071.webp 1200w&#34;
+               src=&#34;https://hrakaroo.com/post/summiting-st-helens-2019/Trail1_hu15353432498820336159.webp&#34;
                width=&#34;760&#34;
                height=&#34;507&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -2998,10 +2999,10 @@ off the path at times for runners.&lt;/p&gt;
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/summiting-st-helens-2019/Trail2_hu9ff4185335ffdf9a2dccdcf1a200ba22_1794017_6fde78cf561f09ba1ffeadf125823766.webp 400w,
-               /post/summiting-st-helens-2019/Trail2_hu9ff4185335ffdf9a2dccdcf1a200ba22_1794017_b1dbe94d4607e8e0ac86cab23580471d.webp 760w,
-               /post/summiting-st-helens-2019/Trail2_hu9ff4185335ffdf9a2dccdcf1a200ba22_1794017_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
-               src=&#34;https://hrakaroo.com/post/summiting-st-helens-2019/Trail2_hu9ff4185335ffdf9a2dccdcf1a200ba22_1794017_6fde78cf561f09ba1ffeadf125823766.webp&#34;
+               /post/summiting-st-helens-2019/Trail2_hu9695808225918189080.webp 400w,
+               /post/summiting-st-helens-2019/Trail2_hu6352027979482009100.webp 760w,
+               /post/summiting-st-helens-2019/Trail2_hu7154012681762410460.webp 1200w&#34;
+               src=&#34;https://hrakaroo.com/post/summiting-st-helens-2019/Trail2_hu9695808225918189080.webp&#34;
                width=&#34;760&#34;
                height=&#34;507&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -3026,10 +3027,10 @@ off the path at times for runners.&lt;/p&gt;
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/summiting-st-helens-2019/Trail3_hua136ddbc3a5d3d04ade88d9dee4e539f_2282186_46a25a0ed4a909251b688da3ff335563.webp 400w,
-               /post/summiting-st-helens-2019/Trail3_hua136ddbc3a5d3d04ade88d9dee4e539f_2282186_0bbd08c8d06a859b56f122225eb20d25.webp 760w,
-               /post/summiting-st-helens-2019/Trail3_hua136ddbc3a5d3d04ade88d9dee4e539f_2282186_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
-               src=&#34;https://hrakaroo.com/post/summiting-st-helens-2019/Trail3_hua136ddbc3a5d3d04ade88d9dee4e539f_2282186_46a25a0ed4a909251b688da3ff335563.webp&#34;
+               /post/summiting-st-helens-2019/Trail3_hu6012717013208633055.webp 400w,
+               /post/summiting-st-helens-2019/Trail3_hu12074718077248159602.webp 760w,
+               /post/summiting-st-helens-2019/Trail3_hu7523240136670394682.webp 1200w&#34;
+               src=&#34;https://hrakaroo.com/post/summiting-st-helens-2019/Trail3_hu6012717013208633055.webp&#34;
                width=&#34;760&#34;
                height=&#34;507&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -3054,10 +3055,10 @@ off the path at times for runners.&lt;/p&gt;
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/summiting-st-helens-2019/Trail4_hud7286e85d7931f98d9a1b460c928f597_1769017_d57d1ccf1ddbc27888212aadd1502b21.webp 400w,
-               /post/summiting-st-helens-2019/Trail4_hud7286e85d7931f98d9a1b460c928f597_1769017_b366c1a2d568c56ea67012d5dc74ae97.webp 760w,
-               /post/summiting-st-helens-2019/Trail4_hud7286e85d7931f98d9a1b460c928f597_1769017_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
-               src=&#34;https://hrakaroo.com/post/summiting-st-helens-2019/Trail4_hud7286e85d7931f98d9a1b460c928f597_1769017_d57d1ccf1ddbc27888212aadd1502b21.webp&#34;
+               /post/summiting-st-helens-2019/Trail4_hu5383470803405685959.webp 400w,
+               /post/summiting-st-helens-2019/Trail4_hu5774156433691295938.webp 760w,
+               /post/summiting-st-helens-2019/Trail4_hu10091554744405825560.webp 1200w&#34;
+               src=&#34;https://hrakaroo.com/post/summiting-st-helens-2019/Trail4_hu5383470803405685959.webp&#34;
                width=&#34;760&#34;
                height=&#34;507&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -3087,10 +3088,10 @@ of day we were there, very hot.&lt;/p&gt;
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/summiting-st-helens-2019/Flats1_hu563f39faafd68ab249164027d74668f1_8228598_efb331887d8bcddf6e7645b86b4162b6.webp 400w,
-               /post/summiting-st-helens-2019/Flats1_hu563f39faafd68ab249164027d74668f1_8228598_5004cfdbcf1886b7508a80134fce0b6d.webp 760w,
-               /post/summiting-st-helens-2019/Flats1_hu563f39faafd68ab249164027d74668f1_8228598_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
-               src=&#34;https://hrakaroo.com/post/summiting-st-helens-2019/Flats1_hu563f39faafd68ab249164027d74668f1_8228598_efb331887d8bcddf6e7645b86b4162b6.webp&#34;
+               /post/summiting-st-helens-2019/Flats1_hu1980605432999286721.webp 400w,
+               /post/summiting-st-helens-2019/Flats1_hu11451573732739769604.webp 760w,
+               /post/summiting-st-helens-2019/Flats1_hu3317451984267001214.webp 1200w&#34;
+               src=&#34;https://hrakaroo.com/post/summiting-st-helens-2019/Flats1_hu1980605432999286721.webp&#34;
                width=&#34;760&#34;
                height=&#34;570&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -3115,10 +3116,10 @@ of day we were there, very hot.&lt;/p&gt;
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/summiting-st-helens-2019/Flats2_hu61ecd376765f1c416f73e497534e72b2_8991609_65be3a6401b13efcc1176da58852956d.webp 400w,
-               /post/summiting-st-helens-2019/Flats2_hu61ecd376765f1c416f73e497534e72b2_8991609_ba01a77c56bee84b7b790108396548fc.webp 760w,
-               /post/summiting-st-helens-2019/Flats2_hu61ecd376765f1c416f73e497534e72b2_8991609_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
-               src=&#34;https://hrakaroo.com/post/summiting-st-helens-2019/Flats2_hu61ecd376765f1c416f73e497534e72b2_8991609_65be3a6401b13efcc1176da58852956d.webp&#34;
+               /post/summiting-st-helens-2019/Flats2_hu16961707707493938494.webp 400w,
+               /post/summiting-st-helens-2019/Flats2_hu550125413878778412.webp 760w,
+               /post/summiting-st-helens-2019/Flats2_hu7494764591282440017.webp 1200w&#34;
+               src=&#34;https://hrakaroo.com/post/summiting-st-helens-2019/Flats2_hu16961707707493938494.webp&#34;
                width=&#34;760&#34;
                height=&#34;570&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -3143,10 +3144,10 @@ of day we were there, very hot.&lt;/p&gt;
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/summiting-st-helens-2019/Flats3_huc247307b466a0a8f25d71f76119b58d0_1966240_56ba1e16a8d91d3f1206a12186993038.webp 400w,
-               /post/summiting-st-helens-2019/Flats3_huc247307b466a0a8f25d71f76119b58d0_1966240_10be24e42c00b90e395b3611024d989f.webp 760w,
-               /post/summiting-st-helens-2019/Flats3_huc247307b466a0a8f25d71f76119b58d0_1966240_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
-               src=&#34;https://hrakaroo.com/post/summiting-st-helens-2019/Flats3_huc247307b466a0a8f25d71f76119b58d0_1966240_56ba1e16a8d91d3f1206a12186993038.webp&#34;
+               /post/summiting-st-helens-2019/Flats3_hu8246767464258253488.webp 400w,
+               /post/summiting-st-helens-2019/Flats3_hu4097905490501615042.webp 760w,
+               /post/summiting-st-helens-2019/Flats3_hu12018479409055761320.webp 1200w&#34;
+               src=&#34;https://hrakaroo.com/post/summiting-st-helens-2019/Flats3_hu8246767464258253488.webp&#34;
                width=&#34;760&#34;
                height=&#34;507&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -3184,10 +3185,10 @@ there is another trail up that way.&lt;/p&gt;
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/summiting-st-helens-2019/WindyPass_hua8bc4dea2b8d226b18897da6d965dde0_1939718_efa66a410b1625d0aa77f9015d1e7497.webp 400w,
-               /post/summiting-st-helens-2019/WindyPass_hua8bc4dea2b8d226b18897da6d965dde0_1939718_8032cda87c968d957cb27df1ce4df316.webp 760w,
-               /post/summiting-st-helens-2019/WindyPass_hua8bc4dea2b8d226b18897da6d965dde0_1939718_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
-               src=&#34;https://hrakaroo.com/post/summiting-st-helens-2019/WindyPass_hua8bc4dea2b8d226b18897da6d965dde0_1939718_efa66a410b1625d0aa77f9015d1e7497.webp&#34;
+               /post/summiting-st-helens-2019/WindyPass_hu9435528367596690056.webp 400w,
+               /post/summiting-st-helens-2019/WindyPass_hu9824989341914492439.webp 760w,
+               /post/summiting-st-helens-2019/WindyPass_hu5925618235556749137.webp 1200w&#34;
+               src=&#34;https://hrakaroo.com/post/summiting-st-helens-2019/WindyPass_hu9435528367596690056.webp&#34;
                width=&#34;760&#34;
                height=&#34;507&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -4400,10 +4401,10 @@ turned to passive-aggressive communications to settle our differences.&lt;/p&gt;
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Comments made during a code review&#34; srcset=&#34;
-               /post/code-reviews/code_review_comments_hufa99ebb0136f264897801a39b183de9d_49740_84049b2d423b98396dbb831ea0015e44.webp 400w,
-               /post/code-reviews/code_review_comments_hufa99ebb0136f264897801a39b183de9d_49740_0fb2daec92f0dc60757c1c69a431530f.webp 760w,
-               /post/code-reviews/code_review_comments_hufa99ebb0136f264897801a39b183de9d_49740_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
-               src=&#34;https://hrakaroo.com/post/code-reviews/code_review_comments_hufa99ebb0136f264897801a39b183de9d_49740_84049b2d423b98396dbb831ea0015e44.webp&#34;
+               /post/code-reviews/code_review_comments_hu706776031838675625.webp 400w,
+               /post/code-reviews/code_review_comments_hu5745629573825271315.webp 760w,
+               /post/code-reviews/code_review_comments_hu15505989312171562261.webp 1200w&#34;
+               src=&#34;https://hrakaroo.com/post/code-reviews/code_review_comments_hu706776031838675625.webp&#34;
                width=&#34;700&#34;
                height=&#34;337&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -4499,10 +4500,10 @@ very quickly.&lt;/p&gt;
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Opinions made during code reviews&#34; srcset=&#34;
-               /post/code-reviews/code_review_opinions_hufa99ebb0136f264897801a39b183de9d_28768_c152d5f577e6d47239943f9c66eca151.webp 400w,
-               /post/code-reviews/code_review_opinions_hufa99ebb0136f264897801a39b183de9d_28768_7b13d3954a3c4710be986d8ec8430f1b.webp 760w,
-               /post/code-reviews/code_review_opinions_hufa99ebb0136f264897801a39b183de9d_28768_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
-               src=&#34;https://hrakaroo.com/post/code-reviews/code_review_opinions_hufa99ebb0136f264897801a39b183de9d_28768_c152d5f577e6d47239943f9c66eca151.webp&#34;
+               /post/code-reviews/code_review_opinions_hu11743961395644485409.webp 400w,
+               /post/code-reviews/code_review_opinions_hu15033609525961015505.webp 760w,
+               /post/code-reviews/code_review_opinions_hu16629623137176114837.webp 1200w&#34;
+               src=&#34;https://hrakaroo.com/post/code-reviews/code_review_opinions_hu11743961395644485409.webp&#34;
                width=&#34;700&#34;
                height=&#34;304&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -4706,10 +4707,10 @@ their point of view.&lt;/p&gt;
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;The number of proposals made: expected vs. actual&#34; srcset=&#34;
-               /post/code-reviews/code_review_proposals_hufa99ebb0136f264897801a39b183de9d_34288_d2d7f95efa2dcae85696ea57a90ba46e.webp 400w,
-               /post/code-reviews/code_review_proposals_hufa99ebb0136f264897801a39b183de9d_34288_2506370f4a004805ad36a615410a18c7.webp 760w,
-               /post/code-reviews/code_review_proposals_hufa99ebb0136f264897801a39b183de9d_34288_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
-               src=&#34;https://hrakaroo.com/post/code-reviews/code_review_proposals_hufa99ebb0136f264897801a39b183de9d_34288_d2d7f95efa2dcae85696ea57a90ba46e.webp&#34;
+               /post/code-reviews/code_review_proposals_hu2359181206282471772.webp 400w,
+               /post/code-reviews/code_review_proposals_hu4211339032848043268.webp 760w,
+               /post/code-reviews/code_review_proposals_hu5408248457779190085.webp 1200w&#34;
+               src=&#34;https://hrakaroo.com/post/code-reviews/code_review_proposals_hu2359181206282471772.webp&#34;
                width=&#34;700&#34;
                height=&#34;241&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
