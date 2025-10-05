@@ -5,12 +5,80 @@
     <link>https://hrakaroo.com/post/</link>
       <atom:link href="https://hrakaroo.com/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 11 Dec 2023 00:00:00 +0000</lastBuildDate>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 22 Apr 2024 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://hrakaroo.com/media/icon_hu_a40146739a0db508.png</url>
       <title>Posts</title>
       <link>https://hrakaroo.com/post/</link>
     </image>
+    
+    <item>
+      <title>Start with On-Call</title>
+      <link>https://hrakaroo.com/post/start-with-oncall/</link>
+      <pubDate>Mon, 22 Apr 2024 00:00:00 +0000</pubDate>
+      <guid>https://hrakaroo.com/post/start-with-oncall/</guid>
+      <description>&lt;p&gt;This is my second post on running a standup, you can read my first
+post about walking the board &lt;a href=&#34;../walking-the-board/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h1 id=&#34;start-with-on-call-a-healthier-way-to-begin-the-day&#34;&gt;Start with On-Call: A Healthier Way to Begin the Day&lt;/h1&gt;
+&lt;p&gt;On-call work can be isolating, exhausting, and easy to overlook if
+you&amp;rsquo;re not the one holding the pager. I’ve had nights where pages hit
+back-to-back, leaving me exhausted and irritable the next
+morning. When that happens, the idea of opening a standup with project
+updates feels disconnected from reality. What I really want to talk
+about is &lt;em&gt;why&lt;/em&gt; I was paged—and how the team can help make sure it
+doesn’t happen again.&lt;/p&gt;
+&lt;h2 id=&#34;rethinking-standup-begin-with-on-call&#34;&gt;Rethinking Standup: Begin with On-Call&lt;/h2&gt;
+&lt;p&gt;Standup is usually the first meeting of the day and exists to align
+the team. But before diving into project updates and task boards,
+start with one question:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Did the on-call engineer get paged overnight, and if so, why?&lt;/strong&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;This isn’t a courtesy check-in—it’s a signal that the well-being of
+the team matters, and that operational issues are real work. If the
+overnight experience was rough, it might be appropriate to pause
+project tasks and focus on the underlying problem. In some cases, the
+best move is simply letting the on-call person log off early to
+recover.&lt;/p&gt;
+&lt;h2 id=&#34;classify-every-page&#34;&gt;Classify Every Page&lt;/h2&gt;
+&lt;p&gt;To make these conversations productive, each page should land in one of three categories:&lt;/p&gt;
+&lt;h3 id=&#34;1-known-issue-already-being-worked-on&#34;&gt;1. &lt;strong&gt;Known Issue Already Being Worked On&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;If the root cause is already under investigation—underprovisioned
+services, a bug in progress—these pages can be deprioritized. Ideally,
+you’d mute the alerts, but that risks hiding new issues. Just be
+honest and precise: don’t group unrelated pages together.&lt;/p&gt;
+&lt;h3 id=&#34;2-rare-one-off-events&#34;&gt;2. &lt;strong&gt;Rare, One-Off Events&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;A “rare” page should truly be rare. Over time, the definition should
+stretch from once a month to once a quarter to once a year. If you&amp;rsquo;re
+getting paged weekly, it’s not a one-off.&lt;/p&gt;
+&lt;h3 id=&#34;3-new-uninvestigated-issues&#34;&gt;3. &lt;strong&gt;New, Uninvestigated Issues&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Anything that isn’t known or rare belongs here. These deserve
+investigation tickets. Failing to follow up leads to the same
+interruptions night after night—and often much bigger problems down
+the road.&lt;/p&gt;
+&lt;h2 id=&#34;prevent-escalation-keep-small-problems-small&#34;&gt;Prevent Escalation: Keep Small Problems Small&lt;/h2&gt;
+&lt;p&gt;Investigation work should be treated as a top priority for the on-call
+engineer and ideally the secondary as well. Small problems are easy to
+ignore when you’re busy, but they’re even easier to fix before they
+escalate. As the backpacking adage goes: &lt;strong&gt;keep small problems
+small.&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;protect-sleep-rotate-when-needed&#34;&gt;Protect Sleep: Rotate When Needed&lt;/h2&gt;
+&lt;p&gt;Being paged at 2 AM isn’t just inconvenient—it’s damaging if it
+happens repeatedly. If someone was paged between 9 PM and 9 AM,
+consider swapping them with the secondary for the next
+night. Guaranteeing a solid night’s rest can make all the
+difference—and reinforces shared responsibility.&lt;/p&gt;
+&lt;h2 id=&#34;why-this-matters&#34;&gt;Why This Matters&lt;/h2&gt;
+&lt;p&gt;In many teams, managers don’t participate in on-call rotations. When
+page volume is high, that disconnect can breed resentment, especially
+if nighttime interruptions feel invisible. Starting the day by
+focusing on on-call sends a different message: the team’s experience
+matters, and operational pain is a shared concern.&lt;/p&gt;
+&lt;p&gt;A small shift—like opening standup with one intentional question—can
+change how teams operate, collaborate, and care for each other. And
+for the person who held the pager last night, that shift can mean
+everything.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>42 Inch Round Table in White Oak</title>
@@ -4807,42 +4875,6 @@ project (as I’m looking at the tickets) and I can also be sure that
 tickets for the project are up to date. As an individual contributor I
 don’t feel like I have to prepare as much for this standup and I can
 just attend and focus on what everyone else is saying.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://hrakaroo.com/post/start-with-oncall/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://hrakaroo.com/post/start-with-oncall/</guid>
-      <description>&lt;h1 id=&#34;start-with-on-call-a-healthier-way-to-begin-the-day&#34;&gt;Start with On-Call: A Healthier Way to Begin the Day&lt;/h1&gt;
-&lt;p&gt;On-call work can be isolating, exhausting, and easy to overlook if you&amp;rsquo;re not the one holding the pager. I’ve had nights where pages hit back-to-back, leaving me exhausted and irritable the next morning. When that happens, the idea of opening a standup with project updates feels disconnected from reality. What I really want to talk about is &lt;em&gt;why&lt;/em&gt; I was paged—and how the team can help make sure it doesn’t happen again.&lt;/p&gt;
-&lt;h2 id=&#34;rethinking-standup-begin-with-on-call&#34;&gt;Rethinking Standup: Begin with On-Call&lt;/h2&gt;
-&lt;p&gt;Standup is usually the first meeting of the day and exists to align the team. But before diving into project updates and task boards, start with one question:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Did the on-call engineer get paged overnight, and if so, why?&lt;/strong&gt;&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;This isn’t a courtesy check-in—it’s a signal that the well-being of the team matters, and that operational issues are real work. If the overnight experience was rough, it might be appropriate to pause project tasks and focus on the underlying problem. In some cases, the best move is simply letting the on-call person log off early to recover.&lt;/p&gt;
-&lt;p&gt;A common concern is that page reviews will consume the entire standup. If that happens, it usually points to one of two realities:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;The conversation has drifted and should be moved to a follow-up.&lt;/li&gt;
-&lt;li&gt;The issue is serious enough that it deserves the entire team’s attention anyway.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Either way, the signal is valuable.&lt;/p&gt;
-&lt;h2 id=&#34;classify-every-page&#34;&gt;Classify Every Page&lt;/h2&gt;
-&lt;p&gt;To make these conversations productive, each page should land in one of three categories:&lt;/p&gt;
-&lt;h3 id=&#34;1-known-issue-already-being-worked-on&#34;&gt;1. &lt;strong&gt;Known Issue Already Being Worked On&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;If the root cause is already under investigation—underprovisioned services, a bug in progress—these pages can be deprioritized. Ideally, you’d mute the alerts, but that risks hiding new issues. Just be honest and precise: don’t group unrelated pages together.&lt;/p&gt;
-&lt;h3 id=&#34;2-rare-one-off-events&#34;&gt;2. &lt;strong&gt;Rare, One-Off Events&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;A “rare” page should truly be rare. Over time, the definition should stretch from once a month to once a quarter to once a year. If you&amp;rsquo;re getting paged weekly, it’s not a one-off.&lt;/p&gt;
-&lt;h3 id=&#34;3-new-uninvestigated-issues&#34;&gt;3. &lt;strong&gt;New, Uninvestigated Issues&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;Anything that isn’t known or rare belongs here. These deserve investigation tickets. Failing to follow up leads to the same interruptions night after night—and often much bigger problems down the road.&lt;/p&gt;
-&lt;h2 id=&#34;prevent-escalation-keep-small-problems-small&#34;&gt;Prevent Escalation: Keep Small Problems Small&lt;/h2&gt;
-&lt;p&gt;Investigation work should be treated as a top priority for the on-call engineer and ideally the secondary as well. Small problems are easy to ignore when you’re busy, but they’re even easier to fix before they escalate. As the backpacking adage goes: &lt;strong&gt;keep small problems small.&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id=&#34;protect-sleep-rotate-when-needed&#34;&gt;Protect Sleep: Rotate When Needed&lt;/h2&gt;
-&lt;p&gt;Being paged at 2 AM isn’t just inconvenient—it’s damaging if it happens repeatedly. If someone was paged between 9 PM and 9 AM, consider swapping them with the secondary for the next night. Guaranteeing a solid night’s rest can make all the difference—and reinforces shared responsibility.&lt;/p&gt;
-&lt;h2 id=&#34;why-this-matters&#34;&gt;Why This Matters&lt;/h2&gt;
-&lt;p&gt;In many teams, managers don’t participate in on-call rotations. When page volume is high, that disconnect can breed resentment, especially if nighttime interruptions feel invisible. Starting the day by focusing on on-call sends a different message: the team’s experience matters, and operational pain is a shared concern.&lt;/p&gt;
-&lt;p&gt;A small shift—like opening standup with one intentional question—can change how teams operate, collaborate, and care for each other. And for the person who held the pager last night, that shift can mean everything.&lt;/p&gt;
 </description>
     </item>
     

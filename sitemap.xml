@@ -30,19 +30,31 @@
     <lastmod>2024-06-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
+    <loc>https://hrakaroo.com/categories/</loc>
+    <lastmod>2024-04-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>https://hrakaroo.com/category/development-process/</loc>
+    <lastmod>2024-04-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>https://hrakaroo.com/post/</loc>
+    <lastmod>2024-04-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>https://hrakaroo.com/post/start-with-oncall/</loc>
+    <lastmod>2024-04-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>https://hrakaroo.com/category/teams/</loc>
+    <lastmod>2024-04-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
     <loc>https://hrakaroo.com/project/glob-library-go/</loc>
     <lastmod>2024-01-09T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
     <loc>https://hrakaroo.com/post/white-oak-table/</loc>
-    <lastmod>2023-12-11T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>https://hrakaroo.com/categories/</loc>
-    <lastmod>2023-12-11T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>https://hrakaroo.com/post/</loc>
     <lastmod>2023-12-11T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
@@ -150,14 +162,6 @@
     <lastmod>2018-10-09T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://hrakaroo.com/category/development-process/</loc>
-    <lastmod>2018-10-09T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>https://hrakaroo.com/category/teams/</loc>
-    <lastmod>2018-10-09T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
     <loc>https://hrakaroo.com/category/java/</loc>
     <lastmod>2018-06-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -200,9 +204,6 @@
   </url><url>
     <loc>https://hrakaroo.com/project/soda-water-ray-tracer/</loc>
     <lastmod>2004-11-21T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>https://hrakaroo.com/post/start-with-oncall/</loc>
     <changefreq>weekly</changefreq>
   </url><url>
     <loc>https://hrakaroo.com/publication_types/</loc>
