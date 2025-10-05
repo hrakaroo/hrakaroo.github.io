@@ -36,11 +36,10 @@ start with one question:&lt;/p&gt;
 &lt;p&gt;This isn’t a courtesy check-in—it’s a signal that the well-being of
 the team matters, and that operational issues are real work. If the
 overnight experience was rough, it might be appropriate to pause
-project tasks and focus on the underlying problem. In some cases, the
-best move is simply letting the on-call person log off early to
-recover.&lt;/p&gt;
+project tasks and focus on the underlying problem.&lt;/p&gt;
 &lt;h2 id=&#34;classify-every-page&#34;&gt;Classify Every Page&lt;/h2&gt;
-&lt;p&gt;To make these conversations productive, each page should land in one of three categories:&lt;/p&gt;
+&lt;p&gt;To make these conversations productive, each page should land in one
+of three categories:&lt;/p&gt;
 &lt;h3 id=&#34;1-known-issue-already-being-worked-on&#34;&gt;1. &lt;strong&gt;Known Issue Already Being Worked On&lt;/strong&gt;&lt;/h3&gt;
 &lt;p&gt;If the root cause is already under investigation—underprovisioned
 services, a bug in progress—these pages can be deprioritized. Ideally,
@@ -66,7 +65,9 @@ small.&lt;/strong&gt;&lt;/p&gt;
 happens repeatedly. If someone was paged between 9 PM and 9 AM,
 consider swapping them with the secondary for the next
 night. Guaranteeing a solid night’s rest can make all the
-difference—and reinforces shared responsibility.&lt;/p&gt;
+difference—and reinforces shared responsibility. In some cases,
+you may want to also let the on-call person log off early to
+recover.&lt;/p&gt;
 &lt;h2 id=&#34;why-this-matters&#34;&gt;Why This Matters&lt;/h2&gt;
 &lt;p&gt;In many teams, managers don’t participate in on-call rotations. When
 page volume is high, that disconnect can breed resentment, especially
