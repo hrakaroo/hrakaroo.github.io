@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- This site was created with Hugo Blox. https://hugoblox.com -->
-<!-- Last Published: August 15, 2024 --><html lang="en-us" >
+<!-- Last Published: October 4, 2025 --><html lang="en-us" >
 
 
 <head>
@@ -214,7 +214,7 @@
   
   
   
-  <link rel="stylesheet" href="/css/wowchemy.f6689966c0a10712f95f034011917db0.css" />
+  <link rel="stylesheet" href="/css/wowchemy.5adeb309104bf059bfce5194cee5d4d8.css" />
 
   
   
@@ -259,9 +259,6 @@
 
 
 
-
-
-
   
   
   
@@ -280,7 +277,8 @@
   
 
 <meta name="description" content="The following is a blog post that was written from a speech I gave about how to set the ground rules for code reviews.
-Following New Relic’s Project Upscale—an innovative reorganization intended to make our development teams more autonomous—the engineering organization formed several new teams, one of which was the New Relic Database (NRDB) team." />
+Following New Relic’s Project Upscale—an innovative reorganization intended to make our development teams more autonomous—the engineering organization formed several new teams, one of which was the New Relic Database (NRDB) team. As the name implies, the NRDB team is responsible for the development of our events database, which powers the New Relic Insights tool as well as several other products.
+" />
 
 
 
@@ -293,8 +291,8 @@ Following New Relic’s Project Upscale—an innovative reorganization intended 
 
 
 
-<link rel="icon" type="image/png" href="/media/icon_hu5694164938429390357.png" />
-<link rel="apple-touch-icon" type="image/png" href="/media/icon_hu8447479463880301006.png" />
+<link rel="icon" type="image/png" href="/media/icon_hu_c4f644868a298ade.png" />
+<link rel="apple-touch-icon" type="image/png" href="/media/icon_hu_2b179d244e17490a.png" />
 
 <meta name="theme-color" content="#1565c0" />
 
@@ -319,7 +317,7 @@ Following New Relic’s Project Upscale—an innovative reorganization intended 
 
   <meta property="twitter:site" content="@GetResearchDev" />
   <meta property="twitter:creator" content="@GetResearchDev" />
-<meta property="twitter:image" content="https://hrakaroo.com/media/icon_hu987151019769935369.png" />
+<meta property="twitter:image" content="https://hrakaroo.com/media/icon_hu_a40146739a0db508.png" />
 
 
 
@@ -329,8 +327,16 @@ Following New Relic’s Project Upscale—an innovative reorganization intended 
 <meta property="og:site_name" content="Hrakaroo" />
 <meta property="og:url" content="https://hrakaroo.com/post/code-reviews/" />
 <meta property="og:title" content="Creating Simple and Effective Guidelines for Code Reviews | Hrakaroo" />
-<meta property="og:description" content="The following is a blog post that was written from a speech I gave about how to set the ground rules for code reviews.
-Following New Relic’s Project Upscale—an innovative reorganization intended to make our development teams more autonomous—the engineering organization formed several new teams, one of which was the New Relic Database (NRDB) team." /><meta property="og:image" content="https://hrakaroo.com/media/icon_hu987151019769935369.png" /><meta property="og:locale" content="en-us" />
+<meta property="og:description" content="The following is a blog post
+that was written from a speech I gave about how to set the ground
+rules for code reviews.
+
+Following New Relic’s Project Upscale—an innovative reorganization
+intended to make our development teams more autonomous—the engineering
+organization formed several new teams, one of which was the New Relic
+Database (NRDB) team. As the name implies, the NRDB team is
+responsible for the development of our events database, which powers
+the New Relic Insights tool as well as several other products." /><meta property="og:image" content="https://hrakaroo.com/media/icon_hu_a40146739a0db508.png" /><meta property="og:locale" content="en-us" />
 
   
     <meta
@@ -382,10 +388,10 @@ Following New Relic’s Project Upscale—an innovative reorganization intended 
     "name": "Hrakaroo",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://hrakaroo.com/media/icon_hu3095219862943171440.png"
+      "url": "https://hrakaroo.com/media/icon_hu_5449c7a36983b7ac.png"
     }
   },
-  "description": "The following is a blog post that was written from a speech I gave about how to set the ground rules for code reviews.\nFollowing New Relic’s Project Upscale—an innovative reorganization intended to make our development teams more autonomous—the engineering organization formed several new teams, one of which was the New Relic Database (NRDB) team."
+  "description": "\u003cp\u003eThe following is a \u003ca href=\"https://blog.newrelic.com/engineering/code-review-guidelines/\" target=\"_blank\" rel=\"noopener\"\u003eblog post\u003c/a\u003e\nthat was written from a speech I gave about how to set the ground\nrules for code reviews.\u003c/p\u003e\n\u003chr\u003e\n\u003cp\u003eFollowing New Relic’s Project Upscale—an innovative reorganization\nintended to make our development teams more autonomous—the engineering\norganization formed several new teams, one of which was the New Relic\nDatabase (NRDB) team. As the name implies, the NRDB team is\nresponsible for the development of our events database, which powers\nthe New Relic Insights tool as well as several other products.\u003c/p\u003e"
 }
 </script>
 
@@ -830,10 +836,10 @@ turned to passive-aggressive communications to settle our differences.</p>
 <figure  >
   <div class="d-flex justify-content-center">
     <div class="w-100" ><img alt="Comments made during a code review" srcset="
-               /post/code-reviews/code_review_comments_hu9750041304530955936.webp 400w,
-               /post/code-reviews/code_review_comments_hu16988048867635784326.webp 760w,
-               /post/code-reviews/code_review_comments_hu15505989312171562261.webp 1200w"
-               src="/post/code-reviews/code_review_comments_hu9750041304530955936.webp"
+               /post/code-reviews/code_review_comments_hu_518e191e1df4761f.webp 400w,
+               /post/code-reviews/code_review_comments_hu_9552cdb752183957.webp 760w,
+               /post/code-reviews/code_review_comments_hu_d4fce5df8419933e.webp 1200w"
+               src="/post/code-reviews/code_review_comments_hu_518e191e1df4761f.webp"
                width="700"
                height="337"
                loading="lazy" data-zoomable /></div>
@@ -929,10 +935,10 @@ very quickly.</p>
 <figure  >
   <div class="d-flex justify-content-center">
     <div class="w-100" ><img alt="Opinions made during code reviews" srcset="
-               /post/code-reviews/code_review_opinions_hu16784018831791128993.webp 400w,
-               /post/code-reviews/code_review_opinions_hu7531980533516112992.webp 760w,
-               /post/code-reviews/code_review_opinions_hu16629623137176114837.webp 1200w"
-               src="/post/code-reviews/code_review_opinions_hu16784018831791128993.webp"
+               /post/code-reviews/code_review_opinions_hu_953b9aba1d3fdd0f.webp 400w,
+               /post/code-reviews/code_review_opinions_hu_2d0572476d6b8c6c.webp 760w,
+               /post/code-reviews/code_review_opinions_hu_eaa1e4a1f9e3d731.webp 1200w"
+               src="/post/code-reviews/code_review_opinions_hu_953b9aba1d3fdd0f.webp"
                width="700"
                height="304"
                loading="lazy" data-zoomable /></div>
@@ -1136,10 +1142,10 @@ their point of view.</p>
 <figure  >
   <div class="d-flex justify-content-center">
     <div class="w-100" ><img alt="The number of proposals made: expected vs. actual" srcset="
-               /post/code-reviews/code_review_proposals_hu8106204571404634850.webp 400w,
-               /post/code-reviews/code_review_proposals_hu13594515585465007434.webp 760w,
-               /post/code-reviews/code_review_proposals_hu5408248457779190085.webp 1200w"
-               src="/post/code-reviews/code_review_proposals_hu8106204571404634850.webp"
+               /post/code-reviews/code_review_proposals_hu_dcc8f5e008c0cbe8.webp 400w,
+               /post/code-reviews/code_review_proposals_hu_f9d73bb91cab935b.webp 760w,
+               /post/code-reviews/code_review_proposals_hu_9dd0eb393afb8b01.webp 1200w"
+               src="/post/code-reviews/code_review_proposals_hu_dcc8f5e008c0cbe8.webp"
                width="700"
                height="241"
                loading="lazy" data-zoomable /></div>
@@ -1305,7 +1311,7 @@ getting exactly what we hoped to get from these improvements.</p>
   <div class="media author-card content-widget-hr">
     
       
-      <a href="https://hrakaroo.com/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu9282804337555895802.jpg" alt="Joshua Gerth"></a>
+      <a href="https://hrakaroo.com/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu_a2aa5f9cd647c4ab.jpg" alt="Joshua Gerth"></a>
     
 
     <div class="media-body">
@@ -1440,7 +1446,7 @@ getting exactly what we hoped to get from these improvements.</p>
   
 
 
-<script src="/js/vendor-bundle.min.50933d940896e49f984a778650d5f7f5.js"></script>
+<script src="/js/vendor-bundle.min.d613345003d21781ec611233eea95b85.js"></script>
 
 
 
@@ -1521,7 +1527,7 @@ getting exactly what we hoped to get from these improvements.</p>
 <script id="page-data" type="application/json">{"use_headroom":true}</script>
 
 
-  <script src="/js/wowchemy-headroom.db4755770454eb63685f8de785c0a172.js" type="module"></script>
+  <script src="/js/wowchemy-headroom.b95a7e109243f29d04930ae8cb49a756.js" type="module"></script>
 
 
 
@@ -1535,7 +1541,7 @@ getting exactly what we hoped to get from these improvements.</p>
   
 
 
-<script src="/en/js/wowchemy.min.7f5ebaff62ae468cff8bb3dd1337bb9b.js"></script>
+<script src="/en/js/wowchemy.min.69fc52a6dc16aaf1a452cfbb36466dac.js"></script>
 
 
 

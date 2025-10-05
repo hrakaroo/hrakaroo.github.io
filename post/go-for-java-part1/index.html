@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- This site was created with Hugo Blox. https://hugoblox.com -->
-<!-- Last Published: August 15, 2024 --><html lang="en-us" >
+<!-- Last Published: October 4, 2025 --><html lang="en-us" >
 
 
 <head>
@@ -214,7 +214,7 @@
   
   
   
-  <link rel="stylesheet" href="/css/wowchemy.f6689966c0a10712f95f034011917db0.css" />
+  <link rel="stylesheet" href="/css/wowchemy.5adeb309104bf059bfce5194cee5d4d8.css" />
 
   
   
@@ -235,9 +235,6 @@
 
   
   
-
-
-
 
 
 
@@ -292,8 +289,8 @@
 
 
 
-<link rel="icon" type="image/png" href="/media/icon_hu5694164938429390357.png" />
-<link rel="apple-touch-icon" type="image/png" href="/media/icon_hu8447479463880301006.png" />
+<link rel="icon" type="image/png" href="/media/icon_hu_c4f644868a298ade.png" />
+<link rel="apple-touch-icon" type="image/png" href="/media/icon_hu_2b179d244e17490a.png" />
 
 <meta name="theme-color" content="#1565c0" />
 
@@ -318,7 +315,7 @@
 
   <meta property="twitter:site" content="@GetResearchDev" />
   <meta property="twitter:creator" content="@GetResearchDev" />
-<meta property="twitter:image" content="https://hrakaroo.com/media/icon_hu987151019769935369.png" />
+<meta property="twitter:image" content="https://hrakaroo.com/media/icon_hu_a40146739a0db508.png" />
 
 
 
@@ -328,7 +325,7 @@
 <meta property="og:site_name" content="Hrakaroo" />
 <meta property="og:url" content="https://hrakaroo.com/post/go-for-java-part1/" />
 <meta property="og:title" content="Go for Java Developers - Part 1 | Hrakaroo" />
-<meta property="og:description" content="Cool tricks with Go interfaces" /><meta property="og:image" content="https://hrakaroo.com/media/icon_hu987151019769935369.png" /><meta property="og:locale" content="en-us" />
+<meta property="og:description" content="Cool tricks with Go interfaces" /><meta property="og:image" content="https://hrakaroo.com/media/icon_hu_a40146739a0db508.png" /><meta property="og:locale" content="en-us" />
 
   
     <meta
@@ -380,7 +377,7 @@
     "name": "Hrakaroo",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://hrakaroo.com/media/icon_hu3095219862943171440.png"
+      "url": "https://hrakaroo.com/media/icon_hu_5449c7a36983b7ac.png"
     }
   },
   "description": "Cool tricks with Go interfaces"
@@ -823,18 +820,18 @@ Java, that might look like:</p>
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></div><p>Pretty straight forward.  Now, if we wanted to do a similar thing in
 Go it would probably look something like:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Named</span> <span class="kd">interface</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">     <span class="nf">getName</span><span class="p">()</span> <span class="kt">string</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Person</span> <span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">     <span class="nx">name</span> <span class="kt">string</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">p</span> <span class="nx">Person</span><span class="p">)</span> <span class="nf">getName</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">     <span class="k">return</span> <span class="nx">p</span><span class="p">.</span><span class="nx">name</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>Ignoring the syntax differences, what is interesting is that in Go we
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span><span class="w"> </span><span class="nx">Named</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="nf">getName</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">type</span><span class="w"> </span><span class="nx">Person</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">p</span><span class="w"> </span><span class="nx">Person</span><span class="p">)</span><span class="w"> </span><span class="nf">getName</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="k">return</span><span class="w"> </span><span class="nx">p</span><span class="p">.</span><span class="nx">name</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>Ignoring the syntax differences, what is interesting is that in Go we
 don&rsquo;t declare Person as implementing Named.  This is implied by the
 function on Person matching the method in the Named interface. The
 compiler figures this out for us and instances of a Person are
@@ -902,36 +899,36 @@ are still dealing with a lot of boilerplate code.</p>
 <p>Now let&rsquo;s take a look at this same problem in Go land.  (For the sake
 of argument let&rsquo;s assume that PreparedStatement both exists in Go and
 works much in the same way as its Java counterpart).</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Db</span> <span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">db</span> <span class="nx">Db</span><span class="p">)</span> <span class="nf">setValue</span><span class="p">(</span><span class="nx">stmt</span> <span class="nx">PreparedStatement</span><span class="p">,</span> <span class="nx">value</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">stmt</span><span class="p">.</span><span class="nf">setString</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>And again it is used like:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">stmt</span> <span class="o">:=</span> <span class="nx">conn</span><span class="p">.</span><span class="nf">prepareStatement</span><span class="p">(</span><span class="s">&#34;SELECT …&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nx">db</span> <span class="o">:=</span> <span class="nx">Db</span><span class="p">{}</span>
-</span></span><span class="line"><span class="cl"><span class="nx">db</span><span class="p">.</span><span class="nf">setValue</span><span class="p">(</span><span class="nx">stmt</span><span class="p">,</span> <span class="s">&#34;someValue&#34;</span><span class="p">)</span>
-</span></span></code></pre></div><p>Now let&rsquo;s write the unit test:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">SetValueTest</span><span class="p">(</span><span class="nx">t</span><span class="o">*</span> <span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">db</span> <span class="o">:=</span> <span class="nx">Db</span><span class="p">{}</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">stmt</span> <span class="o">:=</span> <span class="err">??</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">db</span><span class="p">.</span><span class="nf">setValue</span><span class="p">(</span><span class="nx">stmt</span><span class="p">,</span> <span class="s">&#34;dog&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1">// todo - verify the statement received the value of &#39;dog
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
-</span></span></code></pre></div><p>We&rsquo;ve once again hit the same issue.  As with Java, we can use the
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span><span class="w"> </span><span class="nx">Db</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">db</span><span class="w"> </span><span class="nx">Db</span><span class="p">)</span><span class="w"> </span><span class="nf">setValue</span><span class="p">(</span><span class="nx">stmt</span><span class="w"> </span><span class="nx">PreparedStatement</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">stmt</span><span class="p">.</span><span class="nf">setString</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>And again it is used like:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">stmt</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">conn</span><span class="p">.</span><span class="nf">prepareStatement</span><span class="p">(</span><span class="s">&#34;SELECT …&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nx">db</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">Db</span><span class="p">{}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nx">db</span><span class="p">.</span><span class="nf">setValue</span><span class="p">(</span><span class="nx">stmt</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;someValue&#34;</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></div><p>Now let&rsquo;s write the unit test:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="nf">SetValueTest</span><span class="p">(</span><span class="nx">t</span><span class="o">*</span><span class="w"> </span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">db</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">Db</span><span class="p">{}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">stmt</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="err">??</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">db</span><span class="p">.</span><span class="nf">setValue</span><span class="p">(</span><span class="nx">stmt</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;dog&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// todo - verify the statement received the value of &#39;dog</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>We&rsquo;ve once again hit the same issue.  As with Java, we can use the
 Go&rsquo;s mock framework (which also uses reflection) or, as before, we can
 try to roll our own.</p>
 <p>Approaching it directly we could build out a TestPreparedStatement as:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">TestPreparedStatement</span> <span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">value</span> <span class="kt">string</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">tps</span> <span class="nx">TestPreparedStatement</span><span class="p">)</span> <span class="nf">setString</span><span class="p">(</span><span class="nx">parameterIndex</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">x</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">     <span class="nx">tps</span><span class="p">.</span><span class="nx">value</span> <span class="p">=</span> <span class="nx">x</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>But then we are going to have the same issue as we had with Java where
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span><span class="w"> </span><span class="nx">TestPreparedStatement</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">value</span><span class="w"> </span><span class="kt">string</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">tps</span><span class="w"> </span><span class="nx">TestPreparedStatement</span><span class="p">)</span><span class="w"> </span><span class="nf">setString</span><span class="p">(</span><span class="nx">parameterIndex</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="nx">tps</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">x</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>But then we are going to have the same issue as we had with Java where
 we also need to stub out all of the other 50+ methods in the
 PreparedStatement interface which is just as wasteful as it was in
 Java.  But we do have one other option.</p>
@@ -939,19 +936,19 @@ Java.  But we do have one other option.</p>
 <p>What if we didn&rsquo;t stub out all of the other methods and instead
 created a new interface which only contained the one method we are
 using?  So something like:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">StringSetter</span> <span class="kd">interface</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">setString</span><span class="p">(</span><span class="nx">parameterIndex</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">x</span> <span class="kt">string</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>Now, since our <code>TestPreparedStatement</code> implements this one method it
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span><span class="w"> </span><span class="nx">StringSetter</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nf">setString</span><span class="p">(</span><span class="nx">parameterIndex</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>Now, since our <code>TestPreparedStatement</code> implements this one method it
 is automatically a type of StringSetter.  But guess what, the object
 returned by conn.prepareStatement is also now a type of StringSetter
 since it too implements setString (by virtue of it being a
 PreparedStatement which also requires the same method.)</p>
 <p>Now, we only need to change the signature of our setValue method to:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">db</span> <span class="nx">Db</span><span class="p">)</span> <span class="nf">setValue</span><span class="p">(</span><span class="nx">stmt</span> <span class="nx">StringSetter</span><span class="p">,</span> <span class="nx">value</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">stmt</span><span class="p">.</span><span class="nf">setString</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span> 
-</span></span></code></pre></div><p>This is where the power of the duck typing comes into play as doing
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">db</span><span class="w"> </span><span class="nx">Db</span><span class="p">)</span><span class="w"> </span><span class="nf">setValue</span><span class="p">(</span><span class="nx">stmt</span><span class="w"> </span><span class="nx">StringSetter</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">stmt</span><span class="p">.</span><span class="nf">setString</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w"> 
+</span></span></span></code></pre></div><p>This is where the power of the duck typing comes into play as doing
 this in Java would require modifying the definition of
 PreparedStatement so it explicitly extend StringSetter, which is
 virtually impossible.  Yet in Go this is trivial as we can assign
@@ -1108,7 +1105,7 @@ but it is an interesting one.</p>
   <div class="media author-card content-widget-hr">
     
       
-      <a href="https://hrakaroo.com/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu9282804337555895802.jpg" alt="Joshua Gerth"></a>
+      <a href="https://hrakaroo.com/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu_a2aa5f9cd647c4ab.jpg" alt="Joshua Gerth"></a>
     
 
     <div class="media-body">
@@ -1243,7 +1240,7 @@ but it is an interesting one.</p>
   
 
 
-<script src="/js/vendor-bundle.min.50933d940896e49f984a778650d5f7f5.js"></script>
+<script src="/js/vendor-bundle.min.d613345003d21781ec611233eea95b85.js"></script>
 
 
 
@@ -1324,7 +1321,7 @@ but it is an interesting one.</p>
 <script id="page-data" type="application/json">{"use_headroom":true}</script>
 
 
-  <script src="/js/wowchemy-headroom.db4755770454eb63685f8de785c0a172.js" type="module"></script>
+  <script src="/js/wowchemy-headroom.b95a7e109243f29d04930ae8cb49a756.js" type="module"></script>
 
 
 
@@ -1338,7 +1335,7 @@ but it is an interesting one.</p>
   
 
 
-<script src="/en/js/wowchemy.min.7f5ebaff62ae468cff8bb3dd1337bb9b.js"></script>
+<script src="/en/js/wowchemy.min.69fc52a6dc16aaf1a452cfbb36466dac.js"></script>
 
 
 

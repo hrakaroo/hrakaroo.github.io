@@ -7,7 +7,7 @@
     <description>Hrakaroo</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 24 Oct 2022 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://hrakaroo.com/media/icon_hu987151019769935369.png</url>
+      <url>https://hrakaroo.com/media/icon_hu_a40146739a0db508.png</url>
       <title>Hrakaroo</title>
       <link>https://hrakaroo.com/</link>
     </image>
@@ -38,93 +38,6 @@
       <pubDate>Mon, 24 Jun 2024 00:00:00 +0000</pubDate>
       <guid>https://hrakaroo.com/project/ray-the-caster/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title>Start with On-Call</title>
-      <link>https://hrakaroo.com/post/start-with-oncall/</link>
-      <pubDate>Mon, 22 Apr 2024 00:00:00 +0000</pubDate>
-      <guid>https://hrakaroo.com/post/start-with-oncall/</guid>
-      <description>&lt;p&gt;This is my second post on running a standup, you can read my first
-post about walking the board &lt;a href=&#34;../walking-the-board/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;h3 id=&#34;being-on-call-is-exhausting&#34;&gt;Being on-call is exhausting&lt;/h3&gt;
-&lt;p&gt;Being on-call can be an isolating, exhausting and thankless task.
-I&amp;rsquo;ve had on-call shifts where I was woken up multiple times throughout
-the night and by morning I am wiped out and cranky. Worse still, the
-next night is likely to be more of the same. In these situations the
-last thing I want to do is spend standup talking about how much
-progress the team has made on the current projects. I want to talk
-about why I&amp;rsquo;ve been getting paged, and how the team can help make this
-waking nightmare stop.&lt;/p&gt;
-&lt;h3 id=&#34;start-the-day-discussing-the-previous-on-call-shift&#34;&gt;Start the day discussing the previous on-call shift&lt;/h3&gt;
-&lt;p&gt;Standup should already be one of the first meetings of the day. It helps
-to get everyone aligned on the ongoing tasks and brings up to speed
-anyone who may have been on vacation. But before discussing any projects
-you should start off asking the question:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Did the person on-call get paged, and if so, why?&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;It is criticially important this question is asked first. If the
-on-call was bad enough, it may require halting all project work and
-diverting everyone to resolving an ongoing issue. Or maybe the
-previous shift was so bad that after giving a hand off, you want to
-excuse the person on-call so they can log out and catch up on
-sleep. Either it&amp;rsquo;s the most important question you can ask for the
-health of the team so it should be your first question.&lt;/p&gt;
-&lt;p&gt;A common push back is the concern that reviewing the pages may end up
-taking the full time of your standup. If this is happening it is either
-because you are allowing runaway conversations (that would be better
-left for post-standup discussion), or your on-call is in such dire
-straits that you should probably be canceling all project work and
-focusing on making it better.&lt;/p&gt;
-&lt;h3 id=&#34;have-an-answer-for-every-page&#34;&gt;Have an answer for every page&lt;/h3&gt;
-&lt;p&gt;Every pagable event needs to fall into one of the following categories:&lt;/p&gt;
-&lt;h4 id=&#34;this-is-a-known-issue-for-which-the-team-is-already-working-on-a-solution&#34;&gt;This is a known issue for which the team is already working on a solution&lt;/h4&gt;
-&lt;p&gt;These pages can be mostly ignored as the team is already working to
-resolve the underlying issue. Maybe the services are under provisioned
-and the team is working on scaling things up. Or maybe this is a known
-bug that the team is working on a fix for. Either way the expectation
-is that over the next couple of days the underlying issue will be
-resolved. It would be ideal if these pages could be muted but that is
-not always possible as it may hide other issues. Just be honest with
-yourself and resist the urge to group pages together which are not
-actually related.&lt;/p&gt;
-&lt;h4 id=&#34;this-is-a-once-in-a-lifetime-event-and-can-be-ignored&#34;&gt;This is a once-in-a-lifetime-event and can be ignored&lt;/h4&gt;
-&lt;p&gt;These should be pretty rare and what the team defines as &lt;em&gt;lifetime&lt;/em&gt;
-should increase in duration over time. Initially lifetime can mean
-&amp;ldquo;once a month&amp;rdquo; but this should eventually stretch out to &amp;ldquo;once a
-quarter&amp;rdquo; and then &amp;ldquo;once a year&amp;rdquo;. If you are getting paged weekly for
-anything, that is not a once-in-a-lifetime event.&lt;/p&gt;
-&lt;h4 id=&#34;this-is-a-new-issue-which-needs-to-be-investigated&#34;&gt;This is a new issue which needs to be investigated&lt;/h4&gt;
-&lt;p&gt;This is really everything else. Sometimes these are once-in-a-lifetime
-issues that suddenly start happening more often. But regardless, all
-new issues should have an investigation issue created.&lt;/p&gt;
-&lt;h3 id=&#34;keep-small-problems-small&#34;&gt;Keep small problems small&lt;/h3&gt;
-&lt;p&gt;The investigation of all new issues should take top priority for the
-on-call and possibly secondary person. Failing to properly investigate
-an issue not only means that the on-call person is likely to get woken
-up from it again, but it can also be a missed opportunity to deal with
-an issue before it becomes a major incident. As the backpacking
-mantra goes, &amp;ldquo;keep small problems small.&amp;rdquo;&lt;/p&gt;
-&lt;h3 id=&#34;offer-the-person-on-call-a-break&#34;&gt;Offer the person on-call a break&lt;/h3&gt;
-&lt;p&gt;Getting woken up multiple nights in a row can be highly disruptive and
-ultimately lead to health issues. If the on-call person was woken up
-between the hours of 9pm - 9am, I strongly recommend the primary and
-secondary rotations switch for the following 9pm - 9am shift. Just
-knowning that the following night they will be able to get a full
-night sleep can make the world of difference to the person getting
-woken up every hour.&lt;/p&gt;
-&lt;p&gt;It also offers a &lt;em&gt;motivation&lt;/em&gt; for the secondary to help out as they are
-going to be on the hook for the next night.&lt;/p&gt;
-&lt;h2 id=&#34;closing-comments&#34;&gt;Closing Comments&lt;/h2&gt;
-&lt;p&gt;At many organizations the manager for a team is not in the primary
-on-call rotation and this level of separation can already cause some
-resentment in the team. Especially with a high pager volume the team
-may feel like the manager is not aware or doesn&amp;rsquo;t care about the
-struggles they are going through. Starting the day by focusing on the
-on-call rotation helps to assure the team that even after a bad night
-their team is going to be there for them in the morning.&lt;/p&gt;
-</description>
     </item>
     
     <item>
@@ -1317,8 +1230,7 @@ of those chemical hand warmers with me as well.&lt;/p&gt;
 &lt;p&gt;As the joke goes&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;There are only two hard things in Computer Science: cache
-invalidation and naming things.  &amp;ndash; Phil Karlton&lt;/p&gt;
-&lt;/blockquote&gt;
+invalidation and naming things.  &amp;ndash; Phil Karlton&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;and while this is funny (perhaps only to those in Computer Science)
 underlying the quote is a real issue, naming things is really hard.&lt;/p&gt;
 &lt;p&gt;The challenge is not just in giving something an appropriate name for
@@ -1405,24 +1317,20 @@ locks that can end up causing them to be considerably more expensive
 than they initially appear.&lt;/p&gt;
 &lt;p&gt;Consider the following:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Thread 1 requests read access to a shared read/write lock.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Thread 1 requests read access to a shared read/write lock.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;At this point in time no one else has requested the lock for either
 read or write access so a read lock is granted to Thread 1.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Thread 2 requests read access to the same read/write lock.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Thread 2 requests read access to the same read/write lock.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Since the lock is currently only read locked by Thread 1, Thread 2
 is also given read access.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Thread 3 requests write access to the same read/write lock.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Thread 3 requests write access to the same read/write lock.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Since the lock has been locked for read access by both Thread 1 and
 Thread 2, Thread 3 is put on a wait list for write access until
 Thread 1 and Thread 2 release their read locks.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Thread 4 requests read access to the same read/write lock.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Thread 4 requests read access to the same read/write lock.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;What happens here?&lt;/p&gt;
 &lt;p&gt;A first guess might be to give Thread 4 the read lock, along with
 Threads 1 and 2, since Thread 3 has not yet obtained the write lock,
@@ -2265,10 +2173,10 @@ rocky and the mountain looks blown out.&lt;/p&gt;
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Blast&#34; srcset=&#34;
-               /post/summiting-st-helens-2019/BlastZone_hu12287932839567424467.webp 400w,
-               /post/summiting-st-helens-2019/BlastZone_hu11819387201279517521.webp 760w,
-               /post/summiting-st-helens-2019/BlastZone_hu8247176974282423838.webp 1200w&#34;
-               src=&#34;https://hrakaroo.com/post/summiting-st-helens-2019/BlastZone_hu12287932839567424467.webp&#34;
+               /post/summiting-st-helens-2019/BlastZone_hu_e3ee5246ddadb2c5.webp 400w,
+               /post/summiting-st-helens-2019/BlastZone_hu_1e3b976756a579c5.webp 760w,
+               /post/summiting-st-helens-2019/BlastZone_hu_f5520f27c4d45c61.webp 1200w&#34;
+               src=&#34;https://hrakaroo.com/post/summiting-st-helens-2019/BlastZone_hu_e3ee5246ddadb2c5.webp&#34;
                width=&#34;760&#34;
                height=&#34;507&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -2972,10 +2880,10 @@ off the path at times for runners.&lt;/p&gt;
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/summiting-st-helens-2019/Trail1_hu418202512637104409.webp 400w,
-               /post/summiting-st-helens-2019/Trail1_hu16763151492491981885.webp 760w,
-               /post/summiting-st-helens-2019/Trail1_hu9792050477027702071.webp 1200w&#34;
-               src=&#34;https://hrakaroo.com/post/summiting-st-helens-2019/Trail1_hu418202512637104409.webp&#34;
+               /post/summiting-st-helens-2019/Trail1_hu_a17ded8f68d22978.webp 400w,
+               /post/summiting-st-helens-2019/Trail1_hu_c9ca5cb1fda47a8e.webp 760w,
+               /post/summiting-st-helens-2019/Trail1_hu_7244e457a1c415dc.webp 1200w&#34;
+               src=&#34;https://hrakaroo.com/post/summiting-st-helens-2019/Trail1_hu_a17ded8f68d22978.webp&#34;
                width=&#34;760&#34;
                height=&#34;507&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -3000,10 +2908,10 @@ off the path at times for runners.&lt;/p&gt;
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/summiting-st-helens-2019/Trail2_hu5532847352485115880.webp 400w,
-               /post/summiting-st-helens-2019/Trail2_hu4017683208763791859.webp 760w,
-               /post/summiting-st-helens-2019/Trail2_hu7154012681762410460.webp 1200w&#34;
-               src=&#34;https://hrakaroo.com/post/summiting-st-helens-2019/Trail2_hu5532847352485115880.webp&#34;
+               /post/summiting-st-helens-2019/Trail2_hu_64f3188e480bdd09.webp 400w,
+               /post/summiting-st-helens-2019/Trail2_hu_8e36911938e67c9f.webp 760w,
+               /post/summiting-st-helens-2019/Trail2_hu_ab4500bdac0d10c7.webp 1200w&#34;
+               src=&#34;https://hrakaroo.com/post/summiting-st-helens-2019/Trail2_hu_64f3188e480bdd09.webp&#34;
                width=&#34;760&#34;
                height=&#34;507&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -3028,10 +2936,10 @@ off the path at times for runners.&lt;/p&gt;
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/summiting-st-helens-2019/Trail3_hu17976950642473401587.webp 400w,
-               /post/summiting-st-helens-2019/Trail3_hu7025266316380147025.webp 760w,
-               /post/summiting-st-helens-2019/Trail3_hu7523240136670394682.webp 1200w&#34;
-               src=&#34;https://hrakaroo.com/post/summiting-st-helens-2019/Trail3_hu17976950642473401587.webp&#34;
+               /post/summiting-st-helens-2019/Trail3_hu_c5ac975f6cbba38c.webp 400w,
+               /post/summiting-st-helens-2019/Trail3_hu_be4b414e555d7fb8.webp 760w,
+               /post/summiting-st-helens-2019/Trail3_hu_7e33873dc819ba85.webp 1200w&#34;
+               src=&#34;https://hrakaroo.com/post/summiting-st-helens-2019/Trail3_hu_c5ac975f6cbba38c.webp&#34;
                width=&#34;760&#34;
                height=&#34;507&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -3056,10 +2964,10 @@ off the path at times for runners.&lt;/p&gt;
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/summiting-st-helens-2019/Trail4_hu16947952891030138097.webp 400w,
-               /post/summiting-st-helens-2019/Trail4_hu17574766825011979490.webp 760w,
-               /post/summiting-st-helens-2019/Trail4_hu10091554744405825560.webp 1200w&#34;
-               src=&#34;https://hrakaroo.com/post/summiting-st-helens-2019/Trail4_hu16947952891030138097.webp&#34;
+               /post/summiting-st-helens-2019/Trail4_hu_b42a9fa944fc6f72.webp 400w,
+               /post/summiting-st-helens-2019/Trail4_hu_73ee58d19a2df885.webp 760w,
+               /post/summiting-st-helens-2019/Trail4_hu_7480bd0e89cb8848.webp 1200w&#34;
+               src=&#34;https://hrakaroo.com/post/summiting-st-helens-2019/Trail4_hu_b42a9fa944fc6f72.webp&#34;
                width=&#34;760&#34;
                height=&#34;507&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -3089,10 +2997,10 @@ of day we were there, very hot.&lt;/p&gt;
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/summiting-st-helens-2019/Flats1_hu16752365781908882690.webp 400w,
-               /post/summiting-st-helens-2019/Flats1_hu2071654569829545676.webp 760w,
-               /post/summiting-st-helens-2019/Flats1_hu3317451984267001214.webp 1200w&#34;
-               src=&#34;https://hrakaroo.com/post/summiting-st-helens-2019/Flats1_hu16752365781908882690.webp&#34;
+               /post/summiting-st-helens-2019/Flats1_hu_f36b676837fd26a6.webp 400w,
+               /post/summiting-st-helens-2019/Flats1_hu_2c1cc59da06bee72.webp 760w,
+               /post/summiting-st-helens-2019/Flats1_hu_23c9156d01dbf3bb.webp 1200w&#34;
+               src=&#34;https://hrakaroo.com/post/summiting-st-helens-2019/Flats1_hu_f36b676837fd26a6.webp&#34;
                width=&#34;760&#34;
                height=&#34;570&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -3117,10 +3025,10 @@ of day we were there, very hot.&lt;/p&gt;
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/summiting-st-helens-2019/Flats2_hu7494614417592134028.webp 400w,
-               /post/summiting-st-helens-2019/Flats2_hu1744763321272098599.webp 760w,
-               /post/summiting-st-helens-2019/Flats2_hu7494764591282440017.webp 1200w&#34;
-               src=&#34;https://hrakaroo.com/post/summiting-st-helens-2019/Flats2_hu7494614417592134028.webp&#34;
+               /post/summiting-st-helens-2019/Flats2_hu_6f4eb416e1dea272.webp 400w,
+               /post/summiting-st-helens-2019/Flats2_hu_8d82bb370f0cb173.webp 760w,
+               /post/summiting-st-helens-2019/Flats2_hu_8cbbbb6573fd6a69.webp 1200w&#34;
+               src=&#34;https://hrakaroo.com/post/summiting-st-helens-2019/Flats2_hu_6f4eb416e1dea272.webp&#34;
                width=&#34;760&#34;
                height=&#34;570&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -3145,10 +3053,10 @@ of day we were there, very hot.&lt;/p&gt;
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/summiting-st-helens-2019/Flats3_hu3331330443622311101.webp 400w,
-               /post/summiting-st-helens-2019/Flats3_hu14640366588684831603.webp 760w,
-               /post/summiting-st-helens-2019/Flats3_hu12018479409055761320.webp 1200w&#34;
-               src=&#34;https://hrakaroo.com/post/summiting-st-helens-2019/Flats3_hu3331330443622311101.webp&#34;
+               /post/summiting-st-helens-2019/Flats3_hu_99d83307164c8e40.webp 400w,
+               /post/summiting-st-helens-2019/Flats3_hu_6cdf22c6eda2812b.webp 760w,
+               /post/summiting-st-helens-2019/Flats3_hu_f55d6c565f973a69.webp 1200w&#34;
+               src=&#34;https://hrakaroo.com/post/summiting-st-helens-2019/Flats3_hu_99d83307164c8e40.webp&#34;
                width=&#34;760&#34;
                height=&#34;507&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -3186,10 +3094,10 @@ there is another trail up that way.&lt;/p&gt;
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/summiting-st-helens-2019/WindyPass_hu6575859504151991855.webp 400w,
-               /post/summiting-st-helens-2019/WindyPass_hu8540916729627333781.webp 760w,
-               /post/summiting-st-helens-2019/WindyPass_hu5925618235556749137.webp 1200w&#34;
-               src=&#34;https://hrakaroo.com/post/summiting-st-helens-2019/WindyPass_hu6575859504151991855.webp&#34;
+               /post/summiting-st-helens-2019/WindyPass_hu_6e7c1d67f1446df.webp 400w,
+               /post/summiting-st-helens-2019/WindyPass_hu_4c271db6f0462ec9.webp 760w,
+               /post/summiting-st-helens-2019/WindyPass_hu_25c15f13cddfef5f.webp 1200w&#34;
+               src=&#34;https://hrakaroo.com/post/summiting-st-helens-2019/WindyPass_hu_6e7c1d67f1446df.webp&#34;
                width=&#34;760&#34;
                height=&#34;507&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -3744,18 +3652,18 @@ Java, that might look like:&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Pretty straight forward.  Now, if we wanted to do a similar thing in
 Go it would probably look something like:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Named&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;interface&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;nf&#34;&gt;getName&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Person&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;nx&#34;&gt;name&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Person&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;getName&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;name&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Ignoring the syntax differences, what is interesting is that in Go we
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Named&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;interface&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;     &lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getName&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Person&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;struct&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;     &lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;func&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Person&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getName&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;     &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Ignoring the syntax differences, what is interesting is that in Go we
 don&amp;rsquo;t declare Person as implementing Named.  This is implied by the
 function on Person matching the method in the Named interface. The
 compiler figures this out for us and instances of a Person are
@@ -3823,36 +3731,36 @@ are still dealing with a lot of boilerplate code.&lt;/p&gt;
 &lt;p&gt;Now let&amp;rsquo;s take a look at this same problem in Go land.  (For the sake
 of argument let&amp;rsquo;s assume that PreparedStatement both exists in Go and
 works much in the same way as its Java counterpart).&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Db&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;db&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Db&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;setValue&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;stmt&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;PreparedStatement&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;value&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;stmt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;setString&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And again it is used like:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;stmt&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;conn&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;prepareStatement&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;SELECT …&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;db&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Db&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;db&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;setValue&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;stmt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;someValue&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now let&amp;rsquo;s write the unit test:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;SetValueTest&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;testing&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;db&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Db&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;stmt&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;??&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;db&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;setValue&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;stmt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;dog&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;// todo - verify the statement received the value of &amp;#39;dog
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;We&amp;rsquo;ve once again hit the same issue.  As with Java, we can use the
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Db&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;struct&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;func&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;db&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Db&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;setValue&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;stmt&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;PreparedStatement&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;stmt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;setString&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And again it is used like:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;stmt&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;conn&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;prepareStatement&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;SELECT …&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;db&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Db&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;db&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;setValue&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;stmt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;someValue&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now let&amp;rsquo;s write the unit test:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;func&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;SetValueTest&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;testing&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;db&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Db&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;stmt&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;err&#34;&gt;??&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;db&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;setValue&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;stmt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;dog&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// todo - verify the statement received the value of &amp;#39;dog&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;We&amp;rsquo;ve once again hit the same issue.  As with Java, we can use the
 Go&amp;rsquo;s mock framework (which also uses reflection) or, as before, we can
 try to roll our own.&lt;/p&gt;
 &lt;p&gt;Approaching it directly we could build out a TestPreparedStatement as:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;TestPreparedStatement&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;value&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;tps&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;TestPreparedStatement&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;setString&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;parameterIndex&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;nx&#34;&gt;tps&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;value&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;x&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;But then we are going to have the same issue as we had with Java where
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;TestPreparedStatement&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;struct&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;func&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;tps&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;TestPreparedStatement&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;setString&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;parameterIndex&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;     &lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;tps&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;But then we are going to have the same issue as we had with Java where
 we also need to stub out all of the other 50+ methods in the
 PreparedStatement interface which is just as wasteful as it was in
 Java.  But we do have one other option.&lt;/p&gt;
@@ -3860,19 +3768,19 @@ Java.  But we do have one other option.&lt;/p&gt;
 &lt;p&gt;What if we didn&amp;rsquo;t stub out all of the other methods and instead
 created a new interface which only contained the one method we are
 using?  So something like:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;StringSetter&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;interface&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;setString&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;parameterIndex&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now, since our &lt;code&gt;TestPreparedStatement&lt;/code&gt; implements this one method it
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;StringSetter&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;interface&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;setString&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;parameterIndex&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now, since our &lt;code&gt;TestPreparedStatement&lt;/code&gt; implements this one method it
 is automatically a type of StringSetter.  But guess what, the object
 returned by conn.prepareStatement is also now a type of StringSetter
 since it too implements setString (by virtue of it being a
 PreparedStatement which also requires the same method.)&lt;/p&gt;
 &lt;p&gt;Now, we only need to change the signature of our setValue method to:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;db&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Db&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;setValue&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;stmt&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;StringSetter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;value&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;stmt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;setString&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This is where the power of the duck typing comes into play as doing
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;func&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;db&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Db&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;setValue&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;stmt&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;StringSetter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;stmt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;setString&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This is where the power of the duck typing comes into play as doing
 this in Java would require modifying the definition of
 PreparedStatement so it explicitly extend StringSetter, which is
 virtually impossible.  Yet in Go this is trivial as we can assign
@@ -4220,9 +4128,9 @@ $$&lt;/p&gt;
 
 &lt;h2 id=&#34;custom-slide&#34;&gt;Custom Slide&lt;/h2&gt;
 &lt;p&gt;Customize the slide style and background&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;slide&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;background-image&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;/media/boards.jpg&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;}}
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;slide&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;background-color&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;#0000FF&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;}}
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;slide&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;my-style&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;}}
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{&amp;lt; slide background-image=&amp;#34;/media/boards.jpg&amp;#34; &amp;gt;}}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{&amp;lt; slide background-color=&amp;#34;&lt;span class=&#34;ni&#34;&gt;#0000FF&lt;/span&gt;&amp;#34; &amp;gt;}}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{&amp;lt; slide class=&amp;#34;my-style&amp;#34; &amp;gt;}}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
 &lt;h2 id=&#34;custom-css-example&#34;&gt;Custom CSS Example&lt;/h2&gt;
 &lt;p&gt;Let&amp;rsquo;s make headers navy colored.&lt;/p&gt;
@@ -4402,10 +4310,10 @@ turned to passive-aggressive communications to settle our differences.&lt;/p&gt;
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Comments made during a code review&#34; srcset=&#34;
-               /post/code-reviews/code_review_comments_hu9750041304530955936.webp 400w,
-               /post/code-reviews/code_review_comments_hu16988048867635784326.webp 760w,
-               /post/code-reviews/code_review_comments_hu15505989312171562261.webp 1200w&#34;
-               src=&#34;https://hrakaroo.com/post/code-reviews/code_review_comments_hu9750041304530955936.webp&#34;
+               /post/code-reviews/code_review_comments_hu_518e191e1df4761f.webp 400w,
+               /post/code-reviews/code_review_comments_hu_9552cdb752183957.webp 760w,
+               /post/code-reviews/code_review_comments_hu_d4fce5df8419933e.webp 1200w&#34;
+               src=&#34;https://hrakaroo.com/post/code-reviews/code_review_comments_hu_518e191e1df4761f.webp&#34;
                width=&#34;700&#34;
                height=&#34;337&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -4501,10 +4409,10 @@ very quickly.&lt;/p&gt;
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Opinions made during code reviews&#34; srcset=&#34;
-               /post/code-reviews/code_review_opinions_hu16784018831791128993.webp 400w,
-               /post/code-reviews/code_review_opinions_hu7531980533516112992.webp 760w,
-               /post/code-reviews/code_review_opinions_hu16629623137176114837.webp 1200w&#34;
-               src=&#34;https://hrakaroo.com/post/code-reviews/code_review_opinions_hu16784018831791128993.webp&#34;
+               /post/code-reviews/code_review_opinions_hu_953b9aba1d3fdd0f.webp 400w,
+               /post/code-reviews/code_review_opinions_hu_2d0572476d6b8c6c.webp 760w,
+               /post/code-reviews/code_review_opinions_hu_eaa1e4a1f9e3d731.webp 1200w&#34;
+               src=&#34;https://hrakaroo.com/post/code-reviews/code_review_opinions_hu_953b9aba1d3fdd0f.webp&#34;
                width=&#34;700&#34;
                height=&#34;304&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -4708,10 +4616,10 @@ their point of view.&lt;/p&gt;
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;The number of proposals made: expected vs. actual&#34; srcset=&#34;
-               /post/code-reviews/code_review_proposals_hu8106204571404634850.webp 400w,
-               /post/code-reviews/code_review_proposals_hu13594515585465007434.webp 760w,
-               /post/code-reviews/code_review_proposals_hu5408248457779190085.webp 1200w&#34;
-               src=&#34;https://hrakaroo.com/post/code-reviews/code_review_proposals_hu8106204571404634850.webp&#34;
+               /post/code-reviews/code_review_proposals_hu_dcc8f5e008c0cbe8.webp 400w,
+               /post/code-reviews/code_review_proposals_hu_f9d73bb91cab935b.webp 760w,
+               /post/code-reviews/code_review_proposals_hu_9dd0eb393afb8b01.webp 1200w&#34;
+               src=&#34;https://hrakaroo.com/post/code-reviews/code_review_proposals_hu_dcc8f5e008c0cbe8.webp&#34;
                width=&#34;700&#34;
                height=&#34;241&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -5144,6 +5052,42 @@ keep my options open for now.&lt;/p&gt;
       <pubDate>Sun, 21 Nov 2004 00:00:00 +0000</pubDate>
       <guid>https://hrakaroo.com/project/soda-water-ray-tracer/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hrakaroo.com/post/start-with-oncall/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://hrakaroo.com/post/start-with-oncall/</guid>
+      <description>&lt;h1 id=&#34;start-with-on-call-a-healthier-way-to-begin-the-day&#34;&gt;Start with On-Call: A Healthier Way to Begin the Day&lt;/h1&gt;
+&lt;p&gt;On-call work can be isolating, exhausting, and easy to overlook if you&amp;rsquo;re not the one holding the pager. I’ve had nights where pages hit back-to-back, leaving me exhausted and irritable the next morning. When that happens, the idea of opening a standup with project updates feels disconnected from reality. What I really want to talk about is &lt;em&gt;why&lt;/em&gt; I was paged—and how the team can help make sure it doesn’t happen again.&lt;/p&gt;
+&lt;h2 id=&#34;rethinking-standup-begin-with-on-call&#34;&gt;Rethinking Standup: Begin with On-Call&lt;/h2&gt;
+&lt;p&gt;Standup is usually the first meeting of the day and exists to align the team. But before diving into project updates and task boards, start with one question:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Did the on-call engineer get paged overnight, and if so, why?&lt;/strong&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;This isn’t a courtesy check-in—it’s a signal that the well-being of the team matters, and that operational issues are real work. If the overnight experience was rough, it might be appropriate to pause project tasks and focus on the underlying problem. In some cases, the best move is simply letting the on-call person log off early to recover.&lt;/p&gt;
+&lt;p&gt;A common concern is that page reviews will consume the entire standup. If that happens, it usually points to one of two realities:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The conversation has drifted and should be moved to a follow-up.&lt;/li&gt;
+&lt;li&gt;The issue is serious enough that it deserves the entire team’s attention anyway.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Either way, the signal is valuable.&lt;/p&gt;
+&lt;h2 id=&#34;classify-every-page&#34;&gt;Classify Every Page&lt;/h2&gt;
+&lt;p&gt;To make these conversations productive, each page should land in one of three categories:&lt;/p&gt;
+&lt;h3 id=&#34;1-known-issue-already-being-worked-on&#34;&gt;1. &lt;strong&gt;Known Issue Already Being Worked On&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;If the root cause is already under investigation—underprovisioned services, a bug in progress—these pages can be deprioritized. Ideally, you’d mute the alerts, but that risks hiding new issues. Just be honest and precise: don’t group unrelated pages together.&lt;/p&gt;
+&lt;h3 id=&#34;2-rare-one-off-events&#34;&gt;2. &lt;strong&gt;Rare, One-Off Events&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;A “rare” page should truly be rare. Over time, the definition should stretch from once a month to once a quarter to once a year. If you&amp;rsquo;re getting paged weekly, it’s not a one-off.&lt;/p&gt;
+&lt;h3 id=&#34;3-new-uninvestigated-issues&#34;&gt;3. &lt;strong&gt;New, Uninvestigated Issues&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Anything that isn’t known or rare belongs here. These deserve investigation tickets. Failing to follow up leads to the same interruptions night after night—and often much bigger problems down the road.&lt;/p&gt;
+&lt;h2 id=&#34;prevent-escalation-keep-small-problems-small&#34;&gt;Prevent Escalation: Keep Small Problems Small&lt;/h2&gt;
+&lt;p&gt;Investigation work should be treated as a top priority for the on-call engineer and ideally the secondary as well. Small problems are easy to ignore when you’re busy, but they’re even easier to fix before they escalate. As the backpacking adage goes: &lt;strong&gt;keep small problems small.&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;protect-sleep-rotate-when-needed&#34;&gt;Protect Sleep: Rotate When Needed&lt;/h2&gt;
+&lt;p&gt;Being paged at 2 AM isn’t just inconvenient—it’s damaging if it happens repeatedly. If someone was paged between 9 PM and 9 AM, consider swapping them with the secondary for the next night. Guaranteeing a solid night’s rest can make all the difference—and reinforces shared responsibility.&lt;/p&gt;
+&lt;h2 id=&#34;why-this-matters&#34;&gt;Why This Matters&lt;/h2&gt;
+&lt;p&gt;In many teams, managers don’t participate in on-call rotations. When page volume is high, that disconnect can breed resentment, especially if nighttime interruptions feel invisible. Starting the day by focusing on on-call sends a different message: the team’s experience matters, and operational pain is a shared concern.&lt;/p&gt;
+&lt;p&gt;A small shift—like opening standup with one intentional question—can change how teams operate, collaborate, and care for each other. And for the person who held the pager last night, that shift can mean everything.&lt;/p&gt;
+</description>
     </item>
     
   </channel>

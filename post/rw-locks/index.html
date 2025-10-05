@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- This site was created with Hugo Blox. https://hugoblox.com -->
-<!-- Last Published: August 15, 2024 --><html lang="en-us" >
+<!-- Last Published: October 4, 2025 --><html lang="en-us" >
 
 
 <head>
@@ -214,7 +214,7 @@
   
   
   
-  <link rel="stylesheet" href="/css/wowchemy.f6689966c0a10712f95f034011917db0.css" />
+  <link rel="stylesheet" href="/css/wowchemy.5adeb309104bf059bfce5194cee5d4d8.css" />
 
   
   
@@ -235,9 +235,6 @@
 
   
   
-
-
-
 
 
 
@@ -292,8 +289,8 @@
 
 
 
-<link rel="icon" type="image/png" href="/media/icon_hu5694164938429390357.png" />
-<link rel="apple-touch-icon" type="image/png" href="/media/icon_hu8447479463880301006.png" />
+<link rel="icon" type="image/png" href="/media/icon_hu_c4f644868a298ade.png" />
+<link rel="apple-touch-icon" type="image/png" href="/media/icon_hu_2b179d244e17490a.png" />
 
 <meta name="theme-color" content="#1565c0" />
 
@@ -318,7 +315,7 @@
 
   <meta property="twitter:site" content="@GetResearchDev" />
   <meta property="twitter:creator" content="@GetResearchDev" />
-<meta property="twitter:image" content="https://hrakaroo.com/media/icon_hu987151019769935369.png" />
+<meta property="twitter:image" content="https://hrakaroo.com/media/icon_hu_a40146739a0db508.png" />
 
 
 
@@ -328,7 +325,7 @@
 <meta property="og:site_name" content="Hrakaroo" />
 <meta property="og:url" content="https://hrakaroo.com/post/rw-locks/" />
 <meta property="og:title" content="Avoiding Read/Write Locks | Hrakaroo" />
-<meta property="og:description" content="Subtle implications of Read/Write locks" /><meta property="og:image" content="https://hrakaroo.com/media/icon_hu987151019769935369.png" /><meta property="og:locale" content="en-us" />
+<meta property="og:description" content="Subtle implications of Read/Write locks" /><meta property="og:image" content="https://hrakaroo.com/media/icon_hu_a40146739a0db508.png" /><meta property="og:locale" content="en-us" />
 
   
     <meta
@@ -380,7 +377,7 @@
     "name": "Hrakaroo",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://hrakaroo.com/media/icon_hu3095219862943171440.png"
+      "url": "https://hrakaroo.com/media/icon_hu_5449c7a36983b7ac.png"
     }
   },
   "description": "Subtle implications of Read/Write locks"
@@ -801,24 +798,20 @@ locks that can end up causing them to be considerably more expensive
 than they initially appear.</p>
 <p>Consider the following:</p>
 <blockquote>
-<p>Thread 1 requests read access to a shared read/write lock.</p>
-</blockquote>
+<p>Thread 1 requests read access to a shared read/write lock.</p></blockquote>
 <p>At this point in time no one else has requested the lock for either
 read or write access so a read lock is granted to Thread 1.</p>
 <blockquote>
-<p>Thread 2 requests read access to the same read/write lock.</p>
-</blockquote>
+<p>Thread 2 requests read access to the same read/write lock.</p></blockquote>
 <p>Since the lock is currently only read locked by Thread 1, Thread 2
 is also given read access.</p>
 <blockquote>
-<p>Thread 3 requests write access to the same read/write lock.</p>
-</blockquote>
+<p>Thread 3 requests write access to the same read/write lock.</p></blockquote>
 <p>Since the lock has been locked for read access by both Thread 1 and
 Thread 2, Thread 3 is put on a wait list for write access until
 Thread 1 and Thread 2 release their read locks.</p>
 <blockquote>
-<p>Thread 4 requests read access to the same read/write lock.</p>
-</blockquote>
+<p>Thread 4 requests read access to the same read/write lock.</p></blockquote>
 <p>What happens here?</p>
 <p>A first guess might be to give Thread 4 the read lock, along with
 Threads 1 and 2, since Thread 3 has not yet obtained the write lock,
@@ -1032,7 +1025,7 @@ even be what you really need.</p>
   <div class="media author-card content-widget-hr">
     
       
-      <a href="https://hrakaroo.com/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu9282804337555895802.jpg" alt="Joshua Gerth"></a>
+      <a href="https://hrakaroo.com/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu_a2aa5f9cd647c4ab.jpg" alt="Joshua Gerth"></a>
     
 
     <div class="media-body">
@@ -1167,7 +1160,7 @@ even be what you really need.</p>
   
 
 
-<script src="/js/vendor-bundle.min.50933d940896e49f984a778650d5f7f5.js"></script>
+<script src="/js/vendor-bundle.min.d613345003d21781ec611233eea95b85.js"></script>
 
 
 
@@ -1248,7 +1241,7 @@ even be what you really need.</p>
 <script id="page-data" type="application/json">{"use_headroom":true}</script>
 
 
-  <script src="/js/wowchemy-headroom.db4755770454eb63685f8de785c0a172.js" type="module"></script>
+  <script src="/js/wowchemy-headroom.b95a7e109243f29d04930ae8cb49a756.js" type="module"></script>
 
 
 
@@ -1262,7 +1255,7 @@ even be what you really need.</p>
   
 
 
-<script src="/en/js/wowchemy.min.7f5ebaff62ae468cff8bb3dd1337bb9b.js"></script>
+<script src="/en/js/wowchemy.min.69fc52a6dc16aaf1a452cfbb36466dac.js"></script>
 
 
 

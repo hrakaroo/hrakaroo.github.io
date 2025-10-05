@@ -5,99 +5,12 @@
     <link>https://hrakaroo.com/category/teams/</link>
       <atom:link href="https://hrakaroo.com/category/teams/index.xml" rel="self" type="application/rss+xml" />
     <description>Teams</description>
-    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 22 Apr 2024 00:00:00 +0000</lastBuildDate>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Tue, 09 Oct 2018 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://hrakaroo.com/media/icon_hu987151019769935369.png</url>
+      <url>https://hrakaroo.com/media/icon_hu_a40146739a0db508.png</url>
       <title>Teams</title>
       <link>https://hrakaroo.com/category/teams/</link>
     </image>
-    
-    <item>
-      <title>Start with On-Call</title>
-      <link>https://hrakaroo.com/post/start-with-oncall/</link>
-      <pubDate>Mon, 22 Apr 2024 00:00:00 +0000</pubDate>
-      <guid>https://hrakaroo.com/post/start-with-oncall/</guid>
-      <description>&lt;p&gt;This is my second post on running a standup, you can read my first
-post about walking the board &lt;a href=&#34;../walking-the-board/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;h3 id=&#34;being-on-call-is-exhausting&#34;&gt;Being on-call is exhausting&lt;/h3&gt;
-&lt;p&gt;Being on-call can be an isolating, exhausting and thankless task.
-I&amp;rsquo;ve had on-call shifts where I was woken up multiple times throughout
-the night and by morning I am wiped out and cranky. Worse still, the
-next night is likely to be more of the same. In these situations the
-last thing I want to do is spend standup talking about how much
-progress the team has made on the current projects. I want to talk
-about why I&amp;rsquo;ve been getting paged, and how the team can help make this
-waking nightmare stop.&lt;/p&gt;
-&lt;h3 id=&#34;start-the-day-discussing-the-previous-on-call-shift&#34;&gt;Start the day discussing the previous on-call shift&lt;/h3&gt;
-&lt;p&gt;Standup should already be one of the first meetings of the day. It helps
-to get everyone aligned on the ongoing tasks and brings up to speed
-anyone who may have been on vacation. But before discussing any projects
-you should start off asking the question:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Did the person on-call get paged, and if so, why?&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;It is criticially important this question is asked first. If the
-on-call was bad enough, it may require halting all project work and
-diverting everyone to resolving an ongoing issue. Or maybe the
-previous shift was so bad that after giving a hand off, you want to
-excuse the person on-call so they can log out and catch up on
-sleep. Either it&amp;rsquo;s the most important question you can ask for the
-health of the team so it should be your first question.&lt;/p&gt;
-&lt;p&gt;A common push back is the concern that reviewing the pages may end up
-taking the full time of your standup. If this is happening it is either
-because you are allowing runaway conversations (that would be better
-left for post-standup discussion), or your on-call is in such dire
-straits that you should probably be canceling all project work and
-focusing on making it better.&lt;/p&gt;
-&lt;h3 id=&#34;have-an-answer-for-every-page&#34;&gt;Have an answer for every page&lt;/h3&gt;
-&lt;p&gt;Every pagable event needs to fall into one of the following categories:&lt;/p&gt;
-&lt;h4 id=&#34;this-is-a-known-issue-for-which-the-team-is-already-working-on-a-solution&#34;&gt;This is a known issue for which the team is already working on a solution&lt;/h4&gt;
-&lt;p&gt;These pages can be mostly ignored as the team is already working to
-resolve the underlying issue. Maybe the services are under provisioned
-and the team is working on scaling things up. Or maybe this is a known
-bug that the team is working on a fix for. Either way the expectation
-is that over the next couple of days the underlying issue will be
-resolved. It would be ideal if these pages could be muted but that is
-not always possible as it may hide other issues. Just be honest with
-yourself and resist the urge to group pages together which are not
-actually related.&lt;/p&gt;
-&lt;h4 id=&#34;this-is-a-once-in-a-lifetime-event-and-can-be-ignored&#34;&gt;This is a once-in-a-lifetime-event and can be ignored&lt;/h4&gt;
-&lt;p&gt;These should be pretty rare and what the team defines as &lt;em&gt;lifetime&lt;/em&gt;
-should increase in duration over time. Initially lifetime can mean
-&amp;ldquo;once a month&amp;rdquo; but this should eventually stretch out to &amp;ldquo;once a
-quarter&amp;rdquo; and then &amp;ldquo;once a year&amp;rdquo;. If you are getting paged weekly for
-anything, that is not a once-in-a-lifetime event.&lt;/p&gt;
-&lt;h4 id=&#34;this-is-a-new-issue-which-needs-to-be-investigated&#34;&gt;This is a new issue which needs to be investigated&lt;/h4&gt;
-&lt;p&gt;This is really everything else. Sometimes these are once-in-a-lifetime
-issues that suddenly start happening more often. But regardless, all
-new issues should have an investigation issue created.&lt;/p&gt;
-&lt;h3 id=&#34;keep-small-problems-small&#34;&gt;Keep small problems small&lt;/h3&gt;
-&lt;p&gt;The investigation of all new issues should take top priority for the
-on-call and possibly secondary person. Failing to properly investigate
-an issue not only means that the on-call person is likely to get woken
-up from it again, but it can also be a missed opportunity to deal with
-an issue before it becomes a major incident. As the backpacking
-mantra goes, &amp;ldquo;keep small problems small.&amp;rdquo;&lt;/p&gt;
-&lt;h3 id=&#34;offer-the-person-on-call-a-break&#34;&gt;Offer the person on-call a break&lt;/h3&gt;
-&lt;p&gt;Getting woken up multiple nights in a row can be highly disruptive and
-ultimately lead to health issues. If the on-call person was woken up
-between the hours of 9pm - 9am, I strongly recommend the primary and
-secondary rotations switch for the following 9pm - 9am shift. Just
-knowning that the following night they will be able to get a full
-night sleep can make the world of difference to the person getting
-woken up every hour.&lt;/p&gt;
-&lt;p&gt;It also offers a &lt;em&gt;motivation&lt;/em&gt; for the secondary to help out as they are
-going to be on the hook for the next night.&lt;/p&gt;
-&lt;h2 id=&#34;closing-comments&#34;&gt;Closing Comments&lt;/h2&gt;
-&lt;p&gt;At many organizations the manager for a team is not in the primary
-on-call rotation and this level of separation can already cause some
-resentment in the team. Especially with a high pager volume the team
-may feel like the manager is not aware or doesn&amp;rsquo;t care about the
-struggles they are going through. Starting the day by focusing on the
-on-call rotation helps to assure the team that even after a bad night
-their team is going to be there for them in the morning.&lt;/p&gt;
-</description>
-    </item>
     
     <item>
       <title>Creating Simple and Effective Guidelines for Code Reviews</title>
@@ -141,10 +54,10 @@ turned to passive-aggressive communications to settle our differences.&lt;/p&gt;
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Comments made during a code review&#34; srcset=&#34;
-               /post/code-reviews/code_review_comments_hu9750041304530955936.webp 400w,
-               /post/code-reviews/code_review_comments_hu16988048867635784326.webp 760w,
-               /post/code-reviews/code_review_comments_hu15505989312171562261.webp 1200w&#34;
-               src=&#34;https://hrakaroo.com/post/code-reviews/code_review_comments_hu9750041304530955936.webp&#34;
+               /post/code-reviews/code_review_comments_hu_518e191e1df4761f.webp 400w,
+               /post/code-reviews/code_review_comments_hu_9552cdb752183957.webp 760w,
+               /post/code-reviews/code_review_comments_hu_d4fce5df8419933e.webp 1200w&#34;
+               src=&#34;https://hrakaroo.com/post/code-reviews/code_review_comments_hu_518e191e1df4761f.webp&#34;
                width=&#34;700&#34;
                height=&#34;337&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -240,10 +153,10 @@ very quickly.&lt;/p&gt;
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Opinions made during code reviews&#34; srcset=&#34;
-               /post/code-reviews/code_review_opinions_hu16784018831791128993.webp 400w,
-               /post/code-reviews/code_review_opinions_hu7531980533516112992.webp 760w,
-               /post/code-reviews/code_review_opinions_hu16629623137176114837.webp 1200w&#34;
-               src=&#34;https://hrakaroo.com/post/code-reviews/code_review_opinions_hu16784018831791128993.webp&#34;
+               /post/code-reviews/code_review_opinions_hu_953b9aba1d3fdd0f.webp 400w,
+               /post/code-reviews/code_review_opinions_hu_2d0572476d6b8c6c.webp 760w,
+               /post/code-reviews/code_review_opinions_hu_eaa1e4a1f9e3d731.webp 1200w&#34;
+               src=&#34;https://hrakaroo.com/post/code-reviews/code_review_opinions_hu_953b9aba1d3fdd0f.webp&#34;
                width=&#34;700&#34;
                height=&#34;304&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -447,10 +360,10 @@ their point of view.&lt;/p&gt;
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;The number of proposals made: expected vs. actual&#34; srcset=&#34;
-               /post/code-reviews/code_review_proposals_hu8106204571404634850.webp 400w,
-               /post/code-reviews/code_review_proposals_hu13594515585465007434.webp 760w,
-               /post/code-reviews/code_review_proposals_hu5408248457779190085.webp 1200w&#34;
-               src=&#34;https://hrakaroo.com/post/code-reviews/code_review_proposals_hu8106204571404634850.webp&#34;
+               /post/code-reviews/code_review_proposals_hu_dcc8f5e008c0cbe8.webp 400w,
+               /post/code-reviews/code_review_proposals_hu_f9d73bb91cab935b.webp 760w,
+               /post/code-reviews/code_review_proposals_hu_9dd0eb393afb8b01.webp 1200w&#34;
+               src=&#34;https://hrakaroo.com/post/code-reviews/code_review_proposals_hu_dcc8f5e008c0cbe8.webp&#34;
                width=&#34;700&#34;
                height=&#34;241&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
