@@ -5,12 +5,215 @@
     <link>https://hrakaroo.com/post/</link>
       <atom:link href="https://hrakaroo.com/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 22 Apr 2024 00:00:00 +0000</lastBuildDate>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Fri, 11 Sep 2026 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://hrakaroo.com/media/icon_hu_a40146739a0db508.png</url>
       <title>Posts</title>
       <link>https://hrakaroo.com/post/</link>
     </image>
+    
+    <item>
+      <title>Running a Quarterly Review Process</title>
+      <link>https://hrakaroo.com/post/quarterly-team-process/</link>
+      <pubDate>Fri, 11 Sep 2026 00:00:00 +0000</pubDate>
+      <guid>https://hrakaroo.com/post/quarterly-team-process/</guid>
+      <description>&lt;p&gt;Most people inherit the team they are on. They join a team that
+already has a standup, an on-call rotation, a backlog meeting, a set
+of Slack channels, and a dozen other small rules about how work gets
+done.&lt;/p&gt;
+&lt;p&gt;Sometimes everyone understands why those rules exist. But often the
+people who created them have left, new people have joined, and the
+team continues following a process that no one would choose if they
+were starting over.&lt;/p&gt;
+&lt;p&gt;To address this, once a quarter I get the team together and ask them
+to reconsider how they work. We keep what is useful, change what no
+longer fits, and remove what we no longer need.&lt;/p&gt;
+&lt;p&gt;I call this a quarterly team process review.&lt;/p&gt;
+&lt;h2 id=&#34;why-quarterly&#34;&gt;Why quarterly&lt;/h2&gt;
+&lt;p&gt;I don&amp;rsquo;t like doing process reviews every two weeks. Two weeks usually
+isn&amp;rsquo;t enough time to decide whether a change is actually working, and
+constantly adjusting the process creates a lot of thrash.&lt;/p&gt;
+&lt;p&gt;Consider a four-person team that changes its on-call rotation from one
+week to two. After the first two weeks, the person who just spent two
+weeks on call may hate the new schedule. Everyone else, who just got a
+longer break from the pager, may love it. That isn&amp;rsquo;t a particularly
+useful evaluation of the change.&lt;/p&gt;
+&lt;p&gt;A quarter gives several people a chance to experience the new
+rotation. It also gives the team time to see how the change behaves
+during both quiet and busy weeks.&lt;/p&gt;
+&lt;p&gt;At the same time, it is important to repeat the review every quarter.
+If people believe this is their one chance to change the process, they
+will be reluctant to try anything unless it solves every possible
+edge case. Knowing that we will revisit the decision in a few months
+makes it safer to experiment. We can try a partial solution, live with
+it for a while, and change it again if it doesn&amp;rsquo;t work.&lt;/p&gt;
+&lt;h2 id=&#34;do-it-in-person&#34;&gt;Do it in person&lt;/h2&gt;
+&lt;p&gt;I prefer to schedule these reviews during an on-site. It is possible
+to run one remotely, but I get much better participation when
+everyone is in the same room. People respond more naturally to one
+another, and it is easier to tell when the group wants to spend more
+time on a subject.&lt;/p&gt;
+&lt;p&gt;The setup is intentionally simple. I need a room, a wall or
+whiteboard, Post-it notes, and markers. This meeting is about the team
+talking to itself, so the tools should stay out of the way.&lt;/p&gt;
+&lt;h2 id=&#34;start-by-getting-everyone-talking&#34;&gt;Start by getting everyone talking&lt;/h2&gt;
+&lt;p&gt;I start with a deck of open-question cards. Everyone takes a card and
+we go around the room answering them. Someone can answer the question
+on their card, or they can answer someone else&amp;rsquo;s question if it is
+more interesting.&lt;/p&gt;
+&lt;p&gt;The questions themselves aren&amp;rsquo;t important. The point is to get
+everyone talking before asking them to challenge a process or
+disagree with one another.&lt;/p&gt;
+&lt;p&gt;Passing is always allowed. I have had team members tell me they would
+rather not share, and I respect that. Someone may not be in a state
+where they want to talk much that day. Giving them a clear way to pass
+keeps the warm-up voluntary and prevents an exercise intended to
+create engagement from turning into a demand for personal disclosure.&lt;/p&gt;
+&lt;h2 id=&#34;explain-why-the-review-exists&#34;&gt;Explain why the review exists&lt;/h2&gt;
+&lt;p&gt;After the warm-up, I give roughly the same explanation every quarter:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Most of us inherit the team we are on. We join a team with existing
+ceremonies, communication patterns, and culture. Every person who
+joins changes that culture, and every person who leaves changes it
+too, or at least should.&lt;/p&gt;
+&lt;p&gt;Teams often continue practices created by people who are no longer
+there. The current team may not understand why a ceremony exists and
+in some cases it may no longer be needed. The people have changed, the
+work has changed, or the problem the process solved has disappeared.&lt;/p&gt;
+&lt;p&gt;This review is a chance to take ownership of the team. We have a few
+requirements. We need to get work done and we need to communicate our
+progress. Beyond that, almost anything about how we operate is open
+for discussion and change.&lt;/p&gt;
+&lt;p&gt;The team belongs to its members. It does not belong to the manager.
+My role in this meeting is mostly to facilitate, clarify constraints,
+and help the group make decisions it can live with for the next
+quarter.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;I repeat this explanation because people forget, but also because the
+team changes. Someone may have joined since the last review, someone
+else may have left, and everyone has another quarter of experience
+with the current process.&lt;/p&gt;
+&lt;p&gt;The last point also changes how I participate. I may have preferences,
+especially around on-call, but I try to step back. A manager cannot
+dominate the discussion and then call the result team ownership.&lt;/p&gt;
+&lt;h2 id=&#34;give-examples-that-encourage-bigger-changes&#34;&gt;Give examples that encourage bigger changes&lt;/h2&gt;
+&lt;p&gt;At this point I give examples of things other teams have discussed.
+These aren&amp;rsquo;t recommendations, and they aren&amp;rsquo;t a list the team needs
+to work through. They are intended to show that the review can go
+beyond changing the team logo or making some other cosmetic change.&lt;/p&gt;
+&lt;h3 id=&#34;slack-channels&#34;&gt;Slack channels&lt;/h3&gt;
+&lt;p&gt;Many teams have a backroom Slack channel for weekend pictures, jokes,
+and informal conversation. Is that channel public or private? Who
+should be in it?&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve seen backroom channels with fifty people in them because former
+team members, occasional collaborators, and even customers were added
+but never removed. Eventually the current team no longer knows what
+kind of room they are in.&lt;/p&gt;
+&lt;p&gt;The team may decide that only current members should be in the
+backroom. They may also decide that pull-request notifications belong
+in a separate channel from the funny weekend pictures. These sound
+like small choices, but they directly affect how the team
+communicates.&lt;/p&gt;
+&lt;h3 id=&#34;on-call-rotations&#34;&gt;On-call rotations&lt;/h3&gt;
+&lt;p&gt;Teams can reconsider the length of the on-call rotation, the
+relationship between the primary and secondary, and what work an
+on-call engineer should attempt. I have suggestions about all of
+these, but I still want the team to reason through the tradeoffs.&lt;/p&gt;
+&lt;p&gt;I once worked with a four-person team that changed its on-call shift
+from one week to two. Two weeks was more brutal, but it also meant a
+longer break before each person went back on call. The team preferred
+to rip the Band-Aid off and then have more time away from the pager.
+Another team might make the opposite choice. The point is to make the
+choice intentionally instead of treating the inherited schedule as
+inevitable.&lt;/p&gt;
+&lt;h3 id=&#34;backlog-work-and-handoffs&#34;&gt;Backlog work and handoffs&lt;/h3&gt;
+&lt;p&gt;A team may decide that the primary on-call engineer shouldn&amp;rsquo;t plan to
+make progress on an OKR project. Instead, that person can work through
+small backlog items that are easier to stop and restart when an
+interruption arrives. Maybe the secondary scrubs the backlog each
+week. Maybe the team changes what information is passed from one
+on-call shift to the next, or decides it no longer needs a formal
+handoff at all.&lt;/p&gt;
+&lt;p&gt;These choices are connected. Changing the on-call rotation may change
+how backlog work is handled, which may change the handoff. The review
+lets the team look at the whole operating system instead of adjusting
+one ceremony in isolation.&lt;/p&gt;
+&lt;h2 id=&#34;write-down-the-topics&#34;&gt;Write down the topics&lt;/h2&gt;
+&lt;p&gt;Once the purpose of the meeting is clear, I hand out the Post-it
+notes. I give everyone ten to fifteen minutes, or longer if the room
+needs it, to write down processes and ceremonies they want to discuss.
+When they are ready, they put the notes on the board.&lt;/p&gt;
+&lt;p&gt;Starting with quiet writing gives everyone a chance to form their own
+ideas before the loudest or quickest person in the room sets the
+agenda.&lt;/p&gt;
+&lt;h2 id=&#34;group-similar-notes&#34;&gt;Group similar notes&lt;/h2&gt;
+&lt;p&gt;I look for notes with enough overlap to discuss together. Before I
+combine any of them, I ask the people in the room whether the grouping
+makes sense.&lt;/p&gt;
+&lt;p&gt;This is important because two notes that look identical to me may have
+a meaningful difference to the people who wrote them. It is their
+agenda, so I don&amp;rsquo;t erase that distinction just because combining the
+notes would be more convenient.&lt;/p&gt;
+&lt;h2 id=&#34;vote-on-what-to-discuss&#34;&gt;Vote on what to discuss&lt;/h2&gt;
+&lt;p&gt;Everyone gets a limited number of votes. For a team of around twelve
+people, I might give each person four. They vote by using a marker to
+draw a dot, an X, or really any mark next to a subject. They can spread
+their votes across several subjects or put all four on one thing they
+care about deeply. I trust people to keep track of their own votes; we
+don&amp;rsquo;t need physical dots to control the process.&lt;/p&gt;
+&lt;p&gt;Before voting, I explain that we will not discuss a topic that gets no
+marks. I used to work through every note, but this meant spending time
+on subjects that no one in the room actually cared about. If nobody
+is willing to spend a vote on a topic, it isn&amp;rsquo;t important enough for
+this review.&lt;/p&gt;
+&lt;p&gt;After the vote, I count the marks and start with the most heavily voted
+group. From there we work downward while we still have time and
+interest.&lt;/p&gt;
+&lt;p&gt;The vote doesn&amp;rsquo;t decide the answer. It decides which questions get
+the team&amp;rsquo;s attention first.&lt;/p&gt;
+&lt;h2 id=&#34;record-the-decisions&#34;&gt;Record the decisions&lt;/h2&gt;
+&lt;p&gt;At the end, I collect the process changes, write them up, and send
+them to the team. The notes should be specific enough that someone
+who missed the meeting can understand what changed. We then work
+under those decisions for the next quarter.&lt;/p&gt;
+&lt;p&gt;When the next review arrives, we start again. I don&amp;rsquo;t assume that the
+team still agrees with the previous decisions. The people may have
+changed, the work may have changed, and now we have evidence about how
+the process behaved in practice.&lt;/p&gt;
+&lt;h2 id=&#34;a-side-benefit-of-a-scheduled-review&#34;&gt;A side benefit of a scheduled review&lt;/h2&gt;
+&lt;p&gt;There is also a side benefit to having a known time for process
+complaints.&lt;/p&gt;
+&lt;p&gt;During the quarter, when someone raises a non-urgent problem with a
+ceremony or team rule, I can say, &amp;ldquo;That&amp;rsquo;s a good topic for the
+quarterly process review.&amp;rdquo; The concern now has a destination and a
+date. We don&amp;rsquo;t need to change the wheels on the car while it is moving
+every time someone encounters ordinary friction.&lt;/p&gt;
+&lt;p&gt;This doesn&amp;rsquo;t mean ignoring a process that is hurting people or
+preventing the team from working. Some things should change
+immediately. But most process questions benefit from a little evidence
+and a room where the whole team can participate.&lt;/p&gt;
+&lt;h2 id=&#34;remove-what-is-no-longer-useful&#34;&gt;Remove what is no longer useful&lt;/h2&gt;
+&lt;p&gt;The review also gives the team permission to remove things. Processes
+tend to accumulate because adding something feels safer than removing
+it. Once a quarter, the team can ask a simple question: if this
+ceremony didn&amp;rsquo;t already exist, would we create it now?&lt;/p&gt;
+&lt;p&gt;If the answer is no, and nobody can explain the value it provides, we
+should probably stop doing it.&lt;/p&gt;
+&lt;h2 id=&#34;a-feeling-of-ownership&#34;&gt;A feeling of ownership&lt;/h2&gt;
+&lt;p&gt;The most important result of the review isn&amp;rsquo;t any particular process
+change. It is the stronger feeling of ownership the team develops over
+how it works.&lt;/p&gt;
+&lt;p&gt;When people help create the process, they are more likely to follow
+and support it. They understand why it exists and have regular
+opportunities to change it. It no longer feels like they are doing
+process for the sake of process.&lt;/p&gt;
+&lt;p&gt;I find this is true even when someone&amp;rsquo;s preference is overruled by the
+group. They may not get the outcome they wanted, but they had a chance
+to make their case and be heard. They leave with a sense that &lt;em&gt;the
+team has opted to do this&lt;/em&gt; rather than &lt;em&gt;my manager is making me do
+this&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;That is a powerful difference.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Start with On-Call</title>
