@@ -68,17 +68,17 @@ incrementally.&lt;/p&gt;
 to run one remotely, but I get much better participation when
 everyone is in the same room. People respond more naturally to one
 another, and it is easier to tell when the group wants to spend more
-time on a subject.&lt;/p&gt;
-&lt;p&gt;The setup is intentionally simple. I need a room, a wall or
-whiteboard, Post-it notes, and markers. This meeting is about the team
-talking to itself, so the tools should stay out of the way.&lt;/p&gt;
-&lt;p&gt;I reserve two hours for the review. If it goes much longer, people have
-a hard time sitting still and staying engaged. If I schedule less time,
-we almost always have to cut off conversations before people have
+time on a topic.&lt;/p&gt;
+&lt;p&gt;The setup is intentionally simple: a room, a wall or whiteboard,
+Post-it notes, and markers. This meeting is about the team talking to
+itself, so the tools should stay out of the way.&lt;/p&gt;
+&lt;p&gt;Reserve two hours for the review. If it goes much longer, people have
+a hard time sitting still and staying engaged. Scheduling less time
+almost always means cutting off conversations before people have
 talked them through to a point where they feel good about the result.&lt;/p&gt;
 &lt;h2 id=&#34;start-by-getting-everyone-talking&#34;&gt;Start by getting everyone talking&lt;/h2&gt;
-&lt;p&gt;I start with a deck of open-question cards. Everyone takes a card and
-we go around the room answering them. Someone can answer the question
+&lt;p&gt;Start with a deck of open-question cards. Have everyone take a card,
+then go around the room answering them. Someone can answer the question
 on their card, or they can answer someone else&amp;rsquo;s question if it is
 more interesting.&lt;/p&gt;
 &lt;p&gt;The questions themselves aren&amp;rsquo;t important. The point is to get
@@ -90,7 +90,8 @@ where they want to talk much that day. Giving them a clear way to pass
 keeps the warm-up voluntary and prevents an exercise intended to
 create engagement from turning into a demand for personal disclosure.&lt;/p&gt;
 &lt;h2 id=&#34;explain-why-the-review-exists&#34;&gt;Explain why the review exists&lt;/h2&gt;
-&lt;p&gt;After the warm-up, I give roughly the same explanation every quarter:&lt;/p&gt;
+&lt;p&gt;After the warm-up, explain why the review exists. I use roughly the
+same language every quarter:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Most of us inherit the team we are on. We join a team with existing
 ceremonies, communication patterns, and culture. Every person who
@@ -108,15 +109,16 @@ for discussion and change.&lt;/p&gt;
 My role in this meeting is mostly to facilitate, clarify constraints,
 and help the group make decisions it can live with for the next
 quarter.&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;I repeat this explanation because people forget, but also because the
-team changes. Someone may have joined since the last review, someone
-else may have left, and everyone has another quarter of experience
-with the current process.&lt;/p&gt;
+&lt;p&gt;Repeat this explanation each quarter because the team and its
+circumstances may have changed. Someone may have joined since the last
+review, someone else may have left, and everyone has another quarter
+of experience with the current process.&lt;/p&gt;
 &lt;p&gt;The last point also changes how I participate. I may have preferences,
-especially around on-call, but I try to step back. A manager cannot
-dominate the discussion and then call the result team ownership.&lt;/p&gt;
+but for the most part I keep them to myself and focus on facilitating
+the discussion. A manager cannot dominate the conversation and then
+claim the team owns the result.&lt;/p&gt;
 &lt;h2 id=&#34;give-examples-that-encourage-bigger-changes&#34;&gt;Give examples that encourage bigger changes&lt;/h2&gt;
-&lt;p&gt;At this point I give examples of things other teams have discussed.
+&lt;p&gt;At this point, give examples of things other teams have discussed.
 These aren&amp;rsquo;t recommendations, and they aren&amp;rsquo;t a list the team needs
 to work through. They are intended to show that the review can go
 beyond changing the team logo or making some other cosmetic change.&lt;/p&gt;
@@ -133,75 +135,75 @@ backlog work is handled, which may change the handoff. The review lets
 the team consider the whole operating system instead of adjusting one
 ceremony in isolation.&lt;/p&gt;
 &lt;h2 id=&#34;write-down-the-topics&#34;&gt;Write down the topics&lt;/h2&gt;
-&lt;p&gt;Once the purpose of the meeting is clear, I hand out the Post-it
-notes. I give everyone ten to fifteen minutes, or longer if the room
-needs it, to write down processes and ceremonies they want to discuss.
-When they are ready, they put the notes on the board.&lt;/p&gt;
+&lt;p&gt;Once the purpose of the meeting is clear, hand out the Post-it notes.
+Give everyone ten to fifteen minutes to write down the processes and
+ceremonies they want to discuss. When they are ready, have them put the
+notes on the board.&lt;/p&gt;
 &lt;p&gt;Starting with quiet writing gives everyone a chance to form their own
 ideas before the loudest or quickest person in the room sets the
 agenda.&lt;/p&gt;
-&lt;h2 id=&#34;group-similar-notes&#34;&gt;Group similar notes&lt;/h2&gt;
-&lt;p&gt;I look for notes with enough overlap to discuss together. Before I
-combine any of them, I ask the people in the room whether the grouping
-makes sense.&lt;/p&gt;
-&lt;p&gt;This is important because two notes that look identical to me may have
-a meaningful difference to the people who wrote them. It is their
-agenda, so I don&amp;rsquo;t erase that distinction just because combining the
+&lt;h2 id=&#34;group-similar-notes-into-topics&#34;&gt;Group similar notes into topics&lt;/h2&gt;
+&lt;p&gt;Look for notes with enough overlap to form a single topic. Before
+placing them together, ask the people who wrote them whether the
+grouping makes sense.&lt;/p&gt;
+&lt;p&gt;This is important because two notes that look similar may have a
+meaningful difference to the people who wrote them. It is their
+agenda, so don&amp;rsquo;t erase that distinction just because combining the
 notes would be more convenient.&lt;/p&gt;
 &lt;h2 id=&#34;vote-on-what-to-discuss&#34;&gt;Vote on what to discuss&lt;/h2&gt;
 &lt;p&gt;Everyone gets a limited number of votes. For a team of around twelve
-people, I might give each person four. They vote by using a marker to
-draw a dot, an X, or really any mark next to a subject. They can spread
-their votes across several subjects or put all four on one thing they
-care about deeply. I trust people to keep track of their own votes; we
-don&amp;rsquo;t need to hand out physical dots.&lt;/p&gt;
-&lt;p&gt;Before voting, I explain that we will not discuss a topic that gets no
-marks. I used to work through every note, but this meant spending time
-on subjects that were not priorities for the room. If nobody
-is willing to spend a vote on a topic, it isn&amp;rsquo;t important enough for
-this review.&lt;/p&gt;
-&lt;p&gt;After the vote, I count the marks and start with the most heavily voted
-group. From there we work downward while we still have time and
+people, give each person four. They vote by using a marker to draw a
+dot, an X, or any other mark next to a topic. They can spread
+their votes across several topics or put all four on one topic they
+care about deeply.&lt;/p&gt;
+&lt;p&gt;Before voting, explain that the team will not discuss a topic that gets
+no marks. I used to work through every topic, but this meant spending
+time on topics that were not priorities for the room. If nobody is
+willing to spend a vote on a topic, it isn&amp;rsquo;t important enough for this
+review.&lt;/p&gt;
+&lt;p&gt;After the vote, count the marks and start with the topic that received
+the most. From there, work downward while there is still time and
 interest.&lt;/p&gt;
 &lt;p&gt;The vote doesn&amp;rsquo;t decide the answer. It decides which questions get
 the team&amp;rsquo;s attention first.&lt;/p&gt;
 &lt;h2 id=&#34;turn-the-discussion-into-a-decision&#34;&gt;Turn the discussion into a decision&lt;/h2&gt;
-&lt;p&gt;Once we start discussing a topic, I give the team time to talk it
-through, but I also time-box the discussion so that one subject does
-not consume the entire meeting. When the time is up, I check whether
-the conversation is still moving forward. If it is, we can choose to
-give it more time. Otherwise, I ask the team to identify what it is
-ready to decide.&lt;/p&gt;
-&lt;p&gt;Usually the team can reach a consensus on its own. If it cannot, I ask
-whether there is something small we can try that might give us more
-information. If the team has trouble coming up with an idea, I help
-brainstorm options: &amp;ldquo;What if we tried this one small change? What do
-you all think?&amp;rdquo;&lt;/p&gt;
-&lt;p&gt;The small change may be all that was needed, or the original concern
-may no longer matter by the next review. We do not automatically put
-the subject on the next quarter&amp;rsquo;s agenda. If it is still important,
-someone can raise it again and put it through the same voting process.
+&lt;p&gt;Once the team starts discussing a topic, give people time to talk it
+through, but also time-box the discussion so that one topic does not
+consume the entire meeting. When the time is up, check whether the
+conversation is still moving forward. If it is, the team can choose to
+give it more time. Otherwise, ask the team to identify what it is ready
+to decide.&lt;/p&gt;
+&lt;p&gt;Usually the team can reach a consensus on its own. If it cannot, ask
+whether there is something small the team can try that might provide
+more information. If the team has trouble coming up with an idea, I
+help brainstorm options: &amp;ldquo;What if we tried this one small change? What
+do you all think?&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;The small change may turn out to be all that was needed, or the
+original concern may no longer matter by the next review. Do not
+automatically put the topic on the next quarter&amp;rsquo;s agenda. If it is
+still important, someone can raise it again and put it through the
+same voting process.
 This lets the team improve its process incrementally without requiring
 every discussion to produce a complete and permanent answer.&lt;/p&gt;
 &lt;h2 id=&#34;record-the-decisions&#34;&gt;Record the decisions&lt;/h2&gt;
-&lt;p&gt;At the end, I collect the process changes, write them up, and send
-them to the team. The notes should be specific enough that someone
-who missed the meeting can understand what changed. When a decision is
-an experiment, I also record what the team hopes to learn or improve.
-We then work under those decisions for the next quarter.&lt;/p&gt;
-&lt;p&gt;When the next review arrives, we start again. I don&amp;rsquo;t assume that the
-team still agrees with the previous decisions. The people may have
-changed, the work may have changed, and now we have evidence about how
-the process behaved in practice.&lt;/p&gt;
+&lt;p&gt;At the end, collect the process changes, write them up, and send them
+to the team. The write-up should be specific enough that someone who
+missed the meeting can understand what changed. When a decision is an
+experiment, also record what the team hopes to learn or improve. The
+team then works under those decisions for the next quarter.&lt;/p&gt;
+&lt;p&gt;When the next review arrives, start again. Don&amp;rsquo;t assume that the team
+still agrees with the previous decisions. The people may have changed,
+the work may have changed, and now there is evidence about how the
+process behaved in practice.&lt;/p&gt;
 &lt;h2 id=&#34;a-side-benefit-of-a-scheduled-review&#34;&gt;A side benefit of a scheduled review&lt;/h2&gt;
 &lt;p&gt;There is also a side benefit to having a known time for process
 complaints.&lt;/p&gt;
 &lt;p&gt;During the quarter, when someone raises a non-urgent problem with a
-ceremony or team rule, I can say, &amp;ldquo;That&amp;rsquo;s a good topic for the
-quarterly process review.&amp;rdquo; The concern now has a destination and a
-date. We don&amp;rsquo;t need to change the wheels on the car while it is moving
-every time someone encounters ordinary friction.&lt;/p&gt;
-&lt;p&gt;I record these suggestions on a team wiki page called &lt;em&gt;Process
+ceremony or team rule, say, &amp;ldquo;That&amp;rsquo;s a good topic for the quarterly
+process review.&amp;rdquo; The concern now has a destination and a date. We
+don&amp;rsquo;t need to change the wheels on the car while it is moving every
+time someone encounters ordinary friction.&lt;/p&gt;
+&lt;p&gt;Record these suggestions on a team wiki page called &lt;em&gt;Process
 Discussions&lt;/em&gt;. This makes sure that postponing the conversation does
 not mean losing it. But putting something on the page does not
 automatically put it on the agenda. If someone still wants the team to
